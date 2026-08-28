@@ -78,8 +78,8 @@ MAX_SOURCE_PER_RUN = 99
 MAX_RICH_CHARACTERS = 32768
 
 # Lightweight English stopwords used only by the conservative event/entity
-# deduplication layer. This is deliberately small so legitimate game entities
-# and meaningful terms are not filtered out.
+# deduplication layer. This is deliberately small so technology entities and
+# meaningful short terms such as AI, OS, UI, and VR are retained.
 STOPWORDS = {
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for",
     "from", "with", "by", "at", "as", "is", "are", "was", "were",
@@ -291,6 +291,8 @@ def category_hashtags(story):
         tags.append(inst_map[institution])
     if "#Tech" not in tags:
         tags.append("#Tech")
+    if "#Tech" not in tags[:3]:
+        tags = tags[:2] + ["#Tech"]
     return tags[:3]
 
 def coverage_state():
@@ -774,13 +776,22 @@ DISCOVERY_TARGET_PER_REGION = 18
 # CLIENTS
 # ============================================================
 
-exa = Exa(
-    api_key=EXA_API_KEY
-)
+exa = None
+cerebras = None
 
-cerebras = Cerebras(
-    api_key=CEREBRAS_API_KEY
-)
+
+def get_exa():
+    global exa
+    if exa is None:
+        exa = Exa(api_key=EXA_API_KEY)
+    return exa
+
+
+def get_cerebras():
+    global cerebras
+    if cerebras is None:
+        cerebras = Cerebras(api_key=CEREBRAS_API_KEY)
+    return cerebras
 
 
 # ============================================================
@@ -1438,7 +1449,7 @@ def exa_gap_fill(region, existing_count, needed, fallback=False):
     added = 0
     for query in queries:
         try:
-            results = exa.search_and_contents(
+            results = get_exa().search_and_contents(
                 query, type="auto", category="news", num_results=8,
                 include_domains=domains,
                 start_published_date=DISCOVERY_START.isoformat(),
@@ -1658,7 +1669,7 @@ Allowed topic taxonomy:
 """
 
     try:
-        response = cerebras.chat.completions.create(
+        response = get_cerebras().chat.completions.create(
             model=CEREBRAS_MODEL,
             messages=[
                 {"role": "system", "content": prompt},
@@ -1743,7 +1754,7 @@ Allowed topic taxonomy:
 # ============================================================
 
 def extract_entities(text):
-    words = re.findall(r"[A-Za-z][A-Za-z&'-]{2,}", safe_text(text).lower())
+    words = re.findall(r"[A-Za-z][A-Za-z&'-]{1,}", safe_text(text).lower())
     return {w for w in words if w not in STOPWORDS}
 
 
@@ -1974,7 +1985,7 @@ def extract_article(
         )
 
     try:
-        result_set = exa.get_contents(
+        result_set = get_exa().get_contents(
             [url],
             text={
                 "max_characters": 12000,
@@ -2167,7 +2178,7 @@ Headline
 
     for attempt in range(3):
         try:
-            response = cerebras.chat.completions.create(
+            response = get_cerebras().chat.completions.create(
                 model=CEREBRAS_MODEL,
                 messages=[
                     {
@@ -3289,7 +3300,7 @@ Return only the JSON schema.
     )
 
     try:
-        response = cerebras.chat.completions.create(
+        response = get_cerebras().chat.completions.create(
             model=CEREBRAS_MODEL,
             messages=[
                 {"role": "system", "content": prompt},
