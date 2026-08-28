@@ -60,7 +60,7 @@ BD_TZ = ZoneInfo("Asia/Dhaka")
 # Version 1 editorial target: publish only clearly important tech stories.
 # All tech stories compete in one ranked pool. Six is a safety cap, not a quota.
 MAX_STORIES_PER_RUN = 6
-RANKING_POOL_SIZE = 12
+RANKING_POOL_SIZE = 24
 DISCOVERY_LOOKBACK_HOURS = 24
 
 # Reliability / quality
@@ -1582,11 +1582,107 @@ def enrich_thin_excerpts(regional):
     return regional
 
 
-def rank_candidates(candidates, region):
-    """Rank all usable candidates without hard score formulas or early rejection.
+def _rank_prompt(region):
+    topic_list = ", ".join(TOPICS[region])
+    return f"""
+You are the editor-in-chief of @TheTechNewsroom.
 
-    The LLM acts only as an editor/ranker: it does not decide eligibility.
-    Eligibility remains the simple ingestion/state rules used elsewhere.
+Rank this batch of tech news candidates by REAL editorial importance in the previous 24 hours.
+The channel is for everyday technology users. Do not rank by headline excitement alone.
+Do not invent facts. Return EVERY candidate in this batch.
+
+IMPORTANT: There is NO requirement to publish a story from every sector. Diversity is a
+selection preference only after importance is established. Never lower a score just because
+another story covers the same sector, and never raise a weak story to fill a sector.
+
+Priority areas, when genuinely important:
+1. Major AI model releases, frontier capability changes, and AI products with broad impact.
+2. Major AI acquisitions, strategic deals, or partnerships that materially affect the industry.
+3. Major cybersecurity incidents, privacy incidents, critical vulnerabilities, and outages.
+4. Major smartphone, operating-system, browser, search, social, cloud, and app-store changes.
+5. Major moves by Apple, Google, Microsoft, OpenAI, Meta, Amazon, NVIDIA and other major tech companies.
+6. Important new consumer technology products.
+7. Trending GitHub repositories only when the repository is a genuinely useful new tool/capability,
+   not ordinary developer churn.
+8. Startups reaching unicorn status or shipping something with broad real-world impact.
+9. Y Combinator companies only for major product launches or milestones, not routine funding.
+10. Hugging Face open-model releases or leaderboard changes that materially move the state of the art.
+
+Normally score low or reject:
+- reviews, hands-ons, unboxings, rumors, leaks, speculation
+- EV/car/robotaxi/vehicle news
+- healthtech, biotech, medtech, medical or pharmaceutical news
+- routine startup funding, VC, finance, legal or policy commentary
+- energy, batteries, utilities and climate/energy policy
+- low-level engineering stories aimed at engineers
+- podcasts, webinars, event recordings, opinion/promotional pieces
+- minor app features, routine patches and insignificant updates
+
+Scoring:
+9-10 exceptional, broad user or industry impact
+7-8 clearly important and publishable
+4-6 interesting but normally not publishable
+0-3 low-value, repetitive, promotional, speculative, niche or excluded
+
+A score of 7+ is required for publication. Return EVERY candidate with:
+id, rank, score, important, topic, institution, event_key, reason.
+The important field MUST be true only when score >= 7.
+
+Allowed topics:
+{topic_list}
+"""
+
+
+def _rank_batch(batch, region, batch_no):
+    lines = []
+    for idx, item in enumerate(batch, start=1):
+        published = item.get("published_date", "")
+        age_note = ""
+        dt = parse_datetime(published)
+        if dt:
+            age_hours = max(0.0, (NOW_BD - dt).total_seconds() / 3600)
+            age_note = f"Age: {age_hours:.1f} hours"
+        lines.append("\n".join([
+            f"ID: {idx}",
+            f"Title: {item.get('title','')}",
+            f"Source: {item.get('source','')}",
+            f"Published: {published}",
+            age_note,
+            f"Description/Excerpt: {trim_source_text(item.get('excerpt',''), 650)}",
+            "",
+        ]))
+
+    try:
+        response = get_cerebras().chat.completions.create(
+            model=CEREBRAS_MODEL,
+            messages=[
+                {"role": "system", "content": _rank_prompt(region)},
+                {"role": "user", "content": "\n".join(lines)},
+            ],
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": f"tech_news_rank_batch_{batch_no}",
+                    "strict": True,
+                    "schema": RANK_SCHEMA,
+                },
+            },
+            reasoning_effort="low",
+            temperature=0.0,
+            max_completion_tokens=3500,
+        )
+        data = json.loads(safe_text(response.choices[0].message.content))
+        return data.get("ranked", [])
+    except Exception as exc:
+        logger.error("Ranking batch %d failed: %s", batch_no, exc)
+        return []
+
+
+def rank_candidates(candidates, region):
+    """Rank the discovery pool in bounded LLM batches, then merge globally.
+
+    Batching prevents a large structured response from being truncated. The merged result
+    is globally ordered by editorial score, then model rank, then freshness.
     """
     if not candidates:
         return []
@@ -1595,160 +1691,48 @@ def rank_candidates(candidates, region):
         candidates,
         key=lambda x: parse_datetime(x.get("published_date")) or datetime.min.replace(tzinfo=timezone.utc),
         reverse=True,
-    )[:60]
+    )[:80]
 
-    lines = []
-    for idx, item in enumerate(regional, start=1):
-        published = item.get("published_date", "")
-        age_note = ""
-        dt = parse_datetime(published)
-        if dt:
-            age_hours = max(0.0, (NOW_BD - dt).total_seconds() / 3600)
-            age_note = f"Age: {age_hours:.1f} hours"
-        lines.append(
-            "\n".join([
-                f"ID: {idx}",
-                f"Title: {item.get('title','')}",
-                f"Source: {item.get('source','')}",
-                f"Published: {published}",
-                age_note,
-                f"Description/Excerpt: {trim_source_text(item.get('excerpt',''), 700)}",
-                "",
-            ])
-        )
-
-    topic_list = ", ".join(TOPICS["Tech"])
-    prompt = f"""
-You are the editor-in-chief of @TheTechNewsroom.
-
-Rank these tech news candidates from MOST IMPORTANT to LEAST IMPORTANT.
-Use the previous 24 hours as the editorial window.
-
-The channel is written for everyday technology users, not engineers or industry insiders.
-Your job is ranking and editorial eligibility. Do not inflate scores to fill a quota.
-Return EVERY candidate in ranked order. Do not stop after identifying only the obvious top stories.
-Publish only stories with score >= 7.
-
-Prioritize:
-1. Major consumer technology developments with direct user impact.
-2. Major AI model, tool, or product launches and meaningful capability changes.
-3. Significant smartphone or operating-system releases and platform-level changes.
-4. Major online-platform changes across search, social, cloud, browsers, and app stores.
-5. Major cybersecurity/privacy incidents, widely exploitable vulnerabilities, and major outages.
-6. Strategic moves by major technology companies, industry-changing deals, and genuinely
-   important new products.
-7. Trending GitHub repositories only when they are a real new tool or capability.
-8. Startups only when they reach unicorn status or ship something with broad real-world impact.
-9. Y Combinator companies only for major product launches or milestones, not routine funding.
-10. Hugging Face only for major open-model releases or leaderboard shifts that materially
-    move the state of the art.
-
-Normally reject or score low:
-- product reviews, hands-on impressions, first looks, unboxings
-- rumors, leaks, speculation, or unreleased-product expectations
-- car/EV/truck news and autonomous-vehicle or robotaxi coverage
-- healthtech, biotech, medtech, medical, clinical, or pharmaceutical news
-- routine startup funding, routine VC/finance/legal-regulatory industry news
-- energy/utilities, solar/wind/battery/grid/climate-energy policy news
-- low-level engineering deep-dives for engineers
-- podcasts, event recordings, webinars, roundtables
-- minor app features, bug fixes, routine software updates
-- municipal surveillance-camera or police-technology features
-- opinion/promotional commentary without a concrete new event
-
-For EVERY candidate, assign score 0-10:
-- 9-10 = exceptional importance with very broad user or industry impact
-- 7-8 = clearly important and publishable
-- 4-6 = interesting but normally not publishable
-- 0-3 = low-value, repetitive, promotional, unsupported, rumor/speculation, niche, or excluded
-
-The field important MUST be true only when score >= 7. Return EVERY candidate with rank, score,
-important flag, topic, institution, event_key, and reason.
-
-Allowed topic taxonomy:
-{topic_list}
-"""
-
-    try:
-        response = get_cerebras().chat.completions.create(
-            model=CEREBRAS_MODEL,
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": "\n".join(lines)},
-            ],
-            response_format={
-                "type": "json_schema",
-                "json_schema": {
-                    "name": "tech_news_v1_rank",
-                    "strict": True,
-                    "schema": RANK_SCHEMA,
-                },
-            },
-            reasoning_effort="low",
-            temperature=0.0,
-            max_completion_tokens=6000,
-        )
-        data = json.loads(safe_text(response.choices[0].message.content))
-        logger.info("%s RANK MODEL ROWS: %d", region, len(data.get("ranked", [])))
-        by_id = {idx: item for idx, item in enumerate(regional, start=1)}
-        rows = []
-        for row in data.get("ranked", []):
-            idx = int(row["id"])
+    batch_size = 15
+    ranked_rows = []
+    for offset in range(0, len(regional), batch_size):
+        batch = regional[offset:offset + batch_size]
+        logger.info("%s RANK BATCH %d: %d candidates", region, offset // batch_size + 1, len(batch))
+        rows = _rank_batch(batch, region, offset // batch_size + 1)
+        by_id = {idx: item for idx, item in enumerate(batch, start=1)}
+        for row in rows:
+            try:
+                idx = int(row["id"])
+            except Exception:
+                continue
             if idx not in by_id:
                 continue
             item = dict(by_id[idx])
             score = max(0, min(10, int(row.get("score", 0))))
             item.update({
-                "editor_rank": int(row["rank"]),
                 "importance_score": score,
                 "important": bool(row.get("important")) and score >= 7,
                 "topic": canonical_topic(safe_text(row.get("topic")), region),
                 "institution": safe_text(row.get("institution")),
                 "event_key": safe_text(row.get("event_key")),
                 "rank_reason": safe_text(row.get("reason")),
+                "batch_rank": int(row.get("rank", 9999)),
             })
-            rows.append(item)
+            ranked_rows.append(item)
 
-        # Never let a partial model response erase candidates.
-        returned_ids = {safe_text(x.get("canonical")) for x in rows}
-        next_rank = max([x.get("editor_rank", 0) for x in rows] or [0]) + 1
-        missing = [x for x in regional if safe_text(x.get("canonical")) not in returned_ids]
-        for item in missing:
-            fallback = dict(item)
-            fallback.update({
-                "editor_rank": next_rank,
-                "importance_score": 0,
-                "important": False,
-                "topic": canonical_topic(fallback.get("topic", ""), region),
-                "institution": fallback.get("institution", ""),
-                "event_key": fallback.get("event_key", ""),
-                "rank_reason": "Kept as recoverable fallback candidate; not eligible without an explicit editorial score.",
-            })
-            rows.append(fallback)
-            next_rank += 1
+    # A failed/partial batch is recoverable, but never receives an invented importance score.
+    # It remains available only for diagnostics, not eligibility.
+    ranked_rows.sort(key=lambda x: (
+        -x.get("importance_score", 0),
+        x.get("batch_rank", 9999),
+        -(parse_datetime(x.get("published_date")).timestamp() if parse_datetime(x.get("published_date")) else 0),
+    ))
 
-        rows.sort(key=lambda x: (
-            x.get("editor_rank", 9999),
-            -(parse_datetime(x.get("published_date")).timestamp() if parse_datetime(x.get("published_date")) else 0),
-        ))
-        return rows
+    for rank, item in enumerate(ranked_rows, start=1):
+        item["editor_rank"] = rank
 
-    except Exception as exc:
-        logger.error("Editorial ranking failed for %s: %s", region, exc)
-        fallback = []
-        for idx, item in enumerate(regional, start=1):
-            row = dict(item)
-            row.update({
-                "editor_rank": idx,
-                "importance_score": 0,
-                "important": False,
-                "topic": canonical_topic(row.get("topic", ""), region),
-                "institution": row.get("institution", ""),
-                "event_key": row.get("event_key", ""),
-                "rank_reason": "Ranking-service failure; candidate withheld to avoid publishing unscored news.",
-            })
-            fallback.append(row)
-        return fallback
+    logger.info("%s RANK MODEL ROWS: %d/%d", region, len(ranked_rows), len(regional))
+    return ranked_rows
 
 
 # ============================================================
@@ -3302,11 +3286,55 @@ def store_event(
 # ============================================================
 
 def build_candidate_pool(ranked, needed):
-    """Keep a generous ranked recovery pool for downstream failures."""
+    """Build a verification pool that favors important stories and sector diversity.
+
+    Diversity is a soft preference. A high-scoring story always beats a low-scoring story,
+    and no sector is forced when the latest news does not support it.
+    """
     if not ranked:
         return []
-    pool_size = max(RANKING_POOL_SIZE, needed * 2)
-    return [dict(item) for item in ranked[:pool_size]]
+
+    eligible = [dict(x) for x in ranked if x.get("importance_score", 0) >= 7 and x.get("important") is True]
+    target = max(RANKING_POOL_SIZE, needed * 2)
+    target = min(target, len(eligible))
+
+    # Preferred high-signal topics. These are not quotas; they only help break ties.
+    preferred = {
+        "GitHub Trends": 0,
+        "Startups": 0,
+        "Acquisitions and Mergers": 0,
+        "AI Models and Products": 0,
+        "Hugging Face": 0,
+        "Cybersecurity": 0,
+        "Major Outages": 0,
+        "Operating Systems": 0,
+        "Smartphones": 0,
+        "Major Tech Companies": 0,
+    }
+
+    selected = []
+    used_topics = set()
+    remaining = list(eligible)
+
+    # First pass: preserve the best story from distinct important sectors.
+    for item in remaining:
+        topic = item.get("topic", "")
+        if topic not in used_topics and len(selected) < target:
+            selected.append(item)
+            used_topics.add(topic)
+
+    # Second pass: fill by global editorial rank. No quota is imposed.
+    for item in remaining:
+        if len(selected) >= target:
+            break
+        if item not in selected:
+            selected.append(item)
+
+    selected.sort(key=lambda x: (
+        -x.get("importance_score", 0),
+        x.get("editor_rank", 9999),
+    ))
+    return selected
 
 
 VERIFY_SCHEMA = {

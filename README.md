@@ -1,6 +1,6 @@
-# TheTechNewsroom V1
+# TheTechNewsroom V3
 
-> Automated tech news intelligence for Telegram, powered by GitHub Actions, Exa, and Cerebras.
+> Automated tech news intelligence for Telegram, powered by GitHub Actions, Exa, and Cerebras, with batched editorial ranking and soft sector diversity.
 
 TheTechNewsroom discovers, filters, ranks, verifies, and publishes the most important technology stories to the Telegram channel **@TheTechNewsroom**. All eligible stories compete in one ranked pool, and the bot publishes the strongest available stories rather than forcing weak category quotas.
 
@@ -25,7 +25,7 @@ A topic on this list makes a story **eligible** for coverage — it does not by 
 
 ## Ranked Story Pool
 
-Every run scores all eligible candidates and publishes only the ones that clear the importance bar (score ≥ 7). Stories compete in a single ranked pool rather than fixed per-category quotas, so a run with weak candidates may publish few stories — or none.
+Every run scores all eligible candidates and publishes only the ones that clear the importance bar (score ≥ 7). Stories compete in a single ranked pool rather than fixed per-category quotas. The publisher uses a soft sector-diversity preference so strong runs can cover different areas such as AI, cybersecurity, platforms, GitHub, startups, and major industry moves, but it never lowers the importance bar or invents a sector quota.
 
 ## Primary Source Universe
 
@@ -131,7 +131,9 @@ URL deduplication
    ↓
 Event deduplication
    ↓
-LLM editorial ranking (importance classifier)
+LLM editorial ranking in bounded batches (importance classifier)
+   ↓
+Global score merge + soft sector diversification
    ↓
 Top tech events
    ↓
@@ -214,6 +216,8 @@ NEWS_MODE=update
 ```
 
 ## Local Checks
+
+The editorial ranker processes candidates in batches of 15 to prevent structured-output truncation. The run keeps a recovery pool of up to 24 important candidates and tries candidates sequentially until six verified stories are produced or the eligible pool is exhausted. Six is a maximum, not a quota.
 
 Compile:
 
