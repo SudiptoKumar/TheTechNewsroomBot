@@ -1,1 +1,68 @@
+name: TheTechNewsroom V1
 
+on:
+  schedule:
+    - cron: "0 7-23 * * *"
+      timezone: "Asia/Dhaka"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thetechnewsroom-v1
+  cancel-in-progress: false
+
+jobs:
+  run-news-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+      CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHANNEL: "@TheTechNewsroom"
+      NEWS_MODE: "update"
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify Python source
+        run: python -m py_compile main.py
+
+      - name: Run self-test
+        run: python main.py --self-test
+
+      - name: Run TheTechNewsroom
+        run: python main.py
+
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name "Tech News Bot"
+          git config user.email "actions@github.com"
+          git add news_state.json posted_urls.txt
+
+          if git diff --cached --quiet; then
+            echo "No state changes to commit."
+          else
+            git commit -m "Update TheTechNewsroom state"
+            git push
+          fi
