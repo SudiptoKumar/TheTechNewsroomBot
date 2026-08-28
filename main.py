@@ -1626,6 +1626,7 @@ Use the previous 24 hours as the editorial window.
 
 The channel is written for everyday technology users, not engineers or industry insiders.
 Your job is ranking and editorial eligibility. Do not inflate scores to fill a quota.
+Return EVERY candidate in ranked order. Do not stop after identifying only the obvious top stories.
 Publish only stories with score >= 7.
 
 Prioritize:
@@ -1688,6 +1689,7 @@ Allowed topic taxonomy:
             max_completion_tokens=6000,
         )
         data = json.loads(safe_text(response.choices[0].message.content))
+        logger.info("%s RANK MODEL ROWS: %d", region, len(data.get("ranked", [])))
         by_id = {idx: item for idx, item in enumerate(regional, start=1)}
         rows = []
         for row in data.get("ranked", []):
@@ -1791,9 +1793,16 @@ def cluster_ranked_events(ranked):
         placed = False
         for cluster in clusters:
             representative = cluster[0]
+            item_event_key = safe_text(item.get("event_key"))
+            rep_event_key = safe_text(representative.get("event_key"))
             same_key = bool(
-                safe_text(item.get("event_key"))
-                and safe_text(item.get("event_key")) == safe_text(representative.get("event_key"))
+                item_event_key
+                and rep_event_key
+                and item_event_key == rep_event_key
+                and (
+                    entity_overlap(item, representative) >= 0.25
+                    or title_similarity(item.get("title", ""), representative.get("title", "")) >= 0.55
+                )
             )
             if same_key or (
                 same_event_window(item, representative)
@@ -2294,118 +2303,157 @@ NUMBER_RE = re.compile(
     re.I | re.X,
 )
 
-YEAR_RE = re.compile(
-    r"^(?:19|20)\d{2}$"
-)
+YEAR_RE = re.compile(r"^(?:19|20)\d{2}$")
 
+_NUMERIC_SCALES = {
+    "": 1.0,
+    "k": 1e3,
+    "m": 1e6,
+    "mn": 1e6,
+    "million": 1e6,
+    "b": 1e9,
+    "bn": 1e9,
+    "billion": 1e9,
+    "trillion": 1e12,
+    "t": 1e12,
+    "crore": 1e7,
+    "lakh": 1e5,
+}
+_NUMERIC_CURRENCIES = {
+    "$": "usd",
+    "usd": "usd",
+    "tk": "bdt",
+    "bdt": "bdt",
+    "৳": "bdt",
+    "€": "eur",
+    "eur": "eur",
+    "£": "gbp",
+    "gbp": "gbp",
+    "¥": "jpy",
+    "jpy": "jpy",
+    "cny": "cny",
+    "inr": "inr",
+    "₹": "inr",
+    "hk$": "hkd",
+    "hk": "hkd",
+}
 
-def normalize_number(
-    raw,
-):
-    text = (
-        safe_text(raw)
-        .lower()
-        .replace(",", "")
-        .replace("৳", "tk")
-        .replace("$", "usd")
-    )
+def _numeric_signature(raw):
+    text = safe_text(raw).strip().lower()
+    if not text:
+        return None
 
-    return re.sub(
-        r"\s+",
-        "",
-        text,
-    )
+    currency = None
+    for symbol in sorted(_NUMERIC_CURRENCIES, key=len, reverse=True):
+        if text.startswith(symbol):
+            currency = _NUMERIC_CURRENCIES[symbol]
+            text = text[len(symbol):].strip()
+            break
 
+    if text.endswith("%"):
+        unit = "%"
+        text = text[:-1].strip()
+    else:
+        m = re.search(r"(trillion|billion|million|crore|lakh|bn|mn|[kmbt])$", text)
+        unit = m.group(1) if m else ""
+        if m:
+            text = text[:m.start()].strip()
+
+    text = text.replace(",", "")
+    try:
+        value = float(text)
+    except ValueError:
+        return None
+
+    if unit == "%":
+        scale = 1.0
+        percent = True
+    else:
+        scale = _NUMERIC_SCALES.get(unit, 1.0)
+        percent = False
+
+    return {
+        "value": value * scale,
+        "percent": percent,
+        "currency": currency,
+    }
+
+def normalize_number(raw):
+    sig = _numeric_signature(raw)
+    if not sig:
+        return ""
+    value = sig["value"]
+    value_key = f"{value:.12g}"
+    currency = sig["currency"] or ""
+    percent = "%" if sig["percent"] else ""
+    return f"{currency}|{percent}|{value_key}"
 
 def numeric_tokens(text):
     tokens = []
+    for match in NUMBER_RE.finditer(safe_text(text)):
+        token = safe_text(match.group(0)).strip()
+        sig = _numeric_signature(token)
+        if not sig:
+            continue
 
-    for match in NUMBER_RE.finditer(
-        safe_text(text)
-    ):
-        token = safe_text(
-            match.group(0)
-        )
-
-        stripped = re.sub(
-            r"[^\d.]",
-            "",
-            token,
-        )
-
+        # Ignore bare years, but retain years with a financial/percent/unit marker.
+        numeric_value = sig["value"]
         if (
-            YEAR_RE.match(
-                stripped
-            )
-            and not any(
-                x in token.lower()
-                for x in (
-                    "tk",
-                    "usd",
-                    "bdt",
-                    "$",
-                    "€",
-                    "£",
-                    "¥",
-                    "%",
-                    "million",
-                    "billion",
-                    "crore",
-                    "lakh",
-                )
-            )
+            numeric_value.is_integer()
+            and YEAR_RE.match(str(int(numeric_value)))
+            and not sig["percent"]
+            and not sig["currency"]
         ):
             continue
 
         if token:
-            tokens.append(
-                token
-            )
-
+            tokens.append(token)
     return tokens
 
+def _numeric_equivalent(source_sig, generated_sig):
+    if not source_sig or not generated_sig:
+        return False
+    if source_sig["percent"] != generated_sig["percent"]:
+        return False
 
-def numeric_grounded(
-    story,
-    article_text,
-):
-    source_numbers = [
-        normalize_number(x)
-        for x in numeric_tokens(
-            article_text
-        )
+    # If both explicitly name currencies, they must agree.
+    # If only one names a currency, accept the numeric equivalent because
+    # source extraction often drops currency symbols around abbreviated forms.
+    if (
+        source_sig["currency"]
+        and generated_sig["currency"]
+        and source_sig["currency"] != generated_sig["currency"]
+    ):
+        return False
+
+    return abs(source_sig["value"] - generated_sig["value"]) <= max(
+        1e-9, abs(source_sig["value"]) * 1e-9
+    )
+
+def numeric_grounded(story, article_text):
+    source_sigs = [
+        _numeric_signature(x)
+        for x in numeric_tokens(article_text)
     ]
+    source_sigs = [x for x in source_sigs if x]
 
     generated_text = " ".join(
         [
-            story.get(
-                "headline",
-                "",
-            ),
-            story.get(
-                "summary",
-                "",
-            ),
-            *story.get(
-                "highlights",
-                [],
-            ),
+            story.get("headline", ""),
+            story.get("summary", ""),
+            *story.get("highlights", []),
         ]
     )
 
-    for token in numeric_tokens(
-        generated_text
-    ):
-        normalized = normalize_number(
-            token
-        )
-
-        if not normalized:
+    for token in numeric_tokens(generated_text):
+        generated_sig = _numeric_signature(token)
+        if not generated_sig:
             continue
 
-        # Require either exact normalized occurrence or a sufficiently
-        # close numeric token from source.
-        if normalized not in source_numbers:
+        if not any(
+            _numeric_equivalent(source_sig, generated_sig)
+            for source_sig in source_sigs
+        ):
             return False, token
 
     return True, ""
@@ -3547,10 +3595,20 @@ def available_candidates(region, source_pool=None):
 
 def prepare_ranked_region(region, candidates):
     ranked = rank_candidates(candidates, region)
-    ranked = collapse_event_clusters(ranked)
-    ranked = [item for item in ranked if item.get("importance_score", 0) >= 7 and item.get("important") is True]
-    persist_event_cluster_state(ranked)
-    return ranked
+    logger.info("%s RANKED RETURNED: %d", region, len(ranked))
+
+    clustered = collapse_event_clusters(ranked)
+    logger.info("%s AFTER EVENT DEDUP: %d", region, len(clustered))
+
+    eligible = [
+        item for item in clustered
+        if item.get("importance_score", 0) >= 7
+        and item.get("important") is True
+    ]
+    logger.info("%s IMPORTANCE PASS (score>=7): %d", region, len(eligible))
+
+    persist_event_cluster_state(eligible)
+    return eligible
 
 
 def process_ranked_region(region, ranked):
