@@ -33,7 +33,7 @@ EXA_API_KEY = os.environ["EXA_API_KEY"]
 CEREBRAS_API_KEY = os.environ["CEREBRAS_API_KEY"]
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 
-TELEGRAM_CHANNEL = (os.environ.get("TELEGRAM_CHANNEL") or "@BusinessNewsroom").strip()
+TELEGRAM_CHANNEL = (os.environ.get("TELEGRAM_CHANNEL") or "@TheTechNewsroom").strip()
 
 # Optional. If set, feed-down alerts go here (a private chat/DM with the
 # bot, not the public channel). If empty, alerts only go to the run log.
@@ -57,12 +57,10 @@ STATE_FILE = "news_state.json"
 
 BD_TZ = ZoneInfo("Asia/Dhaka")
 
-# Version 1 editorial target: exactly three Bangladesh + three International
-# valid stories whenever enough eligible news exists. No cross-region quota
-# competition: each region is ranked independently from the same 24-hour window.
-STORIES_PER_REGION = 3
-MAX_STORIES_PER_RUN = STORIES_PER_REGION * 2
-RANKING_POOL_PER_REGION = 12
+# Version 1 editorial target: publish only clearly important tech stories.
+# All tech stories compete in one ranked pool. Six is a safety cap, not a quota.
+MAX_STORIES_PER_RUN = 6
+RANKING_POOL_SIZE = 24
 DISCOVERY_LOOKBACK_HOURS = 24
 
 # Reliability / quality
@@ -71,17 +69,17 @@ ROLLING_DISCOVERY_HOURS = DISCOVERY_LOOKBACK_HOURS
 FUTURE_TOLERANCE_MINUTES = 10
 QUEUE_RETENTION_DAYS = 4
 EVENT_RETENTION_DAYS = 30
-MAX_RSS_CANDIDATES_PER_REGION = 120
-MAX_EXA_CANDIDATES_PER_REGION = 30
-MAX_GOOGLE_NEWS_CANDIDATES_PER_REGION = 20
+MAX_RSS_CANDIDATES = 240
+MAX_EXA_CANDIDATES = 60
+MAX_GOOGLE_NEWS_CANDIDATES = 40
 THIN_EXCERPT_CHARS = 150
-MAX_EXCERPT_ENRICH_PER_REGION = 12
-MAX_SOURCE_PER_REGION_PER_RUN = 99
+MAX_EXCERPT_ENRICH = 12
+MAX_SOURCE_PER_RUN = 99
 MAX_RICH_CHARACTERS = 32768
 
 # Lightweight English stopwords used only by the conservative event/entity
-# deduplication layer. This is deliberately small so legitimate business
-# entities and meaningful terms are not filtered out.
+# deduplication layer. This is deliberately small so technology entities and
+# meaningful short terms such as AI, OS, UI, and VR are retained.
 STOPWORDS = {
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for",
     "from", "with", "by", "at", "as", "is", "are", "was", "were",
@@ -94,376 +92,207 @@ STOPWORDS = {
 
 # RSS-first sources. Exa remains a fallback/gap filler.
 RSS_FEEDS = [
-    # Bangladesh
-    {
-        "name": "The Business Standard",
-        "region": "Bangladesh",
-        "url": "https://www.tbsnews.net/top-news/rss.xml",
-    },
-    {
-        "name": "The Daily Star",
-        "region": "Bangladesh",
-        "url": "https://www.thedailystar.net/frontpage/rss.xml",
-    },
-    {
-        "name": "bdnews24",
-        "region": "Bangladesh",
-        "url": "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true",
-    },
-    {
-        "name": "Dhaka Tribune",
-        "region": "Bangladesh",
-        "url": "https://www.dhakatribune.com/feed",
-    },
-    {
-        "name": "The Financial Express",
-        "region": "Bangladesh",
-        "url": "https://thefinancialexpress.com.bd/rss.xml",
-    },
-    {
-        "name": "New Age",
-        "region": "Bangladesh",
-        "url": "https://www.newagebd.net/rss",
-    },
-    # International
-    {
-        "name": "CNBC",
-        "region": "International",
-        "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
-    },
-    {
-        "name": "MarketWatch",
-        "region": "International",
-        "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories.xml",
-    },
-    {
-        "name": "Financial Times",
-        "region": "International",
-        "url": "https://www.ft.com/rss/home",
-    },
+    {"name": "TechCrunch", "region": "Tech", "url": "https://techcrunch.com/feed/"},
+    {"name": "The Verge", "region": "Tech", "url": "https://www.theverge.com/rss/index.xml"},
+    {"name": "WIRED", "region": "Tech", "url": "https://www.wired.com/feed/rss"},
+    {"name": "Ars Technica", "region": "Tech", "url": "https://feeds.arstechnica.com/arstechnica/index"},
+    {"name": "Engadget", "region": "Tech", "url": "https://www.engadget.com/rss.xml"},
+    {"name": "MIT Technology Review", "region": "Tech", "url": "https://www.technologyreview.com/feed/"},
+    {"name": "Hacker News", "region": "Tech", "url": "https://news.ycombinator.com/rss"},
+    {"name": "VentureBeat", "region": "Tech", "url": "https://venturebeat.com/feed/"},
+    {"name": "Techmeme", "region": "Tech", "url": "https://www.techmeme.com/feed.xml"},
+    {"name": "TechRadar", "region": "Tech", "url": "https://www.techradar.com/feeds/articletype/news"},
+    {"name": "ZDNET", "region": "Tech", "url": "https://www.zdnet.com/news/rss.xml"},
+    {"name": "9to5Google", "region": "Tech", "url": "https://9to5google.com/feed/"},
+    {"name": "WABetaInfo", "region": "Tech", "url": "https://wabetainfo.com/feed/"},
+    {"name": "TestingCatalog", "region": "Tech", "url": "https://www.testingcatalog.com/feed/"},
+    {"name": "AI News", "region": "Tech", "url": "https://www.artificialintelligence-news.com/feed/"},
+    {"name": "Unite.AI", "region": "Tech", "url": "https://unite.ai/feed/"},
+    {"name": "The Decoder", "region": "Tech", "url": "https://the-decoder.com/feed/"},
+    {"name": "SiliconANGLE", "region": "Tech", "url": "https://siliconangle.com/feed/"},
+    {"name": "Android Authority", "region": "Tech", "url": "https://www.androidauthority.com/feed/"},
+    {"name": "MacRumors", "region": "Tech", "url": "https://www.macrumors.com/macrumors.xml"},
 ]
 
 
+
+
 # ============================================================
-# TAXONOMY: BUSINESS + ECONOMIC NEWS
-# ============================================================
+# TAXONOMY: TECH NEWS
 
 TOPICS = {
-    "Bangladesh": [
-        "Bangladesh Economy",
-        "Banking",
-        "Bangladesh Bank",
-        "Monetary Policy",
-        "Inflation",
-        "GDP",
-        "Employment",
-        "Poverty",
-        "Government Budget",
-        "Tax and VAT",
-        "Foreign Exchange",
-        "Top Currency Rates",
-        "Foreign Reserves",
-        "Remittance",
-        "Export and Import",
-        "RMG",
-        "Food Prices",
-        "DSE and CSE",
-        "Share Market",
-        "BSEC",
-        "Gold",
-        "Commodities",
-        "Fuel and Oil",
-        "Energy",
-        "Industry",
-        "FDI",
-        "Economic Projects",
-        "Economic Agreements",
-        "Economic Institutions",
-    ],
-    "International": [
-        "IMF",
-        "World Bank",
-        "ADB",
-        "AIIB",
-        "IsDB",
-        "BIS",
-        "WTO",
-        "UNCTAD",
-        "OPEC",
-        "Fed",
-        "ECB",
-        "Bank of England",
-        "Bank of Japan",
-        "PBOC",
-        "RBI",
-        "Global Economy",
-        "Global Inflation",
-        "Global Interest Rates",
-        "Global Forex",
-        "Global Markets",
-        "Trade",
-        "Tariffs",
-        "Sanctions",
-        "Oil",
-        "Gold",
-        "Commodities",
-        "Shipping",
-        "Supply Chain",
-        "FDI",
-        "Multinational Companies",
-        "Economic Crisis",
-        "Economic Reports",
-        "Economic Appointments",
-    ],
+    "Tech": [
+        "Consumer Technology",
+        "AI Models and Products",
+        "Smartphones",
+        "Operating Systems",
+        "Browsers",
+        "Search",
+        "Social Platforms",
+        "Cloud Platforms",
+        "App Stores",
+        "Cybersecurity",
+        "Privacy",
+        "Major Tech Companies",
+        "New Products",
+        "Technology Industry",
+        "Open Source",
+        "GitHub Trends",
+        "Startups",
+        "Y Combinator",
+        "Hugging Face",
+        "Major Outages",
+        "Acquisitions and Mergers",
+        "Layoffs and Restructuring",
+        "Pricing and Subscriptions",
+    ]
 }
 
 INSTITUTIONS = [
-    "Bangladesh Bank",
-    "BSEC",
-    "NBR",
-    "EPB",
-    "BBS",
-    "BEZA",
-    "IMF",
-    "World Bank",
-    "ADB",
-    "AIIB",
-    "IsDB",
-    "BIS",
-    "WTO",
-    "UNCTAD",
-    "OPEC",
-    "Federal Reserve",
-    "European Central Bank",
-    "Bank of England",
-    "Bank of Japan",
-    "People's Bank of China",
-    "Reserve Bank of India",
+    "Apple", "Google", "Microsoft", "OpenAI", "Meta", "Amazon", "Anthropic",
+    "NVIDIA", "Samsung", "Qualcomm", "Intel", "AMD", "ByteDance", "TikTok",
+    "X", "Tesla", "Cloudflare", "GitHub", "GitLab", "Hugging Face", "Y Combinator",
 ]
 
 SOURCE_NAMES = {
-    "tbsnews.net": "The Business Standard",
-    "thedailystar.net": "The Daily Star",
-    "thefinancialexpress.com.bd": "The Financial Express",
-    "dhakatribune.com": "Dhaka Tribune",
-    "businesspostbd.com": "The Business Post",
-    "newagebd.net": "New Age",
-    "bdnews24.com": "bdnews24",
-    "reuters.com": "Reuters",
-    "cnbc.com": "CNBC",
-    "bloomberg.com": "Bloomberg",
-    "ft.com": "Financial Times",
-    "marketwatch.com": "MarketWatch",
-    "forbes.com": "Forbes",
+    "techcrunch.com": "TechCrunch",
+    "theverge.com": "The Verge",
+    "wired.com": "WIRED",
+    "arstechnica.com": "Ars Technica",
+    "engadget.com": "Engadget",
+    "technologyreview.com": "MIT Technology Review",
+    "news.ycombinator.com": "Hacker News",
+    "venturebeat.com": "VentureBeat",
+    "techmeme.com": "Techmeme",
+    "techradar.com": "TechRadar",
+    "zdnet.com": "ZDNET",
+    "9to5google.com": "9to5Google",
+    "wabetainfo.com": "WABetaInfo",
+    "testingcatalog.com": "TestingCatalog",
+    "artificialintelligence-news.com": "AI News",
+    "unite.ai": "Unite.AI",
+    "the-decoder.com": "The Decoder",
+    "siliconangle.com": "SiliconANGLE",
+    "androidauthority.com": "Android Authority",
+    "macrumors.com": "MacRumors",
 }
 
-
-
-# ============================================================
-# CATEGORY METADATA
-# ============================================================
-
-# Categories that should normally receive at least one meaningful
-# update per day when a valid story exists.
 CATEGORY_HASHTAGS = {
-    "Bangladesh Economy": ["#BangladeshEconomy", "#EconomyBD"],
-    "Banking": ["#Banking", "#Finance"],
-    "Bangladesh Bank": ["#BangladeshBank", "#Banking"],
-    "Monetary Policy": ["#MonetaryPolicy", "#BangladeshBank"],
-    "Inflation": ["#Inflation", "#BangladeshEconomy"],
-    "GDP": ["#GDP", "#BangladeshEconomy"],
-    "Foreign Exchange": ["#Forex", "#USDBDT"],
-    "Top Currency Rates": ["#Currency", "#Forex"],
-    "Foreign Reserves": ["#ForeignReserves", "#BangladeshEconomy"],
-    "Remittance": ["#Remittance", "#BangladeshEconomy"],
-    "Export and Import": ["#ExportImport", "#Trade"],
-    "RMG": ["#RMG", "#BangladeshExports"],
-    "Food Prices": ["#FoodPrices", "#BangladeshEconomy"],
-    "Share Market": ["#ShareMarket", "#DSE"],
-    "DSE and CSE": ["#DSE", "#CSE"],
-    "BSEC": ["#BSEC", "#CapitalMarket"],
-    "Gold": ["#Gold", "#PreciousMetals"],
-    "Commodities": ["#Commodities", "#CommodityPrices"],
-    "Energy": ["#Energy", "#Power"],
-    "Fuel and Oil": ["#Oil", "#Fuel"],
-    "FDI": ["#FDI", "#Investment"],
-    "Government Budget": ["#Budget", "#BangladeshEconomy"],
-    "Tax and VAT": ["#Tax", "#VAT"],
-    "Global Economy": ["#GlobalEconomy", "#WorldEconomy"],
-    "Global Inflation": ["#Inflation", "#GlobalEconomy"],
-    "Global Interest Rates": ["#InterestRates", "#MonetaryPolicy"],
-    "Global Forex": ["#Forex", "#GlobalMarkets"],
-    "Global Markets": ["#GlobalMarkets", "#StockMarket"],
-    "Global Trade": ["#GlobalTrade", "#InternationalTrade"],
-    "Fed": ["#FederalReserve", "#InterestRates"],
-    "IMF": ["#IMF", "#InternationalFinance"],
-    "World Bank": ["#WorldBank", "#InternationalFinance"],
-    "ADB": ["#ADB", "#DevelopmentFinance"],
-    "WTO": ["#WTO", "#GlobalTrade"],
-    "Oil": ["#Oil", "#Commodities"],
-    "Supply Chain": ["#SupplyChain", "#GlobalTrade"],
+    "Consumer Technology": ["#Tech", "#ConsumerTech"],
+    "AI Models and Products": ["#AI", "#ArtificialIntelligence"],
+    "Smartphones": ["#Smartphones", "#MobileTech"],
+    "Operating Systems": ["#OperatingSystems", "#Tech"],
+    "Browsers": ["#Browsers", "#Internet"],
+    "Search": ["#Search", "#Tech"],
+    "Social Platforms": ["#SocialMedia", "#Tech"],
+    "Cloud Platforms": ["#Cloud", "#Tech"],
+    "App Stores": ["#AppStores", "#Tech"],
+    "Cybersecurity": ["#Cybersecurity", "#Security"],
+    "Privacy": ["#Privacy", "#Tech"],
+    "Major Tech Companies": ["#BigTech", "#Tech"],
+    "New Products": ["#Tech", "#NewProduct"],
+    "Technology Industry": ["#TechIndustry", "#Tech"],
+    "Open Source": ["#OpenSource", "#Tech"],
+    "GitHub Trends": ["#GitHub", "#OpenSource"],
+    "Startups": ["#Startups", "#Tech"],
+    "Y Combinator": ["#YC", "#Startups"],
+    "Hugging Face": ["#HuggingFace", "#AI"],
+    "Major Outages": ["#Tech", "#Outage"],
+    "Acquisitions and Mergers": ["#TechIndustry", "#Mergers"],
+    "Layoffs and Restructuring": ["#TechIndustry", "#Layoffs"],
+    "Pricing and Subscriptions": ["#Tech", "#Subscriptions"],
 }
 
 CATEGORY_GROUPS = {
-    "Bangladesh Core": {
-        "Bangladesh Economy",
-        "Banking",
-        "Bangladesh Bank",
-        "Monetary Policy",
-        "Inflation",
-        "Foreign Exchange",
-        "Foreign Reserves",
-        "Remittance",
-    },
-    "Bangladesh Market": {
-        "Share Market",
-        "DSE and CSE",
-        "BSEC",
-        "Gold",
-        "Commodities",
-        "Top Currency Rates",
-        "Fuel and Oil",
-    },
-    "Bangladesh Trade": {
-        "Export and Import",
-        "RMG",
-        "FDI",
-        "Trade",
-        "Economic Agreements",
-    },
-    "International Core": {
-        "Global Economy",
-        "Global Inflation",
-        "Global Interest Rates",
-        "Global Forex",
-        "Global Markets",
-        "Global Trade",
-        "IMF",
-        "World Bank",
-        "ADB",
-        "WTO",
-        "Fed",
-    },
+    "AI": {"AI Models and Products", "Hugging Face"},
+    "Platforms": {"Smartphones", "Operating Systems", "Browsers", "Search", "Social Platforms", "Cloud Platforms", "App Stores", "Major Outages"},
+    "Security": {"Cybersecurity", "Privacy"},
+    "Industry": {"Major Tech Companies", "Technology Industry", "Acquisitions and Mergers", "Layoffs and Restructuring", "Startups", "Y Combinator"},
+    "Products and Ecosystem": {"Consumer Technology", "New Products", "Pricing and Subscriptions", "Open Source", "GitHub Trends"},
 }
-
 
 TOPIC_ALIASES = {
-    "food": "Food Prices",
-    "food prices": "Food Prices",
-    "commodity": "Commodities",
-    "commodity prices": "Commodities",
-    "gold & precious metals": "Gold",
-    "precious metals": "Gold",
-    "share market": "Share Market",
-    "stock market": "Share Market",
-    "export & import": "Export and Import",
-    "exports and imports": "Export and Import",
-    "forex": "Foreign Exchange",
-    "currency": "Top Currency Rates",
+    "ai": "AI Models and Products",
+    "artificial intelligence": "AI Models and Products",
+    "smartphone": "Smartphones",
+    "phones": "Smartphones",
+    "android": "Operating Systems",
+    "ios": "Operating Systems",
+    "windows": "Operating Systems",
+    "linux": "Operating Systems",
+    "browser": "Browsers",
+    "search": "Search",
+    "social": "Social Platforms",
+    "cloud": "Cloud Platforms",
+    "app store": "App Stores",
+    "security": "Cybersecurity",
+    "privacy": "Privacy",
+    "outage": "Major Outages",
+    "github": "GitHub Trends",
+    "open source": "Open Source",
+    "startup": "Startups",
+    "yc": "Y Combinator",
+    "hugging face": "Hugging Face",
+    "acquisition": "Acquisitions and Mergers",
+    "merger": "Acquisitions and Mergers",
+    "layoffs": "Layoffs and Restructuring",
+    "subscription": "Pricing and Subscriptions",
 }
 
-def canonical_topic(topic, region="Bangladesh"):
-    raw = safe_text(topic)
-    key = raw.lower().strip()
-
+def canonical_topic(topic, region="Tech"):
+    key = safe_text(topic).lower().strip()
     if key in TOPIC_ALIASES:
         return TOPIC_ALIASES[key]
-
-    allowed = (
-        TOPICS.get("Bangladesh", [])
-        + TOPICS.get("International", [])
-    )
-
-    for item in allowed:
+    for item in TOPICS["Tech"]:
         if key == item.lower():
             return item
-
-    if region == "Bangladesh":
-        patterns = [
-            (("export", "import", "trade deficit"), "Export and Import"),
-            (("gold", "precious metal"), "Gold"),
-            (("commodity",), "Commodities"),
-            (("dsex", "dse", "cse", "ipo", "dividend", "stock", "share"), "Share Market"),
-            (("usd/bdt", "exchange rate", "forex", "currency", "dollar"), "Foreign Exchange"),
-            (("bank", "lending", "deposit", "npl"), "Banking"),
-            (("repo", "policy rate", "crr", "slr", "monetary"), "Monetary Policy"),
-            (("inflation", "cpi"), "Inflation"),
-            (("rmg", "garment", "textile"), "RMG"),
-            (("remittance",), "Remittance"),
-            (("reserve",), "Foreign Reserves"),
-            (("budget", "adp"), "Government Budget"),
-            (("tax", "vat", "nbr"), "Tax and VAT"),
-            (("energy", "power", "electricity", "gas", "lng"), "Energy"),
-        ]
-    else:
-        patterns = [
-            (("imf",), "IMF"),
-            (("world bank",), "World Bank"),
-            (("adb",), "ADB"),
-            (("wto",), "WTO"),
-            (("fed", "federal reserve"), "Fed"),
-            (("ecb",), "ECB"),
-            (("bank of england", "boe"), "Bank of England"),
-            (("bank of japan", "boj"), "Bank of Japan"),
-            (("pboc", "people's bank of china"), "PBOC"),
-            (("rbi", "reserve bank of india"), "RBI"),
-            (("inflation", "cpi"), "Global Inflation"),
-            (("interest rate", "rate cut", "rate hike"), "Global Interest Rates"),
-            (("forex", "currency", "dollar"), "Global Forex"),
-            (("stock", "equity", "nasdaq", "s&p", "dow jones"), "Global Markets"),
-            (("trade", "tariff"), "Global Trade"),
-            (("oil", "brent", "wti"), "Oil"),
-            (("gold", "precious metal"), "Gold"),
-            (("commodity", "wheat", "corn", "soybean"), "Commodities"),
-            (("shipping", "supply chain"), "Supply Chain"),
-        ]
-
+    patterns = [
+        (("ai", "artificial intelligence", "model", "chatgpt", "claude", "gemini"), "AI Models and Products"),
+        (("iphone", "pixel", "galaxy", "smartphone", "phone"), "Smartphones"),
+        (("android", "ios", "windows", "macos", "linux", "operating system"), "Operating Systems"),
+        (("browser", "chrome", "safari", "firefox", "edge"), "Browsers"),
+        (("search", "google search"), "Search"),
+        (("social", "instagram", "facebook", "tiktok", "x.com"), "Social Platforms"),
+        (("cloud", "aws", "azure", "gcp"), "Cloud Platforms"),
+        (("app store", "play store"), "App Stores"),
+        (("breach", "hack", "vulnerability", "cybersecurity", "malware"), "Cybersecurity"),
+        (("privacy", "tracking", "data collection"), "Privacy"),
+        (("outage", "down", "service disruption"), "Major Outages"),
+        (("github", "repository", "repo", "trendshift"), "GitHub Trends"),
+        (("open source", "open-source"), "Open Source"),
+        (("startup", "unicorn"), "Startups"),
+        (("y combinator", "yc"), "Y Combinator"),
+        (("hugging face", "leaderboard"), "Hugging Face"),
+        (("acquisition", "acquires", "merge", "merger"), "Acquisitions and Mergers"),
+        (("layoff", "job cuts", "restructuring"), "Layoffs and Restructuring"),
+        (("subscription", "pricing", "price hike", "price"), "Pricing and Subscriptions"),
+        (("launch", "product", "device"), "New Products"),
+        (("company", "microsoft", "apple", "google", "amazon", "meta", "openai"), "Major Tech Companies"),
+    ]
     for needles, canonical in patterns:
-        if any(
-            needle in key
-            for needle in needles
-        ):
+        if any(needle in key for needle in needles):
             return canonical
-
-    return (
-        "Bangladesh Economy"
-        if region == "Bangladesh"
-        else "Global Economy"
-    )
+    return "Consumer Technology"
 
 def category_hashtags(story):
-    """
-    Generate 2-3 stable hashtags from the validated topic,
-    institution, and relevant story categories.
-    """
     tags = []
     topic = safe_text(story.get("topic"))
     institution = safe_text(story.get("institution"))
-
     for tag in CATEGORY_HASHTAGS.get(topic, []):
         if tag not in tags:
             tags.append(tag)
-
     inst_map = {
-        "Bangladesh Bank": "#BangladeshBank",
-        "BSEC": "#BSEC",
-        "IMF": "#IMF",
-        "World Bank": "#WorldBank",
-        "ADB": "#ADB",
-        "WTO": "#WTO",
-        "Federal Reserve": "#FederalReserve",
+        "Apple": "#Apple", "Google": "#Google", "Microsoft": "#Microsoft",
+        "OpenAI": "#OpenAI", "Meta": "#Meta", "Amazon": "#Amazon",
+        "Anthropic": "#Anthropic", "NVIDIA": "#NVIDIA", "Samsung": "#Samsung",
+        "GitHub": "#GitHub", "Hugging Face": "#HuggingFace",
     }
-
     if institution in inst_map and inst_map[institution] not in tags:
         tags.append(inst_map[institution])
-
-    if story.get("region") == "Bangladesh":
-        if "#Bangladesh" not in tags:
-            tags.append("#Bangladesh")
-    else:
-        if "#GlobalEconomy" not in tags:
-            tags.append("#GlobalEconomy")
-
+    if "#Tech" not in tags:
+        tags.append("#Tech")
+    if "#Tech" not in tags[:3]:
+        tags = tags[:2] + ["#Tech"]
     return tags[:3]
 
 def coverage_state():
@@ -497,7 +326,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
 )
-logger = logging.getLogger("business-news-bot")
+logger = logging.getLogger("tech-news-bot")
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 Image.MAX_IMAGE_PIXELS = 50_000_000
@@ -738,9 +567,7 @@ def source_name(url):
 
 
 def article_region(url):
-    if is_domain_allowed(url, PRIMARY_BD_DOMAINS + FALLBACK_BD_DOMAINS):
-        return "Bangladesh"
-    return "International"
+    return "Tech"
 
 
 def now_iso():
@@ -949,13 +776,22 @@ DISCOVERY_TARGET_PER_REGION = 18
 # CLIENTS
 # ============================================================
 
-exa = Exa(
-    api_key=EXA_API_KEY
-)
+exa = None
+cerebras = None
 
-cerebras = Cerebras(
-    api_key=CEREBRAS_API_KEY
-)
+
+def get_exa():
+    global exa
+    if exa is None:
+        exa = Exa(api_key=EXA_API_KEY)
+    return exa
+
+
+def get_cerebras():
+    global cerebras
+    if cerebras is None:
+        cerebras = Cerebras(api_key=CEREBRAS_API_KEY)
+    return cerebras
 
 
 # ============================================================
@@ -1389,42 +1225,17 @@ def collect_rss():
 # ============================================================
 # SOURCE UNIVERSE
 # ============================================================
-PRIMARY_BD_DOMAINS = [
-    "tbsnews.net",
-    "thefinancialexpress.com.bd",
-    "thedailystar.net",
-    "dhakatribune.com",
-    "newagebd.net",
+PRIMARY_TECH_DOMAINS = [
+    "techcrunch.com", "theverge.com", "wired.com", "arstechnica.com",
+    "engadget.com", "technologyreview.com", "news.ycombinator.com", "venturebeat.com",
+    "techmeme.com", "techradar.com", "zdnet.com", "9to5google.com",
+    "wabetainfo.com", "testingcatalog.com", "artificialintelligence-news.com", "unite.ai",
+    "the-decoder.com", "siliconangle.com", "androidauthority.com", "macrumors.com",
 ]
-
-PRIMARY_INTL_DOMAINS = [
-    "reuters.com",
-    "bloomberg.com",
-    "ft.com",
-    "visualcapitalist.com",
-    "economist.com",
-]
-
-FALLBACK_BD_DOMAINS = [
-    "bdnews24.com",
-    "businesspostbd.com",
-    "unb.com.bd",
-    "en.prothomalo.com",
-]
-
-FALLBACK_INTL_DOMAINS = [
-    "finance.yahoo.com",
-    "yahoo.com",
-    "forbes.com",
-    "cnbc.com",
-    "marketwatch.com",
-    "investing.com",
-    "fortune.com",
-]
-
-ALL_PRIMARY_DOMAINS = PRIMARY_BD_DOMAINS + PRIMARY_INTL_DOMAINS
-ALL_FALLBACK_DOMAINS = FALLBACK_BD_DOMAINS + FALLBACK_INTL_DOMAINS
-ALL_ALLOWED_DOMAINS = ALL_PRIMARY_DOMAINS + ALL_FALLBACK_DOMAINS
+FALLBACK_TECH_DOMAINS = []
+ALL_PRIMARY_DOMAINS = PRIMARY_TECH_DOMAINS
+ALL_FALLBACK_DOMAINS = FALLBACK_TECH_DOMAINS
+ALL_ALLOWED_DOMAINS = ALL_PRIMARY_DOMAINS
 
 def normalized_domain(url_or_source):
     raw = safe_text(url_or_source).lower()
@@ -1437,54 +1248,32 @@ def is_domain_allowed(url, domains):
     return any(domain == d or domain.endswith("." + d) for d in domains)
 
 def primary_domain_allowed(url, region=None):
-    domains = (
-        PRIMARY_BD_DOMAINS if region == "Bangladesh"
-        else PRIMARY_INTL_DOMAINS if region == "International"
-        else ALL_PRIMARY_DOMAINS
-    )
-    return is_domain_allowed(url, domains)
+    return is_domain_allowed(url, ALL_PRIMARY_DOMAINS)
 
-def fallback_domain_allowed(url, region):
-    domains = FALLBACK_BD_DOMAINS if region == "Bangladesh" else FALLBACK_INTL_DOMAINS
-    return is_domain_allowed(url, domains)
+def fallback_domain_allowed(url, region=None):
+    return is_domain_allowed(url, ALL_FALLBACK_DOMAINS)
 
-def allowed_source_for_region(url, region):
+def allowed_source_for_region(url, region=None):
     return primary_domain_allowed(url, region) or fallback_domain_allowed(url, region)
 
 # ============================================================
-# GOOGLE NEWS RSS: FREE GAP FILL (TRIED BEFORE PAID EXA)
+# GOOGLE NEWS RSS: FREE GAP FILL
 # ============================================================
-#
-# Covers sources that have no clean native RSS feed of their own
-# (Reuters/Bloomberg business, and BD outlets like Business Post,
-# UNB, Prothom Alo English, Bangladesh Bank coverage), at no API
-# cost. Google News RSS links are redirect tokens, not the real
-# article URL, so every item is resolved to its real publisher URL
-# before it is treated as a candidate. If resolution fails, the
-# item is skipped rather than queued with a bad URL.
 
 GOOGLE_NEWS_QUERIES = {
-    "Bangladesh": [
-        "site:tbsnews.net business OR economy OR banking",
-        "site:thefinancialexpress.com.bd business OR economy OR banking",
-        "site:thedailystar.net business OR economy OR banking",
-        "site:dhakatribune.com business OR economy OR banking",
-        "site:newagebd.net business OR economy OR banking",
-    ],
-    "International": [
-        "site:reuters.com business OR economy OR markets",
-        "site:bloomberg.com economy OR markets",
-        "site:ft.com economy OR markets OR companies",
-        "site:visualcapitalist.com economy OR markets OR business",
-        "site:economist.com economy OR business OR finance",
+    "Tech": [
+        "major consumer technology news AI smartphones operating systems",
+        "major AI model product launch technology",
+        "major cybersecurity privacy breach technology outage",
+        "Apple Google Microsoft OpenAI Meta Amazon major news",
+        "major technology industry acquisition layoffs startup unicorn",
+        "GitHub trending new tool capability technology",
+        "Hugging Face major open model leaderboard technology",
+        "Y Combinator major product launch milestone",
     ],
 }
 
-
-GOOGLE_NEWS_LOCALE = {
-    "Bangladesh": ("en-BD", "BD", "BD:en"),
-    "International": ("en-US", "US", "US:en"),
-}
+GOOGLE_NEWS_LOCALE = {"Tech": ("en-US", "US", "US:en")}
 
 
 def resolve_google_news_url(link):
@@ -1523,11 +1312,8 @@ def google_news_gap_fill(
     ):
         return 0
 
-    queries = GOOGLE_NEWS_QUERIES.get(region, [])
-    hl, gl, ceid = GOOGLE_NEWS_LOCALE.get(
-        region,
-        ("en-US", "US", "US:en"),
-    )
+    queries = GOOGLE_NEWS_QUERIES.get("Tech", [])
+    hl, gl, ceid = GOOGLE_NEWS_LOCALE.get("Tech", ("en-US", "US", "US:en"))
 
     added = 0
 
@@ -1629,7 +1415,7 @@ def google_news_gap_fill(
                 )
                 added += 1
 
-                if added >= MAX_GOOGLE_NEWS_CANDIDATES_PER_REGION:
+                if added >= MAX_GOOGLE_NEWS_CANDIDATES:
                     return added
 
         except Exception as exc:
@@ -1643,99 +1429,63 @@ def google_news_gap_fill(
 
 
 def exa_gap_fill(region, existing_count, needed, fallback=False):
-    if existing_count >= max(6, needed * 3):
+    if existing_count >= max(12, needed * 3):
         return 0
 
-    if region == "Bangladesh":
-        domains = FALLBACK_BD_DOMAINS if fallback else PRIMARY_BD_DOMAINS
-        queries = [
-            "latest Bangladesh banking economy monetary policy inflation",
-            "latest Bangladesh Bank policy banking reserves forex remittance",
-            "latest Bangladesh budget tax exports imports trade deficit",
-            "latest Bangladesh stock market business companies investment",
-            "latest Bangladesh industry RMG investment FDI business",
-        ]
-    else:
-        domains = FALLBACK_INTL_DOMAINS if fallback else PRIMARY_INTL_DOMAINS
-        queries = [
-            "latest global central bank inflation interest rates business",
-            "latest global trade tariffs oil gold markets economy",
-            "latest global companies earnings mergers investment",
-            "latest global finance banking markets corporate news",
-        ]
+    domains = FALLBACK_TECH_DOMAINS if fallback else PRIMARY_TECH_DOMAINS
+    if not domains:
+        return 0
+    queries = [
+        "latest major consumer technology AI smartphone operating system news",
+        "latest major AI model product launch technology",
+        "latest major cybersecurity privacy breach outage technology",
+        "latest Apple Google Microsoft OpenAI Meta Amazon technology news",
+        "latest technology industry acquisition layoffs startup unicorn news",
+        "latest trending GitHub new tool capability",
+        "latest Hugging Face open model release leaderboard",
+        "latest Y Combinator major product launch milestone",
+    ]
 
     added = 0
     for query in queries:
         try:
-            results = exa.search_and_contents(
-                query,
-                type="auto",
-                category="news",
-                num_results=6,
+            results = get_exa().search_and_contents(
+                query, type="auto", category="news", num_results=8,
                 include_domains=domains,
                 start_published_date=DISCOVERY_START.isoformat(),
                 end_published_date=DISCOVERY_END.isoformat(),
                 contents={"highlights": {"max_characters": 900}},
             )
-
             for result in results.results:
                 url = safe_text(getattr(result, "url", ""))
                 title = safe_text(getattr(result, "title", ""))
                 published_dt = parse_datetime(getattr(result, "published_date", ""))
-
                 if not url or not title or not published_dt:
                     continue
-
                 if fallback:
                     if not fallback_domain_allowed(url, region):
                         continue
                 elif not primary_domain_allowed(url, region):
                     continue
-
                 item = {
-                    "title": title,
-                    "url": url,
-                    "canonical": canonical_url(url),
-                    "published_dt": published_dt.isoformat(),
-                    "published_date": published_dt.isoformat(),
-                    "source": source_name(url),
-                    "region": region,
-                    "excerpt": safe_text(
-                        " ".join(
-                            getattr(result, "highlights", [])
-                            if isinstance(getattr(result, "highlights", []), list)
-                            else str(getattr(result, "highlights", ""))
-                        )
-                    )[:2000],
+                    "title": title, "url": url, "canonical": canonical_url(url),
+                    "published_dt": published_dt.isoformat(), "published_date": published_dt.isoformat(),
+                    "source": source_name(url), "region": "Tech",
+                    "excerpt": safe_text(" ".join(getattr(result, "highlights", []) if isinstance(getattr(result, "highlights", []), list) else str(getattr(result, "highlights", ""))))[:2000],
                     "image": safe_text(getattr(result, "image", "")),
                     "discovery": "exa_fallback" if fallback else "exa",
                     "source_pool": "fallback" if fallback else "primary",
                 }
-
-                if not candidate_basic_allowed({
-                    **item,
-                    "published_dt": published_dt,
-                }):
+                if not candidate_basic_allowed({**item, "published_dt": published_dt}):
                     continue
-                if item["canonical"] in POSTED_URLS:
+                if item["canonical"] in POSTED_URLS or item["canonical"] in STATE["queue"]:
                     continue
-                if item["canonical"] in STATE["queue"]:
-                    continue
-
                 queue_candidate(item)
                 added += 1
-
-                if added >= MAX_EXA_CANDIDATES_PER_REGION:
+                if added >= MAX_EXA_CANDIDATES:
                     return added
-
         except Exception as exc:
-            logger.warning(
-                "Exa %s discovery failed %s: %s",
-                "fallback" if fallback else "primary",
-                region,
-                exc,
-            )
-
+            logger.warning("Exa %s discovery failed: %s", "fallback" if fallback else "primary", exc)
     return added
 
 
@@ -1788,12 +1538,14 @@ RANK_SCHEMA = {
                 "properties": {
                     "id": {"type": "integer"},
                     "rank": {"type": "integer", "minimum": 1},
+                    "score": {"type": "integer", "minimum": 0, "maximum": 10},
+                    "important": {"type": "boolean"},
                     "topic": {"type": "string"},
                     "institution": {"type": "string"},
                     "event_key": {"type": "string"},
                     "reason": {"type": "string"},
                 },
-                "required": ["id", "rank", "topic", "institution", "event_key", "reason"],
+                "required": ["id", "rank", "score", "important", "topic", "institution", "event_key", "reason"],
                 "additionalProperties": False,
             },
         }
@@ -1818,7 +1570,7 @@ def enrich_thin_excerpt(item):
 def enrich_thin_excerpts(regional):
     enriched = 0
     for item in regional:
-        if enriched >= MAX_EXCERPT_ENRICH_PER_REGION:
+        if enriched >= MAX_EXCERPT_ENRICH:
             break
         excerpt = safe_text(item.get("excerpt", ""))
         if len(excerpt) >= THIN_EXCERPT_CHARS:
@@ -1830,11 +1582,107 @@ def enrich_thin_excerpts(regional):
     return regional
 
 
-def rank_candidates(candidates, region):
-    """Rank all usable candidates without hard score formulas or early rejection.
+def _rank_prompt(region):
+    topic_list = ", ".join(TOPICS[region])
+    return f"""
+You are the editor-in-chief of @TheTechNewsroom.
 
-    The LLM acts only as an editor/ranker: it does not decide eligibility.
-    Eligibility remains the simple ingestion/state rules used elsewhere.
+Rank this batch of tech news candidates by REAL editorial importance in the previous 24 hours.
+The channel is for everyday technology users. Do not rank by headline excitement alone.
+Do not invent facts. Return EVERY candidate in this batch.
+
+IMPORTANT: There is NO requirement to publish a story from every sector. Diversity is a
+selection preference only after importance is established. Never lower a score just because
+another story covers the same sector, and never raise a weak story to fill a sector.
+
+Priority areas, when genuinely important:
+1. Major AI model releases, frontier capability changes, and AI products with broad impact.
+2. Major AI acquisitions, strategic deals, or partnerships that materially affect the industry.
+3. Major cybersecurity incidents, privacy incidents, critical vulnerabilities, and outages.
+4. Major smartphone, operating-system, browser, search, social, cloud, and app-store changes.
+5. Major moves by Apple, Google, Microsoft, OpenAI, Meta, Amazon, NVIDIA and other major tech companies.
+6. Important new consumer technology products.
+7. Trending GitHub repositories only when the repository is a genuinely useful new tool/capability,
+   not ordinary developer churn.
+8. Startups reaching unicorn status or shipping something with broad real-world impact.
+9. Y Combinator companies only for major product launches or milestones, not routine funding.
+10. Hugging Face open-model releases or leaderboard changes that materially move the state of the art.
+
+Normally score low or reject:
+- reviews, hands-ons, unboxings, rumors, leaks, speculation
+- EV/car/robotaxi/vehicle news
+- healthtech, biotech, medtech, medical or pharmaceutical news
+- routine startup funding, VC, finance, legal or policy commentary
+- energy, batteries, utilities and climate/energy policy
+- low-level engineering stories aimed at engineers
+- podcasts, webinars, event recordings, opinion/promotional pieces
+- minor app features, routine patches and insignificant updates
+
+Scoring:
+9-10 exceptional, broad user or industry impact
+7-8 clearly important and publishable
+4-6 interesting but normally not publishable
+0-3 low-value, repetitive, promotional, speculative, niche or excluded
+
+A score of 7+ is required for publication. Return EVERY candidate with:
+id, rank, score, important, topic, institution, event_key, reason.
+The important field MUST be true only when score >= 7.
+
+Allowed topics:
+{topic_list}
+"""
+
+
+def _rank_batch(batch, region, batch_no):
+    lines = []
+    for idx, item in enumerate(batch, start=1):
+        published = item.get("published_date", "")
+        age_note = ""
+        dt = parse_datetime(published)
+        if dt:
+            age_hours = max(0.0, (NOW_BD - dt).total_seconds() / 3600)
+            age_note = f"Age: {age_hours:.1f} hours"
+        lines.append("\n".join([
+            f"ID: {idx}",
+            f"Title: {item.get('title','')}",
+            f"Source: {item.get('source','')}",
+            f"Published: {published}",
+            age_note,
+            f"Description/Excerpt: {trim_source_text(item.get('excerpt',''), 650)}",
+            "",
+        ]))
+
+    try:
+        response = get_cerebras().chat.completions.create(
+            model=CEREBRAS_MODEL,
+            messages=[
+                {"role": "system", "content": _rank_prompt(region)},
+                {"role": "user", "content": "\n".join(lines)},
+            ],
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": f"tech_news_rank_batch_{batch_no}",
+                    "strict": True,
+                    "schema": RANK_SCHEMA,
+                },
+            },
+            reasoning_effort="low",
+            temperature=0.0,
+            max_completion_tokens=3500,
+        )
+        data = json.loads(safe_text(response.choices[0].message.content))
+        return data.get("ranked", [])
+    except Exception as exc:
+        logger.error("Ranking batch %d failed: %s", batch_no, exc)
+        return []
+
+
+def rank_candidates(candidates, region):
+    """Rank the discovery pool in bounded LLM batches, then merge globally.
+
+    Batching prevents a large structured response from being truncated. The merged result
+    is globally ordered by editorial score, then model rank, then freshness.
     """
     if not candidates:
         return []
@@ -1843,133 +1691,48 @@ def rank_candidates(candidates, region):
         candidates,
         key=lambda x: parse_datetime(x.get("published_date")) or datetime.min.replace(tzinfo=timezone.utc),
         reverse=True,
-    )[:60]
-    regional = enrich_thin_excerpts(regional)
+    )[:80]
 
-    lines = []
-    for idx, item in enumerate(regional, start=1):
-        published = item.get("published_date", "")
-        age_note = ""
-        dt = parse_datetime(published)
-        if dt:
-            age_hours = max(0.0, (NOW_BD - dt).total_seconds() / 3600)
-            age_note = f"Age: {age_hours:.1f} hours"
-        lines.append(
-            "\n".join([
-                f"ID: {idx}",
-                f"Title: {item.get('title','')}",
-                f"Source: {item.get('source','')}",
-                f"Published: {published}",
-                age_note,
-                f"Excerpt: {trim_source_text(item.get('excerpt',''), 700)}",
-                "",
-            ])
-        )
-
-    topic_list = ", ".join(TOPICS[region])
-    prompt = f"""
-You are the editor-in-chief of @BusinessNewsroom.
-
-Rank these {region} business/economic news candidates from MOST IMPORTANT to LEAST IMPORTANT.
-Use the previous 24 hours as the editorial window.
-
-Your job is ranking, not aggressive filtering. Keep ordinary candidates in the ranking unless
-an item is clearly not business/economic news or is an obvious duplicate of another candidate.
-
-Prioritize:
-1. A genuinely important new business/economic development.
-2. Material policy, banking, financial, trade, market, currency, commodity, corporate,
-   institutional, or macroeconomic developments.
-3. The newest development when two stories are otherwise similarly important.
-4. Clear factual evidence and a credible source.
-5. Stories that people would reasonably want to read now.
-
-Deprioritize:
-- routine or trivial updates when materially stronger news exists
-- promotional fluff
-- lifestyle/entertainment content
-- opinion/editorial content when no new factual development exists
-- exact duplicate coverage of the same event
-
-Do not manufacture importance. Do not assign numeric scores.
-Return EVERY candidate with its editorial rank and the requested metadata.
-
-Allowed topic taxonomy:
-{topic_list}
-"""
-
-    try:
-        response = cerebras.chat.completions.create(
-            model=CEREBRAS_MODEL,
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": "\n".join(lines)},
-            ],
-            response_format={
-                "type": "json_schema",
-                "json_schema": {
-                    "name": "business_news_v1_rank",
-                    "strict": True,
-                    "schema": RANK_SCHEMA,
-                },
-            },
-            reasoning_effort="low",
-            temperature=0.0,
-            max_completion_tokens=6000,
-        )
-        data = json.loads(safe_text(response.choices[0].message.content))
-        by_id = {idx: item for idx, item in enumerate(regional, start=1)}
-        rows = []
-        for row in data.get("ranked", []):
-            idx = int(row["id"])
+    batch_size = 15
+    ranked_rows = []
+    for offset in range(0, len(regional), batch_size):
+        batch = regional[offset:offset + batch_size]
+        logger.info("%s RANK BATCH %d: %d candidates", region, offset // batch_size + 1, len(batch))
+        rows = _rank_batch(batch, region, offset // batch_size + 1)
+        by_id = {idx: item for idx, item in enumerate(batch, start=1)}
+        for row in rows:
+            try:
+                idx = int(row["id"])
+            except Exception:
+                continue
             if idx not in by_id:
                 continue
             item = dict(by_id[idx])
+            score = max(0, min(10, int(row.get("score", 0))))
             item.update({
-                "editor_rank": int(row["rank"]),
+                "importance_score": score,
+                "important": bool(row.get("important")) and score >= 7,
                 "topic": canonical_topic(safe_text(row.get("topic")), region),
                 "institution": safe_text(row.get("institution")),
                 "event_key": safe_text(row.get("event_key")),
                 "rank_reason": safe_text(row.get("reason")),
+                "batch_rank": int(row.get("rank", 9999)),
             })
-            rows.append(item)
+            ranked_rows.append(item)
 
-        # Never let a partial model response erase candidates.
-        returned_ids = {safe_text(x.get("canonical")) for x in rows}
-        next_rank = max([x.get("editor_rank", 0) for x in rows] or [0]) + 1
-        missing = [x for x in regional if safe_text(x.get("canonical")) not in returned_ids]
-        for item in missing:
-            fallback = dict(item)
-            fallback.update({
-                "editor_rank": next_rank,
-                "topic": canonical_topic(fallback.get("topic", ""), region),
-                "institution": fallback.get("institution", ""),
-                "event_key": fallback.get("event_key", ""),
-                "rank_reason": "Kept as recoverable fallback candidate.",
-            })
-            rows.append(fallback)
-            next_rank += 1
+    # A failed/partial batch is recoverable, but never receives an invented importance score.
+    # It remains available only for diagnostics, not eligibility.
+    ranked_rows.sort(key=lambda x: (
+        -x.get("importance_score", 0),
+        x.get("batch_rank", 9999),
+        -(parse_datetime(x.get("published_date")).timestamp() if parse_datetime(x.get("published_date")) else 0),
+    ))
 
-        rows.sort(key=lambda x: (
-            x.get("editor_rank", 9999),
-            -(parse_datetime(x.get("published_date")).timestamp() if parse_datetime(x.get("published_date")) else 0),
-        ))
-        return rows
+    for rank, item in enumerate(ranked_rows, start=1):
+        item["editor_rank"] = rank
 
-    except Exception as exc:
-        logger.error("Editorial ranking failed for %s: %s", region, exc)
-        fallback = []
-        for idx, item in enumerate(regional, start=1):
-            row = dict(item)
-            row.update({
-                "editor_rank": idx,
-                "topic": canonical_topic(row.get("topic", ""), region),
-                "institution": row.get("institution", ""),
-                "event_key": row.get("event_key", ""),
-                "rank_reason": "Recency fallback after ranking-service failure.",
-            })
-            fallback.append(row)
-        return fallback
+    logger.info("%s RANK MODEL ROWS: %d/%d", region, len(ranked_rows), len(regional))
+    return ranked_rows
 
 
 # ============================================================
@@ -1977,7 +1740,7 @@ Allowed topic taxonomy:
 # ============================================================
 
 def extract_entities(text):
-    words = re.findall(r"[A-Za-z][A-Za-z&'-]{2,}", safe_text(text).lower())
+    words = re.findall(r"[A-Za-z][A-Za-z&'-]{1,}", safe_text(text).lower())
     return {w for w in words if w not in STOPWORDS}
 
 
@@ -2014,9 +1777,16 @@ def cluster_ranked_events(ranked):
         placed = False
         for cluster in clusters:
             representative = cluster[0]
+            item_event_key = safe_text(item.get("event_key"))
+            rep_event_key = safe_text(representative.get("event_key"))
             same_key = bool(
-                safe_text(item.get("event_key"))
-                and safe_text(item.get("event_key")) == safe_text(representative.get("event_key"))
+                item_event_key
+                and rep_event_key
+                and item_event_key == rep_event_key
+                and (
+                    entity_overlap(item, representative) >= 0.25
+                    or title_similarity(item.get("title", ""), representative.get("title", "")) >= 0.55
+                )
             )
             if same_key or (
                 same_event_window(item, representative)
@@ -2208,7 +1978,7 @@ def extract_article(
         )
 
     try:
-        result_set = exa.get_contents(
+        result_set = get_exa().get_contents(
             [url],
             text={
                 "max_characters": 12000,
@@ -2268,61 +2038,24 @@ STORY_SCHEMA = {
         "highlights": {
             "type": "array",
             "items": {"type": "string"},
-            "minItems": 2,
-            "maxItems": 3,
+            "minItems": 3,
+            "maxItems": 5,
         },
+        "the_context": {"type": "string"},
+        "bottom_line": {"type": "string"},
         "bold_terms": {
             "type": "array",
             "items": {"type": "string"},
             "maxItems": 16,
-        },
-        "what_to_know": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "term": {"type": "string"},
-                    "meaning": {"type": "string"},
-                },
-                "required": ["term", "meaning"],
-                "additionalProperties": False,
-            },
-            "minItems": 1,
-            "maxItems": 3,
-        },
-        "vocabulary": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "word": {"type": "string"},
-                    "synonyms": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "minItems": 2,
-                        "maxItems": 2,
-                    },
-                    "antonyms": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "minItems": 2,
-                        "maxItems": 2,
-                    },
-                },
-                "required": ["word", "synonyms", "antonyms"],
-                "additionalProperties": False,
-            },
-            "minItems": 3,
-            "maxItems": 3,
         },
     },
     "required": [
         "headline",
         "summary",
         "highlights",
+        "the_context",
+        "bottom_line",
         "bold_terms",
-        "what_to_know",
-        "vocabulary",
     ],
     "additionalProperties": False,
 }
@@ -2333,7 +2066,7 @@ def first_sentence(text):
         text
     )
 
-    # Conservative sentence extraction. Avoids common financial
+    # Conservative sentence extraction. Avoids common tech
     # abbreviations and decimals splitting incorrectly.
     protected = {
         "U.S.": "US_SENTINEL",
@@ -2387,9 +2120,9 @@ def generate_story(
     )
 
     prompt = f"""
-You are a senior newspaper business editor and economic knowledge editor for @BusinessNewsroom.
+You are a senior newspaper tech editor and knowledge editor for @TheTechNewsroom.
 
-Create a compact Telegram news card from the source article.
+Create a compact Telegram tech news card from the source article.
 
 Primary topic:
 {topic_hint}
@@ -2399,33 +2132,34 @@ Return ONLY valid JSON matching the schema.
 PUBLIC CONTENT:
 - Headline: 6-14 words, accurate, newspaper style.
 - Summary: exactly ONE complete sentence, about 18-28 words.
-- Highlights: 2-3 short factual points.
-- No repetition between summary and highlights.
+- Highlights: 3-5 short factual points, choosing the number that best fits the story.
+- The Context: 2-4 complete sentences of background explaining how the story came about.
+  This can cover a launch, lawsuit, funding round, acquisition, product change, security incident,
+  research paper, or other relevant background.
+- Bottom Line: exactly ONE complete sentence giving the central takeaway or "so what" of the story.
+- No repetition between sections.
 - No "..." or "…".
 - Never end a headline or highlight with an ellipsis.
 - No hashtags in generated fields.
 - No Markdown or HTML in JSON fields.
 
-WHAT TO KNOW:
-- Return 1-3 genuinely useful knowledge points directly related to this news story.
-- Use short terms, definitions, meanings, mechanisms, institutions, policies or concepts that help the reader understand the story.
-- Use only information supported by the article or stable, directly relevant knowledge.
-
-VOCABULARY:
-- Return EXACTLY 3 important vocabulary words from the story.
-- Each word must start with a capital letter.
-- Each synonym and antonym must start with lowercase letters.
-- Return exactly 2 synonyms and 2 antonyms for each word.
-- Prefer useful business/economics vocabulary, not trivial words.
-
 BOLD TERMS:
-- Include important names, institutions, companies, figures, rates, percentages,
-  policies and financial terms appearing in the generated headline, summary or highlights.
+- Include important company names, products, AI models, platforms, figures, prices, dates,
+  user counts, policies, vulnerabilities, and technical terms appearing in the generated
+  headline, summary or highlights.
 
-The public post will contain ONLY:
-Photo, headline, one-line summary, Key Highlights, What to Know, Vocabulary,
-hashtags and Source. Do not create context, why-it-matters, specialized, background,
-market-context or any other top-level section.
+The public post must follow this exact order:
+Photo
+Headline
+1-sentence summary
+## KEY HIGHLIGHTS
+3-5 bullets
+## THE CONTEXT (collapsed by default)
+2-4 sentences of background
+## BOTTOM LINE (collapsed by default)
+1 sentence takeaway
+#hashtags
+**Source:** Publication
 """
 
     user = (
@@ -2438,7 +2172,7 @@ market-context or any other top-level section.
 
     for attempt in range(3):
         try:
-            response = cerebras.chat.completions.create(
+            response = get_cerebras().chat.completions.create(
                 model=CEREBRAS_MODEL,
                 messages=[
                     {
@@ -2453,7 +2187,7 @@ market-context or any other top-level section.
                 response_format={
                     "type": "json_schema",
                     "json_schema": {
-                        "name": "business_news_story_v04_1",
+                        "name": "tech_news_story_v1_0",
                         "strict": True,
                         "schema": STORY_SCHEMA,
                     },
@@ -2484,54 +2218,28 @@ market-context or any other top-level section.
             )
 
             highlights = [
-                clean_generated_text(
-                    x
-                )
-                for x in data.get(
-                    "highlights",
-                    [],
-                )
-                if clean_generated_text(
-                    x
-                )
-            ][:3]
+                clean_generated_text(x)
+                for x in data.get("highlights", [])
+                if clean_generated_text(x)
+            ]
+            if not (3 <= len(highlights) <= 5):
+                raise ValueError("Highlights must contain 3-5 points")
 
-            what_to_know = []
-            for item_know in data.get("what_to_know", []):
-                term = clean_generated_text(item_know.get("term"))
-                meaning = clean_generated_text(item_know.get("meaning"))
-                if term and meaning:
-                    what_to_know.append({
-                        "term": trim_source_text(term, 80),
-                        "meaning": trim_source_text(meaning, 220),
-                    })
-            what_to_know = what_to_know[:3]
-
-            vocabulary = []
-            for vocab in data.get("vocabulary", []):
-                word = safe_text(vocab.get("word"))
-                synonyms = [safe_text(x) for x in vocab.get("synonyms", [])[:2] if safe_text(x)]
-                antonyms = [safe_text(x) for x in vocab.get("antonyms", [])[:2] if safe_text(x)]
-                if word and len(synonyms) == 2 and len(antonyms) == 2:
-                    word = word[:1].upper() + word[1:]
-                    synonyms = [x[:1].lower() + x[1:] for x in synonyms]
-                    antonyms = [x[:1].lower() + x[1:] for x in antonyms]
-                    vocabulary.append({
-                        "word": trim_source_text(word, 50),
-                        "synonyms": [trim_source_text(x, 50) for x in synonyms],
-                        "antonyms": [trim_source_text(x, 50) for x in antonyms],
-                    })
-            vocabulary = vocabulary[:3]
+            the_context = clean_generated_text(data.get("the_context"))
+            bottom_line = clean_generated_text(data.get("bottom_line"))
+            context_count = len(re.findall(r"(?<=[.!?])\s+", the_context)) + (1 if the_context and the_context[-1] in ".!?" else 0)
+            bottom_count = len(re.findall(r"(?<=[.!?])\s+", bottom_line)) + (1 if bottom_line and bottom_line[-1] in ".!?" else 0)
+            if not the_context or not bottom_line or not (2 <= context_count <= 4) or bottom_count != 1:
+                raise ValueError("Invalid The Context or Bottom Line")
 
             if (
                 not headline
                 or not summary
-                or len(highlights) < 2
-                or len(what_to_know) < 1
-                or len(vocabulary) != 3
                 or not complete_text(headline)
                 or not complete_text(summary)
                 or any(not complete_text(x) for x in highlights)
+                or not complete_text(the_context)
+                or not complete_text(bottom_line)
             ):
                 raise ValueError("Incomplete story")
 
@@ -2540,9 +2248,9 @@ market-context or any other top-level section.
                 "headline": trim_source_text(headline, 110),
                 "summary": trim_source_text(summary, 260),
                 "highlights": [trim_source_text(x, 130) for x in highlights],
+                "the_context": trim_source_text(the_context, 520),
+                "bottom_line": trim_source_text(bottom_line, 220),
                 "bold_terms": [safe_text(x) for x in data.get("bold_terms", []) if safe_text(x)],
-                "what_to_know": what_to_know,
-                "vocabulary": vocabulary,
             }
 
             return story
@@ -2580,118 +2288,157 @@ NUMBER_RE = re.compile(
     re.I | re.X,
 )
 
-YEAR_RE = re.compile(
-    r"^(?:19|20)\d{2}$"
-)
+YEAR_RE = re.compile(r"^(?:19|20)\d{2}$")
 
+_NUMERIC_SCALES = {
+    "": 1.0,
+    "k": 1e3,
+    "m": 1e6,
+    "mn": 1e6,
+    "million": 1e6,
+    "b": 1e9,
+    "bn": 1e9,
+    "billion": 1e9,
+    "trillion": 1e12,
+    "t": 1e12,
+    "crore": 1e7,
+    "lakh": 1e5,
+}
+_NUMERIC_CURRENCIES = {
+    "$": "usd",
+    "usd": "usd",
+    "tk": "bdt",
+    "bdt": "bdt",
+    "৳": "bdt",
+    "€": "eur",
+    "eur": "eur",
+    "£": "gbp",
+    "gbp": "gbp",
+    "¥": "jpy",
+    "jpy": "jpy",
+    "cny": "cny",
+    "inr": "inr",
+    "₹": "inr",
+    "hk$": "hkd",
+    "hk": "hkd",
+}
 
-def normalize_number(
-    raw,
-):
-    text = (
-        safe_text(raw)
-        .lower()
-        .replace(",", "")
-        .replace("৳", "tk")
-        .replace("$", "usd")
-    )
+def _numeric_signature(raw):
+    text = safe_text(raw).strip().lower()
+    if not text:
+        return None
 
-    return re.sub(
-        r"\s+",
-        "",
-        text,
-    )
+    currency = None
+    for symbol in sorted(_NUMERIC_CURRENCIES, key=len, reverse=True):
+        if text.startswith(symbol):
+            currency = _NUMERIC_CURRENCIES[symbol]
+            text = text[len(symbol):].strip()
+            break
 
+    if text.endswith("%"):
+        unit = "%"
+        text = text[:-1].strip()
+    else:
+        m = re.search(r"(trillion|billion|million|crore|lakh|bn|mn|[kmbt])$", text)
+        unit = m.group(1) if m else ""
+        if m:
+            text = text[:m.start()].strip()
+
+    text = text.replace(",", "")
+    try:
+        value = float(text)
+    except ValueError:
+        return None
+
+    if unit == "%":
+        scale = 1.0
+        percent = True
+    else:
+        scale = _NUMERIC_SCALES.get(unit, 1.0)
+        percent = False
+
+    return {
+        "value": value * scale,
+        "percent": percent,
+        "currency": currency,
+    }
+
+def normalize_number(raw):
+    sig = _numeric_signature(raw)
+    if not sig:
+        return ""
+    value = sig["value"]
+    value_key = f"{value:.12g}"
+    currency = sig["currency"] or ""
+    percent = "%" if sig["percent"] else ""
+    return f"{currency}|{percent}|{value_key}"
 
 def numeric_tokens(text):
     tokens = []
+    for match in NUMBER_RE.finditer(safe_text(text)):
+        token = safe_text(match.group(0)).strip()
+        sig = _numeric_signature(token)
+        if not sig:
+            continue
 
-    for match in NUMBER_RE.finditer(
-        safe_text(text)
-    ):
-        token = safe_text(
-            match.group(0)
-        )
-
-        stripped = re.sub(
-            r"[^\d.]",
-            "",
-            token,
-        )
-
+        # Ignore bare years, but retain years with a financial/percent/unit marker.
+        numeric_value = sig["value"]
         if (
-            YEAR_RE.match(
-                stripped
-            )
-            and not any(
-                x in token.lower()
-                for x in (
-                    "tk",
-                    "usd",
-                    "bdt",
-                    "$",
-                    "€",
-                    "£",
-                    "¥",
-                    "%",
-                    "million",
-                    "billion",
-                    "crore",
-                    "lakh",
-                )
-            )
+            numeric_value.is_integer()
+            and YEAR_RE.match(str(int(numeric_value)))
+            and not sig["percent"]
+            and not sig["currency"]
         ):
             continue
 
         if token:
-            tokens.append(
-                token
-            )
-
+            tokens.append(token)
     return tokens
 
+def _numeric_equivalent(source_sig, generated_sig):
+    if not source_sig or not generated_sig:
+        return False
+    if source_sig["percent"] != generated_sig["percent"]:
+        return False
 
-def numeric_grounded(
-    story,
-    article_text,
-):
-    source_numbers = [
-        normalize_number(x)
-        for x in numeric_tokens(
-            article_text
-        )
+    # If both explicitly name currencies, they must agree.
+    # If only one names a currency, accept the numeric equivalent because
+    # source extraction often drops currency symbols around abbreviated forms.
+    if (
+        source_sig["currency"]
+        and generated_sig["currency"]
+        and source_sig["currency"] != generated_sig["currency"]
+    ):
+        return False
+
+    return abs(source_sig["value"] - generated_sig["value"]) <= max(
+        1e-9, abs(source_sig["value"]) * 1e-9
+    )
+
+def numeric_grounded(story, article_text):
+    source_sigs = [
+        _numeric_signature(x)
+        for x in numeric_tokens(article_text)
     ]
+    source_sigs = [x for x in source_sigs if x]
 
     generated_text = " ".join(
         [
-            story.get(
-                "headline",
-                "",
-            ),
-            story.get(
-                "summary",
-                "",
-            ),
-            *story.get(
-                "highlights",
-                [],
-            ),
+            story.get("headline", ""),
+            story.get("summary", ""),
+            *story.get("highlights", []),
         ]
     )
 
-    for token in numeric_tokens(
-        generated_text
-    ):
-        normalized = normalize_number(
-            token
-        )
-
-        if not normalized:
+    for token in numeric_tokens(generated_text):
+        generated_sig = _numeric_signature(token)
+        if not generated_sig:
             continue
 
-        # Require either exact normalized occurrence or a sufficiently
-        # close numeric token from source.
-        if normalized not in source_numbers:
+        if not any(
+            _numeric_equivalent(source_sig, generated_sig)
+            for source_sig in source_sigs
+        ):
             return False, token
 
     return True, ""
@@ -2868,44 +2615,22 @@ def bold_terms_html(
 
 def dynamic_rich_html(story):
     terms = derive_bold_terms(story)
-
     parts = [
         '<img src="tg://photo?id=newsphoto">',
-        "<h1><b>" + escape_rich_html(story["headline"]) + "</b></h1>",
+        "<h1>" + escape_rich_html(story["headline"]) + "</h1>",
         "<p>" + bold_terms_html(story["summary"], terms) + "</p>",
-        "<h2>Key Highlights</h2>",
+        "<h2>KEY HIGHLIGHTS</h2>",
         "<p>" + "<br>".join(
             "• " + bold_terms_html(point, terms)
-            for point in story["highlights"]
+            for point in story.get("highlights", [])
         ) + "</p>",
+        "<blockquote expandable><b>THE CONTEXT</b><br>"
+        + bold_terms_html(story.get("the_context", ""), terms)
+        + "</blockquote>",
+        "<blockquote expandable><b>BOTTOM LINE</b><br>"
+        + bold_terms_html(story.get("bottom_line", ""), terms)
+        + "</blockquote>",
     ]
-
-    know_body = []
-    for item in story.get("what_to_know", []):
-        term = escape_rich_html(item.get("term", ""))
-        meaning = bold_terms_html(item.get("meaning", ""), terms)
-        know_body.append(f"<p><b>{term}:</b> {meaning}</p>")
-
-    parts.append(
-        "<details><summary>What to Know</summary>"
-        + "".join(know_body)
-        + "</details>"
-    )
-
-    vocab_lines = []
-    for idx, item in enumerate(story.get("vocabulary", [])[:3], start=1):
-        word = escape_rich_html(item.get("word", ""))
-        synonyms = ", ".join(escape_rich_html(x) for x in item.get("synonyms", [])[:2])
-        antonyms = ", ".join(escape_rich_html(x) for x in item.get("antonyms", [])[:2])
-        vocab_lines.append(
-            f"<p>{idx}. <b>{word}</b>: {synonyms} | {antonyms}</p>"
-        )
-
-    parts.append(
-        "<details><summary>Vocabulary</summary>"
-        + "".join(vocab_lines)
-        + "</details>"
-    )
 
     hashtags = " ".join(category_hashtags(story))
     if hashtags:
@@ -2939,23 +2664,18 @@ def rich_visible_length(text):
 
 def fit_rich_html(story):
     variants = [
-        (260, 130, 3, 3, 220),
-        (220, 115, 3, 3, 180),
-        (190, 100, 2, 3, 150),
-        (160, 85, 2, 2, 120),
+        (260, 130, 520, 220),
+        (220, 115, 440, 190),
+        (190, 100, 380, 170),
+        (160, 85, 320, 150),
     ]
 
-    for summary_len, highlight_len, count, know_count, know_len in variants:
+    for summary_len, highlight_len, context_len, bottom_len in variants:
         candidate = dict(story)
         candidate["summary"] = trim_source_text(story["summary"], summary_len)
-        candidate["highlights"] = [trim_source_text(x, highlight_len) for x in story["highlights"][:count]]
-        candidate["what_to_know"] = [
-            {
-                "term": x["term"],
-                "meaning": trim_source_text(x["meaning"], know_len),
-            }
-            for x in story.get("what_to_know", [])[:know_count]
-        ]
+        candidate["highlights"] = [trim_source_text(x, highlight_len) for x in story.get("highlights", [])]
+        candidate["the_context"] = trim_source_text(story.get("the_context", ""), context_len)
+        candidate["bottom_line"] = trim_source_text(story.get("bottom_line", ""), bottom_len)
         html_text = dynamic_rich_html(candidate)
         if rich_visible_length(html_text) <= MAX_RICH_CHARACTERS:
             return html_text
@@ -2964,9 +2684,8 @@ def fit_rich_html(story):
 
 
 
-
 # ============================================================
-# IMAGE HANDLING: NO SOURCE/BRAND OVERLAY
+# IMAGE BRANDING: ONLY @TheTechNewsroom
 # ============================================================
 
 def find_font(
@@ -3126,11 +2845,110 @@ def image_average_brightness(
     )
 
 
+def display_source_name(source):
+    """Return a reader-friendly publication label for the image chip."""
+    raw = safe_text(source).strip()
+    if not raw:
+        return "Source"
+
+    aliases = {
+        "WIRED": "Wired",
+        "ZDNET": "ZDNET",
+        "9to5Google": "9to5Google",
+        "MacRumors": "MacRumors",
+        "WABetaInfo": "WABetaInfo",
+        "TestingCatalog": "TestingCatalog",
+        "AI News": "AI News",
+        "Unite.AI": "Unite.AI",
+        "The Decoder": "The Decoder",
+        "SiliconANGLE": "SiliconANGLE",
+        "Techmeme": "Techmeme",
+        "MIT Technology Review": "MIT Technology Review",
+    }
+    if raw in aliases:
+        return aliases[raw]
+    return raw
+
+
 def branded_card(
     photo,
+    source,
+    source_position="left",
 ):
-    """Return the cropped news photo without adding any source/brand overlay."""
-    return crop_cover(photo).convert("RGB")
+    """Crop the image and add only the channel chip.
+
+    The publication/source name is not rendered on the photo.
+    """
+    base = crop_cover(
+        photo
+    ).convert(
+        "RGBA"
+    )
+
+    brightness = image_average_brightness(
+        base
+    )
+
+    if brightness < 125:
+        chip_bg = (245, 245, 245, 225)
+        chip_fg = (20, 24, 28, 255)
+    else:
+        chip_bg = (18, 22, 28, 205)
+        chip_fg = (245, 245, 245, 255)
+
+    overlay = Image.new(
+        "RGBA",
+        base.size,
+        (0, 0, 0, 0),
+    )
+    draw = ImageDraw.Draw(overlay)
+
+    font_path = find_font(
+        bold=True
+    )
+    if font_path:
+        font = ImageFont.truetype(
+            font_path,
+            24,
+        )
+    else:
+        font = ImageFont.load_default()
+
+    channel_text = "@TheTechNewsroom"
+    bbox = draw.textbbox(
+        (0, 0),
+        channel_text,
+        font=font,
+    )
+    padding_x = 18
+    padding_y = 9
+    margin_x = 28
+    margin_y = 24
+    chip_w = (bbox[2] - bbox[0]) + padding_x * 2
+    chip_h = (bbox[3] - bbox[1]) + padding_y * 2
+    x2 = 1200 - margin_x
+    y2 = 675 - margin_y
+    x1 = x2 - chip_w
+    y1 = y2 - chip_h
+
+    draw.rounded_rectangle(
+        (x1, y1, x2, y2),
+        radius=16,
+        fill=chip_bg,
+    )
+    draw.text(
+        (x1 + padding_x, y1 + padding_y - 1),
+        channel_text,
+        font=font,
+        fill=chip_fg,
+    )
+
+    return Image.alpha_composite(
+        base,
+        overlay,
+    ).convert(
+        "RGB"
+    )
 
 
 def prepare_image(
@@ -3144,6 +2962,8 @@ def prepare_image(
         ),
         story["url"],
     )
+
+    image_was_missing = image is None
 
     if image is None:
         image = Image.new(
@@ -3170,13 +2990,15 @@ def prepare_image(
 
         draw.text(
             (50, 50),
-            "Business News",
+            "Tech News",
             font=font,
             fill="white",
         )
 
     branded = branded_card(
-        image
+        image,
+        story.get("source", "Source"),
+        source_position="center" if image_was_missing else "left",
     )
 
     path = f"/tmp/news_{index}.jpg"
@@ -3455,11 +3277,55 @@ def store_event(
 # ============================================================
 
 def build_candidate_pool(ranked, needed):
-    """Keep a generous ranked recovery pool for downstream failures."""
+    """Build a verification pool that favors important stories and sector diversity.
+
+    Diversity is a soft preference. A high-scoring story always beats a low-scoring story,
+    and no sector is forced when the latest news does not support it.
+    """
     if not ranked:
         return []
-    pool_size = max(RANKING_POOL_PER_REGION, needed * 2)
-    return [dict(item) for item in ranked[:pool_size]]
+
+    eligible = [dict(x) for x in ranked if x.get("importance_score", 0) >= 7 and x.get("important") is True]
+    target = max(RANKING_POOL_SIZE, needed * 2)
+    target = min(target, len(eligible))
+
+    # Preferred high-signal topics. These are not quotas; they only help break ties.
+    preferred = {
+        "GitHub Trends": 0,
+        "Startups": 0,
+        "Acquisitions and Mergers": 0,
+        "AI Models and Products": 0,
+        "Hugging Face": 0,
+        "Cybersecurity": 0,
+        "Major Outages": 0,
+        "Operating Systems": 0,
+        "Smartphones": 0,
+        "Major Tech Companies": 0,
+    }
+
+    selected = []
+    used_topics = set()
+    remaining = list(eligible)
+
+    # First pass: preserve the best story from distinct important sectors.
+    for item in remaining:
+        topic = item.get("topic", "")
+        if topic not in used_topics and len(selected) < target:
+            selected.append(item)
+            used_topics.add(topic)
+
+    # Second pass: fill by global editorial rank. No quota is imposed.
+    for item in remaining:
+        if len(selected) >= target:
+            break
+        if item not in selected:
+            selected.append(item)
+
+    selected.sort(key=lambda x: (
+        -x.get("importance_score", 0),
+        x.get("editor_rank", 9999),
+    ))
+    return selected
 
 
 VERIFY_SCHEMA = {
@@ -3501,7 +3367,7 @@ Return only the JSON schema.
     )
 
     try:
-        response = cerebras.chat.completions.create(
+        response = get_cerebras().chat.completions.create(
             model=CEREBRAS_MODEL,
             messages=[
                 {"role": "system", "content": prompt},
@@ -3556,7 +3422,7 @@ def process_story_candidate(item):
 
     region = item.get(
         "region",
-        "Bangladesh",
+        "Tech",
     )
 
     story["topic"] = canonical_topic(
@@ -3743,24 +3609,35 @@ def available_candidates(region, source_pool=None):
         or datetime.min.replace(tzinfo=timezone.utc),
         reverse=True,
     )
-    return candidates[:MAX_RSS_CANDIDATES_PER_REGION]
+    return candidates[:MAX_RSS_CANDIDATES]
 
 
 def prepare_ranked_region(region, candidates):
     ranked = rank_candidates(candidates, region)
-    ranked = collapse_event_clusters(ranked)
-    persist_event_cluster_state(ranked)
-    return ranked
+    logger.info("%s RANKED RETURNED: %d", region, len(ranked))
+
+    clustered = collapse_event_clusters(ranked)
+    logger.info("%s AFTER EVENT DEDUP: %d", region, len(clustered))
+
+    eligible = [
+        item for item in clustered
+        if item.get("importance_score", 0) >= 7
+        and item.get("important") is True
+    ]
+    logger.info("%s IMPORTANCE PASS (score>=7): %d", region, len(eligible))
+
+    persist_event_cluster_state(eligible)
+    return eligible
 
 
 def process_ranked_region(region, ranked):
-    pool = build_candidate_pool(ranked, STORIES_PER_REGION)
+    pool = build_candidate_pool(ranked, MAX_STORIES_PER_RUN)
     valid = []
     attempted = 0
     rejected = 0
 
     for item in pool:
-        if len(valid) >= STORIES_PER_REGION:
+        if len(valid) >= MAX_STORIES_PER_RUN:
             break
         attempted += 1
         story = process_story_candidate(item)
@@ -3789,7 +3666,7 @@ def process_ranked_region(region, ranked):
         "%s FINAL VALID: %d/%d | pool=%d attempted=%d rejected=%d",
         region,
         len(valid),
-        STORIES_PER_REGION,
+        MAX_STORIES_PER_RUN,
         len(pool),
         attempted,
         rejected,
@@ -3798,60 +3675,34 @@ def process_ranked_region(region, ranked):
 
 
 def run():
-    logger.info("BUSINESSNEWSROOM V1 UPDATE-ONLY")
+    logger.info("THE TECH NEWSROOM V1 UPDATE-ONLY")
     logger.info("Channel=%s Mode=%s", TELEGRAM_CHANNEL, NEWS_MODE)
     logger.info("LOOKBACK=%d hours | %s -> %s", DISCOVERY_LOOKBACK_HOURS, DISCOVERY_START.isoformat(), DISCOVERY_END.isoformat())
 
     prune_state()
     refresh_category_coverage()
-
     collect_rss()
 
-    bd_count = queue_candidates_for_region("Bangladesh")
-    intl_count = queue_candidates_for_region("International")
-
-    # Free discovery first, then Exa only when a region is below the desired 24-hour candidate pool.
-    bd_count += google_news_gap_fill("Bangladesh", bd_count, DISCOVERY_TARGET_PER_REGION)
-    intl_count += google_news_gap_fill("International", intl_count, DISCOVERY_TARGET_PER_REGION)
-    exa_gap_fill("Bangladesh", bd_count, DISCOVERY_TARGET_PER_REGION)
-    exa_gap_fill("International", intl_count, DISCOVERY_TARGET_PER_REGION)
+    tech_count = queue_candidates_for_region("Tech")
+    tech_count += google_news_gap_fill("Tech", tech_count, DISCOVERY_TARGET_PER_REGION)
+    exa_gap_fill("Tech", tech_count, DISCOVERY_TARGET_PER_REGION)
 
     save_state(STATE)
 
-    bd_candidates = available_candidates("Bangladesh", source_pool="primary")
-    intl_candidates = available_candidates("International", source_pool="primary")
+    candidates = available_candidates("Tech", source_pool="primary")
+    logger.info("DISCOVERY CANDIDATES: TECH=%d", len(candidates))
 
-    logger.info("DISCOVERY CANDIDATES: BD=%d INTL=%d TOTAL=%d", len(bd_candidates), len(intl_candidates), len(bd_candidates) + len(intl_candidates))
+    ranked = prepare_ranked_region("Tech", candidates)
+    logger.info("UNIQUE EVENTS: TECH=%d", len(ranked))
 
-    ranked_bd = prepare_ranked_region("Bangladesh", bd_candidates)
-    ranked_intl = prepare_ranked_region("International", intl_candidates)
+    for item in ranked[:12]:
+        logger.info("RANK TECH #%s | %s | %s", item.get("editor_rank", "?"), item.get("title", ""), item.get("rank_reason", ""))
 
-    logger.info("UNIQUE EVENTS: BD=%d INTL=%d", len(ranked_bd), len(ranked_intl))
+    stories = process_ranked_region("Tech", ranked)
+    logger.info("FINAL: TECH=%d MAX=%d", len(stories), MAX_STORIES_PER_RUN)
 
-    for item in (ranked_bd[:8] + ranked_intl[:8]):
-        logger.info(
-            "RANK %s #%s | %s | %s",
-            item.get("region", ""),
-            item.get("editor_rank", "?"),
-            item.get("title", ""),
-            item.get("rank_reason", ""),
-        )
-
-    bd_stories = process_ranked_region("Bangladesh", ranked_bd)
-    intl_stories = process_ranked_region("International", ranked_intl)
-
-    stories = bd_stories + intl_stories
-    logger.info(
-        "FINAL: BD=%d/%d INTL=%d/%d TOTAL=%d/%d",
-        len(bd_stories), STORIES_PER_REGION,
-        len(intl_stories), STORIES_PER_REGION,
-        len(stories), MAX_STORIES_PER_RUN,
-    )
-
-    if len(bd_stories) < STORIES_PER_REGION or len(intl_stories) < STORIES_PER_REGION:
-        logger.warning(
-            "Six-story target not reached. The bot exhausted the available valid candidates in one or both regions; no story is fabricated."
-        )
+    if not stories:
+        logger.info("No tech story cleared the importance and verification bar this run.")
 
     published_count = 0
     for index, story in enumerate(stories, start=1):
@@ -3899,55 +3750,58 @@ def run():
 
 def self_test():
     sample = {
-        "headline": "Bangladesh Bank Cuts Repo Rate",
-        "summary": "Bangladesh Bank cut the repo rate to support growth while monitoring inflation.",
+        "headline": "Major AI Platform Launches New Tool for Millions",
+        "summary": "The platform launched a new AI tool that adds a major capability for users across its widely used technology ecosystem.",
         "highlights": [
-            "The repo rate fell by 25 basis points.",
-            "The move could lower bank borrowing costs.",
+            "The new tool is now available to users of the platform.",
+            "The launch adds a major capability to the existing AI product.",
+            "The company positioned the release as a significant expansion of its product offering.",
+            "Availability begins immediately in supported markets.",
         ],
-        "bold_terms": ["Bangladesh Bank", "repo rate", "25 basis points", "inflation"],
-        "what_to_know": [
-            {"term": "Repo Rate", "meaning": "The rate at which the central bank lends to eligible banks."},
-            {"term": "CRR", "meaning": "Cash Reserve Ratio, the required reserve portion of deposits."},
-        ],
-        "vocabulary": [
-            {"word": "Merger", "synonyms": ["combination", "consolidation"], "antonyms": ["split", "division"]},
-            {"word": "Profit", "synonyms": ["gain", "earnings"], "antonyms": ["loss", "deficit"]},
-            {"word": "Debt", "synonyms": ["liability", "borrowing"], "antonyms": ["asset", "surplus"]},
-        ],
-        "source": "The Business Standard",
-        "url": "https://example.com/story",
-        "region": "Bangladesh",
-        "topic": "Banking",
-        "institution": "Bangladesh Bank",
+        "the_context": "The launch follows the company's broader push to expand AI capabilities across its technology platform. The move builds on earlier product work and extends those capabilities to more users.",
+        "bottom_line": "The release matters because it expands a major AI capability to a broader technology audience.",
+        "bold_terms": ["AI", "tool", "platform"],
+        "source": "TechCrunch", "url": "https://example.com/story", "region": "Tech",
+        "topic": "AI Models and Products", "institution": "OpenAI",
     }
-
     rendered = dynamic_rich_html(sample)
-
     assert complete_text("A normal sentence.")
     assert complete_text("An incomplete sentence—") is False
-    assert "Key Context" not in rendered
-    assert "Why It Matters" not in rendered
-    assert "<details><summary>What to Know</summary>" in rendered
-    assert "<details><summary>Vocabulary</summary>" in rendered
-    assert "<details>" in rendered
-    assert "<b>Merger</b>: combination, consolidation | split, division" in rendered
-    assert "#Banking" in rendered
-    assert "• " in rendered
-    assert "@BusinessNewsroom" not in rendered
-    assert likely_same_event(
-        "Fed cuts rates by 25 basis points",
-        "Fed cuts rates by 25 basis points",
-    )
+    assert "THE CONTEXT" in rendered
+    assert "BOTTOM LINE" in rendered
+    assert rendered.count('<blockquote expandable>') == 2
+    assert "<aside>" not in rendered
+    assert rendered.count("• ") == 4
+    assert rendered.index("<h1>Major AI Platform") < rendered.index("KEY HIGHLIGHTS") < rendered.index("THE CONTEXT") < rendered.index("BOTTOM LINE")
+
+    sample_three = dict(sample)
+    sample_three["highlights"] = sample_three["highlights"][:3]
+    rendered_three = dynamic_rich_html(sample_three)
+    assert rendered_three.count("• ") == 3
+
+    sample_five = dict(sample)
+    sample_five["highlights"] = sample_five["highlights"] + ["The release continues the company's broader AI strategy."]
+    rendered_five = dynamic_rich_html(sample_five)
+    assert rendered_five.count("• ") == 5
+    assert rendered.index("#AI") > rendered.index("BOTTOM LINE")
+    assert "<footer><b>Source:</b>" in rendered
+    import inspect
+    assert "@TheTechNewsroom" in inspect.getsource(branded_card)
+    assert "display_source_name" not in inspect.getsource(branded_card)
+    assert "source_text =" not in inspect.getsource(branded_card)
+    assert likely_same_event("AI platform launches major tool", "AI platform launches major tool")
     assert canonical_url("https://www.example.com/story/?utm_source=x") == "example.com/story"
-    assert "bangladesh" in extract_entities("Bangladesh Bank cuts the repo rate")
+    assert "ai" in extract_entities("AI platform launches a major update")
     clustered = cluster_ranked_events([
-        {"title": "Bangladesh Bank cuts repo rate", "source": "TBS", "url": "https://tbsnews.net/a", "published_date": now_iso(), "region": "Bangladesh"},
-        {"title": "Central bank lowers repo rate", "source": "Reuters", "url": "https://reuters.com/a", "published_date": now_iso(), "region": "Bangladesh"},
+        {"title": "AI platform launches major tool", "source": "TechCrunch", "url": "https://techcrunch.com/a", "published_date": now_iso(), "region": "Tech"},
+        {"title": "AI platform launches major tool", "source": "The Verge", "url": "https://theverge.com/a", "published_date": now_iso(), "region": "Tech"},
     ])
     assert len(clustered) >= 1
     assert clustered[0]["event_cluster_size"] >= 1
-    logger.info("BusinessNewsroom V1 self-test passed.")
+    assert canonical_topic("ChatGPT") == "AI Models and Products"
+    assert "#AI" in category_hashtags(sample) and "#Tech" in category_hashtags(sample)
+    logger.info("TheTechNewsroom V1 self-test passed.")
+
 
 def visible_text_for_test(
     rendered,
