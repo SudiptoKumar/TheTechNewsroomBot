@@ -2041,8 +2041,8 @@ STORY_SCHEMA = {
             "minItems": 3,
             "maxItems": 5,
         },
-        "why_it_matters": {"type": "string"},
-        "whats_next": {"type": "string"},
+        "the_context": {"type": "string"},
+        "bottom_line": {"type": "string"},
         "bold_terms": {
             "type": "array",
             "items": {"type": "string"},
@@ -2053,8 +2053,8 @@ STORY_SCHEMA = {
         "headline",
         "summary",
         "highlights",
-        "why_it_matters",
-        "whats_next",
+        "the_context",
+        "bottom_line",
         "bold_terms",
     ],
     "additionalProperties": False,
@@ -2133,9 +2133,10 @@ PUBLIC CONTENT:
 - Headline: 6-14 words, accurate, newspaper style.
 - Summary: exactly ONE complete sentence, about 18-28 words.
 - Highlights: 3-5 short factual points, choosing the number that best fits the story.
-- Why it Matters: 2-4 complete sentences explaining the real-world user, platform, business,
-  privacy, security, or industry significance.
-- What's Next: 1-2 complete sentences stating what readers should watch for next.
+- The Context: 2-4 complete sentences of background explaining how the story came about.
+  This can cover a launch, lawsuit, funding round, acquisition, product change, security incident,
+  research paper, or other relevant background.
+- Bottom Line: exactly ONE complete sentence giving the central takeaway or "so what" of the story.
 - No repetition between sections.
 - No "..." or "…".
 - Never end a headline or highlight with an ellipsis.
@@ -2153,10 +2154,10 @@ Headline
 1-sentence summary
 ## KEY HIGHLIGHTS
 3-5 bullets
-## WHY IT MATTERS
-2-4 sentences
-## WHAT'S NEXT
-1-2 sentences
+## THE CONTEXT (collapsed by default)
+2-4 sentences of background
+## BOTTOM LINE (collapsed by default)
+1 sentence takeaway
 #hashtags
 **Source:** Publication
 """
@@ -2224,12 +2225,12 @@ Headline
             if not (3 <= len(highlights) <= 5):
                 raise ValueError("Highlights must contain 3-5 points")
 
-            why_it_matters = clean_generated_text(data.get("why_it_matters"))
-            whats_next = clean_generated_text(data.get("whats_next"))
-            why_count = len(re.findall(r"(?<=[.!?])\s+", why_it_matters)) + (1 if why_it_matters and why_it_matters[-1] in ".!?" else 0)
-            next_count = len(re.findall(r"(?<=[.!?])\s+", whats_next)) + (1 if whats_next and whats_next[-1] in ".!?" else 0)
-            if not why_it_matters or not whats_next or not (2 <= why_count <= 4) or not (1 <= next_count <= 2):
-                raise ValueError("Invalid Why It Matters or What's Next")
+            the_context = clean_generated_text(data.get("the_context"))
+            bottom_line = clean_generated_text(data.get("bottom_line"))
+            context_count = len(re.findall(r"(?<=[.!?])\s+", the_context)) + (1 if the_context and the_context[-1] in ".!?" else 0)
+            bottom_count = len(re.findall(r"(?<=[.!?])\s+", bottom_line)) + (1 if bottom_line and bottom_line[-1] in ".!?" else 0)
+            if not the_context or not bottom_line or not (2 <= context_count <= 4) or bottom_count != 1:
+                raise ValueError("Invalid The Context or Bottom Line")
 
             if (
                 not headline
@@ -2237,8 +2238,8 @@ Headline
                 or not complete_text(headline)
                 or not complete_text(summary)
                 or any(not complete_text(x) for x in highlights)
-                or not complete_text(why_it_matters)
-                or not complete_text(whats_next)
+                or not complete_text(the_context)
+                or not complete_text(bottom_line)
             ):
                 raise ValueError("Incomplete story")
 
@@ -2247,8 +2248,8 @@ Headline
                 "headline": trim_source_text(headline, 110),
                 "summary": trim_source_text(summary, 260),
                 "highlights": [trim_source_text(x, 130) for x in highlights],
-                "why_it_matters": trim_source_text(why_it_matters, 520),
-                "whats_next": trim_source_text(whats_next, 260),
+                "the_context": trim_source_text(the_context, 520),
+                "bottom_line": trim_source_text(bottom_line, 220),
                 "bold_terms": [safe_text(x) for x in data.get("bold_terms", []) if safe_text(x)],
             }
 
@@ -2623,10 +2624,11 @@ def dynamic_rich_html(story):
             "• " + bold_terms_html(point, terms)
             for point in story.get("highlights", [])
         ) + "</p>",
-        "<h2>WHY IT MATTERS</h2>",
-        "<p>" + bold_terms_html(story.get("why_it_matters", ""), terms) + "</p>",
-        "<blockquote expandable><b>WHAT'S NEXT</b><br>"
-        + bold_terms_html(story.get("whats_next", ""), terms)
+        "<blockquote expandable><b>THE CONTEXT</b><br>"
+        + bold_terms_html(story.get("the_context", ""), terms)
+        + "</blockquote>",
+        "<blockquote expandable><b>BOTTOM LINE</b><br>"
+        + bold_terms_html(story.get("bottom_line", ""), terms)
         + "</blockquote>",
     ]
 
@@ -2662,18 +2664,18 @@ def rich_visible_length(text):
 
 def fit_rich_html(story):
     variants = [
-        (260, 130, 520, 260),
-        (220, 115, 440, 220),
-        (190, 100, 380, 200),
-        (160, 85, 320, 170),
+        (260, 130, 520, 220),
+        (220, 115, 440, 190),
+        (190, 100, 380, 170),
+        (160, 85, 320, 150),
     ]
 
-    for summary_len, highlight_len, why_len, next_len in variants:
+    for summary_len, highlight_len, context_len, bottom_len in variants:
         candidate = dict(story)
         candidate["summary"] = trim_source_text(story["summary"], summary_len)
         candidate["highlights"] = [trim_source_text(x, highlight_len) for x in story.get("highlights", [])]
-        candidate["why_it_matters"] = trim_source_text(story.get("why_it_matters", ""), why_len)
-        candidate["whats_next"] = trim_source_text(story.get("whats_next", ""), next_len)
+        candidate["the_context"] = trim_source_text(story.get("the_context", ""), context_len)
+        candidate["bottom_line"] = trim_source_text(story.get("bottom_line", ""), bottom_len)
         html_text = dynamic_rich_html(candidate)
         if rich_visible_length(html_text) <= MAX_RICH_CHARACTERS:
             return html_text
@@ -2843,8 +2845,35 @@ def image_average_brightness(
     )
 
 
+def display_source_name(source):
+    """Return a reader-friendly publication label for the image chip."""
+    raw = safe_text(source).strip()
+    if not raw:
+        return "Source"
+
+    aliases = {
+        "WIRED": "Wired",
+        "ZDNET": "ZDNET",
+        "9to5Google": "9to5Google",
+        "MacRumors": "MacRumors",
+        "WABetaInfo": "WABetaInfo",
+        "TestingCatalog": "TestingCatalog",
+        "AI News": "AI News",
+        "Unite.AI": "Unite.AI",
+        "The Decoder": "The Decoder",
+        "SiliconANGLE": "SiliconANGLE",
+        "Techmeme": "Techmeme",
+        "MIT Technology Review": "MIT Technology Review",
+    }
+    if raw in aliases:
+        return aliases[raw]
+    return raw
+
+
 def branded_card(
     photo,
+    source,
+    source_position="left",
 ):
     base = crop_cover(
         photo
@@ -2856,29 +2885,29 @@ def branded_card(
         base
     )
 
-    # Adaptive personal-brand chip:
-    # light chip on dark images, dark chip on light images.
+    # Adaptive publication/source and channel chips. Both use the same
+    # contrast treatment so they remain readable on bright and dark photos.
     if brightness < 125:
-        bg = (
+        chip_bg = (
             245,
             245,
             245,
             225,
         )
-        fg = (
+        chip_fg = (
             20,
             24,
             28,
             255,
         )
     else:
-        bg = (
+        chip_bg = (
             18,
             22,
             28,
             205,
         )
-        fg = (
+        chip_fg = (
             245,
             245,
             245,
@@ -2907,54 +2936,91 @@ def branded_card(
     else:
         font = ImageFont.load_default()
 
-    text = "@TheTechNewsroom"
+    padding_x = 18
+    padding_y = 9
+    gap = 12
+    margin_x = 28
+    margin_y = 24
 
-    bbox = draw.textbbox(
+    def draw_chip(text, x1, y2):
+        bbox = draw.textbbox(
+            (0, 0),
+            text,
+            font=font,
+        )
+        text_w = bbox[2] - bbox[0]
+        text_h = bbox[3] - bbox[1]
+        chip_w = text_w + padding_x * 2
+        chip_h = text_h + padding_y * 2
+        y1 = y2 - chip_h
+        x2 = x1 + chip_w
+
+        draw.rounded_rectangle(
+            (x1, y1, x2, y2),
+            radius=16,
+            fill=chip_bg,
+        )
+        draw.text(
+            (x1 + padding_x, y1 + padding_y - 1),
+            text,
+            font=font,
+            fill=chip_fg,
+        )
+        return x2, y1
+
+    source_text = display_source_name(source)
+    channel_text = "@TheTechNewsroom"
+
+    # Publication at bottom-left, channel at bottom-right. This keeps the
+    # source visible even when the original article photo is reused.
+    channel_bbox = draw.textbbox(
         (0, 0),
-        text,
+        channel_text,
         font=font,
     )
+    channel_text_w = channel_bbox[2] - channel_bbox[0]
+    channel_w = channel_text_w + padding_x * 2
 
-    text_w = bbox[2] - bbox[0]
-    text_h = bbox[3] - bbox[1]
-
-    padding_x = 22
-    padding_y = 10
-
-    chip_w = (
-        text_w
-        + padding_x * 2
-    )
-    chip_h = (
-        text_h
-        + padding_y * 2
-    )
-
-    x2 = 1200 - 28
-    y2 = 675 - 24
-    x1 = x2 - chip_w
-    y1 = y2 - chip_h
-
-    draw.rounded_rectangle(
-        (
-            x1,
-            y1,
-            x2,
-            y2,
-        ),
-        radius=18,
-        fill=bg,
-    )
-
-    draw.text(
-        (
-            x1 + padding_x,
-            y1 + padding_y - 1,
-        ),
-        text,
+    source_bbox = draw.textbbox(
+        (0, 0),
+        source_text,
         font=font,
-        fill=fg,
     )
+    source_text_w = source_bbox[2] - source_bbox[0]
+    source_w = source_text_w + padding_x * 2
+
+    y2 = 675 - margin_y
+    if source_position == "center":
+        source_x1 = (1200 - source_w) // 2
+    else:
+        source_x1 = margin_x
+    channel_x1 = 1200 - margin_x - channel_w
+
+    # If a very long publication name would overlap the channel chip, shorten
+    # it before rendering rather than letting the labels collide.
+    if source_position == "center":
+        right_limit = channel_x1 - gap
+        left_limit = margin_x
+        max_source_w = max(120, 2 * min(600 - left_limit, right_limit - 600))
+    else:
+        max_source_w = channel_x1 - gap - source_x1
+
+    if source_w > max_source_w:
+        source_text = trim_source_text(source_text, 28)
+        source_bbox = draw.textbbox((0, 0), source_text, font=font)
+        source_text_w = source_bbox[2] - source_bbox[0]
+        source_w = source_text_w + padding_x * 2
+        if source_w > max_source_w:
+            source_text = trim_source_text(source_text, 20)
+            source_bbox = draw.textbbox((0, 0), source_text, font=font)
+            source_text_w = source_bbox[2] - source_bbox[0]
+            source_w = source_text_w + padding_x * 2
+
+    if source_position == "center":
+        source_x1 = (1200 - source_w) // 2
+
+    draw_chip(source_text, source_x1, y2)
+    draw_chip(channel_text, channel_x1, y2)
 
     return Image.alpha_composite(
         base,
@@ -2975,6 +3041,8 @@ def prepare_image(
         ),
         story["url"],
     )
+
+    image_was_missing = image is None
 
     if image is None:
         image = Image.new(
@@ -3007,7 +3075,9 @@ def prepare_image(
         )
 
     branded = branded_card(
-        image
+        image,
+        story.get("source", "Source"),
+        source_position="center" if image_was_missing else "left",
     )
 
     path = f"/tmp/news_{index}.jpg"
@@ -3767,8 +3837,8 @@ def self_test():
             "The company positioned the release as a significant expansion of its product offering.",
             "Availability begins immediately in supported markets.",
         ],
-        "why_it_matters": "The launch can change how everyday users interact with the platform. It also signals a broader shift in how major technology companies are integrating AI into consumer products.",
-        "whats_next": "Readers should watch for wider availability, usage limits and follow-up product updates.",
+        "the_context": "The launch follows the company's broader push to expand AI capabilities across its technology platform. The move builds on earlier product work and extends those capabilities to more users.",
+        "bottom_line": "The release matters because it expands a major AI capability to a broader technology audience.",
         "bold_terms": ["AI", "tool", "platform"],
         "source": "TechCrunch", "url": "https://example.com/story", "region": "Tech",
         "topic": "AI Models and Products", "institution": "OpenAI",
@@ -3776,11 +3846,12 @@ def self_test():
     rendered = dynamic_rich_html(sample)
     assert complete_text("A normal sentence.")
     assert complete_text("An incomplete sentence—") is False
-    assert "WHY IT MATTERS" in rendered
-    assert "WHAT'S NEXT" in rendered
+    assert "THE CONTEXT" in rendered
+    assert "BOTTOM LINE" in rendered
+    assert rendered.count('<blockquote expandable>') == 2
     assert "<aside>" not in rendered
     assert rendered.count("• ") == 4
-    assert rendered.index("<h1>Major AI Platform") < rendered.index("KEY HIGHLIGHTS") < rendered.index("WHY IT MATTERS") < rendered.index("WHAT'S NEXT")
+    assert rendered.index("<h1>Major AI Platform") < rendered.index("KEY HIGHLIGHTS") < rendered.index("THE CONTEXT") < rendered.index("BOTTOM LINE")
 
     sample_three = dict(sample)
     sample_three["highlights"] = sample_three["highlights"][:3]
@@ -3791,10 +3862,11 @@ def self_test():
     sample_five["highlights"] = sample_five["highlights"] + ["The release continues the company's broader AI strategy."]
     rendered_five = dynamic_rich_html(sample_five)
     assert rendered_five.count("• ") == 5
-    assert rendered.index("#AI") > rendered.index("WHAT'S NEXT")
+    assert rendered.index("#AI") > rendered.index("BOTTOM LINE")
     assert "<footer><b>Source:</b>" in rendered
     import inspect
     assert "@TheTechNewsroom" in inspect.getsource(branded_card)
+    assert "display_source_name" in inspect.getsource(branded_card)
     assert likely_same_event("AI platform launches major tool", "AI platform launches major tool")
     assert canonical_url("https://www.example.com/story/?utm_source=x") == "example.com/story"
     assert "ai" in extract_entities("AI platform launches a major update")

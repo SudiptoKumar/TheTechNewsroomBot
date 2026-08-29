@@ -161,9 +161,10 @@ Headline
 • Major fact
 • Major fact
 ... (3-5 dynamically)
-## WHY IT MATTERS
-2-4 sentences of editorial context.
-[WHAT'S NEXT appears inside a collapsed-by-default block]
+**THE CONTEXT** (collapsed by default)
+2-4 sentences of background explaining how the story came about.
+**BOTTOM LINE** (collapsed by default)
+1 sentence takeaway, the "so what" of the story.
 #hashtag #hashtag #hashtag
 **Source:** [Publication]
 ```
@@ -173,12 +174,12 @@ Headline
 - Headline: 6–14 words, accurate and newspaper-style.
 - Summary: exactly one complete sentence.
 - Highlights: 3–5 concise factual points, chosen dynamically without padding or repetition.
-- Why It Matters: 2–4 complete sentences of editorial context.
-- What's Next: 1–2 sentences on what readers should watch, rendered as a collapsed Telegram expandable blockquote.
+- The Context: 2–4 complete sentences of relevant background, rendered as a collapsed Telegram expandable blockquote.
+- Bottom Line: exactly 1 complete sentence stating the central takeaway, rendered as a collapsed Telegram expandable blockquote.
 
 ## Image Pipeline
 
-The bot extracts an article image where possible, resizes/crops it to the 1200×675 card format, adds the `@TheTechNewsroom` brand chip, and falls back to a generated tech-news card when no usable source image exists.
+The bot extracts an article image where possible, resizes/crops it to the 1200×675 card format, adds the publication/source name at the bottom-left, and keeps the `@TheTechNewsroom` brand chip at the bottom-right. The same source + channel branding is applied to the fallback tech-news card when no usable source image exists.
 
 ## Verification
 
