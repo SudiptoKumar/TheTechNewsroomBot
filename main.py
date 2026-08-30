@@ -2870,6 +2870,91 @@ def display_source_name(source):
     return raw
 
 
+
+def download_source_logo(source, article_url):
+    """Best-effort source publication logo/icon for missing-image fallback cards."""
+    domain = urlparse(safe_text(article_url)).netloc.lower().removeprefix("www.")
+    if not domain:
+        return None
+
+    candidates = [
+        f"https://{domain}/favicon.ico",
+        f"https://icons.duckduckgo.com/ip3/{quote(domain)}.ico",
+        f"https://www.google.com/s2/favicons?domain={quote(domain)}&sz=256",
+    ]
+
+    for logo_url in candidates:
+        try:
+            response = session.get(
+                logo_url,
+                headers={"User-Agent": HEADERS.get("User-Agent", "Mozilla/5.0")},
+                timeout=8,
+            )
+            if response.status_code >= 400 or not response.content:
+                continue
+            if not response.headers.get("Content-Type", "").lower().startswith("image/"):
+                continue
+
+            logo = Image.open(BytesIO(response.content))
+            logo.load()
+            if logo.width < 24 or logo.height < 24:
+                continue
+            return logo.convert("RGBA")
+        except Exception:
+            continue
+
+    return None
+
+
+def draw_fallback_source_badge(image, source, article_url):
+    """Draw source logo centered; fall back to bold source text if logo fails."""
+    draw = ImageDraw.Draw(image)
+    logo = download_source_logo(source, article_url)
+
+    if logo is not None:
+        max_w, max_h = 250, 180
+        scale = min(max_w / logo.width, max_h / logo.height, 1.0)
+        if scale < 1:
+            logo = logo.resize(
+                (max(24, int(logo.width * scale)), max(24, int(logo.height * scale))),
+                Image.Resampling.LANCZOS,
+            )
+
+        # Neutral backing improves visibility for transparent logos and very small favicons.
+        cx, cy = 600, 305
+        pad = 28
+        box = (
+            cx - logo.width // 2 - pad,
+            cy - logo.height // 2 - pad,
+            cx + logo.width // 2 + pad,
+            cy + logo.height // 2 + pad,
+        )
+        draw.rounded_rectangle(box, radius=24, fill=(255, 255, 255, 240))
+        image.alpha_composite(
+            logo,
+            (cx - logo.width // 2, cy - logo.height // 2),
+        )
+        return
+
+    font_path = find_font(bold=True)
+    if font_path:
+        font = ImageFont.truetype(font_path, 58)
+    else:
+        font = ImageFont.load_default()
+
+    label = display_source_name(source)
+    bbox = draw.textbbox((0, 0), label, font=font)
+    x = (1200 - (bbox[2] - bbox[0])) / 2
+    y = 305 - (bbox[3] - bbox[1]) / 2
+    # Strong center fallback when no logo is available.
+    draw.rounded_rectangle(
+        (x - 26, y - 18, x + (bbox[2] - bbox[0]) + 26, y + (bbox[3] - bbox[1]) + 18),
+        radius=18,
+        fill=(15, 20, 26, 220),
+    )
+    draw.text((x, y), label, font=font, fill=(255, 255, 255, 255))
+
+
 def branded_card(
     photo,
     source,
@@ -2967,38 +3052,23 @@ def prepare_image(
 
     if image is None:
         image = Image.new(
-            "RGB",
+            "RGBA",
             (1200, 675),
-            (28, 38, 50),
+            (28, 38, 50, 255),
+        )
+        draw_fallback_source_badge(
+            image,
+            story.get("source", "Source"),
+            story.get("url", ""),
         )
 
-        font_path = find_font(
-            bold=True
-        )
-
-        if font_path:
-            font = ImageFont.truetype(
-                font_path,
-                48,
-            )
-        else:
-            font = ImageFont.load_default()
-
-        draw = ImageDraw.Draw(
-            image
-        )
-
-        draw.text(
-            (50, 50),
-            "Tech News",
-            font=font,
-            fill="white",
-        )
-
+    # Normal photos keep the existing channel branding. Missing-photo fallback
+    # deliberately has NO upper-left/channel branding; it gets the source logo
+    # (or centered source name) and the channel chip only at bottom-right.
     branded = branded_card(
         image,
         story.get("source", "Source"),
-        source_position="center" if image_was_missing else "left",
+        source_position="left" if not image_was_missing else "none",
     )
 
     path = f"/tmp/news_{index}.jpg"
@@ -3789,6 +3859,8 @@ def self_test():
     assert "@TheTechNewsroom" in inspect.getsource(branded_card)
     assert "display_source_name" not in inspect.getsource(branded_card)
     assert "source_text =" not in inspect.getsource(branded_card)
+    assert "download_source_logo" in inspect.getsource(prepare_image)
+    assert 'source_position="none"' in inspect.getsource(prepare_image)
     assert likely_same_event("AI platform launches major tool", "AI platform launches major tool")
     assert canonical_url("https://www.example.com/story/?utm_source=x") == "example.com/story"
     assert "ai" in extract_entities("AI platform launches a major update")
