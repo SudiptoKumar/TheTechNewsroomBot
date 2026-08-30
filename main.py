@@ -2870,99 +2870,131 @@ def display_source_name(source):
     return raw
 
 
+def download_source_logo(source, article_url=""):
+    """Best-effort source logo/icon retrieval for image-less fallback cards.
 
-def download_source_logo(source, article_url):
-    """Best-effort source publication logo/icon for missing-image fallback cards."""
-    domain = urlparse(safe_text(article_url)).netloc.lower().removeprefix("www.")
-    if not domain:
-        return None
+    We deliberately keep this separate from article-image download because
+    publication icons are often small square images and should not be rejected
+    by the article-photo dimension checks.
+    """
+    source = display_source_name(source)
+    candidates = []
 
-    candidates = [
-        f"https://{domain}/favicon.ico",
-        f"https://icons.duckduckgo.com/ip3/{quote(domain)}.ico",
-        f"https://www.google.com/s2/favicons?domain={quote(domain)}&sz=256",
-    ]
+    # Derive the publication homepage from the article URL first.
+    host = (urlparse(article_url).hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
 
-    for logo_url in candidates:
+    if not host:
+        host_map = {
+            "TechCrunch": "techcrunch.com",
+            "The Verge": "theverge.com",
+            "WIRED": "wired.com",
+            "Ars Technica": "arstechnica.com",
+            "Engadget": "engadget.com",
+            "MIT Technology Review": "technologyreview.com",
+            "Hacker News": "news.ycombinator.com",
+            "VentureBeat": "venturebeat.com",
+            "Techmeme": "techmeme.com",
+            "TechRadar": "techradar.com",
+            "ZDNET": "zdnet.com",
+            "9to5Google": "9to5google.com",
+            "WABetaInfo": "wabetainfo.com",
+            "TestingCatalog": "testingcatalog.com",
+            "AI News": "artificialintelligence-news.com",
+            "Unite.AI": "unite.ai",
+            "The Decoder": "the-decoder.com",
+            "SiliconANGLE": "siliconangle.com",
+            "Android Authority": "androidauthority.com",
+            "MacRumors": "macrumors.com",
+        }
+        host = host_map.get(source, "")
+
+    if host:
+        homepage = f"https://{host}/"
         try:
             response = session.get(
-                logo_url,
-                headers={"User-Agent": HEADERS.get("User-Agent", "Mozilla/5.0")},
-                timeout=8,
+                homepage,
+                headers=HEADERS,
+                timeout=15,
             )
-            if response.status_code >= 400 or not response.content:
-                continue
-            if not response.headers.get("Content-Type", "").lower().startswith("image/"):
-                continue
+            if response.ok:
+                soup = BeautifulSoup(response.text, "html.parser")
+                for link in soup.find_all("link"):
+                    rel = " ".join(link.get("rel") or []).lower()
+                    href = (link.get("href") or "").strip()
+                    if href and (
+                        "icon" in rel
+                        or "apple-touch-icon" in rel
+                    ):
+                        candidates.append(urljoin(homepage, href))
+        except Exception as exc:
+            logger.info("Source logo page lookup failed for %s: %s", source, exc)
 
+        # Google's favicon endpoint is a useful fallback when the publication
+        # does not expose its icon cleanly in HTML.
+        candidates.append(
+            f"https://www.google.com/s2/favicons?domain={quote(host)}&sz=256"
+        )
+
+    seen = set()
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        try:
+            response = session.get(
+                candidate,
+                headers=HEADERS,
+                timeout=15,
+            )
+            if response.status_code >= 400:
+                continue
+            content_type = response.headers.get("content-type", "").lower()
+            if content_type and not content_type.startswith("image/"):
+                continue
+            if len(response.content) > 4_000_000:
+                continue
             logo = Image.open(BytesIO(response.content))
             logo.load()
             if logo.width < 24 or logo.height < 24:
                 continue
             return logo.convert("RGBA")
-        except Exception:
-            continue
+        except Exception as exc:
+            logger.info("Source logo download failed for %s: %s", source, exc)
 
     return None
 
 
-def draw_fallback_source_badge(image, source, article_url):
-    """Draw source logo centered; fall back to bold source text if logo fails."""
-    draw = ImageDraw.Draw(image)
-    logo = download_source_logo(source, article_url)
-
-    if logo is not None:
-        max_w, max_h = 250, 180
-        scale = min(max_w / logo.width, max_h / logo.height, 1.0)
-        if scale < 1:
-            logo = logo.resize(
-                (max(24, int(logo.width * scale)), max(24, int(logo.height * scale))),
-                Image.Resampling.LANCZOS,
-            )
-
-        # Neutral backing improves visibility for transparent logos and very small favicons.
-        cx, cy = 600, 305
-        pad = 28
-        box = (
-            cx - logo.width // 2 - pad,
-            cy - logo.height // 2 - pad,
-            cx + logo.width // 2 + pad,
-            cy + logo.height // 2 + pad,
-        )
-        draw.rounded_rectangle(box, radius=24, fill=(255, 255, 255, 240))
-        image.alpha_composite(
-            logo,
-            (cx - logo.width // 2, cy - logo.height // 2),
-        )
-        return
-
-    font_path = find_font(bold=True)
-    if font_path:
-        font = ImageFont.truetype(font_path, 58)
-    else:
-        font = ImageFont.load_default()
-
-    label = display_source_name(source)
-    bbox = draw.textbbox((0, 0), label, font=font)
-    x = (1200 - (bbox[2] - bbox[0])) / 2
-    y = 305 - (bbox[3] - bbox[1]) / 2
-    # Strong center fallback when no logo is available.
-    draw.rounded_rectangle(
-        (x - 26, y - 18, x + (bbox[2] - bbox[0]) + 26, y + (bbox[3] - bbox[1]) + 18),
-        radius=18,
-        fill=(15, 20, 26, 220),
-    )
-    draw.text((x, y), label, font=font, fill=(255, 255, 255, 255))
+def draw_channel_chip(draw, font, base_size=(1200, 675)):
+    """Draw the standard bottom-right @TheTechNewsroom chip."""
+    width, height = base_size
+    channel_text = "@TheTechNewsroom"
+    bbox = draw.textbbox((0, 0), channel_text, font=font)
+    padding_x = 18
+    padding_y = 9
+    margin_x = 28
+    margin_y = 24
+    chip_w = (bbox[2] - bbox[0]) + padding_x * 2
+    chip_h = (bbox[3] - bbox[1]) + padding_y * 2
+    x2 = width - margin_x
+    y2 = height - margin_y
+    x1 = x2 - chip_w
+    y1 = y2 - chip_h
+    return (x1, y1, x2, y2, padding_x, padding_y, channel_text)
 
 
 def branded_card(
     photo,
     source,
     source_position="left",
+    source_logo=None,
 ):
-    """Crop the image and add only the channel chip.
+    """Crop the image and add the channel chip.
 
-    The publication/source name is not rendered on the photo.
+    Normal article photos receive only the @TheTechNewsroom chip. On an
+    image-less fallback card, ``source_logo`` may be supplied and is centered.
+    If no logo is available, the source name is centered instead.
     """
     base = crop_cover(
         photo
@@ -2996,25 +3028,18 @@ def branded_card(
             font_path,
             24,
         )
+        source_font = ImageFont.truetype(
+            font_path,
+            50,
+        )
     else:
         font = ImageFont.load_default()
+        source_font = font
 
-    channel_text = "@TheTechNewsroom"
-    bbox = draw.textbbox(
-        (0, 0),
-        channel_text,
-        font=font,
+    x1, y1, x2, y2, padding_x, padding_y, channel_text = draw_channel_chip(
+        draw,
+        font,
     )
-    padding_x = 18
-    padding_y = 9
-    margin_x = 28
-    margin_y = 24
-    chip_w = (bbox[2] - bbox[0]) + padding_x * 2
-    chip_h = (bbox[3] - bbox[1]) + padding_y * 2
-    x2 = 1200 - margin_x
-    y2 = 675 - margin_y
-    x1 = x2 - chip_w
-    y1 = y2 - chip_h
 
     draw.rounded_rectangle(
         (x1, y1, x2, y2),
@@ -3028,12 +3053,77 @@ def branded_card(
         fill=chip_fg,
     )
 
+    if source_position == "center":
+        label = display_source_name(source)
+        if source_logo is not None:
+            logo = source_logo.copy().convert("RGBA")
+            max_w, max_h = 360, 180
+            scale = min(
+                max_w / max(1, logo.width),
+                max_h / max(1, logo.height),
+                1.0,
+            )
+            if scale < 1.0:
+                logo = logo.resize(
+                    (max(1, int(logo.width * scale)), max(1, int(logo.height * scale))),
+                    Image.Resampling.LANCZOS,
+                )
+            center_x = base.width // 2
+            center_y = base.height // 2
+            paste_x = center_x - logo.width // 2
+            paste_y = center_y - logo.height // 2
+            # Subtle light/dark backing so logos stay readable on photos.
+            backing = Image.new(
+                "RGBA",
+                (logo.width + 48, logo.height + 36),
+                (255, 255, 255, 232),
+            )
+            bx = center_x - backing.width // 2
+            by = center_y - backing.height // 2
+            draw.rounded_rectangle(
+                (bx, by, bx + backing.width, by + backing.height),
+                radius=22,
+                fill=(255, 255, 255, 232),
+            )
+            overlay.alpha_composite(
+                backing,
+                (bx, by),
+            )
+            overlay.alpha_composite(
+                logo,
+                (paste_x, paste_y),
+            )
+        else:
+            bbox = draw.textbbox((0, 0), label, font=source_font)
+            text_w = bbox[2] - bbox[0]
+            text_h = bbox[3] - bbox[1]
+            center_x = base.width // 2
+            center_y = base.height // 2
+            box_pad_x = 28
+            box_pad_y = 18
+            bx1 = center_x - text_w // 2 - box_pad_x
+            by1 = center_y - text_h // 2 - box_pad_y
+            bx2 = center_x + text_w // 2 + box_pad_x
+            by2 = center_y + text_h // 2 + box_pad_y
+            draw.rounded_rectangle(
+                (bx1, by1, bx2, by2),
+                radius=22,
+                fill=(18, 22, 28, 220),
+            )
+            draw.text(
+                (center_x - text_w // 2, center_y - text_h // 2 - 2),
+                label,
+                font=source_font,
+                fill=(255, 255, 255, 255),
+            )
+
     return Image.alpha_composite(
         base,
         overlay,
     ).convert(
         "RGB"
     )
+
 
 
 def prepare_image(
@@ -3050,25 +3140,47 @@ def prepare_image(
 
     image_was_missing = image is None
 
+    source_logo = None
+
     if image is None:
-        image = Image.new(
-            "RGBA",
-            (1200, 675),
-            (28, 38, 50, 255),
-        )
-        draw_fallback_source_badge(
-            image,
+        source_logo = download_source_logo(
             story.get("source", "Source"),
             story.get("url", ""),
         )
+        image = Image.new(
+            "RGB",
+            (1200, 675),
+            (28, 38, 50),
+        )
 
-    # Normal photos keep the existing channel branding. Missing-photo fallback
-    # deliberately has NO upper-left/channel branding; it gets the source logo
-    # (or centered source name) and the channel chip only at bottom-right.
+        font_path = find_font(
+            bold=True
+        )
+
+        if font_path:
+            font = ImageFont.truetype(
+                font_path,
+                48,
+            )
+        else:
+            font = ImageFont.load_default()
+
+        draw = ImageDraw.Draw(
+            image
+        )
+
+        draw.text(
+            (50, 50),
+            "Tech News",
+            font=font,
+            fill="white",
+        )
+
     branded = branded_card(
         image,
         story.get("source", "Source"),
-        source_position="left" if not image_was_missing else "none",
+        source_position="center" if image_was_missing else "left",
+        source_logo=source_logo,
     )
 
     path = f"/tmp/news_{index}.jpg"
@@ -3857,10 +3969,7 @@ def self_test():
     assert "<footer><b>Source:</b>" in rendered
     import inspect
     assert "@TheTechNewsroom" in inspect.getsource(branded_card)
-    assert "display_source_name" not in inspect.getsource(branded_card)
-    assert "source_text =" not in inspect.getsource(branded_card)
     assert "download_source_logo" in inspect.getsource(prepare_image)
-    assert 'source_position="none"' in inspect.getsource(prepare_image)
     assert likely_same_event("AI platform launches major tool", "AI platform launches major tool")
     assert canonical_url("https://www.example.com/story/?utm_source=x") == "example.com/story"
     assert "ai" in extract_entities("AI platform launches a major update")
@@ -3872,7 +3981,7 @@ def self_test():
     assert clustered[0]["event_cluster_size"] >= 1
     assert canonical_topic("ChatGPT") == "AI Models and Products"
     assert "#AI" in category_hashtags(sample) and "#Tech" in category_hashtags(sample)
-    logger.info("TheTechNewsroom V1 self-test passed.")
+    logger.info("TheTechNewsroom self-test passed.")
 
 
 def visible_text_for_test(
