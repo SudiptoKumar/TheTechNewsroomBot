@@ -512,6 +512,12 @@ def trim_source_text(text, limit):
 def clean_generated_text(text):
     text = safe_text(text)
 
+    # The model is instructed to return plain text, but may occasionally
+    # leak Markdown emphasis/code markers into JSON fields. Strip those
+    # markers before any Telegram Rich HTML rendering so they never appear
+    # literally in published posts.
+    text = re.sub(r"[\*_`]+", "", text)
+
     # Prevent visible truncation artifacts.
     text = re.sub(r"\.{2,}", ".", text)
     text = text.replace("\u2026", "")
@@ -2141,7 +2147,7 @@ PUBLIC CONTENT:
 - No "..." or "…".
 - Never end a headline or highlight with an ellipsis.
 - No hashtags in generated fields.
-- No Markdown or HTML in JSON fields.
+- No Markdown or HTML in JSON fields. Do not use **bold**, __bold__, `code`, or other Markdown markers.
 
 BOLD TERMS:
 - Include important company names, products, AI models, platforms, figures, prices, dates,
@@ -2452,12 +2458,12 @@ def derive_bold_terms(
     story,
 ):
     terms = [
-        safe_text(x)
+        clean_generated_text(x)
         for x in story.get(
             "bold_terms",
             [],
         )
-        if safe_text(x)
+        if clean_generated_text(x)
     ]
 
     combined = " ".join(
@@ -3948,6 +3954,16 @@ def self_test():
     }
     rendered = dynamic_rich_html(sample)
     assert complete_text("A normal sentence.")
+    markdown_sample = dict(sample)
+    markdown_sample["summary"] = "A **major AI** launch adds `new` capabilities."
+    markdown_sample["highlights"] = ["The **platform** expands AI tools.", "Users get __broader__ access.", "The `release` is available now."]
+    markdown_sample["bold_terms"] = ["**platform**", "__AI__", "`release`"]
+    markdown_rendered = dynamic_rich_html(markdown_sample)
+    assert "**" not in markdown_rendered
+    assert "__" not in markdown_rendered
+    assert "`" not in markdown_rendered
+    assert "<b>platform</b>" in markdown_rendered
+    assert "<b>AI</b>" in markdown_rendered
     assert complete_text("An incomplete sentence—") is False
     assert "THE CONTEXT" in rendered
     assert "BOTTOM LINE" in rendered
