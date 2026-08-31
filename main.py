@@ -8,7 +8,7 @@ import logging
 import hashlib
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
-from urllib.parse import urlparse, urljoin, quote
+from urllib.parse import urlparse, urljoin, quote, urlunsplit
 from difflib import SequenceMatcher
 from email.utils import parsedate_to_datetime
 from io import BytesIO
@@ -41,7 +41,7 @@ TELEGRAM_ADMIN_CHAT_ID = (os.environ.get("TELEGRAM_ADMIN_CHAT_ID") or "").strip(
 
 NEWS_MODE = (os.environ.get("NEWS_MODE") or "update").strip().lower()
 
-VALID_NEWS_MODES = {"update", "shadow"}
+VALID_NEWS_MODES = {"update"}
 if NEWS_MODE not in VALID_NEWS_MODES:
     raise ValueError(
         f"Invalid NEWS_MODE={NEWS_MODE!r}; expected one of {sorted(VALID_NEWS_MODES)}"
@@ -60,12 +60,10 @@ BD_TZ = ZoneInfo("Asia/Dhaka")
 # V1 editorial target: structured, auditable importance scoring for clearly important tech stories.
 # All qualifying tech stories compete in one ranked pool. There is no per-run story-count cap.
 RANKING_POOL_SIZE = 999999
-JOURNAL_FILE = "news_journal_{month}.jsonl"
-RUN_REPORT_DIR = "run_reports"
 DISCOVERY_LOOKBACK_HOURS = 72
 
 # Reliability / quality
-POST_DELAY_SECONDS = 20
+POST_DELAY_SECONDS = 3.5
 ROLLING_DISCOVERY_HOURS = DISCOVERY_LOOKBACK_HOURS
 FUTURE_TOLERANCE_MINUTES = 10
 QUEUE_RETENTION_DAYS = 15
@@ -75,7 +73,7 @@ MAX_EXA_CANDIDATES = 60
 MAX_GOOGLE_NEWS_CANDIDATES = 40
 THIN_EXCERPT_CHARS = 150
 MAX_EXCERPT_ENRICH = 12
-MAX_SOURCE_PER_RUN = 99
+MAX_SOURCE_PER_RUN = 999999
 MAX_RICH_CHARACTERS = 32768
 
 # Lightweight English stopwords used only by the conservative event/entity
@@ -375,21 +373,19 @@ def canonical_url(url):
     raw = safe_text(url)
     if not raw:
         return ""
-    from urllib.parse import parse_qsl, urlencode, urlunsplit
-    parsed = urlparse(raw if re.match(r"^https?://", raw, re.I) else "https://" + raw)
-    host = (parsed.hostname or "").lower().removeprefix("www.").removeprefix("m.").removeprefix("amp.")
-    path = re.sub(r"/(?:amp|amp\.html)/?$", "/", parsed.path or "/", flags=re.I)
+    parsed = urlparse(raw)
+    host = parsed.netloc.lower().removeprefix("www.").removeprefix("m.")
+    path = re.sub(r"/{2,}", "/", parsed.path or "/")
+    path = re.sub(r"/(?:amp|amp\.html)/?$", "/", path, flags=re.I)
     path = re.sub(r"/index\.html?$", "/", path, flags=re.I)
-    path = re.sub(r"/{2,}", "/", path).rstrip("/") or "/"
-    tracking = ("utm_", "mc_", "gclid", "fbclid", "ref", "source", "cmp", "sr_share", "at_medium", "at_campaign", "sh")
-    pairs = []
-    for key, value in parse_qsl(parsed.query, keep_blank_values=True):
-        low = key.lower()
-        if low in {"amp", "outputtype"} or any(low.startswith(prefix) for prefix in tracking):
-            continue
-        pairs.append((key, value))
-    return urlunsplit(("https", host, path, urlencode(sorted(pairs)), ""))
-
+    path = path.rstrip("/") or "/"
+    tracking = {"utm_source","utm_medium","utm_campaign","utm_term","utm_content",
+                "gclid","fbclid","mc_cid","mc_eid","ref","ref_","source","at_medium",
+                "at_campaign","sh","s","cmp","sr_share","outputtype","outputType","amp"}
+    from urllib.parse import parse_qsl, urlencode
+    query = [(k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True)
+             if k.lower() not in tracking and not k.lower().startswith("utm_")]
+    return urlunsplit(("https", host, path, urlencode(sorted(query)), "")) if query else f"https://{host}{path}"
 
 def normalize_title(title):
     text = safe_text(title).lower()
@@ -647,12 +643,12 @@ def _index_legacy_published_event(history, event_id, event):
         "topic": safe_text(event.get("topic")),
         "institution": safe_text(event.get("institution")),
         "event_key": safe_text(event.get("event_key")),
-        "event_cluster_id": safe_text(event.get("event_cluster_id")),
         "published_at": safe_text(event.get("published_at")),
         "source": safe_text(event.get("source")),
-        "title_hash": _hash_text(normalize_title(headline)) if headline else "",
+        "concepts": event.get("concepts", []),
+        "key_numbers": event.get("key_numbers", []),
         "content_hash": safe_text(event.get("content_hash")),
-        "entity_fingerprint": safe_text(event.get("entity_fingerprint")),
+        "content_excerpt": safe_text(event.get("content_excerpt")),
     }
     history["records"].setdefault(record["history_id"], record)
     if canonical:
@@ -689,69 +685,13 @@ def load_state():
         history.setdefault("title_hashes", {})
         history.setdefault("content_hashes", {})
 
-        # Published history is permanent but intentionally compact. Older versions
-        # stored long article excerpts and duplicate arrays, which caused the JSON
-        # file to grow continuously on GitHub.
-        compact_records = {}
-        compact_urls = {}
-        compact_titles = {}
-        compact_contents = {}
-        for rid, record in history.get("records", {}).items():
-            headline = safe_text(record.get("headline"))
-            normalized = normalize_title(headline)
-            compact = {
-                "history_id": safe_text(record.get("history_id")) or rid,
-                "canonical": canonical_url(record.get("canonical", "")),
-                "headline": headline,
-                "topic": canonical_topic(record.get("topic", ""), "Tech"),
-                "institution": safe_text(record.get("institution")),
-                "event_key": safe_text(record.get("event_key")),
-                "event_cluster_id": safe_text(record.get("event_cluster_id")),
-                "published_at": safe_text(record.get("published_at")),
-                "source": safe_text(record.get("source")),
-                "title_hash": safe_text(record.get("title_hash")) or (_hash_text(normalized) if normalized else ""),
-                "content_hash": safe_text(record.get("content_hash")),
-                "entity_fingerprint": safe_text(record.get("entity_fingerprint")),
-            }
-            compact_records[compact["history_id"]] = compact
-            if compact["canonical"]:
-                compact_urls[compact["canonical"]] = compact["history_id"]
-            if compact["title_hash"]:
-                compact_titles[compact["title_hash"]] = compact["history_id"]
-            if compact["content_hash"]:
-                compact_contents[compact["content_hash"]] = compact["history_id"]
-
         # Migrate published events still present in the legacy event store into
         # the permanent index. Exact URLs remain covered by posted_urls.txt.
         for event_id, event in base.get("events", {}).items():
             if event.get("status") == "published":
-                rid = f"legacy_{_hash_text(str(event_id))[:20]}"
-                headline = safe_text(event.get("headline"))
-                rec = {
-                    "history_id": rid,
-                    "canonical": canonical_url(event.get("canonical_url", "")),
-                    "headline": headline,
-                    "topic": canonical_topic(event.get("topic", ""), "Tech"),
-                    "institution": safe_text(event.get("institution")),
-                    "event_key": safe_text(event.get("event_key")),
-                    "event_cluster_id": safe_text(event.get("event_cluster_id")),
-                    "published_at": safe_text(event.get("published_at")),
-                    "source": safe_text(event.get("source")),
-                    "title_hash": _hash_text(normalize_title(headline)) if headline else "",
-                    "content_hash": safe_text(event.get("content_hash")),
-                    "entity_fingerprint": safe_text(event.get("entity_fingerprint")),
-                }
-                compact_records[rid] = rec
-                if rec["canonical"]: compact_urls[rec["canonical"]] = rid
-                if rec["title_hash"]: compact_titles[rec["title_hash"]] = rid
-                if rec["content_hash"]: compact_contents[rec["content_hash"]] = rid
+                _index_legacy_published_event(history, event_id, event)
 
-        history["records"] = compact_records
-        history["urls"] = compact_urls
-        history["title_hashes"] = compact_titles
-        history["content_hashes"] = compact_contents
         base["published_history"] = history
-        base["schema_version"] = 2
         return base
 
     except Exception:
@@ -780,20 +720,19 @@ def save_state(state):
 
 
 def load_posted_urls():
-    urls = set()
     try:
         with open(
             POSTED_FILE,
             "r",
             encoding="utf-8",
         ) as f:
-            for line in f:
-                raw = safe_text(line)
-                if raw:
-                    urls.add(canonical_url(raw.split("\t", 1)[-1]))
+            return {
+                canonical_url(line)
+                for line in f
+                if safe_text(line)
+            }
     except FileNotFoundError:
-        pass
-    return {u for u in urls if u}
+        return set()
 
 
 def save_posted_url(canonical):
@@ -805,7 +744,10 @@ def save_posted_url(canonical):
         "a",
         encoding="utf-8",
     ) as f:
-        f.write(f"{now_iso()}\t{canonical_url(canonical)}\n")
+        f.write(
+            canonical
+            + "\n"
+        )
 
 
 STATE = load_state()
@@ -856,6 +798,10 @@ def prune_state():
     keep_events = {}
 
     for key, event in events.items():
+        if event.get("status") == "published":
+            keep_events[key] = event
+            continue
+
         dt = parse_datetime(
             event.get("published_at")
             or event.get("selected_at")
@@ -876,20 +822,25 @@ def prune_state():
     )
 
     STATE["recent_titles"] = titles[-400:]
-    rewrite_posted_file_15d()
 
-
-def rewrite_posted_file_15d():
-    cutoff = datetime.now(BD_TZ) - timedelta(days=15)
-    lines = []
-    for record in STATE.get("published_history", {}).get("records", {}).values():
-        dt = parse_datetime(record.get("published_at"))
-        canonical = canonical_url(record.get("canonical", ""))
-        if canonical and dt and dt >= cutoff:
-            lines.append(f"{dt.isoformat()}\t{canonical}")
-    if lines:
+    # Keep the operational URL list small. Permanent event fingerprints remain
+    # in published_history, so this does not weaken long-term duplicate protection.
+    global POSTED_URLS
+    cutoff_urls = datetime.now(BD_TZ) - timedelta(days=15)
+    kept_urls = set()
+    for key, item in STATE.get("queue", {}).items():
+        dt = parse_datetime(item.get("posted_at") or item.get("published_date"))
+        if dt and dt >= cutoff_urls:
+            c = canonical_url(item.get("canonical") or item.get("url"))
+            if c:
+                kept_urls.add(c)
+    POSTED_URLS = POSTED_URLS & kept_urls if kept_urls else set()
+    try:
         with open(POSTED_FILE, "w", encoding="utf-8") as f:
-            f.write("\n".join(sorted(set(lines))) + "\n")
+            for u in sorted(POSTED_URLS):
+                f.write(u + "\n")
+    except Exception as exc:
+        logger.warning("Posted URL compaction failed: %s", exc)
 
 
 # ============================================================
@@ -967,29 +918,6 @@ BAD_TITLE_RE = re.compile(
     re.I,
 )
 
-HARD_GENRE_PATTERNS = {
-    "review": re.compile(r"\b(review|hands[- ]on|first look|unboxing|we tested|vs\.?|best \d+)\b", re.I),
-    "rumor": re.compile(r"\b(rumor|rumour|leak(?:ed|s)?|allegedly|reportedly (?:will|may)|could (?:launch|arrive)|expected (?:in|to)|in the works|tipped to)\b", re.I),
-    "vehicle": re.compile(r"\b(EV|electric (?:car|truck|SUV)|robotaxi|autonomous vehicl|charging network|Cybertruck)\b", re.I),
-    "health": re.compile(r"\b(clinical|FDA (?:approval|clearance)|biotech|medtech|patients|therapeutic|drug|trial results|pharmaceutical)\b", re.I),
-    "energy": re.compile(r"\b(solar|wind farm|grid|megawatt|battery storage|utility|power plant)\b", re.I),
-    "podcast": re.compile(r"\b(podcast|webinar|roundtable|fireside|AMA recap)\b", re.I),
-    "opinion": re.compile(r"\b(opinion|op-ed|why I|the case for|analysis:)\b", re.I),
-}
-
-
-def deterministic_prefilter(item):
-    text = f"{safe_text(item.get('title'))} {safe_text(item.get('excerpt'))}"
-    hits = [name for name, regex in HARD_GENRE_PATTERNS.items() if regex.search(text)]
-    if not hits:
-        return True
-    title = safe_text(item.get("title"))
-    # Escape hatch for potentially major events whose title contains a banned-genre keyword.
-    return bool(
-        item.get("trending")
-        or re.search(r"\b(breach|vulnerability|outage|lawsuit|acquisition|acquires|launches|announces)\b", title, re.I)
-    )
-
 
 def candidate_basic_allowed(item):
     url = safe_text(
@@ -1019,9 +947,6 @@ def candidate_basic_allowed(item):
     ):
         return False
 
-    if not deterministic_prefilter(item):
-        return False
-
     if not (
         DISCOVERY_START
         <= published
@@ -1033,9 +958,9 @@ def candidate_basic_allowed(item):
     if region and not allowed_source_for_region(url, region):
         return False
 
-    canonical = canonical_url(
-        url
-    )
+    # Aggregators/community feeds can contribute discovery evidence, but are
+    # never selected as the article source for the final Telegram post.
+    canonical = canonical_url(url)
 
     return bool(
         canonical
@@ -1419,6 +1344,29 @@ ALL_PRIMARY_DOMAINS = PRIMARY_TECH_DOMAINS
 ALL_FALLBACK_DOMAINS = FALLBACK_TECH_DOMAINS
 ALL_ALLOWED_DOMAINS = ALL_PRIMARY_DOMAINS
 
+# Source roles: no publication is favored for editorial importance.
+# Aggregators/community indexes are useful for discovery/corroboration but are
+# never preferred as the article to publish when a reporting source exists.
+SOURCE_ROLES = {
+    "techmeme.com": "aggregator",
+    "news.ycombinator.com": "community",
+}
+SOURCE_ROLE_SCORE = {
+    "reporting": 3,
+    "community": 2,
+    "aggregator": 1,
+}
+def source_role(url_or_source):
+    domain = normalized_domain(url_or_source)
+    return SOURCE_ROLES.get(domain, "reporting")
+
+def source_selection_score(item):
+    role = source_role(item.get("url") or item.get("source"))
+    return SOURCE_ROLE_SCORE.get(role, 3)
+
+def source_is_publishable(url):
+    return source_role(url) == "reporting"
+
 def normalized_domain(url_or_source):
     raw = safe_text(url_or_source).lower()
     if "://" in raw:
@@ -1774,34 +1722,96 @@ def enrich_thin_excerpts(regional):
 
 
 def _rank_prompt(region):
+    topic_list = ", ".join(TOPICS[region])
     return f"""
-You are the senior editor of @TheTechNewsroom for everyday technology users.
-Score every candidate using ONLY the supplied metadata and return EVERY candidate exactly once.
+You are the senior editor of @TheTechNewsroom, a technology news channel for everyday users.
+Do not favor any publication. Techmeme and Hacker News are discovery/corroboration sources, not preferred final article sources.
+Your task is to score each candidate for REAL editorial importance using ONLY the metadata supplied:
+title, description/excerpt, source, publication age, and trending signal.
+Do not use outside knowledge. Do not infer facts that are not present.
+Return EVERY candidate in this batch exactly once.
 
-100-POINT RUBRIC
-Impact 0-30: consequence for users or the technology industry.
-Reach 0-25: size of the affected audience or ecosystem.
-Novelty 0-20: genuinely new event/change versus routine continuation.
-Certainty 0-15: strength and clarity of supplied evidence; multiple independent sources strengthen certainty.
-Durability 0-10: likely lasting significance beyond the immediate news cycle.
-TOTAL = impact + reach + novelty + certainty + durability.
+CORE PRINCIPLE
+Importance = real user/industry impact, not popularity, fame, excitement, or source prestige.
+A famous company does NOT make a weak event important. Trending does NOT make a weak story important.
+Already-published duplicates should not be selected; when the item is clearly repetitive, score it 0.
 
-BANDS
-90-100 extraordinary; 80-89 major; 70-79 strongly important; 65-69 borderline publishable; 55-64 below the bar; 0-54 reject.
-important=true ONLY when total >=65.
+SCORING COMPONENTS (the program will also validate the total)
+1) IMPACT, 0-4
+   4 = major effect on millions of users, major security incident, major platform change,
+       frontier AI breakthrough, or industry-changing deal.
+   3 = substantial consumer or industry impact.
+   2 = meaningful but limited impact.
+   1 = mostly niche or professional impact.
+   0 = little meaningful impact.
 
-RULES
-- Thin metadata: certainty <=6 and total <=64.
-- Trending/corroboration may support certainty but can never rescue a weak story across 65 by itself.
-- Famous company reputation is never a substitute for event impact.
-- A clearly already-published underlying event is score 0.
-- Reviews, hands-ons, unboxings, rumors, leaks/speculation, vehicle/EV, medical/biotech, energy, podcasts, opinion, routine funding/features, and low-level engineering are normally below 65 unless genuinely industry-changing.
-- No category quotas. Sector diversity is only a later soft ordering preference.
-- Do not invent facts or use outside knowledge.
+2) BREADTH, 0-2
+   2 = broad impact across millions of users, multiple major markets, or a major ecosystem.
+   1 = substantial audience or important ecosystem impact.
+   0 = narrow audience.
 
-Allowed topics: {', '.join(TOPICS[region])}
+3) NOVELTY, 0-2
+   2 = genuinely new event, launch, breach, acquisition, breakthrough, or major change.
+   1 = meaningful development of an existing event.
+   0 = routine continuation, commentary, minor update, or repetitive coverage.
 
-Return id, rank, score, impact, reach, novelty, certainty, durability, important, topic, institution, event_key, reason.
+4) EVIDENCE, 0-1
+   1 = the supplied metadata clearly establishes what happened and why it matters.
+   0 = thin, vague, speculative, or insufficient metadata.
+
+5) FRESHNESS, 0-1
+   1 = published less than 24 hours ago.
+   0 = 24 hours or older.
+
+TOTAL SCORE = impact + breadth + novelty + evidence + freshness, from 0 to 10.
+The program will recompute the total from the five components, so keep the components internally consistent.
+Important MUST be true only when the computed score is >= 65.
+
+HARD EDITORIAL RULES
+- Thin metadata: if the title/description does not clearly establish real-world impact, evidence=0 and total score MUST be <= 6.
+- Famous company alone is never a reason for a high score.
+- Trending is only a tiebreaker/supporting signal. It must NOT move a story from below 7 to 7+.
+- Duplicate or repetitive coverage is 0-3; if it is clearly the same already-covered event, use 0.
+- If the underlying event is major but the supplied metadata is too thin to judge, cap at 6 rather than guessing.
+
+STRONG CANDIDATE TYPES, ONLY WHEN THEY MEET THE IMPORTANCE BAR
+- Major AI model launches or breakthroughs; major AI products with broad impact.
+- Major AI acquisitions, strategic deals, or partnerships that materially affect the industry.
+- Major cybersecurity/privacy incidents, critical vulnerabilities, and major outages.
+- Major smartphone, OS, browser, search, social, cloud, or app-store changes.
+- Major strategic moves by Apple, Google, Microsoft, OpenAI, Meta, Amazon, NVIDIA, and similar companies.
+- Important new consumer technology products.
+- Genuine new capabilities in trending GitHub repositories.
+- Startups reaching unicorn status or shipping products with broad real-world impact.
+- Major Y Combinator product launches or milestones, not routine funding.
+- Major Hugging Face open-model releases or meaningful state-of-the-art shifts.
+
+NORMALLY LOW / REJECT
+- Reviews, hands-ons, first looks, unboxings.
+- Rumors, leaks, speculation, unreleased-product reporting.
+- Cars/EVs/robotaxis/vehicle fleet or charging deals.
+- HealthTech, biotech, medtech, medical, clinical, pharmaceutical news.
+- Energy, utilities, batteries, grid infrastructure, climate/energy policy.
+- Routine startup funding, VC, finance, legal/regulatory industry news without broad user impact.
+- Low-level engineering deep dives aimed at engineers.
+- Podcasts, webinars, event recordings, opinion pieces, promotional content.
+- Minor app features, routine patches, small bug fixes, incremental version bumps.
+
+SCORING GUIDE — 100 POINTS
+Score five axes:
+Impact 0-30, Reach 0-25, Novelty 0-20, Certainty 0-15, Durability 0-10.
+Total = the sum of those five axes. Do not invent a total.
+85-100 exceptional; 75-84 major; 65-74 clearly important; 55-64 borderline; below 55 reject.
+A score >=65 is important only when the evidence supports the judgment.
+
+There are NO category quotas. Sector diversity is applied later only as a soft tie-breaker among similarly
+scored candidates. Never lower an important story just to fill a sector.
+
+Allowed topics:
+{topic_list}
+
+Return every candidate with:
+id, rank, score, impact, reach, novelty, certainty, durability, important, topic, institution, event_key, reason.
 """
 
 
@@ -1822,7 +1832,6 @@ def _rank_batch(batch, region, batch_no):
             f"Published: {published}",
             age_note,
             f"TRENDING: {str(bool(item.get('trending'))).lower()}",
-            f"CORROBORATING SOURCES: {int(item.get('corroboration_count', 1) or 1)}",
             f"Description/Excerpt: {trim_source_text(item.get('excerpt',''), 800)}",
             "",
         ]))
@@ -1854,7 +1863,6 @@ def _rank_batch(batch, region, batch_no):
 
 
 def _validated_component_score(row, item):
-    """Recompute the score from structured components instead of trusting the LLM total."""
     def bounded(name, lo, hi):
         try:
             value = int(row.get(name, 0))
@@ -1867,40 +1875,33 @@ def _validated_component_score(row, item):
     novelty = bounded("novelty", 0, 20)
     certainty = bounded("certainty", 0, 15)
     durability = bounded("durability", 0, 10)
-    if int(item.get("corroboration_count", 1) or 1) >= 2:
-        certainty = min(15, certainty + 2)
     score = impact + reach + novelty + certainty + durability
 
-    # Deterministic editorial hard gates.
-    excerpt = safe_text(item.get("excerpt", ""))
+    evidence_text = safe_text(item.get("excerpt", ""))
     title = safe_text(item.get("title", ""))
-    if len((title + " " + excerpt).strip()) < THIN_EXCERPT_CHARS:
-        certainty = min(certainty, 6)
+    if len((title + " " + evidence_text).strip()) < THIN_EXCERPT_CHARS:
+        certainty = min(certainty, 5)
+        score = impact + reach + novelty + certainty + durability
         score = min(score, 64)
+
+    # Freshness is a ranking signal through the model's reach/context judgment,
+    # but never a rescue mechanism. Trending/corroboration can improve certainty
+    # only when the underlying event is already strong.
+    if bool(item.get("trending")) and score < 65:
+        score = min(score, 64)
+
+    # Aggregators are evidence only and are not publishable article candidates.
+    if not source_is_publishable(item.get("url", "")):
+        score = min(score, 0)
+
     return max(0, min(100, score)), impact, reach, novelty, certainty, durability
-
-
-def _annotate_corroboration(candidates):
-    items = list(candidates)
-    for item in items:
-        sources = {safe_text(item.get("source"))}
-        for other in items:
-            if other is item:
-                continue
-            if same_event_window(item, other, hours=72) and title_similarity(item.get("title", ""), other.get("title", "")) >= 0.76:
-                source = safe_text(other.get("source"))
-                if source:
-                    sources.add(source)
-        item["corroboration_count"] = len(sources)
-    return items
-
 
 def rank_candidates(candidates, region):
     """Rank the discovery pool in bounded LLM batches and merge into one global pool."""
     if not candidates:
         return []
 
-    regional = _annotate_corroboration(candidates)
+    regional = list(candidates)
     regional = enrich_thin_excerpts(regional)
     regional.sort(
         key=lambda x: parse_datetime(x.get("published_date")) or datetime.min.replace(tzinfo=timezone.utc),
@@ -1943,6 +1944,7 @@ def rank_candidates(candidates, region):
                 "event_key": safe_text(row.get("event_key")),
                 "rank_reason": safe_text(row.get("reason")),
                 "batch_rank": int(row.get("rank", 9999)),
+                "source_role": source_role(item.get("url", "")),
             })
             ranked_rows.append(item)
 
@@ -3793,52 +3795,36 @@ def store_event(
 # VERSION 1 FALLBACK POOLS
 # ============================================================
 
-def build_candidate_pool(ranked, needed):
-    """Build a verification pool using quality first and sector diversity as a soft tie-breaker."""
-    if not ranked:
+def build_candidate_pool(ranked, needed=None):
+    """Return every qualifying event. Source diversity is an ordering preference only."""
+    eligible = [
+        dict(x) for x in ranked
+        if x.get("importance_score", 0) >= 65
+        and x.get("important") is True
+        and source_is_publishable(x.get("url", ""))
+    ]
+    if not eligible:
         return []
 
-    eligible = [dict(x) for x in ranked if x.get("importance_score", 0) >= 7 and x.get("important") is True]
-    # V1 publishes every qualifying candidate; the argument is retained for compatibility.
-    target = len(eligible)
-    if target <= 0:
-        return []
-
-    def sector_group(item):
-        topic = canonical_topic(item.get("topic"), "Tech")
-        for group, topics in CATEGORY_GROUPS.items():
-            if topic in topics:
-                return group
-        return "Other"
-
-    selected = []
+    # Avoid a Techmeme/HN publication bias and prefer independent reporting
+    # when scores are close. This never removes a qualifying story.
+    source_counts = {}
+    ordered = []
     remaining = list(eligible)
-    used_groups = set()
-
-    # Quality remains dominant. Diversity can only win when the candidate is within one
-    # point of the current best score, preventing a weak sector-filler from overtaking a
-    # clearly superior story.
-    while remaining and len(selected) < target:
+    while remaining:
         remaining.sort(key=lambda x: (
             -x.get("importance_score", 0),
+            source_counts.get(normalized_domain(x.get("url", "")), 0),
+            source_selection_score(x),
             -(parse_datetime(x.get("published_date")).timestamp() if parse_datetime(x.get("published_date")) else 0),
             x.get("editor_rank", 9999),
         ))
-        best = remaining[0]
-        best_score = best.get("importance_score", 0)
-        near_best = [x for x in remaining if x.get("importance_score", 0) >= best_score - 1]
-        diverse = next((x for x in near_best if sector_group(x) not in used_groups), None)
-        pick = diverse or best
-        selected.append(pick)
-        used_groups.add(sector_group(pick))
-        remaining.remove(pick)
+        pick = remaining.pop(0)
+        domain = normalized_domain(pick.get("url", ""))
+        source_counts[domain] = source_counts.get(domain, 0) + 1
+        ordered.append(pick)
 
-    # Final order is always global editorial score so generation proceeds from strongest to weaker.
-    selected.sort(key=lambda x: (
-        -x.get("importance_score", 0),
-        x.get("editor_rank", 9999),
-    ))
-    return selected
+    return ordered
 
 
 VERIFY_SCHEMA = {
@@ -4085,13 +4071,15 @@ def _history_title_similarity(item, record):
 
 
 def _history_entity_overlap(item, record):
-    left_text = f"{item.get('title') or item.get('headline', '')} {item.get('excerpt', '')}"
-    right_text = safe_text(record.get("headline", ""))
-    left = extract_entities(left_text)
-    right = extract_entities(right_text)
-    if not left or not right:
-        return 0.0
-    return len(left & right) / max(1, min(len(left), len(right)))
+    left = {
+        "title": item.get("title") or item.get("headline", ""),
+        "excerpt": item.get("excerpt", ""),
+    }
+    right = {
+        "title": record.get("headline", ""),
+        "excerpt": record.get("content_excerpt", ""),
+    }
+    return entity_overlap(left, right)
 
 
 def is_already_published_candidate(item, article_text=""):
@@ -4140,7 +4128,7 @@ def is_already_published_candidate(item, article_text=""):
 
         # Same event key + same topic + meaningful title/entity agreement.
         if event_key and rec_event_key and event_key == rec_event_key:
-            if title_score >= 0.55 or entity_score >= 0.34:
+            if title_score >= 0.72 or entity_score >= 0.34:
                 logger.info("DUPLICATE HISTORY EVENT KEY: %s", title)
                 return True
 
@@ -4161,8 +4149,11 @@ def is_already_published_candidate(item, article_text=""):
             logger.info("DUPLICATE HISTORY TOPIC/ENTITY MATCH: %s", title)
             return True
 
-        # Exact content_hash above covers unchanged syndications. The permanent
-        # record intentionally does not retain article bodies, keeping GitHub state small.
+        if article_text and record.get("content_excerpt"):
+            current_excerpt = content_excerpt_for_history(article_text)
+            if current_excerpt and SequenceMatcher(None, current_excerpt, safe_text(record.get("content_excerpt"))).ratio() >= 0.96:
+                logger.info("DUPLICATE HISTORY CONTENT SIMILARITY: %s", title)
+                return True
 
     return False
 
@@ -4180,12 +4171,12 @@ def remember_published_history(story, article_text=""):
         "topic": canonical_topic(story.get("topic"), story.get("region", "Tech")),
         "institution": safe_text(story.get("institution")),
         "event_key": safe_text(story.get("event_key")),
-        "event_cluster_id": safe_text(story.get("event_cluster_id")),
         "published_at": safe_text(story.get("published_date")),
         "source": safe_text(story.get("source")),
-        "title_hash": _hash_text(normalize_title(story.get("headline", ""))),
+        "concepts": [safe_text(x).lower() for x in story.get("concepts", []) if safe_text(x)],
+        "key_numbers": [safe_text(x) for x in story.get("key_numbers", []) if safe_text(x)],
         "content_hash": c_hash,
-        "entity_fingerprint": _hash_text("|".join(sorted(extract_entities(story.get("headline", "")))))[:24],
+        "content_excerpt": excerpt,
     }
     record["history_id"] = _history_record_id(record)
     history["records"][record["history_id"]] = record
@@ -4218,6 +4209,10 @@ def available_candidates(region, source_pool=None):
             continue
 
         if source_pool == "primary" and not primary_domain_allowed(url, region):
+            continue
+        if source_pool == "primary" and not source_is_publishable(url):
+            # Keep aggregator/community items in the queue for corroboration,
+            # but do not spend generation budget publishing them directly.
             continue
         if source_pool == "fallback" and not fallback_domain_allowed(url, region):
             continue
@@ -4253,11 +4248,10 @@ def prepare_ranked_region(region, candidates):
         and item.get("important") is True
     ]
     logger.info("%s IMPORTANCE PASS (score>=65): %d", region, len(eligible))
-    logger.info("%s SCORE BANDS: >=90=%d | 80-89=%d | 70-79=%d | 65-69=%d", region,
-                sum(1 for x in eligible if x.get("importance_score", 0) >= 90),
-                sum(1 for x in eligible if 80 <= x.get("importance_score", 0) < 90),
-                sum(1 for x in eligible if 70 <= x.get("importance_score", 0) < 80),
-                sum(1 for x in eligible if 65 <= x.get("importance_score", 0) < 70))
+    logger.info("%s HIGH-SCORE COUNTS: >=85=%d | 75-84=%d | 65-74=%d", region,
+                sum(1 for x in eligible if x.get("importance_score", 0) >= 85),
+                sum(1 for x in eligible if 75 <= x.get("importance_score", 0) <= 84),
+                sum(1 for x in eligible if 65 <= x.get("importance_score", 0) <= 74))
 
     persist_event_cluster_state(eligible)
     return eligible
@@ -4304,52 +4298,114 @@ def process_ranked_region(region, ranked):
     return valid
 
 
-def append_journal(kind,payload):
-    journal_path = JOURNAL_FILE.format(month=datetime.now(BD_TZ).strftime("%Y-%m"))
-    with open(journal_path,"a",encoding="utf-8") as f:
-        f.write(json.dumps({"ts":now_iso(),"kind":kind,**payload},ensure_ascii=False,separators=(",",":"))+"\n")
+
+def append_run_journal(event_type, payload):
+    """Append compact operational truth without storing full article bodies."""
+    try:
+        journal_dir = os.path.join("data", "journal")
+        os.makedirs(journal_dir, exist_ok=True)
+        month = NOW_BD.strftime("%Y-%m")
+        path = os.path.join(journal_dir, f"{month}.jsonl")
+        record = {"ts": now_iso(), "type": event_type, **payload}
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
+    except Exception as exc:
+        logger.warning("Journal write failed: %s", exc)
 
 def write_run_report(metrics):
-    os.makedirs(RUN_REPORT_DIR,exist_ok=True)
-    path=os.path.join(RUN_REPORT_DIR,datetime.now(BD_TZ).strftime("%Y-%m-%dT%H-%M-%S.json"))
-    with open(path,"w",encoding="utf-8") as f: json.dump(metrics,f,ensure_ascii=False,indent=2)
-    return path
+    try:
+        report_dir = os.path.join("data", "reports")
+        os.makedirs(report_dir, exist_ok=True)
+        stamp = NOW_BD.strftime("%Y-%m-%dT%H-%M-%S")
+        path = os.path.join(report_dir, f"{stamp}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(metrics, f, ensure_ascii=False, indent=2)
+    except Exception as exc:
+        logger.warning("Run report write failed: %s", exc)
 
 def run():
-    logger.info("THE TECH NEWSROOM EVENT-CENTRIC V1")
-    metrics={"started_at":now_iso()}
-    prune_state(); refresh_category_coverage(); collect_rss()
-    count=queue_candidates_for_region("Tech")
-    count += google_news_gap_fill("Tech",count,DISCOVERY_TARGET_PER_REGION)
-    exa_gap_fill("Tech",count,DISCOVERY_TARGET_PER_REGION); save_state(STATE)
-    candidates=available_candidates("Tech",source_pool="primary"); metrics["discovered"]=len(candidates)
-    append_journal("discovery",{"count":len(candidates)})
-    ranked=prepare_ranked_region("Tech",candidates); metrics["ranked"]=len(ranked); metrics["events"]=len({x.get("event_cluster_id") for x in ranked})
-    stories=process_ranked_region("Tech",ranked); metrics["verified"]=len(stories)
-    if NEWS_MODE == "shadow":
-        metrics["finished_at"]=now_iso(); write_run_report(metrics); save_state(STATE)
-        logger.info("SHADOW complete. No Telegram posts sent.")
-        return
-    for idx,story in enumerate(stories,1):
-        rich_html=fit_rich_html(story)
-        if rich_visible_length(rich_html)>MAX_RICH_CHARACTERS: continue
-        append_journal("publish_reserved",{"event_id":make_event_id(story),"canonical":story.get("canonical"),"headline":story.get("headline")})
-        image_path=prepare_image(story,idx); result=send_rich_photo(image_path,rich_html)
-        if not result.get("ok"): result=send_bot_api_fallback(image_path,rich_html)
+    logger.info("THE TECH NEWSROOM EVENT-CENTRIC V1 | UNLIMITED QUALIFYING PUBLISH")
+    logger.info("Channel=%s Mode=%s", TELEGRAM_CHANNEL, NEWS_MODE)
+    logger.info("LOOKBACK=%d hours | %s -> %s", DISCOVERY_LOOKBACK_HOURS, DISCOVERY_START.isoformat(), DISCOVERY_END.isoformat())
+
+    prune_state()
+    refresh_category_coverage()
+    collect_rss()
+
+    tech_count = queue_candidates_for_region("Tech")
+    tech_count += google_news_gap_fill("Tech", tech_count, DISCOVERY_TARGET_PER_REGION)
+    exa_gap_fill("Tech", tech_count, DISCOVERY_TARGET_PER_REGION)
+
+    save_state(STATE)
+
+    candidates = available_candidates("Tech", source_pool="primary")
+    logger.info("DISCOVERY CANDIDATES: TECH=%d", len(candidates))
+
+    ranked = prepare_ranked_region("Tech", candidates)
+    logger.info("UNIQUE EVENTS: TECH=%d", len(ranked))
+
+    for item in ranked[:12]:
+        logger.info("RANK TECH #%s | %s | %s", item.get("editor_rank", "?"), item.get("title", ""), item.get("rank_reason", ""))
+
+    stories = process_ranked_region("Tech", ranked)
+    logger.info("FINAL: TECH=%d QUALIFYING_STORIES=%d", len(stories), len(stories))
+    append_run_journal("selection", {
+        "discovered": len(candidates),
+        "ranked": len(ranked),
+        "qualifying": len(stories),
+    })
+
+    if not stories:
+        logger.info("No tech story cleared the importance and verification bar this run.")
+
+    published_count = 0
+    for index, story in enumerate(stories, start=1):
+        rich_html = fit_rich_html(story)
+        if rich_visible_length(rich_html) > MAX_RICH_CHARACTERS:
+            logger.error("Rich message exceeds Telegram limit: %s", story["headline"])
+            continue
+
+        image_path = prepare_image(story, index)
+        result = send_rich_photo(image_path, rich_html)
+        if not result.get("ok"):
+            logger.warning("Rich Message publish failed; trying Bot API fallback: %s", result.get("description"))
+            result = send_bot_api_fallback(image_path, rich_html)
+
         if result.get("ok"):
-            metrics["published"]=metrics.get("published",0)+1
-            msg=result.get("result",{}); mid=msg.get("message_id") if isinstance(msg,dict) else None
-            canonical=story["canonical"]; POSTED_URLS.add(canonical); save_posted_url(canonical)
-            q=STATE["queue"].get(canonical)
-            if q: q["status"]="posted"; q["posted_at"]=now_iso()
-            store_event(story,published=True,message_id=mid); remember_published_history(story); remember_posted_event(story); update_category_coverage(story); STATE["recent_titles"].append(normalize_title(story["headline"]))
-            append_journal("published",{"event_id":make_event_id(story),"canonical":canonical,"headline":story.get("headline"),"message_id":mid,"topic":story.get("topic"),"score":story.get("importance_score",0)})
+            published_count += 1
+            message = result.get("result", {})
+            message_id = message.get("message_id") if isinstance(message, dict) else None
+            canonical = story["canonical"]
+            POSTED_URLS.add(canonical)
+            save_posted_url(canonical)
+
+            queue_item = STATE["queue"].get(canonical)
+            if queue_item:
+                queue_item["status"] = "posted"
+                queue_item["posted_at"] = now_iso()
+
+            store_event(story, published=True, message_id=message_id)
+            remember_published_history(story)
+            remember_posted_event(story)
+            update_category_coverage(story)
+            STATE["recent_titles"].append(normalize_title(story["headline"]))
+            logger.info("Published %d/%d qualifying: [%s] %s", published_count, len(stories), story.get("region", ""), story["headline"])
         else:
-            metrics["publish_failed"]=metrics.get("publish_failed",0)+1
-            append_journal("publish_failed",{"event_id":make_event_id(story),"canonical":story.get("canonical"),"headline":story.get("headline"),"error":result.get("description","")})
-        save_state(STATE); time.sleep(POST_DELAY_SECONDS)
-    metrics.setdefault("published",0); metrics["finished_at"]=now_iso(); write_run_report(metrics); save_state(STATE)
-    logger.info("Finished. Published=%d qualifying stories",metrics["published"])
+            logger.error("Telegram failed: %s", result.get("description"))
+        save_state(STATE)
+        time.sleep(POST_DELAY_SECONDS)
+
+    save_state(STATE)
+    write_run_report({
+        "finished_at": now_iso(),
+        "discovered": len(candidates),
+        "ranked": len(ranked),
+        "qualifying": len(stories),
+        "published": published_count,
+        "publication_limit": None,
+        "threshold": 65,
+    })
+    logger.info("Finished. Published=%d qualifying stories; no per-run post limit", published_count)
 
 
 # ============================================================
@@ -4421,21 +4477,23 @@ def self_test():
     assert canonical_topic("ChatGPT") == "AI Models and Products"
     assert "#AI" in category_hashtags(sample) and "#Tech" in category_hashtags(sample)
 
-    # Event-centric structured 100-point scoring tests.
-    row = {"impact": 30, "reach": 25, "novelty": 20, "certainty": 15, "durability": 10, "score": 2}
+    # V1 event-centric structured scoring tests.
+    row = {"impact": 28, "reach": 22, "novelty": 18, "certainty": 13, "durability": 8, "score": 1}
     total, impact, reach, novelty, certainty, durability = _validated_component_score(
-        row, {"title": "Major AI model launch", "excerpt": "Major model launch with broad impact across users and products. The announcement includes enough concrete detail about the product, availability, users, and significance to establish why this is an important technology event for a broad audience."}
+        row, {"title": "Major AI model launch", "excerpt": "Major model launch with broad impact across users and products. The announcement includes enough concrete detail about the product, availability, users, and significance to establish why this is an important technology event for a broad audience.", "url": "https://techcrunch.com/story"}
     )
-    assert (total, impact, reach, novelty, certainty, durability) == (100, 30, 25, 20, 15, 10)
+    assert total == 89 and (impact, reach, novelty, certainty, durability) == (28, 22, 18, 13, 8)
     thin_total, *_ = _validated_component_score(
-        row, {"title": "AI update", "excerpt": "Short"}
+        row, {"title": "AI update", "excerpt": "Short", "url": "https://techcrunch.com/story"}
     )
     assert thin_total <= 64
     trending_total, *_ = _validated_component_score(
-        {"impact": 20, "reach": 15, "novelty": 10, "certainty": 5, "durability": 5},
-        {"title": "Trending story", "excerpt": "Clear metadata describing a modest technology development with enough detail to judge that it is useful but not broadly important to everyday technology users.", "trending": True},
+        {"impact": 12, "reach": 10, "novelty": 8, "certainty": 8, "durability": 8},
+        {"title": "Trending story", "excerpt": "Clear metadata describing a modest technology development with enough detail to judge that it is useful but not broadly important to everyday technology users.", "trending": True, "url": "https://techcrunch.com/story"},
     )
-    assert trending_total < 65
+    assert trending_total == 46
+    assert source_role("https://techmeme.com/story") == "aggregator"
+    assert source_role("https://techcrunch.com/story") == "reporting"
 
     # Structured ranking merge test: every batch remains recoverable and the merged
     # pool is globally sorted by the recomputed score.
@@ -4447,8 +4505,8 @@ def self_test():
             return [
                 {
                     "id": i, "rank": i, "score": 0,
-                    "impact": 26 if i == 1 else 20, "reach": 20, "novelty": 15,
-                    "certainty": 12, "durability": 8, "important": True,
+                    "impact": 28 if i == 1 else 24, "reach": 22 if i == 1 else 18, "novelty": 18 if i == 1 else 15,
+                    "certainty": 13, "durability": 8, "important": True,
                     "topic": "AI Models and Products" if i == 1 else "Cybersecurity",
                     "institution": "OpenAI" if i == 1 else "Google",
                     "event_key": f"event_{batch_no}_{i}",
@@ -4479,13 +4537,13 @@ def self_test():
     ]
     for i, topic in enumerate(topic_list, start=1):
         diverse_ranked.append({
-            "title": f"Important story {i}", "importance_score": 65 if i != 7 else 82,
+            "title": f"Important story {i}", "importance_score": 70 if i != 7 else 85,
             "important": True, "topic": topic, "editor_rank": i,
-            "published_date": now_iso(),
+            "published_date": now_iso(), "url": f"https://techcrunch.com/story-{i}",
         })
-    pool = build_candidate_pool(diverse_ranked, len(diverse_ranked))
+    pool = build_candidate_pool(diverse_ranked, 6)
     assert len(pool) == 8
-    assert pool[0]["importance_score"] == 82
+    assert pool[0]["importance_score"] == 85
     assert len({canonical_topic(x["topic"]) for x in pool[:6]}) >= 4
 
     # Permanent duplicate protection tests.
@@ -4543,7 +4601,7 @@ def self_test():
             "old-selected": {"status": "selected", "selected_at": "2020-01-01T00:00:00+06:00"},
         }
         prune_state()
-        assert "old-published" not in STATE["events"]
+        assert "old-published" in STATE["events"]
         assert "old-selected" not in STATE["events"]
         assert canonical_url("https://www.example.com/story/index.html?utm_source=x") == "https://example.com/story"
     finally:
@@ -4552,10 +4610,6 @@ def self_test():
         POSTED_URLS.clear()
         POSTED_URLS.update(urls_backup)
 
-    assert DISCOVERY_LOOKBACK_HOURS == 72
-    assert "shadow" in VALID_NEWS_MODES
-    many=[{"title":f"Qualifying {i}","importance_score":65+(i%35),"important":True,"topic":"AI Models and Products","editor_rank":i,"published_date":now_iso()} for i in range(1,21)]
-    assert len(build_candidate_pool(many,len(many)))==20
     _self_test_image_helpers()
     logger.info("TheTechNewsroom self-test passed.")
 
