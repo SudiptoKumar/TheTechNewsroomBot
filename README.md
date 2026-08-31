@@ -58,24 +58,25 @@ RSS is attempted first. Google News RSS and Exa provide gap-fill discovery using
 
 ## Editorial Ranking
 
-Every candidate is scored 0–10 based on actual significance, not headline excitement, using metadata only (title, description, source, age, trending flag) — never outside knowledge or assumed context.
+Every candidate is ranked in bounded LLM batches, then merged into one global pool. The final score is recomputed from five structured dimensions rather than trusting a single model-generated number:
+
+- Impact: 0-4
+- Breadth: 0-2
+- Novelty: 0-2
+- Evidence: 0-1
+- Freshness: 0-1
+
+Total score = 0-10. Stories score 7 or higher only when the structured total meets the publication bar. Thin metadata is capped at 6. Trending is a supporting signal and cannot lift a sub-7 story into publication. Sector diversity is a soft tie-breaker among similarly scored candidates, never a quota.
 
 ```text
-9-10  Exceptional importance (rare — reserved for a handful of stories a week)
-7-8   Clearly important
-4-6   Interesting but usually not publishable (default band)
-0-3   Low-value, repetitive, promotional, rumor/speculation, or niche
+9-10  Extraordinary and rare
+8     Strong, clearly important
+7     Important and publishable
+6     Interesting but below the publication bar
+4-5   Niche or moderate value
+0-3   Weak, repetitive, promotional, speculative, or excluded
 ```
 
-**9–10 — Exceptional importance.** Major frontier AI launches or breakthroughs; AI products affecting millions of users; massive breaches or critical widely-exploitable vulnerabilities; major outages affecting widely-used services (including partial/ongoing degradation of major AI providers like Claude, ChatGPT, Gemini); platform changes affecting hundreds of millions of users; industry-changing deals; major moves from companies like Apple, Google, Microsoft, OpenAI, Meta, or Amazon.
-
-**7–8 — Clearly important.** Significant Android/iOS/Windows/Linux/browser updates; important AI model or product updates; major privacy or security changes; important new consumer products; significant cybersecurity incidents; major product launches; large user-base milestones; funding or M&A activity big enough to move a whole industry.
-
-**4–6 — Interesting but not important.** The default band. Minor product announcements, small feature additions, routine software updates, developer-only changes, niche stories, a trending GitHub repo or benchmark with no larger story, or a funding/YC item with no major product attached. These are normally marked **not important**.
-
-**0–3 — Low importance.** Minor updates and bug fixes, clickbait, unsupported rumors, opinion/promotional content, duplicate coverage, or stories with no meaningful technological impact.
-
-A story is publishable only when its score is **≥ 7**. When in doubt between two scores, choose the lower one — skipping a weak story is safer than publishing one.
 
 ## Content That Should Not Be Published
 
@@ -102,8 +103,12 @@ These normally score 0–3 unless the underlying event is genuinely industry-cha
 
 ## Duplicate & Already-Published Handling
 
-- A "Recently published" list of prior headlines is checked on every run. Follow-up coverage of the same event, product launch, company milestone, or outage — even from a different source, with different numbers or wording — is marked **not important**.
-- When multiple items describe the same event, judge the underlying significance rather than treating repetition itself as importance, and prefer the most authoritative or original source.
+- Exact canonical URLs are stored permanently in `posted_urls.txt`; common tracking/query variants, `www`, `/amp`, and `index.html` variants normalize to the same URL identity.
+- `news_state.json` maintains a permanent `published_history` index containing published URL, normalized headline, topic, institution, event key, article-content hash, and a content excerpt. Published history is never retention-pruned.
+- Duplicate protection runs before ranking, before generation, and after generation. It checks exact URL, exact normalized title, article-content hash, posted event-cluster ID, and conservative cross-source topic/event/entity similarity.
+- Same-topic coverage is not rejected merely because it shares a category. It is rejected when the stored evidence indicates the same underlying story/event.
+- Follow-up coverage may publish when it is materially a new event, even when it concerns the same company/topic.
+- When multiple items describe the same event, prefer the most authoritative or original source.
 
 ## Recency & Trend Signals
 
@@ -216,9 +221,13 @@ TELEGRAM_CHANNEL=@TheTechNewsroom
 NEWS_MODE=update
 ```
 
+## Publishing Rule (V1)
+
+There is no fixed number of posts per run. Publish every genuinely important, verified, non-duplicate story with an editorial score of 7 or higher. If 3 qualify, publish 3. If 20 qualify, publish 20. Never publish weak stories solely to reach a target, and never suppress a qualifying story solely because a post-count limit was reached.
+
 ## Local Checks
 
-The editorial ranker processes candidates in batches of 15 to prevent structured-output truncation. The run keeps a recovery pool of up to 24 important candidates and tries candidates sequentially until six verified stories are produced or the eligible pool is exhausted. Six is a maximum, not a quota.
+The editorial ranker processes candidates in batches of 15 to prevent structured-output truncation. Every qualifying story with score >= 7 competes in one global ranked pool. There is no per-run story-count cap: the bot attempts every qualifying, non-duplicate story and publishes every one that passes generation and verification. Sector diversity is a soft tie-breaker only.
 
 Compile:
 
