@@ -1,59 +1,120 @@
-# TheTechNewsroom V1
+# TheTechNewsroom V3
 
-> Event-centric technology news intelligence for Telegram, powered by GitHub Actions, Exa, and Cerebras.
+> Automated tech news intelligence for Telegram, powered by GitHub Actions, Exa, and Cerebras, with batched editorial ranking and soft sector diversity.
 
-TheTechNewsroom discovers, normalizes, filters, groups, ranks, verifies, and publishes important technology news to **@TheTechNewsroom**. The system treats the underlying **event** as the editorial unit rather than treating every article as a separate story.
+TheTechNewsroom discovers, filters, ranks, verifies, and publishes the most important technology stories to the Telegram channel **@TheTechNewsroom**. All eligible stories compete in one ranked pool, and the bot publishes the strongest available stories rather than forcing weak category quotas.
 
 ## Editorial Mission
 
-The audience is everyday technology users. The channel prioritizes technology news with real and direct consumer or broad industry impact:
+The channel is written for **everyday technology users**, not engineers or industry insiders. It prioritizes stories with real, direct impact on people's lives:
 
-- AI models, products, launches, breakthroughs, and major strategic moves
-- Major smartphone, operating-system, browser, search, social, cloud, and app-store changes
-- Major cybersecurity and privacy incidents
-- Major outages affecting widely used technology services
-- Major technology-company strategic moves
-- Important new consumer technology products
-- Major technology-industry shifts
-- Genuine new capabilities in trending GitHub repositories
-- Startups reaching unicorn status or shipping products with broad real-world impact
-- Major Y Combinator product launches or milestones
-- Major Hugging Face open-model releases or meaningful state-of-the-art shifts
+- Everyday consumer technology and how it changes
+- AI models, tools, and products
+- Smartphone and OS news: releases, updates, platform-level changes (not reviews, hands-on impressions, or rumors)
+- Major online platforms (search, social, cloud, app stores)
+- Cybersecurity and privacy incidents
+- Major technology companies and their strategic moves
+- Genuinely important new products
+- Major shifts in the technology industry
+- Trending GitHub repositories (via trendshift.io), when the repo is a real new tool or capability, not routine repo churn
+- Start-ups that reach unicorn status or ship something with broad real-world impact
+- Y Combinator companies with a major product launch or milestone, not routine seed/pre-seed funding
+- Hugging Face: major open-model releases or leaderboard shifts that meaningfully move the state of the art
 
-Category membership does not automatically make a story important. The same significance standard applies across all categories.
+A topic on this list makes a story **eligible** for coverage — it does not by itself make the story **important**. The same significance bar applies across every category above, including AI and cybersecurity.
 
-## Source Policy
+## Ranked Story Pool
 
-The configured technology publication universe includes:
+Every run scores all eligible candidates and publishes only the ones that clear the importance bar (score ≥ 7). Stories compete in a single ranked pool rather than fixed per-category quotas. The publisher uses a soft sector-diversity preference so strong runs can cover different areas such as AI, cybersecurity, platforms, GitHub, startups, and major industry moves, but it never lowers the importance bar or invents a sector quota.
 
-- TechCrunch
-- The Verge
-- WIRED
-- Ars Technica
-- Engadget
-- MIT Technology Review
-- Hacker News
-- VentureBeat
-- Techmeme
-- TechRadar
-- ZDNET
-- 9to5Google
-- WABetaInfo
-- TestingCatalog
-- AI News
-- Unite.AI
-- The Decoder
-- SiliconANGLE
-- Android Authority
-- MacRumors
+## Primary Source Universe
 
-**Techmeme and Hacker News are discovery/corroboration sources, not preferred final article sources.** The bot does not favor a publication simply because it is in the source list. When multiple sources cover the same event, the system prefers the strongest available reporting source while retaining corroboration information.
+The primary source universe contains 20 tech publications:
 
-Google News RSS and Exa are used for gap-fill discovery within the allowed technology source universe.
+| Source | Domain |
+|---|---|
+| TechCrunch | `techcrunch.com` |
+| The Verge | `theverge.com` |
+| WIRED | `wired.com` |
+| Ars Technica | `arstechnica.com` |
+| Engadget | `engadget.com` |
+| MIT Technology Review | `technologyreview.com` |
+| Hacker News | `news.ycombinator.com` |
+| VentureBeat | `venturebeat.com` |
+| Techmeme | `techmeme.com` |
+| TechRadar | `techradar.com` |
+| ZDNET | `zdnet.com` |
+| 9to5Google | `9to5google.com` |
+| WABetaInfo | `wabetainfo.com` |
+| TestingCatalog | `testingcatalog.com` |
+| AI News | `artificialintelligence-news.com` |
+| Unite.AI | `unite.ai` |
+| The Decoder | `the-decoder.com` |
+| SiliconANGLE | `siliconangle.com` |
+| Android Authority | `androidauthority.com` |
+| MacRumors | `macrumors.com` |
 
-## Discovery
+RSS is attempted first. Google News RSS and Exa provide gap-fill discovery using the same allowed tech domains.
 
-The current discovery flow is:
+## Editorial Ranking
+
+Every candidate is scored 0–10 based on actual significance, not headline excitement, using metadata only (title, description, source, age, trending flag) — never outside knowledge or assumed context.
+
+```text
+9-10  Exceptional importance (rare — reserved for a handful of stories a week)
+7-8   Clearly important
+4-6   Interesting but usually not publishable (default band)
+0-3   Low-value, repetitive, promotional, rumor/speculation, or niche
+```
+
+**9–10 — Exceptional importance.** Major frontier AI launches or breakthroughs; AI products affecting millions of users; massive breaches or critical widely-exploitable vulnerabilities; major outages affecting widely-used services (including partial/ongoing degradation of major AI providers like Claude, ChatGPT, Gemini); platform changes affecting hundreds of millions of users; industry-changing deals; major moves from companies like Apple, Google, Microsoft, OpenAI, Meta, or Amazon.
+
+**7–8 — Clearly important.** Significant Android/iOS/Windows/Linux/browser updates; important AI model or product updates; major privacy or security changes; important new consumer products; significant cybersecurity incidents; major product launches; large user-base milestones; funding or M&A activity big enough to move a whole industry.
+
+**4–6 — Interesting but not important.** The default band. Minor product announcements, small feature additions, routine software updates, developer-only changes, niche stories, a trending GitHub repo or benchmark with no larger story, or a funding/YC item with no major product attached. These are normally marked **not important**.
+
+**0–3 — Low importance.** Minor updates and bug fixes, clickbait, unsupported rumors, opinion/promotional content, duplicate coverage, or stories with no meaningful technological impact.
+
+A story is publishable only when its score is **≥ 7**. When in doubt between two scores, choose the lower one — skipping a weak story is safer than publishing one.
+
+## Content That Should Not Be Published
+
+These normally score 0–3 unless the underlying event is genuinely industry-changing:
+
+- Product reviews, hands-on impressions, first looks, or unboxings
+- Rumors, leaks, or speculation about unreleased products ("in the works," "may launch," "expected in 202X")
+- Car/EV/truck news, autonomous-vehicle and robotaxi rollouts, and related B2B fleet or charging deals
+- Small EV/vehicle-space startup funding rounds
+- HealthTech, biotech, and medtech startup news (funding, clinic openings, expansions, milestones)
+- Medical, clinical, and pharmaceutical news of any kind — this is a technology channel, not a health channel
+- Aircraft or rocket test flights/recovery, unless a genuine industry first
+- Energy and utilities news: solar, wind, battery, grid infrastructure, climate/energy policy
+- Home energy-storage and battery-market news, even consumer-framed
+- Low-level engineering deep-dives (CPU/ISA design, compilers, kernels, protocols) aimed at engineers, not everyday users
+- Podcasts, event recordings, webinars, roundtables
+- Local/municipal politics, immigration and border-policy stories (unless tied to a major tech platform change)
+- Crypto/blockchain legal or regulatory disputes with no everyday-user impact
+- VC, finance, and legal-regulatory industry news, including routine startup funding announcements
+- Minor feature additions to existing apps/platforms, including small fintech features
+- Tech-policy opinion and commentary essays that aren't reporting a concrete new event
+- Municipal license-plate-reader/surveillance-camera network stories (e.g. Flock funding, contract changes)
+- Police-technology narrative features and profiles
+
+## Duplicate & Already-Published Handling
+
+- A "Recently published" list of prior headlines is checked on every run. Follow-up coverage of the same event, product launch, company milestone, or outage — even from a different source, with different numbers or wording — is marked **not important**.
+- When multiple items describe the same event, judge the underlying significance rather than treating repetition itself as importance, and prefer the most authoritative or original source.
+
+## Recency & Trend Signals
+
+- **Age < 24h** — strong freshness signal
+- **Age 24–72h** — acceptable
+- **Age > 72h** — normally lower priority unless still highly significant or developing
+- **Age unknown** — not automatically penalized
+
+`TRENDING` (reported by multiple distinct sources) is a supporting signal only — it must never on its own make a weak story important.
+
+## Discovery Flow
 
 ```text
 RSS feeds
@@ -62,301 +123,78 @@ Google News RSS gap fill
    ↓
 Exa gap fill
    ↓
-Canonical URL normalization
+Source validation
    ↓
-72-hour eligibility window
+24-hour filtering
    ↓
-Deterministic editorial prefilter
+URL deduplication
    ↓
-Published-event duplicate check
+Event deduplication
    ↓
-Event clustering / deduplication
+LLM editorial ranking in bounded batches (importance classifier)
    ↓
-Structured LLM ranking in bounded batches
+Global score merge + soft sector diversification
    ↓
-Global event ranking
-   ↓
-Soft sector/source diversity ordering
+Top tech events
    ↓
 Article extraction
    ↓
 Story generation
    ↓
-Numeric + claim verification
+Numeric grounding + claim verification
    ↓
-Image recovery / branding
+Branded image
    ↓
-Telegram publication
+Telegram Rich Message
    ↓
-Persistent state + journal + run report
+Persistent state
 ```
 
-Freshness is a ranking signal, not a hard 24-hour admission gate:
-
-- Under 24 hours: strongest freshness signal
-- 24–72 hours: acceptable
-- Over 72 hours: normally lower priority unless highly significant or still developing
-- Unknown age: not automatically rejected
-
-## Deterministic Prefilter
-
-Obvious low-value genres are rejected before expensive LLM ranking when their metadata clearly identifies them as:
-
-- Reviews, hands-ons, first looks, or unboxings
-- Rumors, leaks, speculation, or unreleased-product reporting
-- Vehicle/EV/robotaxi and related fleet or charging stories
-- HealthTech, biotech, medtech, medical, clinical, or pharmaceutical news
-- Energy, utilities, grid, and routine battery-market stories
-- Routine startup/VC/finance news
-- Low-level engineering deep dives aimed at engineers
-- Podcasts, webinars, event recordings, and roundtables
-- Opinion/commentary without a concrete new event
-- Minor app features, routine patches, bug fixes, and incremental updates
-
-Exceptional industry-changing events may use an editorial escape hatch rather than being rejected solely from a keyword.
-
-## Event-Centric Duplicate Protection
-
-Articles are first normalized and then grouped around the underlying event.
-
-Duplicate checks include:
-
-1. Canonical URL identity
-2. Permanent published URL history
-3. Published event-cluster identity
-4. Exact normalized headline hash
-5. Article-content hash
-6. Same event key with topic/entity agreement
-7. Strong cross-source headline similarity
-8. Conservative topic + institution + entity similarity
-9. Very strong article-content similarity
-
-The same event reported by another publication should normally become corroboration, not another Telegram post.
-
-Follow-up coverage is allowed only when it represents a materially new development, such as:
-
-- A stage change
-- A meaningful scope change
-- A significant magnitude change
-- A new actor taking action
-- A reversal
-- A newly confirmed consequence
-
-A different URL or different wording alone does not make an old event new.
-
-## Scoring
-
-The ranking system uses a structured **0–100** score. The LLM provides the components and the program validates and recomputes the total.
-
-| Axis | Range |
-|---|---:|
-| Impact | 0–30 |
-| Reach | 0–25 |
-| Novelty | 0–20 |
-| Certainty | 0–15 |
-| Durability | 0–10 |
-| **Total** | **0–100** |
-
-Score interpretation:
+## Telegram Output Structure
 
 ```text
-85–100  Exceptional
-75–84   Major
-65–74   Clearly important
-55–64   Borderline
-Below 55  Reject
+Photo
+Headline
+1-sentence news summary
+## KEY HIGHLIGHTS
+• Major fact
+• Major fact
+• Major fact
+... (3-5 dynamically)
+**THE CONTEXT** (collapsed by default)
+2-4 sentences of background explaining how the story came about.
+**BOTTOM LINE** (collapsed by default)
+1 sentence takeaway, the "so what" of the story.
+#hashtag #hashtag #hashtag
+**Source:** [Publication]
 ```
 
-### Publication threshold
+### Content Rules
 
-**Score >= 65** is the publication threshold.
-
-The following rules are enforced:
-
-- Thin metadata cannot receive a publishable score.
-- A famous company does not automatically make an event important.
-- Trending/corroboration cannot rescue an otherwise weak story.
-- Duplicate/repetitive coverage is rejected.
-- The final score is recomputed from the structured components rather than blindly trusting an LLM total.
-- Sector diversity is a soft ordering preference only. It is never a category quota and never lowers the importance threshold.
-
-## Unlimited Qualifying Publication
-
-There is **no per-run post-count limit**.
-
-If the run produces:
-
-```text
-3 qualifying stories  → publish 3
-10 qualifying stories → publish 10
-20 qualifying stories → publish 20
-```
-
-The bot does not suppress an important story simply because a fixed post quota has been reached.
-
-The only editorial/technical gates are quality, duplicate protection, successful generation, verification, and successful Telegram delivery.
-
-## Telegram Post Format
-
-The public post follows this structure:
-
-```text
-PHOTO
-
-HEADLINE
-
-One-sentence summary.
-
-KEY HIGHLIGHTS
-• Point one
-• Point two
-• Point three
-
-THE CONTEXT
-2–4 sentences of background, collapsed by default.
-
-BOTTOM LINE
-One-sentence "so what", collapsed by default.
-
-#AI #OpenAI
-Source: The Verge
-```
-
-### Content rules
-
-- Headline: 6–14 words
-- Summary: exactly one sentence
-- Highlights: 3–5 factual bullets
-- The Context: 2–4 sentences
-- Bottom Line: exactly one sentence
-- Hashtags: relevant to the actual story
-- Source: publication name
-- No unsupported numbers or claims
-- Markdown artifacts such as `**`, `__`, and backticks are sanitized before HTML rendering
-- `THE CONTEXT` and `BOTTOM LINE` use Telegram expandable blockquotes
+- Headline: 6–14 words, accurate and newspaper-style.
+- Summary: exactly one complete sentence.
+- Highlights: 3–5 concise factual points, chosen dynamically without padding or repetition.
+- The Context: 2–4 complete sentences of relevant background, rendered as a collapsed Telegram expandable blockquote.
+- Bottom Line: exactly 1 complete sentence stating the central takeaway, rendered as a collapsed Telegram expandable blockquote.
 
 ## Image Pipeline
 
-### Normal article image
-
-The bot attempts to recover and use the article's actual image.
-
-Image candidates can come from:
-
-- RSS image metadata
-- `og:image`
-- Twitter image metadata
-- JSON-LD image data
-- Lazy-loaded image attributes
-- `srcset`
-- Preload/image metadata
-
-The image is formatted for the Telegram card.
-
-The article image must **not** receive the channel name in the upper-left corner.
-
-The current branding keeps:
-
-```text
-@TheTechNewsroom
-```
-
-at the bottom-right.
-
-### Missing article image
-
-Fallback order:
-
-```text
-Article image unavailable
-        ↓
-Try source website logo
-        ↓
-Logo found → large centered source logo
-        ↓
-Logo unavailable → source name in bold at center
-        ↓
-@TheTechNewsroom remains bottom-right
-```
-
-The fallback uses a contrast-aware background so the source logo remains visible.
+The bot extracts an article image where possible, resizes/crops it to the 1200×675 card format, adds the publication/source name at the bottom-left, and keeps the `@TheTechNewsroom` brand chip at the bottom-right. The same source + channel branding is applied to the fallback tech-news card when no usable source image exists.
 
 ## Verification
 
-Every generated story passes verification before publication:
+Two verification passes run before publishing:
 
-1. **Numeric grounding**
-   - Checks generated numbers against the source.
-   - Equivalent representations such as `$1B` and `$1 billion` are treated as the same value.
+1. **Numeric grounding** — checks generated numeric facts against the source article.
+2. **Claim verification** — checks the generated headline, summary, and highlights against the article.
 
-2. **Claim verification**
-   - Checks the headline, summary, and highlights against the extracted article.
+Failed verification triggers regeneration or candidate rejection rather than unsupported publication.
 
-Failed verification causes the candidate to be rejected rather than publishing unsupported information.
+## Scheduling
 
-## Persistent State
+Defined by the included GitHub Actions workflow (`.github/workflows/`), which also supports manual runs. Set the cron schedule and timezone to match your posting cadence.
 
-The repository uses:
-
-```text
-news_state.json
-posted_urls.txt
-```
-
-plus the event-centric operational directories:
-
-```text
-data/
-├── journal/
-└── reports/
-```
-
-### State policy
-
-- Detailed operational queue/event data is retained for the configured 15-day operational window.
-- Published-history information is retained for long-term duplicate protection.
-- Published history stores compact identifying information rather than full article bodies.
-- `posted_urls.txt` stores timestamped URL history used for duplicate protection and cleanup.
-- `data/journal/` contains append-only compact run/event records.
-- `data/reports/` contains per-run diagnostics.
-
-## Run Diagnostics
-
-Each run records metrics such as:
-
-```text
-Discovered
-Ranked
-After event deduplication
-Importance pass
-Verification results
-Published count
-Score distribution
-```
-
-The journal and reports are designed to make discovery, ranking, duplicate, and publication problems diagnosable from GitHub Actions logs and repository state.
-
-## GitHub Actions
-
-Workflow location:
-
-```text
-.github/workflows/newbot.yml
-```
-
-The workflow:
-
-1. Checks out the repository
-2. Sets up Python 3.12
-3. Installs `requirements.txt`
-4. Runs `python -m py_compile main.py`
-5. Runs `python main.py --self-test`
-6. Runs `python main.py`
-7. Commits changed state under `news_state.json`, `posted_urls.txt`, and `data/`
-
-The workflow uses concurrency protection so a scheduled run and a manual run cannot execute against the same state simultaneously.
-
-## Required GitHub Secrets
+## Required Secrets
 
 ```text
 EXA_API_KEY
@@ -378,29 +216,9 @@ TELEGRAM_CHANNEL=@TheTechNewsroom
 NEWS_MODE=update
 ```
 
-## Repository Structure
-
-```text
-TheTechNewsroomBot/
-├── .github/
-│   └── workflows/
-│       └── newbot.yml
-├── data/
-│   ├── journal/
-│   │   └── .gitkeep
-│   └── reports/
-│       └── .gitkeep
-├── README.md
-├── main.py
-├── news_state.json
-├── posted_urls.txt
-├── requirements.txt
-└── .gitignore
-```
-
-`.gitkeep` files are only Git placeholders for empty directories. They contain no executable code.
-
 ## Local Checks
+
+The editorial ranker processes candidates in batches of 15 to prevent structured-output truncation. The run keeps a recovery pool of up to 24 important candidates and tries candidates sequentially until six verified stories are produced or the eligible pool is exhausted. Six is a maximum, not a quota.
 
 Compile:
 
@@ -411,15 +229,11 @@ python -m py_compile main.py
 Self-test:
 
 ```bash
-python main.py --self-test
+EXA_API_KEY=dummy CEREBRAS_API_KEY=dummy TELEGRAM_BOT_TOKEN=dummy python main.py --self-test
 ```
 
-The self-test covers the editorial score calculation, threshold behavior, duplicate/event handling, canonical URLs, Telegram rich-text structure, Markdown sanitization, image fallback hooks, and unlimited qualifying-story selection.
+Normal run:
 
-## Operating Principle
-
-The core rule is simple:
-
-> **Find genuinely important technology events, verify them, avoid publishing the same event twice, and publish every qualifying story.**
-
-The system should prefer accuracy and significance over volume, but it must never use an arbitrary post-count limit to suppress a story that clears the editorial bar.
+```bash
+python main.py
+```
