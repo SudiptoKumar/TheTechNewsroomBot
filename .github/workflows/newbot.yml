@@ -58,7 +58,7 @@ jobs:
         run: |
           git config user.name "Tech News Bot"
           git config user.email "actions@github.com"
-          git add news_state.json posted_urls.txt data/ 2>/dev/null || true
+          git add news_state.json posted_urls.txt
 
           if git diff --cached --quiet; then
             echo "No state changes to commit."
