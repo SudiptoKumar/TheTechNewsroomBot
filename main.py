@@ -1277,25 +1277,34 @@ GOOGLE_NEWS_LOCALE = {"Tech": ("en-US", "US", "US:en")}
 
 
 def resolve_google_news_url(link):
-    """Google News RSS gives a redirect link, not the publisher URL.
-    Follow it once (without downloading the full page) to get the
-    real article URL. Return "" if it cannot be resolved safely."""
+    """Google News RSS links point at a Google interstitial page, not the publisher.
+
+    Decode the real article URL through Google's batchexecute endpoint (the
+    parameters are embedded in the interstitial page). Return "" when decoding
+    fails so the caller can skip the item.
+    """
     try:
-        response = session.get(
-            link,
-            timeout=10,
-            allow_redirects=True,
-            headers=HEADERS,
-            stream=True,
-        )
-        real_url = safe_text(response.url)
-        response.close()
-
-        if not real_url or "news.google.com" in real_url:
+        page = session.get(link, timeout=15, allow_redirects=True, headers=HEADERS)
+        if page.status_code != 200:
             return ""
-
-        return real_url
-
+        token = page.url.rstrip("/").split("/")[-1].split("?")[0]
+        sg = re.search(r'data-n-a-sg="([^"]+)"', page.text)
+        ts = re.search(r'data-n-a-ts="([^"]+)"', page.text)
+        if not sg or not ts or not token:
+            return ""
+        inner = ('["garturlreq",[["en-US","US",["FINANCE_TOP_INDICES","WEB_TEST_1_0_0"],null,null,1,1,"US:en",null,180,null,null,null,null,null,0,null,null,[1608992183,723341248]],'
+                 '"en-US","US",1,[2,3,4,8],1,0,"655000234",0,0,null,0],'
+                 f'"{token}",{ts.group(1)},"{sg.group(1)}"]')
+        body = "f.req=" + quote(json.dumps([[["Fbv4je", inner, None, "generic"]]], separators=(",", ":")))
+        r = session.post("https://news.google.com/_/DotsSplashUi/data/batchexecute?rpcids=Fbv4je",
+                   data=body, headers={**HEADERS, "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}, timeout=15)
+        if "garturlres" not in r.text:
+            return ""
+        for m in re.finditer(r'https?://[^\s"\\]+', r.text.split("garturlres", 1)[1]):
+            u = m.group(0).replace("\\/", "/")
+            if "google." not in u and "gstatic." not in u:
+                return u
+        return ""
     except Exception:
         return ""
 
