@@ -25,6 +25,8 @@ from exa_py import Exa
 from cerebras.cloud.sdk import Cerebras
 
 
+
+import cerebras_keys
 # ============================================================
 # CONFIGURATION
 # ============================================================
@@ -778,6 +780,7 @@ DISCOVERY_TARGET_PER_REGION = 18
 
 exa = None
 cerebras = None
+_cerebras_key = None
 
 
 def get_exa():
@@ -788,10 +791,27 @@ def get_exa():
 
 
 def get_cerebras():
-    global cerebras
-    if cerebras is None:
-        cerebras = Cerebras(api_key=CEREBRAS_API_KEY)
+    global cerebras, _cerebras_key
+    key = cerebras_keys.active_key() or CEREBRAS_API_KEY
+    if cerebras is None or _cerebras_key != key:
+        cerebras = Cerebras(api_key=key)
+        _cerebras_key = key
     return cerebras
+
+
+def cerebras_create(**kwargs):
+    """chat.completions.create with multi-key failover: on a quota/auth
+    status (401/402/403/429) the active key is retired for the run (owner
+    alerted via the Newsroom bot) and the call retries on the next key.
+    Any other error propagates untouched."""
+    while True:
+        try:
+            return get_cerebras().chat.completions.create(**kwargs)
+        except Exception as exc:
+            status = getattr(exc, "status_code", None)
+            if cerebras_keys.is_quota_status(status) and cerebras_keys.failover(status):
+                continue
+            raise
 
 
 # ============================================================
@@ -1662,7 +1682,7 @@ def _rank_batch(batch, region, batch_no):
         ]))
 
     try:
-        response = get_cerebras().chat.completions.create(
+        response = cerebras_create(
             model=CEREBRAS_MODEL,
             messages=[
                 {"role": "system", "content": _rank_prompt(region)},
@@ -2227,7 +2247,7 @@ Headline
 
     for attempt in range(3):
         try:
-            response = get_cerebras().chat.completions.create(
+            response = cerebras_create(
                 model=CEREBRAS_MODEL,
                 messages=[
                     {
@@ -3505,7 +3525,7 @@ Return only the JSON schema.
     )
 
     try:
-        response = get_cerebras().chat.completions.create(
+        response = cerebras_create(
             model=CEREBRAS_MODEL,
             messages=[
                 {"role": "system", "content": prompt},
