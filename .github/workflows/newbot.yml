@@ -21,6 +21,9 @@ jobs:
     env:
       EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
       CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+      CEREBRAS_API_KEY_2: ${{ secrets.CEREBRAS_API_KEY_2 }}
+      NEWSROOM_BOT_TOKEN: ${{ secrets.NEWSROOM_BOT_TOKEN }}
+      ALERT_CHAT_ID: ${{ secrets.ALERT_CHAT_ID }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHANNEL: "@TheTechNewsroom"
       NEWS_MODE: "update"
@@ -64,5 +67,9 @@ jobs:
             echo "No state changes to commit."
           else
             git commit -m "Update TheTechNewsroom state"
-            git push
+            for attempt in 1 2 3; do
+              if git push; then break; fi
+              echo "Push rejected (attempt $attempt) - syncing with latest main and retrying."
+              git pull --rebase origin main
+            done
           fi
