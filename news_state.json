@@ -1,142 +1,142 @@
 {
   "feeds": {
     "https://techcrunch.com/feed/": {
-      "etag": "W/\"8cbc8b6b20b812a79122f0203239eb25\"",
-      "last_modified": "Thu, 12 Nov 2026 22:22:28 GMT",
-      "last_checked": "2026-11-13T04:33:45.556553+06:00",
+      "etag": "W/\"1115c1660f3c918f9ed5b6912d5a43f9\"",
+      "last_modified": "Fri, 13 Nov 2026 00:21:11 GMT",
+      "last_checked": "2026-11-13T13:35:07.237362+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.theverge.com/rss/index.xml": {
-      "etag": "W/\"5cbe6f995aeee7e453d1db54f3abf740\"",
+      "etag": "W/\"b17f5fb2ac4e777433a5daadf8638497\"",
       "last_modified": null,
-      "last_checked": "2026-11-13T04:33:45.687210+06:00",
+      "last_checked": "2026-11-13T13:35:07.343935+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.wired.com/feed/rss": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-13T04:33:45.820098+06:00",
+      "last_checked": "2026-11-13T13:35:07.521331+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://feeds.arstechnica.com/arstechnica/index": {
-      "etag": "\"5d3bc314e33132ead381a33a593a052e\"",
-      "last_modified": "Thu, 12 Nov 2026 22:28:47 GMT",
-      "last_checked": "2026-11-13T04:33:45.972267+06:00",
+      "etag": "\"fc0e2b8fdccc3457a269d5d63f9e14ca\"",
+      "last_modified": "Fri, 13 Nov 2026 02:33:38 GMT",
+      "last_checked": "2026-11-13T13:35:07.685365+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.engadget.com/rss.xml": {
-      "etag": "\"4f713f40513d0ffc311d72d55205f91d\"",
-      "last_modified": "Thu, 12 Nov 2026 21:23:19 GMT",
-      "last_checked": "2026-11-13T04:33:46.130307+06:00",
+      "etag": "\"690901588d2a437057e079906b64ffbc\"",
+      "last_modified": "Thu, 12 Nov 2026 23:32:00 GMT",
+      "last_checked": "2026-11-13T13:35:07.849814+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.technologyreview.com/feed/": {
       "etag": "W/\"6290598fa5077d640ef2e86af7c39192\"",
       "last_modified": "Thu, 12 Nov 2026 22:24:47 GMT",
-      "last_checked": "2026-11-13T04:33:46.335963+06:00",
+      "last_checked": "2026-11-13T13:35:07.938495+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://news.ycombinator.com/rss": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-13T04:33:46.540398+06:00",
-      "fail_count": 138,
+      "last_checked": "2026-11-13T13:35:08.193996+06:00",
+      "fail_count": 139,
       "alerted": true
     },
     "https://venturebeat.com/feed/": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-13T04:34:07.773442+06:00",
-      "fail_count": 235,
+      "last_checked": "2026-11-13T13:35:29.391636+06:00",
+      "fail_count": 236,
       "alerted": true
     },
     "https://www.techmeme.com/feed.xml": {
-      "etag": "W/\"5197-6601bdd7619c8\"",
-      "last_modified": "Thu, 12 Nov 2026 22:30:56 GMT",
-      "last_checked": "2026-11-13T04:34:07.966884+06:00",
+      "etag": "W/\"5827-66023568c3a0b\"",
+      "last_modified": "Fri, 13 Nov 2026 07:25:52 GMT",
+      "last_checked": "2026-11-13T13:35:29.894715+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.techradar.com/feeds/articletype/news": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-13T04:34:08.154648+06:00",
+      "last_checked": "2026-11-13T13:35:30.173226+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.zdnet.com/news/rss.xml": {
-      "etag": "W/\"309be8ea6541f1665d709d67a65c1543\"",
-      "last_modified": "Sat, 13 May 2023 00:57:34 GMT",
-      "last_checked": "2026-11-13T04:34:08.704001+06:00",
+      "etag": "W/\"4593f7e98040ce557591cc3836c537f8\"",
+      "last_modified": "Thu, 25 Jun 2026 16:29:21 GMT",
+      "last_checked": "2026-11-13T13:35:30.601218+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://9to5google.com/feed/": {
       "etag": "W/\"9fe561e2393ba4fb9e4331e63db686b1\"",
       "last_modified": "Thu, 12 Nov 2026 21:44:31 GMT",
-      "last_checked": "2026-11-13T04:34:08.932707+06:00",
+      "last_checked": "2026-11-13T13:35:30.736189+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://wabetainfo.com/feed/": {
-      "etag": "\"69ce2a5b1da53006f6c4eb9266c0845e-gzip\"",
-      "last_modified": "Thu, 12 Nov 2026 20:53:22 GMT",
-      "last_checked": "2026-11-13T04:34:09.977741+06:00",
+      "etag": "\"a621ab2fc67429fdffe9ff2ec3ea0988-gzip\"",
+      "last_modified": "Fri, 13 Nov 2026 06:41:29 GMT",
+      "last_checked": "2026-11-13T13:35:31.626402+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.testingcatalog.com/feed/": {
-      "etag": "W/\"13f90-0K80yUaRyejq/wxcH7GwQjWKN7Q\"",
+      "etag": "W/\"13f7f-9KiFc7B4SwNuZpuebNox4Y2SO28\"",
       "last_modified": null,
-      "last_checked": "2026-11-13T04:34:10.085644+06:00",
+      "last_checked": "2026-11-13T13:35:31.865241+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.artificialintelligence-news.com/feed/": {
       "etag": "\"cd8cbe1fef0e10c2eef0af3ac2847598\"",
       "last_modified": "Thu, 24 Sep 2026 16:09:03 GMT",
-      "last_checked": "2026-11-13T04:34:11.093165+06:00",
+      "last_checked": "2026-11-13T13:35:32.907356+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://unite.ai/feed/": {
-      "etag": "W/\"9afcc4fe0da934ade4af0e59c858b42a3ad557ff7621ba0140bd0692067b4459\"",
-      "last_modified": "Thu, 12 Nov 2026 22:19:01 GMT",
-      "last_checked": "2026-11-13T04:34:12.062356+06:00",
+      "etag": "W/\"a4c198cdbfa6d372b0fd075ff0b81255dd82568eaeefd19b03184773ed9076ec\"",
+      "last_modified": "Thu, 12 Nov 2026 23:09:05 GMT",
+      "last_checked": "2026-11-13T13:35:33.699651+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://the-decoder.com/feed/": {
       "etag": "\"1186548b7e196509b8c21958a06391ff\"",
       "last_modified": "Thu, 12 Nov 2026 21:46:18 GMT",
-      "last_checked": "2026-11-13T04:34:13.386624+06:00",
+      "last_checked": "2026-11-13T13:35:35.071005+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://siliconangle.com/feed/": {
-      "etag": "\"faa69fa4d33056cdbdffe06269133d50\"",
-      "last_modified": "Thu, 12 Nov 2026 22:19:54 GMT",
-      "last_checked": "2026-11-13T04:34:13.670543+06:00",
+      "etag": "\"9ba4f94f05c60a4c705e03b27a5bb705\"",
+      "last_modified": "Fri, 13 Nov 2026 06:56:40 GMT",
+      "last_checked": "2026-11-13T13:35:35.527550+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.androidauthority.com/feed/": {
-      "etag": "W/\"458aca609cd63007d88db4d82010ffd7\"",
-      "last_modified": "Thu, 12 Nov 2026 22:25:16 GMT",
-      "last_checked": "2026-11-13T04:34:13.831918+06:00",
+      "etag": "\"245bf7399d494df97b2d4bf5d41fb9ee\"",
+      "last_modified": "Fri, 13 Nov 2026 06:33:17 GMT",
+      "last_checked": "2026-11-13T13:35:35.680258+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.macrumors.com/macrumors.xml": {
       "etag": null,
-      "last_modified": "Thu, 12 Nov 2026 22:19:46 GMT",
-      "last_checked": "2026-11-13T04:34:14.128133+06:00",
+      "last_modified": "Fri, 13 Nov 2026 06:42:43 GMT",
+      "last_checked": "2026-11-13T13:35:35.941585+06:00",
       "fail_count": 0,
       "alerted": false
     }
@@ -17339,7 +17339,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T13:56:37.290362+06:00",
-      "last_seen": "2026-11-13T04:33:46.005042+06:00"
+      "last_seen": "2026-11-13T13:35:07.717812+06:00"
     },
     "engadget.com/2314341/new-york-is-forcing-t-mobile-to-stop-putting-data-caps-on-low-income-home-internet-plans": {
       "title": "New York is forcing T-Mobile to stop putting data caps on low-income home internet plans",
@@ -18145,7 +18145,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276022+06:00",
-      "last_seen": "2026-11-13T04:33:45.581438+06:00"
+      "last_seen": "2026-11-13T13:35:07.260926+06:00"
     },
     "techcrunch.com/2026/11/12/five-ways-jensen-huangs-ouster-from-nvidia-could-damage-the-ai-industry": {
       "title": "Five ways Jensen Huang’s ouster from Nvidia could damage the AI industry",
@@ -18178,7 +18178,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276321+06:00",
-      "last_seen": "2026-11-13T04:33:45.581653+06:00"
+      "last_seen": "2026-11-13T13:35:07.261132+06:00"
     },
     "techcrunch.com/2026/11/12/whoop-just-launched-a-social-network": {
       "title": "Whoop just launched a social network",
@@ -18194,7 +18194,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276438+06:00",
-      "last_seen": "2026-11-13T04:33:45.581758+06:00"
+      "last_seen": "2026-11-13T13:35:07.261236+06:00"
     },
     "techcrunch.com/2026/11/12/jensen-huang-is-out-at-nvidia-who-is-colette-kress-his-interim-replacement": {
       "title": "Jensen Huang is out at Nvidia — who is Colette Kress, his interim replacement?",
@@ -18210,7 +18210,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276557+06:00",
-      "last_seen": "2026-11-13T04:33:45.581861+06:00"
+      "last_seen": "2026-11-13T13:35:07.261340+06:00"
     },
     "techcrunch.com/2026/11/12/norwest-pushes-deeper-into-ai-with-new-4b-fund": {
       "title": "Norwest pushes deeper into AI with new $4B fund",
@@ -18226,7 +18226,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276667+06:00",
-      "last_seen": "2026-11-13T04:33:45.581964+06:00"
+      "last_seen": "2026-11-13T13:35:07.261441+06:00"
     },
     "techcrunch.com/2026/11/12/cyberattack-on-fireworks-ai-allowed-hackers-to-access-notion-customers-chat-transcripts": {
       "title": "Cyberattack on Fireworks AI allowed hackers to access Notion customers’ chat transcripts",
@@ -18259,7 +18259,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.276924+06:00",
-      "last_seen": "2026-11-13T04:33:45.580095+06:00"
+      "last_seen": "2026-11-13T13:35:07.259674+06:00"
     },
     "techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo": {
       "title": "Nvidia’s Jensen Huang resigns, chipmaker names CFO Colette Kress as interim CEO",
@@ -18451,7 +18451,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.490206+06:00",
-      "last_seen": "2026-11-13T04:33:45.850420+06:00"
+      "last_seen": "2026-11-13T13:35:07.552952+06:00"
     },
     "wired.com/story/best-open-earbuds": {
       "title": "Best Open Earbuds (2026): Shokz, Bose, Soundcore, and More",
@@ -18467,7 +18467,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.490348+06:00",
-      "last_seen": "2026-11-13T04:33:45.850541+06:00"
+      "last_seen": "2026-11-13T13:35:07.553067+06:00"
     },
     "wired.com/story/who-is-colette-kress-the-woman-who-could-succeed-jensen-huang": {
       "title": "Meet Colette Kress, Nvidia’s New Interim CEO",
@@ -18500,7 +18500,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.490619+06:00",
-      "last_seen": "2026-11-13T04:33:45.850771+06:00"
+      "last_seen": "2026-11-13T13:35:07.553294+06:00"
     },
     "wired.com/story/how-google-is-making-its-smart-glasses-more-private": {
       "title": "Here’s How Google Says It’s Making Its Smart Glasses More Private",
@@ -18516,7 +18516,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.490763+06:00",
-      "last_seen": "2026-11-13T04:33:45.851016+06:00"
+      "last_seen": "2026-11-13T13:35:07.553410+06:00"
     },
     "wired.com/story/apples-homeview-tries-face-authentication-without-faceid": {
       "title": "Apple’s HomeView Tries Face Authentication Without FaceID",
@@ -18532,7 +18532,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.490901+06:00",
-      "last_seen": "2026-11-13T04:33:45.850886+06:00"
+      "last_seen": "2026-11-13T13:35:07.553548+06:00"
     },
     "wired.com/story/nvidia-ceo-jensen-huang-steps-down": {
       "title": "Jensen Huang Resigns as Nvidia CEO",
@@ -18548,7 +18548,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491025+06:00",
-      "last_seen": "2026-11-13T04:33:45.851132+06:00"
+      "last_seen": "2026-11-13T13:35:07.553674+06:00"
     },
     "wired.com/story/exclusive-fairphone-lands-its-first-us-carrier-partner-in-boost-mobile": {
       "title": "Exclusive: Fairphone Lands Its First US Carrier Partner in Boost Mobile",
@@ -18564,7 +18564,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491154+06:00",
-      "last_seen": "2026-11-13T04:33:45.851270+06:00"
+      "last_seen": "2026-11-13T13:35:07.553797+06:00"
     },
     "wired.com/story/you-can-buy-t-shirts-glorifying-mass-shootings-almost-anywhere-online": {
       "title": "You Can Buy T-Shirts Glorifying Mass Shootings Almost Anywhere Online",
@@ -18580,7 +18580,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491275+06:00",
-      "last_seen": "2026-11-13T04:33:45.851398+06:00"
+      "last_seen": "2026-11-13T13:35:07.553913+06:00"
     },
     "wired.com/story/alex-karp-said-hes-a-progressive-ok-heres-some-other-stuff-hes-said-recently": {
       "title": "Alex Karp Said He’s a ‘Progressive.’ OK! Here’s Some Other Stuff He’s Said Recently",
@@ -18596,7 +18596,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491395+06:00",
-      "last_seen": "2026-11-13T04:33:45.851517+06:00"
+      "last_seen": "2026-11-13T13:35:07.554031+06:00"
     },
     "wired.com/story/google-wanted-spirit-airlines-data-flight-attendants-found-a-way-to-opt-out": {
       "title": "Google Wanted Spirit Airlines Data. Flight Attendants Found a Way to Opt Out",
@@ -18612,7 +18612,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491519+06:00",
-      "last_seen": "2026-11-13T04:33:45.851631+06:00"
+      "last_seen": "2026-11-13T13:35:07.554145+06:00"
     },
     "wired.com/review/rocco-super-smart-fridge": {
       "title": "Rocco Classic Smart Fridge Review: A Cool Conversation Piece",
@@ -18628,7 +18628,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491635+06:00",
-      "last_seen": "2026-11-13T04:33:45.851750+06:00"
+      "last_seen": "2026-11-13T13:35:07.554260+06:00"
     },
     "wired.com/story/the-polar-vortex-is-about-to-make-weather-weird-from-the-uk-to-the-us": {
       "title": "The Polar Vortex Is About to Make Weather Weird From the UK to the US",
@@ -18644,7 +18644,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.491775+06:00",
-      "last_seen": "2026-11-13T04:33:45.851877+06:00"
+      "last_seen": "2026-11-13T13:35:07.554398+06:00"
     },
     "arstechnica.com/google/2026/11/google-pushes-privacy-angle-as-gemini-powered-smartglasses-debut-starting-at-395": {
       "title": "Google pushes privacy angle as Gemini-powered smartglasses debut starting at $395",
@@ -18660,7 +18660,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.617239+06:00",
-      "last_seen": "2026-11-13T04:33:46.004932+06:00"
+      "last_seen": "2026-11-13T13:35:07.717706+06:00"
     },
     "arstechnica.com/gadgets/2026/11/hundreds-of-streaming-services-and-nothing-to-watch": {
       "title": "Hundreds of streaming services and nothing to watch",
@@ -18676,7 +18676,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.617495+06:00",
-      "last_seen": "2026-11-13T04:33:46.005150+06:00"
+      "last_seen": "2026-11-13T13:35:07.717918+06:00"
     },
     "arstechnica.com/features/2026/11/review-apples-m6-imac-is-pricey-but-its-still-a-good-choice-for-a-clean-desk": {
       "title": "Review: Apple's M6 iMac is pricey, but it's still a good choice for a clean desk",
@@ -18692,7 +18692,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.617616+06:00",
-      "last_seen": "2026-11-13T04:33:46.005282+06:00"
+      "last_seen": "2026-11-13T13:35:07.718025+06:00"
     },
     "engadget.com/2314724/pre-orders-for-some-apple-home-collection-devices-will-open-november-13": {
       "title": "Pre-orders for some Apple Home Collection devices will open November 13",
@@ -18708,7 +18708,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.759431+06:00",
-      "last_seen": "2026-11-13T04:33:46.144394+06:00"
+      "last_seen": "2026-11-13T13:35:07.864012+06:00"
     },
     "engadget.com/2314584/jensen-huang-is-out-as-nvidia-ceo": {
       "title": "Jensen Huang is out as NVIDIA CEO",
@@ -18724,7 +18724,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.759578+06:00",
-      "last_seen": "2026-11-13T04:33:46.144516+06:00"
+      "last_seen": "2026-11-13T13:35:07.864130+06:00"
     },
     "engadget.com/2314414/google-really-wants-you-to-know-it-cares-about-smart-glasses-privacy": {
       "title": "Google really needs you to know it cares about smart glasses privacy",
@@ -18740,7 +18740,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.759727+06:00",
-      "last_seen": "2026-11-13T04:33:46.144637+06:00"
+      "last_seen": "2026-11-13T13:35:07.864249+06:00"
     },
     "engadget.com/2314258/android-xr-smartglasses-hands-on": {
       "title": "The first batch of Android XR smartglasses made me rethink my stance on specs without displays",
@@ -18756,7 +18756,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.759861+06:00",
-      "last_seen": "2026-11-13T04:33:46.144754+06:00"
+      "last_seen": "2026-11-13T13:35:07.864368+06:00"
     },
     "engadget.com/2313999/apple-homeview-review": {
       "title": "Apple HomeView review: A versatile smart display and Siri-powered home hub",
@@ -18772,7 +18772,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.759985+06:00",
-      "last_seen": "2026-11-13T04:33:46.144870+06:00"
+      "last_seen": "2026-11-13T13:35:07.864504+06:00"
     },
     "engadget.com/2314410/apple-tv-4k-4th-gen-review": {
       "title": "Apple TV 4K (4th gen) review: Still great, but drastically more expensive",
@@ -18788,7 +18788,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.760106+06:00",
-      "last_seen": "2026-11-13T04:33:46.144987+06:00"
+      "last_seen": "2026-11-13T13:35:07.864627+06:00"
     },
     "engadget.com/2314515/nintendo-is-ending-google-and-apple-sign-ins-early-next-year": {
       "title": "Nintendo is ending Google and Apple sign-ins early next year",
@@ -18804,7 +18804,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:36:59.760226+06:00",
-      "last_seen": "2026-11-13T04:33:46.145104+06:00"
+      "last_seen": "2026-11-13T13:35:07.864743+06:00"
     },
     "technologyreview.com/2026/11/12/1148444/the-download-cop31-climate-talks-cognitive-immortality": {
       "title": "The Download: COP31’s climate challenge and the quest for immortality",
@@ -19076,7 +19076,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.292587+06:00",
-      "last_seen": "2026-11-13T04:34:08.506953+06:00"
+      "last_seen": "2026-11-13T13:35:30.528723+06:00"
     },
     "techradar.com/vpn/vpn-services/beyond-data-breaches-nordvpns-new-tool-promises-to-help-you-shrink-your-full-digital-footprint": {
       "title": "Beyond data breaches, NordVPN's new tool promises to help you shrink your full digital footprint",
@@ -19092,7 +19092,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.292752+06:00",
-      "last_seen": "2026-11-13T04:34:08.507069+06:00"
+      "last_seen": "2026-11-13T13:35:30.528837+06:00"
     },
     "techradar.com/pro/security/antifox-ai-agents-hijacked-by-hackers-to-carry-out-theft-of-aws-credentials": {
       "title": "AntiFox AI agents hijacked by hackers to carry out theft of AWS credentials",
@@ -19108,7 +19108,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.292886+06:00",
-      "last_seen": "2026-11-13T04:34:08.507183+06:00"
+      "last_seen": "2026-11-13T13:35:30.528962+06:00"
     },
     "techradar.com/vpn/vpn-services/surfshark-proves-it-does-not-record-your-data-with-a-fresh-independent-no-logs-audit": {
       "title": "Surfshark proves it does not record your data with a fresh independent no-logs audit",
@@ -19124,7 +19124,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293014+06:00",
-      "last_seen": "2026-11-13T04:34:08.507323+06:00"
+      "last_seen": "2026-11-13T13:35:30.529077+06:00"
     },
     "techradar.com/news/live/jensen-huang-resigns-as-nvidia-ceo": {
       "title": "Jensen Huang resigns as Nvidia CEO: founder accused of multiple affairs, including with a Chinese spy",
@@ -19140,7 +19140,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293137+06:00",
-      "last_seen": "2026-11-13T04:34:08.507441+06:00"
+      "last_seen": "2026-11-13T13:35:30.529189+06:00"
     },
     "techradar.com/pro/security/shipping-giant-maersk-confirms-data-breach-as-hackers-demand-usd5-million-ransom": {
       "title": "Shipping giant Maersk confirms data breach as hackers demand $5 million ransom",
@@ -19156,7 +19156,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293258+06:00",
-      "last_seen": "2026-11-13T04:34:08.507554+06:00"
+      "last_seen": "2026-11-13T13:35:30.529300+06:00"
     },
     "techradar.com/ai-platforms-assistants/us-data-center-power-demand-outpaces-supply-by-10x-and-could-bring-the-ai-boom-to-a-grinding-halt-by-2030-with-ai-companies-funneling-millions-into-gas-turbine-generators-and-modular-nuclear-reactors-to-stay-online": {
       "title": "US data center power demand outpaces supply by 10x",
@@ -19172,7 +19172,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293381+06:00",
-      "last_seen": "2026-11-13T04:34:08.507671+06:00"
+      "last_seen": "2026-11-13T13:35:30.529423+06:00"
     },
     "techradar.com/phones/fairphone-signs-first-us-carrier-partnership-making-the-easily-repairable-fairphone-6-plus-more-widely-available": {
       "title": "The easily repairable Fairphone 6 Plus just got more accessible in the US thanks to Boost Mobile",
@@ -19188,7 +19188,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293501+06:00",
-      "last_seen": "2026-11-13T04:34:08.507899+06:00"
+      "last_seen": "2026-11-13T13:35:30.529671+06:00"
     },
     "techradar.com/entertainment/football/turkey-vs-belgium-free-nations-league-2026-27": {
       "title": "How to watch Turkey vs Belgium: FREE live streams, TV channels & kick-off time for Nations League 2026/27 fixture, team news",
@@ -19204,7 +19204,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293621+06:00",
-      "last_seen": "2026-11-13T04:34:08.507786+06:00"
+      "last_seen": "2026-11-13T13:35:30.529557+06:00"
     },
     "techradar.com/ai-platforms-assistants/uber-doordash-and-airbnb-say-ai-agents-arent-taking-off-as-users-rebel-against-being-hyper-efficient-at-fun": {
       "title": "Hardly anyone is using AI agents for bookings, according to Uber and Airbnb",
@@ -19220,7 +19220,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293758+06:00",
-      "last_seen": "2026-11-13T04:34:08.508015+06:00"
+      "last_seen": "2026-11-13T13:35:30.529784+06:00"
     },
     "techradar.com/pro/every-company-were-talking-to-is-asking-the-same-thing-leaders-agree-ai-is-vital-for-their-workplace-but-only-10-percent-say-theyre-doing-anything-about-it": {
       "title": "Leaders agree AI is vital for their workplace — but barely any are doing anything about it",
@@ -19236,7 +19236,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.293886+06:00",
-      "last_seen": "2026-11-13T04:34:08.508130+06:00"
+      "last_seen": "2026-11-13T13:35:30.529902+06:00"
     },
     "techradar.com/gaming/ai-is-not-an-artist-mass-effect-1-and-2-composer-shares-his-stance-on-ai-replacement-in-video-games-says-machines-can-never-be-artists-as-they-arent-human": {
       "title": "‘AI is not an artist’ — Mass Effect 1 and 2 composer shares his stance on AI replacement in video games, says ‘Machines can never be artists as they aren’t human’",
@@ -19252,7 +19252,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.294009+06:00",
-      "last_seen": "2026-11-13T04:34:08.508263+06:00"
+      "last_seen": "2026-11-13T13:35:30.530022+06:00"
     },
     "techradar.com/entertainment/tv-shows/how-to-watch-secret-lives-of-mormon-wives-orange-county-online-stream-the-slomw-spin-off-from-anywhere": {
       "title": "How to watch Secret Lives of Mormon Wives: Orange County online – stream the SLOMW spin-off from anywhere",
@@ -19268,7 +19268,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.294129+06:00",
-      "last_seen": "2026-11-13T04:34:08.508382+06:00"
+      "last_seen": "2026-11-13T13:35:30.530145+06:00"
     },
     "techradar.com/computing/gpu/nvidia-rtx-5080-super-gpu-is-canned-rumor-claims-and-im-not-surprised-in-the-slightest": {
       "title": "Nvidia RTX 5080 Super GPU is canned, rumor claims — and I'm not surprised",
@@ -19284,7 +19284,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.294245+06:00",
-      "last_seen": "2026-11-13T04:34:08.508496+06:00"
+      "last_seen": "2026-11-13T13:35:30.530258+06:00"
     },
     "techradar.com/pro/security/hackers-are-more-excited-for-black-friday-than-uk-shoppers-but-not-for-the-same-reasons": {
       "title": "Hackers are more excited for Black Friday than UK shoppers — but not for the same reasons",
@@ -19300,7 +19300,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.294363+06:00",
-      "last_seen": "2026-11-13T04:34:08.508609+06:00"
+      "last_seen": "2026-11-13T13:35:30.530371+06:00"
     },
     "techradar.com/pro/we-like-transparency-but-we-also-like-control-software-vendors-need-to-make-their-tools-more-accessible-without-dumbing-them-down-and-adobe-thinks-its-got-the-winning-formula": {
       "title": "Software vendors need to make their tools more accessible without dumbing them down, and Adobe thinks it's got the winning formula",
@@ -19316,7 +19316,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.294491+06:00",
-      "last_seen": "2026-11-13T04:34:08.508724+06:00"
+      "last_seen": "2026-11-13T13:35:30.530500+06:00"
     },
     "zdnet.com/tech/microsoft-windows-november-update-fails-install-some-pcs": {
       "title": "If the November Windows update fails to install on your PC, here’s what to do",
@@ -19332,7 +19332,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:22.367067+06:00",
-      "last_seen": "2026-11-13T04:34:08.720520+06:00"
+      "last_seen": "2026-11-13T13:35:30.617842+06:00"
     },
     "9to5google.com/2026/11/12/hey-gemini-hotword-debuts-on-android-xr-glasses": {
       "title": "‘Hey Gemini’ hotword debuts on Android XR glasses",
@@ -19924,7 +19924,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.539245+06:00",
-      "last_seen": "2026-11-13T04:34:13.721774+06:00"
+      "last_seen": "2026-11-13T13:35:35.580556+06:00"
     },
     "siliconangle.com/2026/11/12/vanta-launches-ai-governance-risk-quantification-and-a-vanta-agent-for-entire-jobs": {
       "title": "Vanta launches AI Governance, Risk Quantification and a Vanta Agent for entire jobs",
@@ -19957,7 +19957,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.539861+06:00",
-      "last_seen": "2026-11-13T04:34:13.722341+06:00"
+      "last_seen": "2026-11-13T13:35:35.581109+06:00"
     },
     "siliconangle.com/2026/11/12/computer-vision-startup-tristar-ai-pulls-in-12-4m-to-automate-quality-control-for-manufacturers": {
       "title": "Computer vision startup Tristar AI pulls in $12.4M to automate quality control for manufacturers",
@@ -19973,7 +19973,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.540143+06:00",
-      "last_seen": "2026-11-13T04:34:13.722612+06:00"
+      "last_seen": "2026-11-13T13:35:35.581377+06:00"
     },
     "siliconangle.com/2026/11/12/nvidia-ceo-jensen-huang-resigns-following-affairs-scandal": {
       "title": "Nvidia CEO Jensen Huang resigns following affairs scandal",
@@ -20006,7 +20006,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.540686+06:00",
-      "last_seen": "2026-11-13T04:34:13.723127+06:00"
+      "last_seen": "2026-11-13T13:35:35.581929+06:00"
     },
     "siliconangle.com/2026/11/12/clipto-enables-chatgpt-and-claude-to-search-and-analyze-years-of-peoples-meetings-and-video-calls": {
       "title": "Clipto enables ChatGPT and Claude to search and analyze years of people’s meetings and video calls",
@@ -20022,7 +20022,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.541007+06:00",
-      "last_seen": "2026-11-13T04:34:13.723501+06:00"
+      "last_seen": "2026-11-13T13:35:35.582211+06:00"
     },
     "siliconangle.com/2026/11/12/servicenow-launches-ai-powered-engine-to-accelerate-migrations-from-crm-rivals": {
       "title": "ServiceNow launches AI-powered engine to accelerate migrations from CRM rivals",
@@ -20038,7 +20038,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.541396+06:00",
-      "last_seen": "2026-11-13T04:34:13.723776+06:00"
+      "last_seen": "2026-11-13T13:35:35.582485+06:00"
     },
     "siliconangle.com/2026/11/12/square-takes-squaremates-ai-agent-out-of-beta-and-opens-up-to-sellers-own-ai-software": {
       "title": "Square takes Squaremates AI agent out of beta and opens up to sellers’ own AI software",
@@ -20054,7 +20054,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.541674+06:00",
-      "last_seen": "2026-11-13T04:34:13.724046+06:00"
+      "last_seen": "2026-11-13T13:35:35.582752+06:00"
     },
     "siliconangle.com/2026/11/12/qvyon-launches-with-8m-to-improve-safety-for-physical-ai-deployments": {
       "title": "Qvyon launches with $8M to improve safety for physical AI deployments",
@@ -20070,7 +20070,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.541961+06:00",
-      "last_seen": "2026-11-13T04:34:13.724345+06:00"
+      "last_seen": "2026-11-13T13:35:35.583008+06:00"
     },
     "siliconangle.com/2026/11/12/horizon3-launches-adversarial-intelligence-frontier-lab-built-on-nodezero-attack-data": {
       "title": "Horizon3 launches Adversarial Intelligence Frontier Lab built on NodeZero attack data",
@@ -20086,7 +20086,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.542236+06:00",
-      "last_seen": "2026-11-13T04:34:13.724624+06:00"
+      "last_seen": "2026-11-13T13:35:35.583276+06:00"
     },
     "siliconangle.com/2026/11/12/hatz-ai-raises-24m-to-help-small-businesses-go-ai-native-through-their-msps": {
       "title": "Hatz AI raises $24M to help small businesses go AI-native through their MSPs",
@@ -20102,7 +20102,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.542504+06:00",
-      "last_seen": "2026-11-13T04:34:13.724888+06:00"
+      "last_seen": "2026-11-13T13:35:35.583557+06:00"
     },
     "siliconangle.com/2026/11/12/data-observability-becomes-must-ai-agents-build-databases-kubeconna": {
       "title": "Agents that build their own databases are forcing a data foundation rethink",
@@ -20150,7 +20150,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.738423+06:00",
-      "last_seen": "2026-11-13T04:34:13.962574+06:00"
+      "last_seen": "2026-11-13T13:35:35.809973+06:00"
     },
     "androidauthority.com/sennheiser-momentum-4-deal-amazon-3734570": {
       "title": "Sennheiser Momentum 4 headphones are $100 off with 60-hour battery",
@@ -20166,7 +20166,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.738565+06:00",
-      "last_seen": "2026-11-13T04:34:13.962690+06:00"
+      "last_seen": "2026-11-13T13:35:35.810087+06:00"
     },
     "androidauthority.com/jensen-huang-nvidia-resignation-3734527": {
       "title": "NVIDIA CEO Jensen Huang resigns amid mounting scandals",
@@ -20199,7 +20199,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.738854+06:00",
-      "last_seen": "2026-11-13T04:34:13.962912+06:00"
+      "last_seen": "2026-11-13T13:35:35.810309+06:00"
     },
     "androidauthority.com/samsung-27-inch-odyssey-oled-g5-deal-3734559": {
       "title": "Samsung’s 27-inch QD-OLED gaming monitor gets a 36% discount",
@@ -20215,7 +20215,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.738980+06:00",
-      "last_seen": "2026-11-13T04:34:13.963028+06:00"
+      "last_seen": "2026-11-13T13:35:35.810424+06:00"
     },
     "androidauthority.com/xiaomi-redmi-watch-6-deal-3734533": {
       "title": "Amazon cuts $35 off the Xiaomi Redmi Watch 6",
@@ -20231,7 +20231,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739100+06:00",
-      "last_seen": "2026-11-13T04:34:13.963144+06:00"
+      "last_seen": "2026-11-13T13:35:35.810566+06:00"
     },
     "androidauthority.com/pixel-wireless-charging-issues-november-update-3734451": {
       "title": "Some Pixel users say Google’s November update broke wireless charging",
@@ -20247,7 +20247,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739218+06:00",
-      "last_seen": "2026-11-13T04:34:13.963275+06:00"
+      "last_seen": "2026-11-13T13:35:35.810694+06:00"
     },
     "androidauthority.com/soundcore-q31i-headphones-deal-3734503": {
       "title": "Soundcore Q31i headphones are $25 off at a record low price",
@@ -20263,7 +20263,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739344+06:00",
-      "last_seen": "2026-11-13T04:34:13.963394+06:00"
+      "last_seen": "2026-11-13T13:35:35.810809+06:00"
     },
     "androidauthority.com/youtube-server-error-400-android-fixed-3734468": {
       "title": "YouTube Server Error 400 on Android is now fixed, Google confirms",
@@ -20279,7 +20279,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739464+06:00",
-      "last_seen": "2026-11-13T04:34:13.963510+06:00"
+      "last_seen": "2026-11-13T13:35:35.810925+06:00"
     },
     "androidauthority.com/apple-m5-ipad-pro-deal-3734459": {
       "title": "Save $299 on Apple’s 1TB M5 iPad Pro 11-inch on Amazon",
@@ -20295,7 +20295,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739583+06:00",
-      "last_seen": "2026-11-13T04:34:13.963624+06:00"
+      "last_seen": "2026-11-13T13:35:35.811041+06:00"
     },
     "androidauthority.com/nothing-audio-at-target-stores-3734345": {
       "title": "You can now buy Nothing headphones and earbuds at select Target stores in the US",
@@ -20311,7 +20311,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739735+06:00",
-      "last_seen": "2026-11-13T04:34:13.963747+06:00"
+      "last_seen": "2026-11-13T13:35:35.811158+06:00"
     },
     "androidauthority.com/samsung-google-smart-glasses-phone-compatibility-3734240": {
       "title": "Samsung and Google’s new smart glasses support iPhones but leave most Android brands out",
@@ -20327,7 +20327,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739866+06:00",
-      "last_seen": "2026-11-13T04:34:13.963862+06:00"
+      "last_seen": "2026-11-13T13:35:35.811271+06:00"
     },
     "androidauthority.com/samsung-android-xr-smart-glass-pre-order-3734248": {
       "title": "You can finally pre-order Samsung’s smart glasses with Android XR",
@@ -20343,7 +20343,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.739985+06:00",
-      "last_seen": "2026-11-13T04:34:13.963976+06:00"
+      "last_seen": "2026-11-13T13:35:35.811384+06:00"
     },
     "androidauthority.com/google-intelligent-eyewear-hands-on-3734091": {
       "title": "I tested Google’s $395 Intelligent Eyewear smart glasses — I’m not sure why I’d buy them",
@@ -20359,7 +20359,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740097+06:00",
-      "last_seen": "2026-11-13T04:34:13.964086+06:00"
+      "last_seen": "2026-11-13T13:35:35.811815+06:00"
     },
     "androidauthority.com/samsung-galaxy-s27-series-wallpapers-leak-3734394": {
       "title": "Galaxy S27 wallpapers leak, giving us early clues on expected colors",
@@ -20375,7 +20375,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740215+06:00",
-      "last_seen": "2026-11-13T04:34:13.964201+06:00"
+      "last_seen": "2026-11-13T13:35:35.811957+06:00"
     },
     "androidauthority.com/galaxy-s25-one-ui-9-5-beta-rumor-3734322": {
       "title": "Not just S26, Samsung is already testing One UI 9.5 on the Galaxy S25",
@@ -20391,7 +20391,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740389+06:00",
-      "last_seen": "2026-11-13T04:34:13.964334+06:00"
+      "last_seen": "2026-11-13T13:35:35.812084+06:00"
     },
     "androidauthority.com/samsung-custom-driver-emulation-exynos-3734301": {
       "title": "Tested: This unofficial AMD driver let me play Tears of the Kingdom on an Exynos phone",
@@ -20407,7 +20407,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740599+06:00",
-      "last_seen": "2026-11-13T04:34:13.964449+06:00"
+      "last_seen": "2026-11-13T13:35:35.812199+06:00"
     },
     "androidauthority.com/gemini-intelligence-android-auto-3734304": {
       "title": "Android Auto’s next Gemini upgrade is leaving non-Pixel phones behind",
@@ -20423,7 +20423,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740770+06:00",
-      "last_seen": "2026-11-13T04:34:13.964564+06:00"
+      "last_seen": "2026-11-13T13:35:35.812310+06:00"
     },
     "androidauthority.com/how-to-enable-gboard-rambler-pixel-10-3734305": {
       "title": "Missing Gboard’s Rambler on your Pixel 10? Here’s how to manually enable it",
@@ -20439,7 +20439,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.740899+06:00",
-      "last_seen": "2026-11-13T04:34:13.964803+06:00"
+      "last_seen": "2026-11-13T13:35:35.812421+06:00"
     },
     "androidauthority.com/vivo-x500-pro-max-favorite-video-capture-phone-3731185": {
       "title": "The vivo X500 Pro Max is the most fun I’ve had with video capture on a phone",
@@ -20455,7 +20455,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.741019+06:00",
-      "last_seen": "2026-11-13T04:34:13.964922+06:00"
+      "last_seen": "2026-11-13T13:35:35.812559+06:00"
     },
     "androidauthority.com/i-stopped-letting-my-old-amazon-fire-tablets-collect-dust-3733012": {
       "title": "I stopped letting my old Amazon Fire tablets collect dust — here are 5 ways I use them",
@@ -20471,7 +20471,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.741139+06:00",
-      "last_seen": "2026-11-13T04:34:13.965037+06:00"
+      "last_seen": "2026-11-13T13:35:35.812676+06:00"
     },
     "androidauthority.com/galaxy-s27-ultra-camera-concerns-3733812": {
       "title": "The Galaxy S27 Ultra camera leak has me worried Samsung learned nothing",
@@ -20487,7 +20487,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.741255+06:00",
-      "last_seen": "2026-11-13T04:34:13.965150+06:00"
+      "last_seen": "2026-11-13T13:35:35.812787+06:00"
     },
     "androidauthority.com/google-labs-tabletop-3734236": {
       "title": "Google’s new Tabletop experiment wants to fix the worst part of making plans with friends",
@@ -20503,7 +20503,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.741371+06:00",
-      "last_seen": "2026-11-13T04:34:13.965282+06:00"
+      "last_seen": "2026-11-13T13:35:35.812898+06:00"
     },
     "androidauthority.com/samsung-phone-app-one-ui-9-5-search-3734233": {
       "title": "Samsung’s Phone app in One UI 9.5 could bring a more convenient bottom search bar",
@@ -20519,7 +20519,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.741487+06:00",
-      "last_seen": "2026-11-13T04:34:13.965400+06:00"
+      "last_seen": "2026-11-13T13:35:35.813009+06:00"
     },
     "macrumors.com/2026/11/12/apple-sports-app-ufc": {
       "title": "Apple Sports App Now Features UFC",
@@ -20535,7 +20535,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.926866+06:00",
-      "last_seen": "2026-11-13T04:34:14.188833+06:00"
+      "last_seen": "2026-11-13T13:35:36.006191+06:00"
     },
     "macrumors.com/2026/11/12/trump-says-tim-cook-should-be-nvidia-ceo": {
       "title": "Trump Says Tim Cook Should Be Nvidia CEO as Jensen Huang Resigns",
@@ -20551,7 +20551,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.927859+06:00",
-      "last_seen": "2026-11-13T04:34:14.189762+06:00"
+      "last_seen": "2026-11-13T13:35:36.007114+06:00"
     },
     "macrumors.com/2026/11/12/apple-2026-holiday-ad": {
       "title": "Apple Releases Emotional 2026 Holiday Ad Featuring MacBook Neo",
@@ -20567,7 +20567,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.928997+06:00",
-      "last_seen": "2026-11-13T04:34:14.190530+06:00"
+      "last_seen": "2026-11-13T13:35:36.007874+06:00"
     },
     "macrumors.com/2026/11/12/apple-accessories-amazon-sale": {
       "title": "Apple's Official iPhone 18 Pro Cases and Watch Bands Get Big Discounts on Amazon",
@@ -20583,7 +20583,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.934397+06:00",
-      "last_seen": "2026-11-13T04:34:14.195972+06:00"
+      "last_seen": "2026-11-13T13:35:36.013285+06:00"
     },
     "macrumors.com/2026/11/12/nintendo-to-end-sign-in-with-apple-support": {
       "title": "Nintendo to End 'Sign in With Apple' Support in January",
@@ -20599,7 +20599,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.935223+06:00",
-      "last_seen": "2026-11-13T04:34:14.196799+06:00"
+      "last_seen": "2026-11-13T13:35:36.014098+06:00"
     },
     "macrumors.com/2026/11/12/walmart-black-friday-sale-begins": {
       "title": "Walmart Black Friday Sale Begins With Early Deals on TVs, Laptops, and More",
@@ -20615,7 +20615,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.939503+06:00",
-      "last_seen": "2026-11-13T04:34:14.200741+06:00"
+      "last_seen": "2026-11-13T13:35:36.017894+06:00"
     },
     "macrumors.com/2026/11/12/apple-plans-homeview-update-with-siri-fix": {
       "title": "Apple Says HomeView Software Update Coming Next Month With Siri Fix",
@@ -20631,7 +20631,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.940574+06:00",
-      "last_seen": "2026-11-13T04:34:14.201727+06:00"
+      "last_seen": "2026-11-13T13:35:36.018853+06:00"
     },
     "macrumors.com/2026/11/12/apple-homeview-review": {
       "title": "Review: Is Apple's All-New HomeView Smart Home Hub Worth $299?",
@@ -20647,7 +20647,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.941473+06:00",
-      "last_seen": "2026-11-13T04:34:14.203457+06:00"
+      "last_seen": "2026-11-13T13:35:36.019817+06:00"
     },
     "macrumors.com/2026/11/12/apple-home-collection-orders": {
       "title": "Apple Home Collection: Select Accessories Available to Order This Friday",
@@ -20663,7 +20663,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.943036+06:00",
-      "last_seen": "2026-11-13T04:34:14.205031+06:00"
+      "last_seen": "2026-11-13T13:35:36.021346+06:00"
     },
     "macrumors.com/2026/11/12/ratchet-clank-ranger-rumble-to-leave-app-store": {
       "title": "'Ratchet & Clank: Ranger Rumble' to Leave App Store This Month",
@@ -20679,7 +20679,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.943709+06:00",
-      "last_seen": "2026-11-13T04:34:14.205603+06:00"
+      "last_seen": "2026-11-13T13:35:36.021907+06:00"
     },
     "macrumors.com/2026/11/12/johny-srouji-eyed-as-potential-nvidia-ceo": {
       "title": "Apple's Johny Srouji Eyed to Replace Nvidia CEO Jensen Huang",
@@ -20695,7 +20695,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-12T22:37:27.944806+06:00",
-      "last_seen": "2026-11-13T04:34:14.206697+06:00"
+      "last_seen": "2026-11-13T13:35:36.023001+06:00"
     },
     "techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay": {
       "title": "Muse can now place calls to U.S. businesses — if you pay",
@@ -20711,7 +20711,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.579927+06:00",
-      "last_seen": "2026-11-13T04:33:45.579934+06:00"
+      "last_seen": "2026-11-13T13:35:07.259544+06:00"
     },
     "techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending": {
       "title": "Nebius tests the neocloud playbook with $40 billion in planned spending",
@@ -20727,7 +20727,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580240+06:00",
-      "last_seen": "2026-11-13T04:33:45.580245+06:00"
+      "last_seen": "2026-11-13T13:35:07.259792+06:00"
     },
     "techcrunch.com/2026/11/12/jensen-huang-was-having-a-third-affair-reuters-reports": {
       "title": "Jensen Huang was having a third affair, Reuters reports",
@@ -20743,7 +20743,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580365+06:00",
-      "last_seen": "2026-11-13T04:33:45.580369+06:00"
+      "last_seen": "2026-11-13T13:35:07.259909+06:00"
     },
     "techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions": {
       "title": "Google’s latest Search upgrade promises better answers to your most complicated questions",
@@ -20759,7 +20759,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580487+06:00",
-      "last_seen": "2026-11-13T04:33:45.580491+06:00"
+      "last_seen": "2026-11-13T13:35:07.260022+06:00"
     },
     "techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands": {
       "title": "Nectar launches an AI agent to automate creator discovery and outreach for brands",
@@ -20775,7 +20775,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580597+06:00",
-      "last_seen": "2026-11-13T04:33:45.580601+06:00"
+      "last_seen": "2026-11-13T13:35:07.260133+06:00"
     },
     "techcrunch.com/2026/11/12/microsofts-outlook-email-hit-by-new-outage": {
       "title": "Microsoft’s Outlook email hit by new outage",
@@ -20791,7 +20791,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580703+06:00",
-      "last_seen": "2026-11-13T04:33:45.580707+06:00"
+      "last_seen": "2026-11-13T13:35:07.260240+06:00"
     },
     "techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question": {
       "title": "Jensen Huang’s exit puts Nvidia’s support for open source in question",
@@ -20807,7 +20807,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580812+06:00",
-      "last_seen": "2026-11-13T04:33:45.580815+06:00"
+      "last_seen": "2026-11-13T13:35:07.260350+06:00"
     },
     "techcrunch.com/2026/11/12/hugging-face-ceo-vows-to-keep-fighting-for-open-source-ai-after-jensen-huangs-exit": {
       "title": "Hugging Face CEO vows to keep fighting for open source AI after Jensen Huang’s exit",
@@ -20823,7 +20823,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.580919+06:00",
-      "last_seen": "2026-11-13T04:33:45.580923+06:00"
+      "last_seen": "2026-11-13T13:35:07.260473+06:00"
     },
     "techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks": {
       "title": "United Airlines blocks AI agents from booking flights, citing cybersecurity risks",
@@ -20839,7 +20839,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.581024+06:00",
-      "last_seen": "2026-11-13T04:33:45.581028+06:00"
+      "last_seen": "2026-11-13T13:35:07.260590+06:00"
     },
     "techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions": {
       "title": "SoftBank’s billion-dollar loss may have put a cap on AI’s natural gas ambitions",
@@ -20855,7 +20855,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.581138+06:00",
-      "last_seen": "2026-11-13T04:33:45.581142+06:00"
+      "last_seen": "2026-11-13T13:35:07.260704+06:00"
     },
     "techcrunch.com/2026/11/12/phota-labs-uses-ai-to-turn-everyday-photos-into-professional-looking-shots": {
       "title": "Phota Labs uses AI to turn everyday photos into professional-looking shots",
@@ -20871,7 +20871,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.581312+06:00",
-      "last_seen": "2026-11-13T04:33:45.581318+06:00"
+      "last_seen": "2026-11-13T13:35:07.260821+06:00"
     },
     "theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen": {
       "title": "Google’s new Gemini model is better at understanding complicated questions",
@@ -20885,9 +20885,10 @@
       "image": "",
       "discovery": "rss",
       "date_estimated": false,
-      "status": "pending",
+      "status": "posted",
       "first_seen": "2026-11-13T04:33:45.705381+06:00",
-      "last_seen": "2026-11-13T04:33:45.705387+06:00"
+      "last_seen": "2026-11-13T13:35:07.362328+06:00",
+      "posted_at": "2026-11-13T13:48:40.319970+06:00"
     },
     "theverge.com/tech/1032434/nvidia-jensen-huang-resignation-reactions": {
       "title": "‘It&#8217;s a mistake for Nvidia to let Jensen resign’: reactions from tech leaders on Jensen Huang’s resignation",
@@ -20920,7 +20921,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.705645+06:00",
-      "last_seen": "2026-11-13T04:33:45.705649+06:00"
+      "last_seen": "2026-11-13T13:35:07.362571+06:00"
     },
     "theverge.com/games/1032321/microsoft-xbox-original-games-pc-backwards-compatibility": {
       "title": "Here are the 25 original Xbox games you can now play on PC",
@@ -20936,7 +20937,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.705760+06:00",
-      "last_seen": "2026-11-13T04:33:45.705764+06:00"
+      "last_seen": "2026-11-13T13:35:07.362679+06:00"
     },
     "theverge.com/tech/1032226/microsoft-outlook-is-down": {
       "title": "Microsoft Outlook is down",
@@ -20952,7 +20953,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.705876+06:00",
-      "last_seen": "2026-11-13T04:33:45.705880+06:00"
+      "last_seen": "2026-11-13T13:35:07.362097+06:00"
     },
     "theverge.com/column/1032243/peptides-american-manufacturing-maha": {
       "title": "Meet the people who want peptides to be made in America",
@@ -21048,7 +21049,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.849100+06:00",
-      "last_seen": "2026-11-13T04:33:45.849105+06:00"
+      "last_seen": "2026-11-13T13:35:07.551741+06:00"
     },
     "wired.com/story/early-black-friday-tv-deals-11-12-26": {
       "title": "The 10 Best Early Black Friday TV Deals (2026)",
@@ -21064,7 +21065,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.849257+06:00",
-      "last_seen": "2026-11-13T04:33:45.849262+06:00"
+      "last_seen": "2026-11-13T13:35:07.551867+06:00"
     },
     "wired.com/story/uncanny-valley-podcast-jensen-huang-is-out-will-nvidias-rivals-cash-in": {
       "title": "Jensen Huang Is Out. Will Nvidia’s Rivals Cash In?",
@@ -21097,7 +21098,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.849532+06:00",
-      "last_seen": "2026-11-13T04:33:45.849536+06:00"
+      "last_seen": "2026-11-13T13:35:07.552101+06:00"
     },
     "wired.com/story/jensen-huang-colette-kress-replacement-powerful-women-in-tech": {
       "title": "Jensen Huang Didn’t Name His Own Replacement as One of Tech’s Most Powerful Women",
@@ -21113,7 +21114,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.849662+06:00",
-      "last_seen": "2026-11-13T04:33:45.849666+06:00"
+      "last_seen": "2026-11-13T13:35:07.552227+06:00"
     },
     "wired.com/story/major-microsoft-outlook-outage-hits-365-customers-north-america": {
       "title": "Major Microsoft Outlook Outage Leaves People With Email Jobs Unable to Email",
@@ -21146,7 +21147,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.849903+06:00",
-      "last_seen": "2026-11-13T04:33:45.849908+06:00"
+      "last_seen": "2026-11-13T13:35:07.552475+06:00"
     },
     "wired.com/story/uncanny-valley-podcast-jensen-huangs-dollar470-billion-affair": {
       "title": "Jensen Huang’s $470 Billion Affair",
@@ -21162,7 +21163,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.850029+06:00",
-      "last_seen": "2026-11-13T04:33:45.850032+06:00"
+      "last_seen": "2026-11-13T13:35:07.552600+06:00"
     },
     "wired.com/story/google-deepmind-staff-escalate-their-union-fight": {
       "title": "Google DeepMind Staff Tap the UK Government to Escalate Their Unionization Fight",
@@ -21178,7 +21179,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.850151+06:00",
-      "last_seen": "2026-11-13T04:33:45.850154+06:00"
+      "last_seen": "2026-11-13T13:35:07.552719+06:00"
     },
     "wired.com/story/jensen-huang-tanked-a-trillion-dollars-in-less-than-a-month": {
       "title": "Jensen Huang Basically Lit More Than $1 Trillion on Fire in Less Than a Month",
@@ -21194,7 +21195,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:45.850294+06:00",
-      "last_seen": "2026-11-13T04:33:45.850299+06:00"
+      "last_seen": "2026-11-13T13:35:07.552835+06:00"
     },
     "arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace": {
       "title": "FAA expands AI advice to manage air traffic congestion across entire US airspace",
@@ -21210,7 +21211,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.003393+06:00",
-      "last_seen": "2026-11-13T04:33:46.003398+06:00"
+      "last_seen": "2026-11-13T13:35:07.716195+06:00"
     },
     "arstechnica.com/gadgets/2026/11/ars-live-can-the-cloud-survive-drone-strikes-on-data-centers": {
       "title": "Ars Live: What drone attacks on data centers mean for modern life in the cloud",
@@ -21226,7 +21227,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.003525+06:00",
-      "last_seen": "2026-11-13T04:33:46.003529+06:00"
+      "last_seen": "2026-11-13T13:35:07.716315+06:00"
     },
     "arstechnica.com/gaming/2026/11/the-elder-scrolls-most-obscure-adventure-gets-a-4k-pc-makeover": {
       "title": "The Elder Scrolls' most obscure adventure gets a 4K PC makeover",
@@ -21242,7 +21243,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.003769+06:00",
-      "last_seen": "2026-11-13T04:33:46.003774+06:00"
+      "last_seen": "2026-11-13T13:35:07.716566+06:00"
     },
     "arstechnica.com/google/2026/11/google-rolls-out-gemini-4-hydrogen-finally-replacing-3-8-flash": {
       "title": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
@@ -21275,7 +21276,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004018+06:00",
-      "last_seen": "2026-11-13T04:33:46.004021+06:00"
+      "last_seen": "2026-11-13T13:35:07.716807+06:00"
     },
     "arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks": {
       "title": "Google faces calls for AI moratoriums in schools after Gemini pilot backlash",
@@ -21291,7 +21292,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004137+06:00",
-      "last_seen": "2026-11-13T04:33:46.004141+06:00"
+      "last_seen": "2026-11-13T13:35:07.717128+06:00"
     },
     "arstechnica.com/culture/2026/11/netflix-releases-new-trailer-for-ray-gunn": {
       "title": "Netflix releases new trailer for Ray Gunn",
@@ -21307,7 +21308,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004467+06:00",
-      "last_seen": "2026-11-13T04:33:46.004472+06:00"
+      "last_seen": "2026-11-13T13:35:07.717244+06:00"
     },
     "arstechnica.com/space/2026/11/building-a-rocket-is-hard-ast-spacemobile-thinks-its-simple": {
       "title": "Building a rocket is hard. AST SpaceMobile thinks it's \"simple.\"",
@@ -21323,7 +21324,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004588+06:00",
-      "last_seen": "2026-11-13T04:33:46.004592+06:00"
+      "last_seen": "2026-11-13T13:35:07.717356+06:00"
     },
     "arstechnica.com/health/2026/11/mans-secret-use-of-synthetic-testosterone-for-cows-nearly-destroyed-his-heart": {
       "title": "Man's secret use of synthetic testosterone for cows nearly destroyed his heart",
@@ -21339,7 +21340,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004704+06:00",
-      "last_seen": "2026-11-13T04:33:46.004708+06:00"
+      "last_seen": "2026-11-13T13:35:07.717483+06:00"
     },
     "arstechnica.com/science/2026/11/the-amazing-disappearing-exoplanet": {
       "title": "The amazing disappearing exoplanet",
@@ -21355,7 +21356,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.004813+06:00",
-      "last_seen": "2026-11-13T04:33:46.004816+06:00"
+      "last_seen": "2026-11-13T13:35:07.717597+06:00"
     },
     "engadget.com/2315274/who-is-collette-kress-nvidia-ceo": {
       "title": "Who is Collette Kress, NVIDIA's interim CEO?",
@@ -21371,7 +21372,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.143726+06:00",
-      "last_seen": "2026-11-13T04:33:46.143731+06:00"
+      "last_seen": "2026-11-13T13:35:07.863353+06:00"
     },
     "engadget.com/2315259/multiple-microsoft-365-services-are-experiencing-an-outage": {
       "title": "Multiple Microsoft 365 services are experiencing an outage",
@@ -21382,12 +21383,12 @@
       "source": "Engadget",
       "region": "Tech",
       "excerpt": "Outlook and Teams are among the platforms impacted by \"elevated load\" issues.",
-      "image": "https://www.engadget.com/img/gallery/multiple-microsoft-365-services-are-experiencing-an-outage/l-intro-1794511005.jpg",
+      "image": "https://www.engadget.com/img/gallery/multiple-microsoft-365-services-are-experiencing-an-outage/l-intro-1794524102.jpg",
       "discovery": "rss",
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.143868+06:00",
-      "last_seen": "2026-11-13T04:33:46.143872+06:00"
+      "last_seen": "2026-11-13T13:35:07.863501+06:00"
     },
     "engadget.com/2315091/ex-nvidia-ceo-jensen-huang-is-set-to-testify-before-congress-this-month": {
       "title": "Ex-NVIDIA CEO Jensen Huang is set to testify before Congress this month",
@@ -21403,7 +21404,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.143997+06:00",
-      "last_seen": "2026-11-13T04:33:46.144000+06:00"
+      "last_seen": "2026-11-13T13:35:07.863633+06:00"
     },
     "engadget.com/2315072/zelenskyy-says-starshield-has-been-slowed-again-endangering-ukraine-defense": {
       "title": "Zelenskyy says Starshield has been slowed again, endangering Ukraine's defense",
@@ -21419,7 +21420,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.144123+06:00",
-      "last_seen": "2026-11-13T04:33:46.144127+06:00"
+      "last_seen": "2026-11-13T13:35:07.863768+06:00"
     },
     "engadget.com/2313383/apple-sports-adds-live-ufc-updates": {
       "title": "Apple Sports adds live UFC updates",
@@ -21435,7 +21436,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:33:46.144265+06:00",
-      "last_seen": "2026-11-13T04:33:46.144270+06:00"
+      "last_seen": "2026-11-13T13:35:07.863891+06:00"
     },
     "technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking": {
       "title": "Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility",
@@ -21707,7 +21708,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.504977+06:00",
-      "last_seen": "2026-11-13T04:34:08.504983+06:00"
+      "last_seen": "2026-11-13T13:35:30.526831+06:00"
     },
     "techradar.com/pro/first-ram-now-circuit-boards-ai-demand-is-stretching-some-pcb-orders-to-30-months": {
       "title": "First RAM, now circuit boards: AI demand is stretching some PCB orders to 30 months",
@@ -21723,7 +21724,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505119+06:00",
-      "last_seen": "2026-11-13T04:34:08.505123+06:00"
+      "last_seen": "2026-11-13T13:35:30.526949+06:00"
     },
     "techradar.com/entertainment/cricket/how-to-watch-australia-vs-england-2026-odi-series-free": {
       "title": "How to watch Australia vs England ODI Series 2026: Free Streams, TV Channels, Schedule & Preview",
@@ -21739,7 +21740,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505264+06:00",
-      "last_seen": "2026-11-13T04:34:08.505269+06:00"
+      "last_seen": "2026-11-13T13:35:30.527067+06:00"
     },
     "techradar.com/pro/detect-an-oil-tanker-at-66-miles-navies-queue-up-for-billion-dollar-european-miltech-company-that-humbles-fiber-optic-to-listen-to-acoustic-vibrations-underwater": {
       "title": "Navies queue up for billion-dollar European miltech company which humbles fiber-optic",
@@ -21755,7 +21756,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505393+06:00",
-      "last_seen": "2026-11-13T04:34:08.505397+06:00"
+      "last_seen": "2026-11-13T13:35:30.527187+06:00"
     },
     "techradar.com/entertainment/tv-shows/how-to-watch-ai-probably-nothing-to-worry-about": {
       "title": "How to watch AI: Probably Nothing to Worry About for FREE",
@@ -21771,7 +21772,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505516+06:00",
-      "last_seen": "2026-11-13T04:34:08.505520+06:00"
+      "last_seen": "2026-11-13T13:35:30.527304+06:00"
     },
     "techradar.com/entertainment/how-to-watch/how-to-watch-cunk-on-cinema": {
       "title": "How to watch Cunk on Cinema for free — stream from anywhere",
@@ -21787,7 +21788,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505635+06:00",
-      "last_seen": "2026-11-13T04:34:08.505639+06:00"
+      "last_seen": "2026-11-13T13:35:30.527420+06:00"
     },
     "techradar.com/pro/mozilla-firefox-vpn-has-unlimited-data-until-january-31-2027-to-fight-back-against-chrome-and-edge-but-is-it-already-too-late": {
       "title": "Mozilla Firefox VPN has unlimited data until January 31, 2027, to fight back against Chrome and Edge, but is it already too late?",
@@ -21803,7 +21804,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505756+06:00",
-      "last_seen": "2026-11-13T04:34:08.505759+06:00"
+      "last_seen": "2026-11-13T13:35:30.527557+06:00"
     },
     "techradar.com/news/live/outlook-outage-nov-2026": {
       "title": "Microsoft Outlook is down for many: Here's what we know",
@@ -21819,7 +21820,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505871+06:00",
-      "last_seen": "2026-11-13T04:34:08.505874+06:00"
+      "last_seen": "2026-11-13T13:35:30.527673+06:00"
     },
     "techradar.com/entertainment/tv-shows/how-to-watch-shetland-season-11-free-streams-from-anywhere-in-the-world": {
       "title": "How to watch Shetland season 11 — free streams from anywhere in the world",
@@ -21835,7 +21836,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.505989+06:00",
-      "last_seen": "2026-11-13T04:34:08.505992+06:00"
+      "last_seen": "2026-11-13T13:35:30.527789+06:00"
     },
     "techradar.com/pro/the-next-chapter-is-shaped-by-what-education-leaders-are-asking-for-microsoft-is-pulling-free-emails-for-schools-colleges-and-universities-who-now-face-big-bills-to-keep-student-mailboxes": {
       "title": "Microsoft is pulling free emails for schools, colleges, and universities",
@@ -21851,7 +21852,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506106+06:00",
-      "last_seen": "2026-11-13T04:34:08.506109+06:00"
+      "last_seen": "2026-11-13T13:35:30.527901+06:00"
     },
     "techradar.com/pro/security/a-2013-hack-of-a-russian-cybercrime-forum-may-have-leaked-the-details-of-millions-of-users": {
       "title": "A 2013 hack of a Russian cybercrime forum may have leaked the details of millions of users",
@@ -21867,7 +21868,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506238+06:00",
-      "last_seen": "2026-11-13T04:34:08.506243+06:00"
+      "last_seen": "2026-11-13T13:35:30.528014+06:00"
     },
     "techradar.com/entertainment/football/watch-czechia-vs-spain-nations-league-2026-27-free": {
       "title": "How to watch Czechia vs Spain: FREE live streams, TV channels & kick-off time for Nations League 2026/27 fixture",
@@ -21883,7 +21884,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506360+06:00",
-      "last_seen": "2026-11-13T04:34:08.506363+06:00"
+      "last_seen": "2026-11-13T13:35:30.528128+06:00"
     },
     "techradar.com/health-fitness/fitness-apps/whoop-rolls-out-humans-upgrade-for-subscribers-strava-like-feature-promises-to-be-most-verifiably-human-social-network": {
       "title": "Whoop launches Strava-like 'Humans' network for subscribers",
@@ -21899,7 +21900,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506479+06:00",
-      "last_seen": "2026-11-13T04:34:08.506483+06:00"
+      "last_seen": "2026-11-13T13:35:30.528242+06:00"
     },
     "techradar.com/home/energy-saving/getting-solar-panels-pigeon-proof-them-right-away-before-acidic-droppings-ruin-your-investment-and-its-too-late-to-evict-them": {
       "title": "Don’t let pigeons ruin your brand new solar panels — why day-one protection is essential",
@@ -21915,7 +21916,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506597+06:00",
-      "last_seen": "2026-11-13T04:34:08.506601+06:00"
+      "last_seen": "2026-11-13T13:35:30.528358+06:00"
     },
     "techradar.com/entertainment/football/england-vs-croatia-free-nations-league-2026-27": {
       "title": "How to watch England vs Croatia: FREE live streams, TV channels & kick-off time for Nations League 2026/27 fixture, team news",
@@ -21931,7 +21932,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506717+06:00",
-      "last_seen": "2026-11-13T04:34:08.506720+06:00"
+      "last_seen": "2026-11-13T13:35:30.528490+06:00"
     },
     "techradar.com/ai-platforms-assistants/indias-first-ai-scam-ai-generated-books-to-blame-after-a-brand-new-public-library-in-india-faces-anti-corruption-investigation-just-days-after-opening": {
       "title": "AI books to blame after a new public library in India faces investigation",
@@ -21947,7 +21948,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.506836+06:00",
-      "last_seen": "2026-11-13T04:34:08.506839+06:00"
+      "last_seen": "2026-11-13T13:35:30.528608+06:00"
     },
     "zdnet.com/business/microsoft-outage-outlook-teams-copilot": {
       "title": "Several Microsoft services appear to be down – what we know",
@@ -21980,7 +21981,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.719662+06:00",
-      "last_seen": "2026-11-13T04:34:08.719666+06:00"
+      "last_seen": "2026-11-13T13:35:30.617064+06:00"
     },
     "zdnet.com/uncategorized/essentials-android-app-power-user-settings": {
       "title": "Attention, Android power users: This app unlocks 30+ features you won’t find in Settings",
@@ -21996,7 +21997,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.719795+06:00",
-      "last_seen": "2026-11-13T04:34:08.719799+06:00"
+      "last_seen": "2026-11-13T13:35:30.617198+06:00"
     },
     "zdnet.com/innovation/google-gemini-memory-summary-user-control": {
       "title": "You can force Gemini to forget about you now – how to edit its Memory",
@@ -22012,7 +22013,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.719922+06:00",
-      "last_seen": "2026-11-13T04:34:08.719925+06:00"
+      "last_seen": "2026-11-13T13:35:30.617324+06:00"
     },
     "zdnet.com/home-and-office/google-wallet-digital-home-keys-smart-locks": {
       "title": "Google Wallet just turned your Android phone into a digital house key – how it works",
@@ -22028,7 +22029,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.720044+06:00",
-      "last_seen": "2026-11-13T04:34:08.720048+06:00"
+      "last_seen": "2026-11-13T13:35:30.617450+06:00"
     },
     "zdnet.com/tech/google-pixel-tag-android-tracker-bluetooth-6-0-older-phones": {
       "title": "Google’s Pixel Tag tracker won’t work as well on older Android phones – check our list",
@@ -22044,7 +22045,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.720165+06:00",
-      "last_seen": "2026-11-13T04:34:08.720169+06:00"
+      "last_seen": "2026-11-13T13:35:30.617598+06:00"
     },
     "zdnet.com/tech/fitbit-health-metrics-missing-software-update-how-to-fix": {
       "title": "Fitbit users can’t see Google Health metrics after update – how to fix it",
@@ -22060,7 +22061,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:08.720345+06:00",
-      "last_seen": "2026-11-13T04:34:08.720353+06:00"
+      "last_seen": "2026-11-13T13:35:30.617722+06:00"
     },
     "9to5google.com/2026/11/12/samsungs-galaxy-smarttag-3-deal": {
       "title": "Galaxy SmartTag 3 at $20 makes a compelling case to skip the Google Pixel Tag",
@@ -22220,7 +22221,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.092391+06:00",
-      "last_seen": "2026-11-13T04:34:12.092397+06:00"
+      "last_seen": "2026-11-13T13:35:33.730295+06:00"
     },
     "unite.ai/cerebras-raises-full-year-outlook-as-cloud-revenue-jumps-265": {
       "title": "Cerebras Raises Full-Year Outlook as Cloud Revenue Jumps 265%",
@@ -22236,7 +22237,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.092564+06:00",
-      "last_seen": "2026-11-13T04:34:12.092568+06:00"
+      "last_seen": "2026-11-13T13:35:33.730448+06:00"
     },
     "unite.ai/gates-introduces-self-cooling-pump-for-compact-ai-server-racks": {
       "title": "Gates Introduces Self-Cooling Pump for Compact AI Server Racks",
@@ -22252,7 +22253,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.092728+06:00",
-      "last_seen": "2026-11-13T04:34:12.092732+06:00"
+      "last_seen": "2026-11-13T13:35:33.730625+06:00"
     },
     "unite.ai/spacex-unveils-two-ai-supercomputing-campus-plans-in-texas-and-arizona": {
       "title": "SpaceX Unveils Two AI Supercomputing Campus Plans in Texas and Arizona",
@@ -22285,7 +22286,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093038+06:00",
-      "last_seen": "2026-11-13T04:34:12.093042+06:00"
+      "last_seen": "2026-11-13T13:35:33.730919+06:00"
     },
     "unite.ai/4minds-raises-15m-series-a-at-500m-valuation-to-advance-its-ai-platform": {
       "title": "4Minds Raises $15M Series A at $500M Valuation to Advance Its AI Platform",
@@ -22301,7 +22302,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093190+06:00",
-      "last_seen": "2026-11-13T04:34:12.093194+06:00"
+      "last_seen": "2026-11-13T13:35:33.731067+06:00"
     },
     "unite.ai/ambience-prepare-surfaces-evidence-and-open-questions-before-visits": {
       "title": "Ambience Prepare Surfaces Evidence and Open Questions Before Visits",
@@ -22317,7 +22318,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093364+06:00",
-      "last_seen": "2026-11-13T04:34:12.093368+06:00"
+      "last_seen": "2026-11-13T13:35:33.731214+06:00"
     },
     "unite.ai/anthropic-launches-claude-meetings-beta-for-live-video-calls": {
       "title": "Anthropic Launches Claude Meetings Beta for Live Video Calls",
@@ -22333,7 +22334,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093514+06:00",
-      "last_seen": "2026-11-13T04:34:12.093518+06:00"
+      "last_seen": "2026-11-13T13:35:33.731362+06:00"
     },
     "unite.ai/google-deepmind-union-campaign-says-government-will-facilitate-ballot": {
       "title": "Google DeepMind Union Campaign Says Government Will Facilitate Ballot",
@@ -22349,7 +22350,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093672+06:00",
-      "last_seen": "2026-11-13T04:34:12.093676+06:00"
+      "last_seen": "2026-11-13T13:35:33.731538+06:00"
     },
     "unite.ai/innodisk-targets-ai-servers-with-customizable-ssds-and-cxl-memory": {
       "title": "Innodisk Targets AI Servers with Customizable SSDs and CXL Memory",
@@ -22365,7 +22366,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093820+06:00",
-      "last_seen": "2026-11-13T04:34:12.093824+06:00"
+      "last_seen": "2026-11-13T13:35:33.731686+06:00"
     },
     "unite.ai/google-antigravity-rolls-out-orchestrator-for-dynamic-model-handoffs": {
       "title": "Google Antigravity Rolls Out Orchestrator for Dynamic Model Handoffs",
@@ -22381,7 +22382,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.093967+06:00",
-      "last_seen": "2026-11-13T04:34:12.093971+06:00"
+      "last_seen": "2026-11-13T13:35:33.731832+06:00"
     },
     "unite.ai/scale-ai-launches-singapore-legal-reasoning-benchmark-with-imda": {
       "title": "Scale AI Launches Singapore Legal Reasoning Benchmark with IMDA",
@@ -22397,7 +22398,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094112+06:00",
-      "last_seen": "2026-11-13T04:34:12.094115+06:00"
+      "last_seen": "2026-11-13T13:35:33.731976+06:00"
     },
     "unite.ai/ibm-releases-granite-models-designed-to-resist-prompt-injection": {
       "title": "IBM Releases Granite Models Designed to Resist Prompt Injection",
@@ -22413,7 +22414,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094274+06:00",
-      "last_seen": "2026-11-13T04:34:12.094279+06:00"
+      "last_seen": "2026-11-13T13:35:33.732121+06:00"
     },
     "unite.ai/remotepc-connects-ai-assistants-to-remote-computer-management": {
       "title": "RemotePC Connects AI Assistants to Remote Computer Management",
@@ -22429,7 +22430,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094423+06:00",
-      "last_seen": "2026-11-13T04:34:12.094427+06:00"
+      "last_seen": "2026-11-13T13:35:33.732265+06:00"
     },
     "unite.ai/nebius-deal-prepayments-exceed-capex-as-colocation-delays-shift-revenue": {
       "title": "Nebius Deal Prepayments Exceed Capex as Colocation Delays Shift Revenue",
@@ -22445,7 +22446,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094573+06:00",
-      "last_seen": "2026-11-13T04:34:12.094577+06:00"
+      "last_seen": "2026-11-13T13:35:33.732411+06:00"
     },
     "unite.ai/public-citizen-advocacy-groups-sue-to-freeze-frontier-ai-development": {
       "title": "Public Citizen, Advocacy Groups Sue to Freeze Frontier AI Development",
@@ -22461,7 +22462,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094719+06:00",
-      "last_seen": "2026-11-13T04:34:12.094723+06:00"
+      "last_seen": "2026-11-13T13:35:33.732581+06:00"
     },
     "unite.ai/constant-contact-unveils-catalyst-ai-agent-for-small-businesses": {
       "title": "Constant Contact Unveils Catalyst AI Agent for Small Businesses",
@@ -22477,7 +22478,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.094865+06:00",
-      "last_seen": "2026-11-13T04:34:12.094869+06:00"
+      "last_seen": "2026-11-13T13:35:33.732725+06:00"
     },
     "unite.ai/perplexity-releases-decider-v1-3-models-with-text-span-extraction": {
       "title": "Perplexity Releases Decider V1.3 Models with Text-Span Extraction",
@@ -22493,7 +22494,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.095009+06:00",
-      "last_seen": "2026-11-13T04:34:12.095013+06:00"
+      "last_seen": "2026-11-13T13:35:33.732868+06:00"
     },
     "unite.ai/arena-physica-to-train-heaviside-on-amd-powered-lux-supercomputer": {
       "title": "Arena Physica to Train Heaviside on AMD-Powered Lux Supercomputer",
@@ -22509,7 +22510,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.095154+06:00",
-      "last_seen": "2026-11-13T04:34:12.095158+06:00"
+      "last_seen": "2026-11-13T13:35:33.733009+06:00"
     },
     "unite.ai/aws-agentcore-runtime-adds-larger-sessions-and-filesystem-mounts": {
       "title": "AWS AgentCore Runtime Adds Larger Sessions and Filesystem Mounts",
@@ -22525,7 +22526,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.095319+06:00",
-      "last_seen": "2026-11-13T04:34:12.095323+06:00"
+      "last_seen": "2026-11-13T13:35:33.733259+06:00"
     },
     "unite.ai/google-launches-gemini-4-hydrogen-for-everyday-agentic-workflows": {
       "title": "Google Launches Gemini 4 Hydrogen for Everyday Agentic Workflows",
@@ -22541,7 +22542,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.095470+06:00",
-      "last_seen": "2026-11-13T04:34:12.095474+06:00"
+      "last_seen": "2026-11-13T13:35:33.733408+06:00"
     },
     "unite.ai/alpacas-claude-connectors-simulate-orders-without-executing-live-trades": {
       "title": "Alpaca’s Claude Connectors Simulate Orders Without Executing Live Trades",
@@ -22557,7 +22558,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:12.095619+06:00",
-      "last_seen": "2026-11-13T04:34:12.095622+06:00"
+      "last_seen": "2026-11-13T13:35:33.733577+06:00"
     },
     "unite.ai/anthropic-launches-claude-for-manufacturing-with-17-workflow-skills": {
       "title": "Anthropic Launches Claude for Manufacturing With 17 Workflow Skills",
@@ -22669,7 +22670,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.719370+06:00",
-      "last_seen": "2026-11-13T04:34:13.719377+06:00"
+      "last_seen": "2026-11-13T13:35:35.578170+06:00"
     },
     "siliconangle.com/2026/11/12/3-ways-ai-is-changing-the-healthcare-revenue-cycle-adonisai": {
       "title": "3 ways AI is changing the healthcare revenue cycle",
@@ -22685,7 +22686,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.719668+06:00",
-      "last_seen": "2026-11-13T04:34:13.719672+06:00"
+      "last_seen": "2026-11-13T13:35:35.578434+06:00"
     },
     "siliconangle.com/2026/11/12/shares-of-ai-cloud-operator-nebius-drop-16-despite-strong-quarterly-results": {
       "title": "Shares of AI cloud operator Nebius drop 16%+ despite strong earnings results",
@@ -22701,7 +22702,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.719955+06:00",
-      "last_seen": "2026-11-13T04:34:13.719960+06:00"
+      "last_seen": "2026-11-13T13:35:35.578748+06:00"
     },
     "siliconangle.com/2026/11/12/agentic-ai-systems-push-kubernetes-second-act-kubeconna": {
       "title": "Kubernetes gets a second act as AI agents turn one prompt into thousands of inference calls",
@@ -22717,7 +22718,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.720247+06:00",
-      "last_seen": "2026-11-13T04:34:13.720253+06:00"
+      "last_seen": "2026-11-13T13:35:35.579014+06:00"
     },
     "siliconangle.com/2026/11/12/signal-week-raise-summit-cubeconversations": {
       "title": "Paris Signal Week looks to bridge crypto and institutional finance",
@@ -22733,7 +22734,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.720530+06:00",
-      "last_seen": "2026-11-13T04:34:13.720535+06:00"
+      "last_seen": "2026-11-13T13:35:35.579277+06:00"
     },
     "siliconangle.com/2026/11/12/block-builderlab-launch-event-2026-ai-agents-join-team": {
       "title": "4 insights from Block Builderlab Launch Event 2026: AI agents join the team as working colleagues",
@@ -22749,7 +22750,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.720802+06:00",
-      "last_seen": "2026-11-13T04:34:13.720806+06:00"
+      "last_seen": "2026-11-13T13:35:35.579555+06:00"
     },
     "siliconangle.com/2026/11/12/agentic-workloads-push-google-retool-kubernetes-agents-kubeconna": {
       "title": "Google retools Kubernetes for AI agents instead of building a new stack",
@@ -22765,7 +22766,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.721086+06:00",
-      "last_seen": "2026-11-13T04:34:13.721091+06:00"
+      "last_seen": "2026-11-13T13:35:35.579827+06:00"
     },
     "siliconangle.com/2026/11/12/ibm-quantum-and-the-race-to-make-scientific-advantage-useful-to-industry": {
       "title": "IBM Quantum and the race to make scientific advantage useful to industry",
@@ -22781,7 +22782,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.721499+06:00",
-      "last_seen": "2026-11-13T04:34:13.721504+06:00"
+      "last_seen": "2026-11-13T13:35:35.580095+06:00"
     },
     "androidauthority.com/whoop-humans-launch-3734748": {
       "title": "WHOOP Humans turns your sleep, recovery, and workouts into an AI-free social feed",
@@ -22797,7 +22798,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.960817+06:00",
-      "last_seen": "2026-11-13T04:34:13.960822+06:00"
+      "last_seen": "2026-11-13T13:35:35.808187+06:00"
     },
     "androidauthority.com/samsung-contacts-gaming-hub-integration-3734708": {
       "title": "Samsung Contacts is getting ready to go social with Gaming Hub integration for One UI 9.5",
@@ -22813,7 +22814,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.960959+06:00",
-      "last_seen": "2026-11-13T04:34:13.960963+06:00"
+      "last_seen": "2026-11-13T13:35:35.808308+06:00"
     },
     "androidauthority.com/android-17-qpr3-beta-4-3734744": {
       "title": "Android 17 QPR3 Beta 4 brings back missing Bluetooth absolute volume setting",
@@ -22829,7 +22830,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961087+06:00",
-      "last_seen": "2026-11-13T04:34:13.961091+06:00"
+      "last_seen": "2026-11-13T13:35:35.808429+06:00"
     },
     "androidauthority.com/youtube-tv-video-unavailable-screen-3734695": {
       "title": "YouTube TV ‘Video unavailable’ screen is interrupting shows and sporting events",
@@ -22845,7 +22846,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961212+06:00",
-      "last_seen": "2026-11-13T04:34:13.961232+06:00"
+      "last_seen": "2026-11-13T13:35:35.808569+06:00"
     },
     "androidauthority.com/samsung-one-ui-9-5-phone-blocked-calls-dashboard-3734645": {
       "title": "Samsung is working on a central hub to track all your blocked calls",
@@ -22861,7 +22862,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961361+06:00",
-      "last_seen": "2026-11-13T04:34:13.961365+06:00"
+      "last_seen": "2026-11-13T13:35:35.808688+06:00"
     },
     "androidauthority.com/smart-glasses-translation-3734126": {
       "title": "Google’s Intelligent Eyewear is great at translation, but I wouldn’t use it to have a conversation",
@@ -22877,7 +22878,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961486+06:00",
-      "last_seen": "2026-11-13T04:34:13.961489+06:00"
+      "last_seen": "2026-11-13T13:35:35.808808+06:00"
     },
     "androidauthority.com/gemini-4-hydrogen-on-google-search-3734653": {
       "title": "Google brings Gemini 4 Hydrogen to Search with smarter answers and better visuals",
@@ -22893,7 +22894,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961605+06:00",
-      "last_seen": "2026-11-13T04:34:13.961608+06:00"
+      "last_seen": "2026-11-13T13:35:35.808925+06:00"
     },
     "androidauthority.com/microsoft-outlook-outage-nov-2026-3734664": {
       "title": "Microsoft Outlook is experiencing a major outage",
@@ -22909,7 +22910,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961721+06:00",
-      "last_seen": "2026-11-13T04:34:13.961725+06:00"
+      "last_seen": "2026-11-13T13:35:35.809097+06:00"
     },
     "androidauthority.com/oneplus-oxygenos-16-update-pc-unlock-3734600": {
       "title": "New OnePlus update gives phones and tablets the ability to auto-unlock PCs",
@@ -22925,7 +22926,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961840+06:00",
-      "last_seen": "2026-11-13T04:34:13.961843+06:00"
+      "last_seen": "2026-11-13T13:35:35.809226+06:00"
     },
     "androidauthority.com/pixel-camera-not-working-after-november-update-3734529": {
       "title": "Google’s November update is breaking Pixel cameras, but there’s an easy fix",
@@ -22941,7 +22942,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.961959+06:00",
-      "last_seen": "2026-11-13T04:34:13.961962+06:00"
+      "last_seen": "2026-11-13T13:35:35.809346+06:00"
     },
     "androidauthority.com/google-gemini-task-automation-target-apps-list-3734443": {
       "title": "Exclusive: Google’s hidden list of 134 apps that support Gemini task automation",
@@ -22957,7 +22958,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.962081+06:00",
-      "last_seen": "2026-11-13T04:34:13.962085+06:00"
+      "last_seen": "2026-11-13T13:35:35.809488+06:00"
     },
     "androidauthority.com/garmin-forerunner-70-deal-3734606": {
       "title": "Garmin’s beginner-friendly Forerunner 70 hits a record low under $200",
@@ -22973,7 +22974,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.962199+06:00",
-      "last_seen": "2026-11-13T04:34:13.962203+06:00"
+      "last_seen": "2026-11-13T13:35:35.809623+06:00"
     },
     "androidauthority.com/tcl-nxtpaper-14-tablet-deal-3734603": {
       "title": "TCL NXTPAPER 14 gets a $100 Amazon discount in Lightning Deal",
@@ -22989,7 +22990,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.962339+06:00",
-      "last_seen": "2026-11-13T04:34:13.962343+06:00"
+      "last_seen": "2026-11-13T13:35:35.809743+06:00"
     },
     "androidauthority.com/samsung-contacts-could-get-a-birthdays-section-3734463": {
       "title": "Samsung Contacts is working on taking the hassle out of tracking birthdays",
@@ -23005,7 +23006,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:13.962456+06:00",
-      "last_seen": "2026-11-13T04:34:13.962460+06:00"
+      "last_seen": "2026-11-13T13:35:35.809858+06:00"
     },
     "macrumors.com/2026/11/12/iphone-duo-delivery-dates-continue-to-move-up": {
       "title": "Apple Continues to Move Up iPhone Duo Delivery Dates",
@@ -23021,7 +23022,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:14.179295+06:00",
-      "last_seen": "2026-11-13T04:34:14.179302+06:00"
+      "last_seen": "2026-11-13T13:35:35.997575+06:00"
     },
     "macrumors.com/2026/11/12/apple-homeview-secure-exclaves": {
       "title": "Apple Explains How HomeView Keeps Camera Data Private",
@@ -23037,7 +23038,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:14.181123+06:00",
-      "last_seen": "2026-11-13T04:34:14.181129+06:00"
+      "last_seen": "2026-11-13T13:35:35.998999+06:00"
     },
     "macrumors.com/2026/11/12/apple-homeview-software-27-2-24v526": {
       "title": "Apple Releases Updated HomeView Software 27.2 Before Launch",
@@ -23053,7 +23054,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:14.182247+06:00",
-      "last_seen": "2026-11-13T04:34:14.182253+06:00"
+      "last_seen": "2026-11-13T13:35:36.000202+06:00"
     },
     "macrumors.com/2026/11/12/apple-adds-samsung-foldables-to-trade-in-program": {
       "title": "Apple Adds Samsung Foldables to Trade-In Program",
@@ -23069,7 +23070,924 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-13T04:34:14.188133+06:00",
-      "last_seen": "2026-11-13T04:34:14.188140+06:00"
+      "last_seen": "2026-11-13T13:35:36.005546+06:00"
+    },
+    "techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump": {
+      "title": "Democrats launch Nvidia investigation, write scathing letter on Huang’s ‘scheme’ with Trump",
+      "url": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
+      "canonical": "techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump",
+      "published_dt": "2026-11-13T04:42:51+06:00",
+      "published_date": "2026-11-13T04:42:51+06:00",
+      "source": "TechCrunch",
+      "region": "Tech",
+      "excerpt": "This Congressional investigation into Nvidia's China sales and its dealings with Trump is the second one, so far, since news of the alleged spy affair broke.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.259355+06:00",
+      "last_seen": "2026-11-13T13:35:07.259361+06:00"
+    },
+    "theverge.com/tech/1032774/president-donald-trump-tim-cook-nvidia-jensen-huang": {
+      "title": "Donald Trump really wants Tim Cook to run Nvidia",
+      "url": "https://www.theverge.com/tech/1032774/president-donald-trump-tim-cook-nvidia-jensen-huang",
+      "canonical": "theverge.com/tech/1032774/president-donald-trump-tim-cook-nvidia-jensen-huang",
+      "published_dt": "2026-11-13T06:46:07+06:00",
+      "published_date": "2026-11-13T06:46:07+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "Jensen Huang resigned this morning as Nvidia's CEO following reports of affairs, including one with an alleged Chinese spy. Right now, the company is being led by its CFO on an interim basis. But President Donald Trump is already throwing around one person he thinks should take over the chipmaking giant: former Apple CEO Tim […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.361604+06:00",
+      "last_seen": "2026-11-13T13:35:07.361609+06:00"
+    },
+    "theverge.com/news/1032431/xbox-bethesda-wolfenstein-3": {
+      "title": "Xbox announces Wolfenstein 3",
+      "url": "https://www.theverge.com/news/1032431/xbox-bethesda-wolfenstein-3",
+      "canonical": "theverge.com/news/1032431/xbox-bethesda-wolfenstein-3",
+      "published_dt": "2026-11-13T06:11:44+06:00",
+      "published_date": "2026-11-13T06:11:44+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "It's been nearly a decade since Bethesda's MachineGames released Wolfenstein II: The New Colossus in 2017, and now Xbox is ready to announce a sequel from the studio. Wolfenstein 3 was officially announced today, just days after Bethesda also confirmed that the next Elder Scrolls game will be called The Elder Scrolls VI: Sentinel. In […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.361740+06:00",
+      "last_seen": "2026-11-13T13:35:07.361744+06:00"
+    },
+    "theverge.com/gadgets/1032630/whoop-humans-social-network": {
+      "title": "Whoop launched a social network where every user has a ‘verified heartbeat’",
+      "url": "https://www.theverge.com/gadgets/1032630/whoop-humans-social-network",
+      "canonical": "theverge.com/gadgets/1032630/whoop-humans-social-network",
+      "published_dt": "2026-11-13T05:43:22+06:00",
+      "published_date": "2026-11-13T05:43:22+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "Starting Thursday, Whoop members can share their data from its wearables on the app's new Whoop Humans social network. Users can make their metrics, activities, and achievements visible to other Whoop wearers, post Story-like \"Moments\" with photos and captions, and add comments and reactions on other members' posts. Whoop claims its platform is \"entirely human,\" […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.361864+06:00",
+      "last_seen": "2026-11-13T13:35:07.361868+06:00"
+    },
+    "theverge.com/games/1032659/humble-bundle-redesign-two-factor-verification-security-settings": {
+      "title": "Humble Bundle redesign removes two-factor verification from settings",
+      "url": "https://www.theverge.com/games/1032659/humble-bundle-redesign-two-factor-verification-security-settings",
+      "canonical": "theverge.com/games/1032659/humble-bundle-redesign-two-factor-verification-security-settings",
+      "published_dt": "2026-11-13T05:30:52+06:00",
+      "published_date": "2026-11-13T05:30:52+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "The Humble Bundle storefront for buying games and other software recently got a new look, but on the settings page, it no longer offers a way to add or update two-factor verification methods, as reported by Kotaku. PC Gamer also points out that there are Humble Bundle support pages discussing two-factor verification, and the writer […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.361982+06:00",
+      "last_seen": "2026-11-13T13:35:07.361985+06:00"
+    },
+    "theverge.com/news/1032396/xbox-dashboard-guide-menu-right-side-background-shuffle-feature": {
+      "title": "Xbox owners are getting more customizations for backgrounds and the Guide menu",
+      "url": "https://www.theverge.com/news/1032396/xbox-dashboard-guide-menu-right-side-background-shuffle-feature",
+      "canonical": "theverge.com/news/1032396/xbox-dashboard-guide-menu-right-side-background-shuffle-feature",
+      "published_dt": "2026-11-13T05:00:00+06:00",
+      "published_date": "2026-11-13T05:00:00+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "Microsoft is starting to test new customization options for Xbox consoles today. Xbox Insiders will be able to start testing new rotating backgrounds, new library options for digital games, and the ability to move the Xbox Guide menu to the right-hand side. \"Xbox Insiders can now save favorite dynamic backgrounds and shuffle through them automatically,\" […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.362208+06:00",
+      "last_seen": "2026-11-13T13:35:07.362212+06:00"
+    },
+    "wired.com/story/nvidia-employees-petition-for-jensen-huangs-return": {
+      "title": "‘Bring Back THE Boss’: Nvidia Employees Petition for Jensen Huang’s Return",
+      "url": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/",
+      "canonical": "wired.com/story/nvidia-employees-petition-for-jensen-huangs-return",
+      "published_dt": "2026-11-13T07:17:49+06:00",
+      "published_date": "2026-11-13T07:17:49+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "An internal post urging the board to consider employee sentiment about Nvidia’s former CEO has drawn more than 1,600 comments, the majority in full support of reinstalling him.",
+      "image": "https://media.wired.com/photos/6af6533dc5d481da1362b330/master/pass/Petition-Bring-Back-Jensen-Business-2299493060.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.551267+06:00",
+      "last_seen": "2026-11-13T13:35:07.551272+06:00"
+    },
+    "wired.com/story/best-early-black-friday-robot-vacuum-deals-roborock-2026": {
+      "title": "Roborock Robot Vacuum Early Black Friday Deals (2026)",
+      "url": "https://www.wired.com/story/best-early-black-friday-robot-vacuum-deals-roborock-2026/",
+      "canonical": "wired.com/story/best-early-black-friday-robot-vacuum-deals-roborock-2026",
+      "published_dt": "2026-11-13T05:54:58+06:00",
+      "published_date": "2026-11-13T05:54:58+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "The brand’s official Black Friday sales start next week, but some of its best vacuums are already discounted.",
+      "image": "https://media.wired.com/photos/6af637dc998b570c3dad49d5/master/pass/These-Great-Budget-Robot-Vacuums-Are-on-Sale-for-Even-Less.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.551402+06:00",
+      "last_seen": "2026-11-13T13:35:07.551406+06:00"
+    },
+    "wired.com/story/mint-mobile-phone-deal-november-2026": {
+      "title": "Mint Mobile Will Give You $500 Off Select New Phones When You Sign Up for a Year",
+      "url": "https://www.wired.com/story/mint-mobile-phone-deal-november-2026/",
+      "canonical": "wired.com/story/mint-mobile-phone-deal-november-2026",
+      "published_dt": "2026-11-13T04:47:26+06:00",
+      "published_date": "2026-11-13T04:47:26+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "The limited-time offer applies to the latest phones from Google and Samsung, but you must be a new customer who signs up for 12 months of the unlimited plan.",
+      "image": "https://media.wired.com/photos/6af6384cae8ec1b73c9441a2/master/pass/Mint-Mobile-Is-Offering-Up-to-$500-on-Select-New-Phones-When-You-Switch.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.551545+06:00",
+      "last_seen": "2026-11-13T13:35:07.551550+06:00"
+    },
+    "arstechnica.com/health/2026/11/in-reversal-american-cancer-society-urges-prostate-cancer-tests-for-all-men": {
+      "title": "In reversal, American Cancer Society urges routine prostate cancer screening",
+      "url": "https://arstechnica.com/health/2026/11/in-reversal-american-cancer-society-urges-prostate-cancer-tests-for-all-men/",
+      "canonical": "arstechnica.com/health/2026/11/in-reversal-american-cancer-society-urges-prostate-cancer-tests-for-all-men",
+      "published_dt": "2026-11-13T04:59:51+06:00",
+      "published_date": "2026-11-13T04:59:51+06:00",
+      "source": "Ars Technica",
+      "region": "Tech",
+      "excerpt": "Men aged 50–69 and at average risk should get PSA screening every two years.",
+      "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/11/Prostate-Cancer.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.716059+06:00",
+      "last_seen": "2026-11-13T13:35:07.716064+06:00"
+    },
+    "engadget.com/2315525/metas-muse-can-now-make-calls-on-your-behalf-if-you-have-a-paid-subscription": {
+      "title": "Meta's Muse can now make calls on your behalf (if you have a paid subscription)",
+      "url": "https://www.engadget.com/2315525/metas-muse-can-now-make-calls-on-your-behalf-if-you-have-a-paid-subscription/",
+      "canonical": "engadget.com/2315525/metas-muse-can-now-make-calls-on-your-behalf-if-you-have-a-paid-subscription",
+      "published_dt": "2026-11-13T05:32:00+06:00",
+      "published_date": "2026-11-13T05:32:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "The AI agent can schedule appointments, make reservations and wait on hold for you.",
+      "image": "https://www.engadget.com/img/gallery/metas-muse-can-now-make-calls-on-your-behalf-if-you-have-a-paid-subscription/l-intro-1794526142.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:07.863211+06:00",
+      "last_seen": "2026-11-13T13:35:07.863216+06:00"
+    },
+    "techmeme.com/261113/p5": {
+      "title": "OpenAI launches Daybreak Red Team in early access to test web apps for flaws and Daybreak Defense Factory to automate finding, validating, and fixing them (Jessica Lyons/The Register)",
+      "url": "https://www.techmeme.com/261113/p5#a261113p5",
+      "canonical": "techmeme.com/261113/p5",
+      "published_dt": "2026-11-13T13:25:02+06:00",
+      "published_date": "2026-11-13T13:25:02+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Jessica Lyons / The Register : OpenAI launches Daybreak Red Team in early access to test web apps for flaws and Daybreak Defense Factory to automate finding, validating, and fixing them —  OpenAI has launched two new security products, one for penetration testing and another for defense, and warned organizations …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.959147+06:00",
+      "last_seen": "2026-11-13T13:35:29.959161+06:00"
+    },
+    "techmeme.com/261113/p4": {
+      "title": "Sources: Samsung is in talks to buy Modine Manufacturing, a US maker of data center cooling systems, as soon as the coming weeks; Modine's market value is $5.6B (Bloomberg)",
+      "url": "https://www.techmeme.com/261113/p4#a261113p4",
+      "canonical": "techmeme.com/261113/p4",
+      "published_dt": "2026-11-13T12:30:00+06:00",
+      "published_date": "2026-11-13T12:30:00+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Bloomberg : Sources: Samsung is in talks to buy Modine Manufacturing, a US maker of data center cooling systems, as soon as the coming weeks; Modine's market value is $5.6B —  Samsung Electronics Co. is in talks to acquire Modine Manufacturing Co., a maker of cooling systems for data centers, according to people familiar with the matter.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.959683+06:00",
+      "last_seen": "2026-11-13T13:35:29.959688+06:00"
+    },
+    "techmeme.com/261113/p3": {
+      "title": "Filing: Nscale says it needs more funding for its 2027 commitments after ordering Nvidia chips for a $45B Anthropic deal, casting doubt on its planned $35B IPO (Financial Times)",
+      "url": "https://www.techmeme.com/261113/p3#a261113p3",
+      "canonical": "techmeme.com/261113/p3",
+      "published_dt": "2026-11-13T12:01:16+06:00",
+      "published_date": "2026-11-13T12:01:16+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Financial Times : Filing: Nscale says it needs more funding for its 2027 commitments after ordering Nvidia chips for a $45B Anthropic deal, casting doubt on its planned $35B IPO —  Nvidia-backed ‘neocloud’ tells investors it must obtain additional financing to fulfil Anthropic contracts",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.960135+06:00",
+      "last_seen": "2026-11-13T13:35:29.960139+06:00"
+    },
+    "techmeme.com/261113/p2": {
+      "title": "Nscale's updated IPO prospectus shows Q3 revenue up 1,344% YoY to $307.5M, up from $140.6M in Q2; net loss widened to $1.69B, up from $1.02B in Q2 (Jordan Novet/CNBC)",
+      "url": "https://www.techmeme.com/261113/p2#a261113p2",
+      "canonical": "techmeme.com/261113/p2",
+      "published_dt": "2026-11-13T11:50:02+06:00",
+      "published_date": "2026-11-13T11:50:02+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Jordan Novet / CNBC : Nscale's updated IPO prospectus shows Q3 revenue up 1,344% YoY to $307.5M, up from $140.6M in Q2; net loss widened to $1.69B, up from $1.02B in Q2 —  Nvidia-backed neocloud Nscale on Thursday released updated paperwork for a U.S. initial public offering.  —  The company had a third-quarter net loss …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.960583+06:00",
+      "last_seen": "2026-11-13T13:35:29.960588+06:00"
+    },
+    "techmeme.com/261113/p1": {
+      "title": "Meta launches an outbound calling feature for Muse, such as to businesses, available for paid US subscribers; Gemini and startup Instinct offer a similar option (Sarah Perez/TechCrunch)",
+      "url": "https://www.techmeme.com/261113/p1#a261113p1",
+      "canonical": "techmeme.com/261113/p1",
+      "published_dt": "2026-11-13T11:05:01+06:00",
+      "published_date": "2026-11-13T11:05:01+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Sarah Perez / TechCrunch : Meta launches an outbound calling feature for Muse, such as to businesses, available for paid US subscribers; Gemini and startup Instinct offer a similar option —  After initially testing the feature in September, Meta's consumer AI agent Muse is now able to place calls to U.S. businesses on behalf of its users.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.960997+06:00",
+      "last_seen": "2026-11-13T13:35:29.961001+06:00"
+    },
+    "techmeme.com/261112/p74": {
+      "title": "Mirendil, founded by former Anthropic researchers to build tools for frontier AI R&D, raised a $1B Series A led by Kleiner Perkins and Clearlake Capital (Sarah Klearman/Wall Street Journal)",
+      "url": "https://www.techmeme.com/261112/p74#a261112p74",
+      "canonical": "techmeme.com/261112/p74",
+      "published_dt": "2026-11-13T10:45:01+06:00",
+      "published_date": "2026-11-13T10:45:01+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Sarah Klearman / Wall Street Journal : Mirendil, founded by former Anthropic researchers to build tools for frontier AI R&D, raised a $1B Series A led by Kleiner Perkins and Clearlake Capital —  The fundraise comes six months after Mirendil, founded by Anthropic alumni, announced a $200 million seed round",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.961412+06:00",
+      "last_seen": "2026-11-13T13:35:29.961416+06:00"
+    },
+    "techmeme.com/261112/p73": {
+      "title": "Sources: social media companies' payouts in teen addiction suits mostly ranged from $2M-$2.5M; Meta agreed to pay two teens a combined $7M in the past two weeks (Olivia Carville/Bloomberg)",
+      "url": "https://www.techmeme.com/261112/p73#a261112p73",
+      "canonical": "techmeme.com/261112/p73",
+      "published_dt": "2026-11-13T10:15:00+06:00",
+      "published_date": "2026-11-13T10:15:00+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Olivia Carville / Bloomberg : Sources: social media companies' payouts in teen addiction suits mostly ranged from $2M-$2.5M; Meta agreed to pay two teens a combined $7M in the past two weeks —  Seven confidential deals with young plaintiffs ranged from $2 million to $2.5 million.  And the remaining personal injury lawsuits …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.961850+06:00",
+      "last_seen": "2026-11-13T13:35:29.961854+06:00"
+    },
+    "techmeme.com/261112/p72": {
+      "title": "Sources: US officials disagree on whether Alice Huang spied on Jensen Huang for China; some at ODNI and CIA say intelligence collected so far doesn't prove it (CNN)",
+      "url": "https://www.techmeme.com/261112/p72#a261112p72",
+      "canonical": "techmeme.com/261112/p72",
+      "published_dt": "2026-11-13T09:40:01+06:00",
+      "published_date": "2026-11-13T09:40:01+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "CNN : Sources: US officials disagree on whether Alice Huang spied on Jensen Huang for China; some at ODNI and CIA say intelligence collected so far doesn't prove it —  The US intelligence community is still working to understand the relationship between a Chinese businesswoman who had an affair …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.962260+06:00",
+      "last_seen": "2026-11-13T13:35:29.962265+06:00"
+    },
+    "techmeme.com/261112/p71": {
+      "title": "Letter: ByteDance plans to buy back up to $6B worth of shares from existing investors at a ~$400B valuation, a 20% increase in valuation from its 2025 buyback (The Information)",
+      "url": "https://www.techmeme.com/261112/p71#a261112p71",
+      "canonical": "techmeme.com/261112/p71",
+      "published_dt": "2026-11-13T09:20:00+06:00",
+      "published_date": "2026-11-13T09:20:00+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "The Information : Letter: ByteDance plans to buy back up to $6B worth of shares from existing investors at a ~$400B valuation, a 20% increase in valuation from its 2025 buyback —  ByteDance, the Chinese owner of TikTok, is planning to buy back up to $6 billion worth of shares from existing investors …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.962693+06:00",
+      "last_seen": "2026-11-13T13:35:29.962698+06:00"
+    },
+    "techmeme.com/261112/p70": {
+      "title": "Senate Banking Chair Tim Scott asks Jensen Huang and Howard Lutnick to testify at separate hearings in December over the Nvidia saga; Lutnick agrees to appear (Jasper Goodman/Politico)",
+      "url": "https://www.techmeme.com/261112/p70#a261112p70",
+      "canonical": "techmeme.com/261112/p70",
+      "published_dt": "2026-11-13T09:01:46+06:00",
+      "published_date": "2026-11-13T09:01:46+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Jasper Goodman / Politico : Senate Banking Chair Tim Scott asks Jensen Huang and Howard Lutnick to testify at separate hearings in December over the Nvidia saga; Lutnick agrees to appear —  Senate Banking Chair Tim Scott on Thursday called on fallen Nvidia CEO Jensen Huang and Commerce Secretary Howard Lutnick to testify …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.963094+06:00",
+      "last_seen": "2026-11-13T13:35:29.963098+06:00"
+    },
+    "techmeme.com/261112/p69": {
+      "title": "Sources: Nvidia faced pressure to boost its 25% residual value support backstop on a planned $500B AI financing vehicle with asset managers before Huang's exit (Bloomberg)",
+      "url": "https://www.techmeme.com/261112/p69#a261112p69",
+      "canonical": "techmeme.com/261112/p69",
+      "published_dt": "2026-11-13T08:11:02+06:00",
+      "published_date": "2026-11-13T08:11:02+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Bloomberg : Sources: Nvidia faced pressure to boost its 25% residual value support backstop on a planned $500B AI financing vehicle with asset managers before Huang's exit —  Before Nvidia Corp. was thrown into turmoil by the ouster of longtime chief executive Jensen Huang, a major initiative …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.963509+06:00",
+      "last_seen": "2026-11-13T13:35:29.963513+06:00"
+    },
+    "techmeme.com/261112/p68": {
+      "title": "Sources close to Jensen Huang say he has taken a penitent turn, castigated himself as a \"piece of shit\", and claims to not care what happens to himself (Bloomberg)",
+      "url": "https://www.techmeme.com/261112/p68#a261112p68",
+      "canonical": "techmeme.com/261112/p68",
+      "published_dt": "2026-11-13T07:50:02+06:00",
+      "published_date": "2026-11-13T07:50:02+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Bloomberg : Sources close to Jensen Huang say he has taken a penitent turn, castigated himself as a “piece of shit”, and claims to not care what happens to himself —  At the end, Jensen Huang looked broken and shattered, his legendary energy depleted.  After weeks spent denying the allegations …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.963925+06:00",
+      "last_seen": "2026-11-13T13:35:29.963930+06:00"
+    },
+    "techmeme.com/261112/p67": {
+      "title": "Sources: President Trump's and Howard Lutnick's close relationship with Jensen Huang made officials wary of taking aggressive steps to rein in Nvidia chip sales (New York Times)",
+      "url": "https://www.techmeme.com/261112/p67#a261112p67",
+      "canonical": "techmeme.com/261112/p67",
+      "published_dt": "2026-11-13T07:35:01+06:00",
+      "published_date": "2026-11-13T07:35:01+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "New York Times : Sources: President Trump's and Howard Lutnick's close relationship with Jensen Huang made officials wary of taking aggressive steps to rein in Nvidia chip sales —  Howard Lutnick has frequently clashed with top officials over how to regulate sales of advanced technology to Asia …",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.964333+06:00",
+      "last_seen": "2026-11-13T13:35:29.964338+06:00"
+    },
+    "techmeme.com/261112/p66": {
+      "title": "Sources: President Trump urged Jensen Huang to keep fighting for his job in a Tuesday call; aides say Trump saw the company as essentially too big to fail (New York Times)",
+      "url": "https://www.techmeme.com/261112/p66#a261112p66",
+      "canonical": "techmeme.com/261112/p66",
+      "published_dt": "2026-11-13T06:35:01+06:00",
+      "published_date": "2026-11-13T06:35:01+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "New York Times : Sources: President Trump urged Jensen Huang to keep fighting for his job in a Tuesday call; aides say Trump saw the company as essentially too big to fail —  The president called the Nvidia chief on Tuesday, continuing a pattern of supporting him even as the spy scandal was intensifying.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.964932+06:00",
+      "last_seen": "2026-11-13T13:35:29.964937+06:00"
+    },
+    "techmeme.com/261112/p65": {
+      "title": "New York-based Hatz AI, which makes tools for managed services providers to help small businesses adopt AI, raised a $24M Series A (CJ Fairfield/CRN)",
+      "url": "https://www.techmeme.com/261112/p65#a261112p65",
+      "canonical": "techmeme.com/261112/p65",
+      "published_dt": "2026-11-13T06:30:00+06:00",
+      "published_date": "2026-11-13T06:30:00+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "CJ Fairfield / CRN : New York-based Hatz AI, which makes tools for managed services providers to help small businesses adopt AI, raised a $24M Series A —  'Small businesses are trying to figure out how to transform themselves right now into being AI-first or AI-native, and it's a job that's very, very hard to do without help.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:29.965339+06:00",
+      "last_seen": "2026-11-13T13:35:29.965343+06:00"
+    },
+    "techradar.com/entertainment/tv-shows/how-to-watch-12-12-12": {
+      "title": "How to watch 12 12 12 online – stream the Anthony Mackie thriller series from anywhere",
+      "url": "https://www.techradar.com/entertainment/tv-shows/how-to-watch-12-12-12",
+      "canonical": "techradar.com/entertainment/tv-shows/how-to-watch-12-12-12",
+      "published_dt": "2026-11-13T09:00:00+06:00",
+      "published_date": "2026-11-13T09:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Here's how to watch 12 12 12 from anywhere, as Anthony Mackie and Jamie Dornan star in the crime-thriller series.",
+      "image": "https://cdn.mos.cms.futurecdn.net/4PfiCeo9wDH33Lp9EdCKeP-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.525789+06:00",
+      "last_seen": "2026-11-13T13:35:30.525795+06:00"
+    },
+    "techradar.com/pro/speed-is-not-a-creative-strategy-adobe-execs-say-that-while-ai-is-delivering-results-faster-its-humans-who-still-bring-the-quality": {
+      "title": "'Speed is not a creative strategy': Adobe execs say that while AI is delivering results faster, its humans who still bring the quality",
+      "url": "https://www.techradar.com/pro/speed-is-not-a-creative-strategy-adobe-execs-say-that-while-ai-is-delivering-results-faster-its-humans-who-still-bring-the-quality",
+      "canonical": "techradar.com/pro/speed-is-not-a-creative-strategy-adobe-execs-say-that-while-ai-is-delivering-results-faster-its-humans-who-still-bring-the-quality",
+      "published_dt": "2026-11-13T08:40:00+06:00",
+      "published_date": "2026-11-13T08:40:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "While AI is giving more people the power to explore their creativity, professionals still need to bring the 'taste, craft and judgement.'",
+      "image": "https://cdn.mos.cms.futurecdn.net/ZRcPJENKuErVopcrhgCVWa-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.525936+06:00",
+      "last_seen": "2026-11-13T13:35:30.525940+06:00"
+    },
+    "techradar.com/pro/seagate-is-reviving-a-20-year-old-technology-to-turn-its-newest-20tb-hdd-into-a-pseudo-ssd-thats-but-it-wont-come-cheap": {
+      "title": "Seagate is reviving a 20-year-old technology to turn its newest 20TB HDD into a pseudo-SSD — but it won't come cheap",
+      "url": "https://www.techradar.com/pro/seagate-is-reviving-a-20-year-old-technology-to-turn-its-newest-20tb-hdd-into-a-pseudo-ssd-thats-but-it-wont-come-cheap",
+      "canonical": "techradar.com/pro/seagate-is-reviving-a-20-year-old-technology-to-turn-its-newest-20tb-hdd-into-a-pseudo-ssd-thats-but-it-wont-come-cheap",
+      "published_dt": "2026-11-13T07:25:00+06:00",
+      "published_date": "2026-11-13T07:25:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Seagate's FireCuda Forge uses Alkemi to prioritize frequently accessed files on separately purchased NVMe storage, combining mechanical capacity with faster data retrieval.",
+      "image": "https://cdn.mos.cms.futurecdn.net/EmYgoj6jz3eSA8CL5qiqTK-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526069+06:00",
+      "last_seen": "2026-11-13T13:35:30.526073+06:00"
+    },
+    "techradar.com/pro/ukrainian-drone-strikes-hit-russian-data-centers-across-six-regions-forcing-companies-into-kazakhstan-as-putin-orders-emergency-capacity-seizure": {
+      "title": "Ukrainian drone strikes hit Russian data centers across six regions — forcing companies into Kazakhstan as Putin orders emergency capacity seizure",
+      "url": "https://www.techradar.com/pro/ukrainian-drone-strikes-hit-russian-data-centers-across-six-regions-forcing-companies-into-kazakhstan-as-putin-orders-emergency-capacity-seizure",
+      "canonical": "techradar.com/pro/ukrainian-drone-strikes-hit-russian-data-centers-across-six-regions-forcing-companies-into-kazakhstan-as-putin-orders-emergency-capacity-seizure",
+      "published_dt": "2026-11-13T06:30:00+06:00",
+      "published_date": "2026-11-13T06:30:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Russian businesses are exploring overseas data centers as Ukrainian drone strikes, limited domestic cloud capacity, and new government requirements complicate infrastructure planning.",
+      "image": "https://cdn.mos.cms.futurecdn.net/pjysvtTcT6ffUC32W7xqt6-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526198+06:00",
+      "last_seen": "2026-11-13T13:35:30.526202+06:00"
+    },
+    "techradar.com/gaming/nyt-connections-today-answers-hints-13-november-2026": {
+      "title": "NYT Connections hints and answers for Friday, November 13 (game #1251)",
+      "url": "https://www.techradar.com/gaming/nyt-connections-today-answers-hints-13-november-2026",
+      "canonical": "techradar.com/gaming/nyt-connections-today-answers-hints-13-november-2026",
+      "published_dt": "2026-11-13T06:00:00+06:00",
+      "published_date": "2026-11-13T06:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Looking for NYT Connections answers and hints? Here's all you need to know to solve today's game, plus my commentary on the puzzles.",
+      "image": "https://cdn.mos.cms.futurecdn.net/RCGfdf3yhQ9W3MHbTRT6yk-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526320+06:00",
+      "last_seen": "2026-11-13T13:35:30.526323+06:00"
+    },
+    "techradar.com/computing/websites-apps/quordle-today-answers-clues-13-november-2026": {
+      "title": "Quordle hints and answers for Friday, November 13 (game #1754)",
+      "url": "https://www.techradar.com/computing/websites-apps/quordle-today-answers-clues-13-november-2026",
+      "canonical": "techradar.com/computing/websites-apps/quordle-today-answers-clues-13-november-2026",
+      "published_dt": "2026-11-13T06:00:00+06:00",
+      "published_date": "2026-11-13T06:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Looking for Quordle clues? We can help. Plus get the answers to Quordle today and past solutions.",
+      "image": "https://cdn.mos.cms.futurecdn.net/4XP9iNbdvkijJyZnzx3WoL-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526439+06:00",
+      "last_seen": "2026-11-13T13:35:30.526442+06:00"
+    },
+    "techradar.com/computing/websites-apps/nyt-strands-today-answers-hints-13-november-2026": {
+      "title": "NYT Strands hints and answers for Friday, November 13 (game #985)",
+      "url": "https://www.techradar.com/computing/websites-apps/nyt-strands-today-answers-hints-13-november-2026",
+      "canonical": "techradar.com/computing/websites-apps/nyt-strands-today-answers-hints-13-november-2026",
+      "published_dt": "2026-11-13T06:00:00+06:00",
+      "published_date": "2026-11-13T06:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Looking for NYT Strands answers and hints? Here's all you need to know to solve today's game, including the spangram.",
+      "image": "https://cdn.mos.cms.futurecdn.net/XrpFgcngWrtXQscKdLLAZB-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526583+06:00",
+      "last_seen": "2026-11-13T13:35:30.526587+06:00"
+    },
+    "techradar.com/pro/you-cannot-change-or-build-the-marketing-organization-of-the-future-with-the-creative-organization-of-the-past-adobe-ceo-lays-out-how-work-and-collaboration-are-fundamentally-changing": {
+      "title": "'You cannot change or build the marketing organization of the future with the creative organization of the past': Adobe CEO lays out how work and collaboration are fundamentally changing",
+      "url": "https://www.techradar.com/pro/you-cannot-change-or-build-the-marketing-organization-of-the-future-with-the-creative-organization-of-the-past-adobe-ceo-lays-out-how-work-and-collaboration-are-fundamentally-changing",
+      "canonical": "techradar.com/pro/you-cannot-change-or-build-the-marketing-organization-of-the-future-with-the-creative-organization-of-the-past-adobe-ceo-lays-out-how-work-and-collaboration-are-fundamentally-changing",
+      "published_dt": "2026-11-13T05:15:00+06:00",
+      "published_date": "2026-11-13T05:15:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "AI is weakening the distinction between company roles, but what does this mean for the future of work and how can businesses adapt?",
+      "image": "https://cdn.mos.cms.futurecdn.net/XNjwvFpn2UbgLfaohKyd5V-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:30.526709+06:00",
+      "last_seen": "2026-11-13T13:35:30.526712+06:00"
+    },
+    "wabetainfo.com/whatsapp-is-testing-a-native-location-status-update-on-android": {
+      "title": "WhatsApp is testing a native location status update on Android",
+      "url": "https://wabetainfo.com/whatsapp-is-testing-a-native-location-status-update-on-android/",
+      "canonical": "wabetainfo.com/whatsapp-is-testing-a-native-location-status-update-on-android",
+      "published_dt": "2026-11-13T06:00:20+06:00",
+      "published_date": "2026-11-13T06:00:20+06:00",
+      "source": "WABetaInfo",
+      "region": "Tech",
+      "excerpt": "WhatsApp is working on a new feature that lets users quickly share a location as a status update. WhatsApp will add a new option to share a location to the status composer. This update makes the process faster since users will no longer need to use the location sticker. Key Points Details Feature: Native location […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:31.635320+06:00",
+      "last_seen": "2026-11-13T13:35:31.635326+06:00"
+    },
+    "testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users": {
+      "title": "Google launches Gemini 4 Hydrogen for Pro and Ultra users",
+      "url": "https://www.testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users/",
+      "canonical": "testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users",
+      "published_dt": "2026-11-13T04:40:32+06:00",
+      "published_date": "2026-11-13T04:40:32+06:00",
+      "source": "TestingCatalog",
+      "region": "Tech",
+      "excerpt": "Google launches Gemini 4 Hydrogen for faster coding and agentic workflows, with four thinking levels, flat API pricing and a broad rollout.",
+      "image": "https://storage.ghost.io/c/2a/1b/2a1b1782-8506-4d7d-bf53-ad3fb52e2a0f/content/images/2026/11/Google-Gemini-11-12-2026_06_26_PM.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-13T13:35:31.906135+06:00",
+      "last_seen": "2026-11-13T13:35:31.906140+06:00",
+      "posted_at": "2026-11-13T13:48:35.135455+06:00"
+    },
+    "unite.ai/dupont-partners-with-microsoft-and-nobleai-on-agentic-ai-for-r-and-d": {
+      "title": "DuPont Partners with Microsoft and NobleAI on Agentic AI for R&D",
+      "url": "https://www.unite.ai/dupont-partners-with-microsoft-and-nobleai-on-agentic-ai-for-r-and-d/",
+      "canonical": "unite.ai/dupont-partners-with-microsoft-and-nobleai-on-agentic-ai-for-r-and-d",
+      "published_dt": "2026-11-13T05:04:01+06:00",
+      "published_date": "2026-11-13T05:04:01+06:00",
+      "source": "Unite.AI",
+      "region": "Tech",
+      "excerpt": "DuPont announced on November 12, 2026 a research collaboration with Microsoft and NobleAI that will broaden access to AI and machine-learning tools for its scientists and engineers, with the goal of reducing the time needed to deliver customer solutions. Each company contributes a different component. DuPont supplies expertise in advanced solutions and applications; NobleAI provides Science-Based AI modeling through its Visualizations, Insights and Predictions (VIP) Platform; and Microsoft…",
+      "image": "https://www.unite.ai/wp-content/uploads/2026/11/dupont-partners-with-microsoft-and-nobleai-on-agentic-ai-for-rd.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:33.729804+06:00",
+      "last_seen": "2026-11-13T13:35:33.729809+06:00"
+    },
+    "unite.ai/neal-and-wyden-open-probe-into-nvidias-china-chip-sales": {
+      "title": "Neal and Wyden Open Probe Into Nvidia’s China Chip Sales",
+      "url": "https://www.unite.ai/neal-and-wyden-open-probe-into-nvidias-china-chip-sales/",
+      "canonical": "unite.ai/neal-and-wyden-open-probe-into-nvidias-china-chip-sales",
+      "published_dt": "2026-11-13T05:01:03+06:00",
+      "published_date": "2026-11-13T05:01:03+06:00",
+      "source": "Unite.AI",
+      "region": "Tech",
+      "excerpt": "House Ways and Means ranking member Richard E. Neal and Senate Finance ranking member Ron Wyden opened an investigation on November 12, 2026 into the Trump administration’s approval and taxation of Nvidia H200 AI-chip sales to Chinese companies, including a 25% tariff, and demanded that relevant records be preserved. The letter to Commerce Secretary Howard Lutnick sets out a transaction chain: H200 chips manufactured in Taiwan would be imported into the United States for a security review…",
+      "image": "https://www.unite.ai/wp-content/uploads/2026/11/neal-and-wyden-open-probe-into-nvidias-china-chip-sales.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:33.729979+06:00",
+      "last_seen": "2026-11-13T13:35:33.729983+06:00"
+    },
+    "unite.ai/unemployment-labs-reports-blackwell-patterns-in-chinese-ai-models": {
+      "title": "Unemployment Labs Reports Blackwell Patterns in Chinese AI Models",
+      "url": "https://www.unite.ai/unemployment-labs-reports-blackwell-patterns-in-chinese-ai-models/",
+      "canonical": "unite.ai/unemployment-labs-reports-blackwell-patterns-in-chinese-ai-models",
+      "published_dt": "2026-11-13T04:53:03+06:00",
+      "published_date": "2026-11-13T04:53:03+06:00",
+      "source": "Unite.AI",
+      "region": "Tech",
+      "excerpt": "An Unemployment Labs analysis by Will DePue, published November 12, 2026, found initialization patterns consistent with NVIDIA’s export-controlled Blackwell GPUs in six open-weight models from DeepSeek, Moonshot AI, MiniMax and Ant Group. The analysis associates DeepSeek-V4-Flash and MiniMax-M3 with initialization on B200 or B300 chips, and DeepSeek-V4-Pro, Kimi K3, Kimi K3.1-Pro and Ling-3.1-flash with GB200 or GB300 chips. The matches identify the hardware layout behind the starting weights…",
+      "image": "https://www.unite.ai/wp-content/uploads/2026/11/unemployment-labs-reports-blackwell-patterns-in-chinese-ai-models.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:33.730139+06:00",
+      "last_seen": "2026-11-13T13:35:33.730143+06:00"
+    },
+    "siliconangle.com/2026/11/12/five-thoughts-from-ciscos-first-quarter-of-fiscal-2027": {
+      "title": "Five thoughts from Cisco’s first quarter of fiscal 2027",
+      "url": "https://siliconangle.com/2026/11/12/five-thoughts-from-ciscos-first-quarter-of-fiscal-2027/",
+      "canonical": "siliconangle.com/2026/11/12/five-thoughts-from-ciscos-first-quarter-of-fiscal-2027",
+      "published_dt": "2026-11-13T10:06:22+06:00",
+      "published_date": "2026-11-13T10:06:22+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Cisco Systems Inc. opened fiscal 2027 with a quarter that should put any question about whether artificial intelligence will act as a massive tailwind for it to rest. Revenue and earnings hit records, growth rates were the best Cisco has posted in more than 15 years, and management raised its full-year outlook and AI infrastructure […] The post Five thoughts from Cisco’s first quarter of fiscal 2027 appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2025/01/Chuck-Robbins-Cisco-AI-Summit.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.575310+06:00",
+      "last_seen": "2026-11-13T13:35:35.575316+06:00"
+    },
+    "siliconangle.com/2026/11/12/applied-materials-posts-an-impressive-53-jump-in-revenue-as-it-beats-expectations-again": {
+      "title": "Applied Materials posts impressive 53% jump in revenue as it beats expectations again",
+      "url": "https://siliconangle.com/2026/11/12/applied-materials-posts-an-impressive-53-jump-in-revenue-as-it-beats-expectations-again/",
+      "canonical": "siliconangle.com/2026/11/12/applied-materials-posts-an-impressive-53-jump-in-revenue-as-it-beats-expectations-again",
+      "published_dt": "2026-11-13T08:09:46+06:00",
+      "published_date": "2026-11-13T08:09:46+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Semiconductor industry giant Applied Materials Inc. chalked up another strong quarter as it continued to cash in on the artificial intelligence boom, delivering fourth-quarter results that surpassed Wall Street’s expectations on earnings and revenue. The company reported adjusted earnings of $4.16 per share on revenue of $10.41 billion, up by an impressive 53% from a […] The post Applied Materials posts impressive 53% jump in revenue as it beats expectations again appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/Screenshot-from-2025-08-15-06-26-31-800x484-1.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.575638+06:00",
+      "last_seen": "2026-11-13T13:35:35.575644+06:00"
+    },
+    "siliconangle.com/2026/11/12/cisco-beats-expectations-lifts-its-guidance-and-forecasts-ai-infrastructure-revenue-to-double-in-fiscal-2027": {
+      "title": "Cisco beats expectations, lifts guidance and forecasts AI infrastructure revenue to double in fiscal 2027",
+      "url": "https://siliconangle.com/2026/11/12/cisco-beats-expectations-lifts-its-guidance-and-forecasts-ai-infrastructure-revenue-to-double-in-fiscal-2027/",
+      "canonical": "siliconangle.com/2026/11/12/cisco-beats-expectations-lifts-its-guidance-and-forecasts-ai-infrastructure-revenue-to-double-in-fiscal-2027",
+      "published_dt": "2026-11-13T07:30:06+06:00",
+      "published_date": "2026-11-13T07:30:06+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Shares of Cisco Systems Inc. were flat in late trading today after the networking infrastructure giant reported first-quarter earnings and revenue that came in ahead of Wall Street’s expectations. The company also raised its guidance for fiscal 2027, citing strong demand for artificial intelligence network infrastructure. Cisco reported earnings before certain costs such as stock […] The post Cisco beats expectations, lifts guidance and forecasts AI infrastructure revenue to double in fiscal 2027 appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/43530876870_b01dfa8e07_k.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-13T13:35:35.575927+06:00",
+      "last_seen": "2026-11-13T13:35:35.575931+06:00",
+      "posted_at": "2026-11-13T13:48:25.554601+06:00"
+    },
+    "siliconangle.com/2026/11/12/quantum-sensor-and-software-maker-q-ctrl-raises-290m-in-funding": {
+      "title": "Quantum sensor and software maker Q-CTRL raises $290M in funding",
+      "url": "https://siliconangle.com/2026/11/12/quantum-sensor-and-software-maker-q-ctrl-raises-290m-in-funding/",
+      "canonical": "siliconangle.com/2026/11/12/quantum-sensor-and-software-maker-q-ctrl-raises-290m-in-funding",
+      "published_dt": "2026-11-13T07:28:11+06:00",
+      "published_date": "2026-11-13T07:28:11+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Q-CTRL Pty Ltd., a provider of quantum sensors and software for managing qubits, today announced that it has raised $290 million in funding. Salesforce Ventures led the oversubscribed Series C deal. It was joined by more than a dozen others, including Bullhound Capital and Affinity Partners, which Q-CTRL says made “significant” contributions, as well as […] The post Quantum sensor and software maker Q-CTRL raises $290M in funding appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/Q-CTRL.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.576204+06:00",
+      "last_seen": "2026-11-13T13:35:35.576209+06:00"
+    },
+    "siliconangle.com/2026/11/12/kubevirt-graduates-from-cncf-kubernetes-unites-vms-ai-kubeconna": {
+      "title": "Kubernetes now runs containers and VMs side by side",
+      "url": "https://siliconangle.com/2026/11/12/kubevirt-graduates-from-cncf-kubernetes-unites-vms-ai-kubeconna/",
+      "canonical": "siliconangle.com/2026/11/12/kubevirt-graduates-from-cncf-kubernetes-unites-vms-ai-kubeconna",
+      "published_dt": "2026-11-13T06:31:36+06:00",
+      "published_date": "2026-11-13T06:31:36+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "KubeVirt’s graduation from the Cloud Native Computing Foundation (CNCF) marks a turning point in a debate that once pitted containers against virtual machines. A decade on, Kubernetes is becoming one platform for legacy VMs, cloud-native apps and AI. Enterprises still run much of their IT on VMs, even as AI pushes them toward new infrastructure. […] The post Kubernetes now runs containers and VMs side by side appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/Fabian-Deutsch-Dirty.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.576508+06:00",
+      "last_seen": "2026-11-13T13:35:35.576513+06:00"
+    },
+    "siliconangle.com/2026/11/12/surging-ai-chip-revenue-and-microsoft-deal-boost-cerebras-systems-stock-by-17": {
+      "title": "Surging AI chip revenue and Microsoft deal boost Cerebras Systems stock by 17%",
+      "url": "https://siliconangle.com/2026/11/12/surging-ai-chip-revenue-and-microsoft-deal-boost-cerebras-systems-stock-by-17/",
+      "canonical": "siliconangle.com/2026/11/12/surging-ai-chip-revenue-and-microsoft-deal-boost-cerebras-systems-stock-by-17",
+      "published_dt": "2026-11-13T05:40:34+06:00",
+      "published_date": "2026-11-13T05:40:34+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Artificial intelligence chipmaker Cerebras Systems Inc. delivered third-quarter revenue that comfortably beat expectations in its latest financial report today while announcing a new deal with Microsoft Corp., sending its stock up almost 18% in late trading. The company reported a loss before certain costs such as stock compensation of 67 cents per share, trailing Wall […] The post Surging AI chip revenue and Microsoft deal boost Cerebras Systems stock by 17% appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/IMG_6458-scaled.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.576784+06:00",
+      "last_seen": "2026-11-13T13:35:35.576788+06:00"
+    },
+    "siliconangle.com/2026/11/12/ai-agent-tooling-provider-langchain-secures-300m-investment": {
+      "title": "AI agent tooling provider LangChain secures $300M investment",
+      "url": "https://siliconangle.com/2026/11/12/ai-agent-tooling-provider-langchain-secures-300m-investment/",
+      "canonical": "siliconangle.com/2026/11/12/ai-agent-tooling-provider-langchain-secures-300m-investment",
+      "published_dt": "2026-11-13T05:24:06+06:00",
+      "published_date": "2026-11-13T05:24:06+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "LangChain Inc., a startup with a set of popular open-source tools for building artificial intelligence agents, has raised $300 million in funding. The Wall Street Journal reported today that Alphabet Inc.’s CapitalG fund led the round. It was joined by IVP, Sapphire Ventures, GIC and DFJ Growth. LangChain is now worth $3 billion. San Francisco-based […] The post AI agent tooling provider LangChain secures $300M investment appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/LangChain.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.577058+06:00",
+      "last_seen": "2026-11-13T13:35:35.577062+06:00"
+    },
+    "siliconangle.com/2026/11/12/cloud-native-developers-top-21-million-lead-ai-adoption-kubeconna": {
+      "title": "CNCF data shows cloud native is the on-ramp to AI, and maintainers are paying the price",
+      "url": "https://siliconangle.com/2026/11/12/cloud-native-developers-top-21-million-lead-ai-adoption-kubeconna/",
+      "canonical": "siliconangle.com/2026/11/12/cloud-native-developers-top-21-million-lead-ai-adoption-kubeconna",
+      "published_dt": "2026-11-13T04:54:29+06:00",
+      "published_date": "2026-11-13T04:54:29+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "The global population of cloud-native developers has topped 21 million, but the headcount tells only part of the story. Artificial intelligence is changing what those developers build and how open-source projects absorb their work. Fresh research is putting numbers on that shift. The latest State of Cloud Native Development report from the Cloud Native Computing […] The post CNCF data shows cloud native is the on-ramp to AI, and maintainers are paying the price appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/Liam-Bollmann-Dodd-Bob-Killen-Clean.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.577332+06:00",
+      "last_seen": "2026-11-13T13:35:35.577336+06:00"
+    },
+    "siliconangle.com/2026/11/12/google-releases-gemini-4-hydrogen-a-lower-cost-model-said-to-outscore-argon": {
+      "title": "Google releases Gemini 4 Hydrogen, a lower-cost model said to outscore Argon",
+      "url": "https://siliconangle.com/2026/11/12/google-releases-gemini-4-hydrogen-a-lower-cost-model-said-to-outscore-argon/",
+      "canonical": "siliconangle.com/2026/11/12/google-releases-gemini-4-hydrogen-a-lower-cost-model-said-to-outscore-argon",
+      "published_dt": "2026-11-13T04:50:02+06:00",
+      "published_date": "2026-11-13T04:50:02+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Google LLC today released Gemini 4 Hydrogen, a lower-cost model in its Gemini 4 artificial intelligence family that it says outscores its frontier Gemini 4 Argon model on an independent intelligence ranking. Measured on the Artificial Analysis Intelligence Index at its default high thinking level, Hydrogen scored 51 to Argon’s 50, according to Google. A […] The post Google releases Gemini 4 Hydrogen, a lower-cost model said to outscore Argon appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/11/gemini4hydrogen.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-13T13:35:35.577625+06:00",
+      "last_seen": "2026-11-13T13:35:35.577630+06:00",
+      "posted_at": "2026-11-13T13:48:19.770607+06:00"
+    },
+    "siliconangle.com/2026/11/12/ai-networking-nvidia-scalein-security-agentic-aifactoriesdatacenters": {
+      "title": "As AI agents take control, Nvidia rethinks the security playbook",
+      "url": "https://siliconangle.com/2026/11/12/ai-networking-nvidia-scalein-security-agentic-aifactoriesdatacenters/",
+      "canonical": "siliconangle.com/2026/11/12/ai-networking-nvidia-scalein-security-agentic-aifactoriesdatacenters",
+      "published_dt": "2026-11-13T04:46:33+06:00",
+      "published_date": "2026-11-13T04:46:33+06:00",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "excerpt": "Nvidia Corp. recently added a new pillar to its AI networking infrastructure with the unveiling of Scale-In. Scale-In brings purpose-built acceleration to secure, manage and operate agentic AI factories. It is designed to deliver secure access, high-performance data movement, tenant isolation, simpler operations and more predictable performance as agents assume increasingly larger roles within AI […] The post As AI agents take control, Nvidia rethinks the security playbook appeared first on SiliconANGLE .",
+      "image": "https://images.siliconangle.com/blogs.dir/1/files/2026/10/Gilad-Shainer.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.577896+06:00",
+      "last_seen": "2026-11-13T13:35:35.577900+06:00"
+    },
+    "androidauthority.com/google-sheets-canvas-sharing-3734807": {
+      "title": "Google Sheets now lets others explore your data without accessing your spreadsheet",
+      "url": "https://www.androidauthority.com/google-sheets-canvas-sharing-3734807/",
+      "canonical": "androidauthority.com/google-sheets-canvas-sharing-3734807",
+      "published_dt": "2026-11-13T12:26:40+06:00",
+      "published_date": "2026-11-13T12:26:40+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Let your data do the talking, without revealing everything else.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2022/02/Google-Sheets-next-to-calculator-stock-photo-1.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.807543+06:00",
+      "last_seen": "2026-11-13T13:35:35.807548+06:00"
+    },
+    "androidauthority.com/google-health-missing-vitals-fixed-3734799": {
+      "title": "Google rolls out a fix for missing Health app vitals and step counts",
+      "url": "https://www.androidauthority.com/google-health-missing-vitals-fixed-3734799/",
+      "canonical": "androidauthority.com/google-health-missing-vitals-fixed-3734799",
+      "published_dt": "2026-11-13T12:17:50+06:00",
+      "published_date": "2026-11-13T12:17:50+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Affected readings were never deleted.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2026/10/fitbit-edge-review-google-health-app-scaled.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.807681+06:00",
+      "last_seen": "2026-11-13T13:35:35.807685+06:00"
+    },
+    "androidauthority.com/microsoft-outlook-still-down-3734796": {
+      "title": "Outlook, Teams, and other Microsoft 365 services are still down as exec expresses ‘regret’",
+      "url": "https://www.androidauthority.com/microsoft-outlook-still-down-3734796/",
+      "canonical": "androidauthority.com/microsoft-outlook-still-down-3734796",
+      "published_dt": "2026-11-13T11:53:08+06:00",
+      "published_date": "2026-11-13T11:53:08+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Outlook and other Microsoft 365 services are still down, almost 12 hours after the initial outage.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2023/02/Outlook-logo-stock-photo-6.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-13T13:35:35.807816+06:00",
+      "last_seen": "2026-11-13T13:35:35.807819+06:00",
+      "posted_at": "2026-11-13T13:48:30.331982+06:00"
+    },
+    "androidauthority.com/google-fitbit-air-iphone-syncing-issues-3734762": {
+      "title": "Google Fitbit Air syncing issues leave some iPhone users unable to access health data",
+      "url": "https://www.androidauthority.com/google-fitbit-air-iphone-syncing-issues-3734762/",
+      "canonical": "androidauthority.com/google-fitbit-air-iphone-syncing-issues-3734762",
+      "published_dt": "2026-11-13T04:58:31+06:00",
+      "published_date": "2026-11-13T04:58:31+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Google reportedly knows about the issue.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2026/05/Fitbit-Air-Health-Coach-scaled-e1778862993795-500w-260h.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.807941+06:00",
+      "last_seen": "2026-11-13T13:35:35.807945+06:00"
+    },
+    "androidauthority.com/hey-gemini-3734702": {
+      "title": "Google is officially entering its ‘Hey Gemini’ era",
+      "url": "https://www.androidauthority.com/hey-gemini-3734702/",
+      "canonical": "androidauthority.com/hey-gemini-3734702",
+      "published_dt": "2026-11-13T04:41:39+06:00",
+      "published_date": "2026-11-13T04:41:39+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Support for the latest wake word arrives with Intelligent Eyewear Android XR smart glasses.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2024/02/Google-Gemini-logo-on-smartphone-stock-photo-2.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.808064+06:00",
+      "last_seen": "2026-11-13T13:35:35.808068+06:00"
+    },
+    "macrumors.com/2026/11/12/apple-tv-4k-siri-hands-on": {
+      "title": "Hands-On With the New Apple TV 4K and Siri AI",
+      "url": "https://www.macrumors.com/2026/11/12/apple-tv-4k-siri-hands-on/",
+      "canonical": "macrumors.com/2026/11/12/apple-tv-4k-siri-hands-on",
+      "published_dt": "2026-11-13T06:42:07+06:00",
+      "published_date": "2026-11-13T06:42:07+06:00",
+      "source": "MacRumors",
+      "region": "Tech",
+      "excerpt": "The 4th-generation Apple TV 4K with an A19 chip and Siri AI support is available starting on November 13, and we were able to spend some time with it ahead of launch. Subscribe to the MacRumors YouTube channel for more videos. ‌Siri‌ AI is the headline feature, and while it's not perfect, it works better than the prior version of ‌Siri‌. ‌Siri‌ was able to pull up multiple movie and TV show recommendations and answer questions about content. Apple says ‌Siri‌ AI is in beta, and there's more work to be done. ‌Siri‌ AI wasn't great at answering follow-up questions, and only did so part of the time. There are far-field microphones in the set-top box, so you can just say \"Hey ‌Siri‌\" to activate ‌Siri‌ without having to use the remote. The ‌Apple TV‌ can recognize up to six people, so you can get personalized recommendations and context when talking to ‌Siri‌. The person who sets up the ‌Apple TV‌ needs to have an iPhone or iPad that supports ‌Siri‌ AI for ‌Siri‌ AI to work on the ‌Apple TV‌, and personal context also requires each user to have their own ‌Siri‌ AI-compatible device. The 2nd- and 3rd-generation ‌Apple TV‌ 4K models will get ‌Siri‌ AI with the upcoming tvOS 27.2.1 update . Apple didn't change the design of the ‌Apple TV‌ 4K or update the look of the ‌Siri‌ Remote, but the remote does have new capabilities. It has a speaker built in so you can have it play a sound when it's lost, and Precision Finding is available if you have an iPhone Air , iPhone Duo , or iPhone 17 and later (excluding iPhone 17e ). The tvOS interface feels faster with the A19 chip, and it should be better for games if you play Apple Arcade titles on your TV. You can also pair four HomePod speakers to the ‌Apple TV‌ for surround sound, a feature that's unique to the latest model. Unfortunately, Apple is charging $299 for the 4th-generation ‌Apple TV‌ 4K. It's twice as expensive as the prior-generation version was at this same time last year, and that's a wild increase. It's probably not ",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.994062+06:00",
+      "last_seen": "2026-11-13T13:35:35.994068+06:00"
+    },
+    "macrumors.com/2026/11/12/siri-ai-tvos-27-2-1": {
+      "title": "Siri AI Coming to Older Apple TV 4K Models in tvOS 27.2.1",
+      "url": "https://www.macrumors.com/2026/11/12/siri-ai-tvos-27-2-1/",
+      "canonical": "macrumors.com/2026/11/12/siri-ai-tvos-27-2-1",
+      "published_dt": "2026-11-13T05:57:48+06:00",
+      "published_date": "2026-11-13T05:57:48+06:00",
+      "source": "MacRumors",
+      "region": "Tech",
+      "excerpt": "An upcoming tvOS 27.2.1 update will bring Siri AI to the 2nd- and 3rd-generation Apple TV 4K models, according to Apple. A support document outlining ‌Siri‌ AI requirements across Apple products says tvOS 27.2.1 supports ‌Siri‌ AI on the ‌Apple TV‌ 4K (2nd generation and later), but the software hasn't yet been released. While older ‌Apple TV‌ models will need tvOS 27.2.1 for ‌Siri‌ AI, Apple appears to have a special ‌Siri‌ AI build of tvOS 27.2 for the 4th-generation ‌Apple TV‌ 4K. Reviewers were able to test ‌Siri‌ AI on review units, and we can confirm it's working on our own review unit running tvOS 27.2. The 4th-generation ‌Apple TV‌ 4K ships with tvOS 27.0, and users are prompted to update it to tvOS 27.2 during the setup process. Apple hasn't said when tvOS 27.2.1 will be released with ‌Siri‌ AI for older ‌Apple TV‌ 4K models, but it could come as soon as Friday. The latest ‌Apple TV‌ is priced at $299, and it features an A19 chip and an updated ‌Siri‌ Remote that has a Find My speaker and Precision Finding support. ‌Siri‌ AI on the ‌Apple TV‌ requires a nearby paired ‌Siri‌ AI-enabled device like an iPhone 15 Pro or later. Related Roundup: Apple TV Tag: Siri Buyer's Guide: Apple TV (Buy Now) Related Forum: Apple TV and Home Theater This article, \" Siri AI Coming to Older Apple TV 4K Models in tvOS 27.2.1 \" first appeared on MacRumors.com Discuss this article in our forums",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-13T13:35:35.995513+06:00",
+      "last_seen": "2026-11-13T13:35:35.995519+06:00",
+      "posted_at": "2026-11-13T13:48:45.329996+06:00"
+    },
+    "macrumors.com/2026/11/12/homeview-first-orders-arriving": {
+      "title": "HomeView Launch Kicks Off as First Orders Reach Customers",
+      "url": "https://www.macrumors.com/2026/11/12/homeview-first-orders-arriving/",
+      "canonical": "macrumors.com/2026/11/12/homeview-first-orders-arriving",
+      "published_dt": "2026-11-13T04:50:59+06:00",
+      "published_date": "2026-11-13T04:50:59+06:00",
+      "source": "MacRumors",
+      "region": "Tech",
+      "excerpt": "Apple announced an all-new home product a month ago, and it's now starting to arrive to customers. It's Friday, November 13, in Australia and New Zealand, which means it's the HomeView launch day. Customers who pre-ordered Apple's new home hub will soon be sharing pictures and first impressions on the MacRumors forums, Reddit, Instagram, and other social media networks. If you got a HomeView, let us know what you think in the comments below. Apple sees HomeView as the center of the home, and functionally, it's a cross between a small iPad and a HomePod . It has a 7-inch square display and the tabletop model has a speaker base, though there's also a wall-mount version. With a camera and voice recognition, it can identify up to six people in a home, showing personal information customized to each user. There is no HomeView App Store , but it has pre-installed Apple apps and can show widgets from your iPhone. It can be used for making video calls, watching videos, viewing calendar events, getting the weather, listening to music, and controlling smart home devices. It is built around Siri AI, Apple's smarter voice assistant that debuted in iOS 27 . The HomeView is priced at $299, but if you want the wall-mounted version, you need to buy extra mounting hardware. There are no Apple Stores in New Zealand, so customers in Australia will be the first to walk into an Apple Store to purchase the new device. We are not expecting shortages. The new Apple TV 4K is also launching on November 13, and it can be purchased for $299. The latest ‌Apple TV‌ has an A19 chip, 128GB of storage, Wi-Fi 7 support, and the option to connect four HomePods for surround sound. It also supports ‌Siri‌ AI. HomeView is launching in Australia, Canada, India, New Zealand, Singapore, South Africa, the UK, and the United States. It is not available in the European Union because ‌Siri‌ AI is unavailable. ‌Apple TV‌ 4K is launching in the U.S. and 29 other countries and regions. Related Roundup: Apple Home",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-13T13:35:35.996824+06:00",
+      "last_seen": "2026-11-13T13:35:35.996830+06:00"
     }
   },
   "events": {
@@ -23151,32 +24069,6 @@
       "status": "published",
       "message_id": 941
     },
-    "on_device_scam_detection_model": {
-      "event_id": "on_device_scam_detection_model",
-      "canonical_url": "unite.ai/google-deepmind-and-govtech-unveil-on-device-scam-detection-model",
-      "original_url": "https://www.unite.ai/google-deepmind-and-govtech-unveil-on-device-scam-detection-model/",
-      "source": "Unite.AI",
-      "region": "Tech",
-      "topic": "AI Models and Products",
-      "institution": "Google DeepMind",
-      "event_cluster_id": "evt_5307054538",
-      "event_confidence": 0.6,
-      "event_source_count": 1,
-      "headline": "Google DeepMind and GovTech Deploy On‑Device Scam Detection Model in Singapore",
-      "summary": "Google DeepMind and Singapore’s GovTech unveiled a lightweight on‑device scam detection model that warns users of manipulative chats without sending private data to the cloud.",
-      "highlights": [
-        "Gemma model fine‑tuned on local scam conversations for Singapore",
-        "Two‑stage pipeline balances battery efficiency with high‑accuracy threat analysis",
-        "Model runs entirely on smartphones, preserving end‑to‑end encryption",
-        "Collaboration follows a National AI Partnership announced in May 2026"
-      ],
-      "concepts": [],
-      "key_numbers": [],
-      "published_at": "2026-10-14T08:24:28+06:00",
-      "selected_at": "2026-10-14T11:53:08.016681+06:00",
-      "status": "published",
-      "message_id": 883
-    },
     "google_frontier_models_europe_access": {
       "event_id": "google_frontier_models_europe_access",
       "canonical_url": "unite.ai/google-pledges-frontier-models-and-compute-to-european-scientists",
@@ -23251,31 +24143,6 @@
       "selected_at": "2026-10-14T17:12:46.356756+06:00",
       "status": "published",
       "message_id": 887
-    },
-    "nvidia_city_ai_agents_emea": {
-      "event_id": "nvidia_city_ai_agents_emea",
-      "canonical_url": "unite.ai/nvidia-details-ai-agent-deployments-for-city-operations-across-emea",
-      "original_url": "https://www.unite.ai/nvidia-details-ai-agent-deployments-for-city-operations-across-emea/",
-      "source": "Unite.AI",
-      "region": "Tech",
-      "topic": "AI Models and Products",
-      "institution": "Unite.AI",
-      "event_cluster_id": "evt_808b81051e",
-      "event_confidence": 0.6,
-      "event_source_count": 1,
-      "headline": "NVIDIA Powers AI Agent Deployments Across EMEA City Operations",
-      "summary": "NVIDIA’s accelerated computing and open‑source models are enabling physical AI agents and digital twins to streamline maintenance, planning, and public services in dozens of European cities.",
-      "highlights": [
-        "Physical AI agents and digital twins are being rolled out in Belgium, Finland, France, Italy, the Netherlands, Poland, Sweden",
-        "NVIDIA’s Cosmos and Nemotron models power video‑search, natural‑language reasoning, and sensor‑fusion capabilities for city",
-        "Deployments have cut document search times from weeks to minutes and reduced operating costs by 10%, targeting 30% at scale"
-      ],
-      "concepts": [],
-      "key_numbers": [],
-      "published_at": "2026-10-14T12:18:16+06:00",
-      "selected_at": "2026-10-14T17:12:51.794179+06:00",
-      "status": "published",
-      "message_id": 888
     },
     "apple_china_ai_integration": {
       "event_id": "apple_china_ai_integration",
@@ -33773,6 +34640,162 @@
       "selected_at": "2026-11-13T04:48:18.724034+06:00",
       "status": "published",
       "message_id": 1313
+    },
+    "gemini4_hydrogen_release": {
+      "event_id": "gemini4_hydrogen_release",
+      "canonical_url": "siliconangle.com/2026/11/12/google-releases-gemini-4-hydrogen-a-lower-cost-model-said-to-outscore-argon",
+      "original_url": "https://siliconangle.com/2026/11/12/google-releases-gemini-4-hydrogen-a-lower-cost-model-said-to-outscore-argon/",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "topic": "AI Models and Products",
+      "institution": "Google",
+      "event_cluster_id": "evt_85e09d4d29",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Google launches Gemini 4 Hydrogen, cheaper model that outscores Argon",
+      "summary": "Google's new Gemini 4 Hydrogen model costs less and achieves a higher AI Index score than the earlier Argon, with faster task performance.",
+      "highlights": [
+        "Hydrogen scores 51 on the Artificial Analysis Intelligence Index, surpassing Argon’s 50, and reaches 54 at the new xhigh level",
+        "Available instantly via Gemini API, AI Studio, Search and paid AI Pro/Ultra plans at $1.50 per million input tokens",
+        "Orchestrator selects between Hydrogen and Carbon, matching Carbon’s success rate with 24% less quota on Terminal‑Bench 4.0",
+        "Early testers like former OpenAI scientist Andrew Carr say Hydrogen resolved a 10‑day problem in minutes"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T04:50:02+06:00",
+      "selected_at": "2026-11-13T13:48:19.770728+06:00",
+      "status": "published",
+      "message_id": 1314
+    },
+    "cisco_ai_infra_forecast_2027": {
+      "event_id": "cisco_ai_infra_forecast_2027",
+      "canonical_url": "siliconangle.com/2026/11/12/cisco-beats-expectations-lifts-its-guidance-and-forecasts-ai-infrastructure-revenue-to-double-in-fiscal-2027",
+      "original_url": "https://siliconangle.com/2026/11/12/cisco-beats-expectations-lifts-its-guidance-and-forecasts-ai-infrastructure-revenue-to-double-in-fiscal-2027/",
+      "source": "SiliconANGLE",
+      "region": "Tech",
+      "topic": "Major Tech Companies",
+      "institution": "Cisco Systems",
+      "event_cluster_id": "evt_7fe7f8dce7",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Cisco lifts guidance, forecasts AI infrastructure revenue to double by FY2027",
+      "summary": "Cisco reported a 24% revenue jump to $18.5 billion, beat earnings estimates and raised its FY2027 AI infrastructure forecast to $9 billion.",
+      "highlights": [
+        "Revenue rose 24% YoY to $18.5 billion, surpassing analysts’ $18.1 billion estimate.",
+        "AI infrastructure revenue projection increased to $9 billion for fiscal 2027, over double 2026 levels.",
+        "Adjusted earnings per share hit $1.40, exceeding the $1.33 consensus.",
+        "Gross margin slipped to 65.6% amid higher memory‑chip costs but remained within expectations."
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T07:30:06+06:00",
+      "selected_at": "2026-11-13T13:48:25.554638+06:00",
+      "status": "published",
+      "message_id": 1315
+    },
+    "microsoft_365_outage_2026_11_13": {
+      "event_id": "microsoft_365_outage_2026_11_13",
+      "canonical_url": "androidauthority.com/microsoft-outlook-still-down-3734796",
+      "original_url": "https://www.androidauthority.com/microsoft-outlook-still-down-3734796/",
+      "source": "Android Authority",
+      "region": "Tech",
+      "topic": "Major Outages",
+      "institution": "Microsoft",
+      "event_cluster_id": "evt_f94d92795f",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Microsoft 365 Outage Persists, Outlook and Teams Remain Unavailable",
+      "summary": "A second day of downtime leaves Outlook, Teams, Copilot 365 and other Microsoft 365 services still inaccessible for users worldwide.",
+      "highlights": [
+        "Outlook and Teams remain down according to Downdetector reports",
+        "Microsoft 365 outage also impacts OneDrive, OneNote, Microsoft ToDo and the web portal",
+        "Exec Charles Lamanna said there is no sign of malicious activity",
+        "Microsoft is scaling virtual machines and force‑syncing network changes to restore service"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T11:53:08+06:00",
+      "selected_at": "2026-11-13T13:48:30.332014+06:00",
+      "status": "published",
+      "message_id": 1316
+    },
+    "gemini4_hydrogen_pro_ultra": {
+      "event_id": "gemini4_hydrogen_pro_ultra",
+      "canonical_url": "testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users",
+      "original_url": "https://www.testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users/",
+      "source": "TestingCatalog",
+      "region": "Tech",
+      "topic": "AI Models and Products",
+      "institution": "Google",
+      "event_cluster_id": "evt_7d0865d2c5",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Google unveils Gemini 4 Hydrogen for Pro and Ultra users",
+      "summary": "Google's new Gemini 4 Hydrogen model offers fast coding and agentic work at $1.50 per million input tokens, rolling out globally to Pro and Ultra subscribers.",
+      "highlights": [
+        "Hydrogen costs $1.50 per million input tokens and $7.50 per million output tokens with a 1 million‑token context window",
+        "Orchestrator in Antigravity dynamically switches between Carbon and Hydrogen for parallel and isolated agents",
+        "Hydrogen is 2.5× faster than Gemini 3.8 Flash and cuts fabricated claims by more than fivefold",
+        "Google reports up to 81% less agentic overreach and a 96.7% honesty rate in internal tests"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T04:40:32+06:00",
+      "selected_at": "2026-11-13T13:48:35.135507+06:00",
+      "status": "published",
+      "message_id": 1317
+    },
+    "gemini_4_hydrogen_complex_questions": {
+      "event_id": "gemini_4_hydrogen_complex_questions",
+      "canonical_url": "theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
+      "original_url": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
+      "source": "The Verge",
+      "region": "Tech",
+      "topic": "AI Models and Products",
+      "institution": "Google",
+      "event_cluster_id": "evt_4ec4e853e2",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Google launches Gemini 4 Hydrogen, boosting complex query handling",
+      "summary": "Google's Gemini 4 Hydrogen model now answers multi‑part, typo‑laden and highly specific queries with richer visuals and faster, more intelligent responses.",
+      "highlights": [
+        "Gemini 4 Hydrogen breaks down multi‑part questions and delivers answers for each segment",
+        "Adds low, medium, high and new “xhigh” thinking modes for customizable depth",
+        "Provides simultaneous subtopic queries, yielding broader link lists and visual aids",
+        "Claims speed and intelligence gains over Gemini Flash 3.8 and rivals Claude Sonnet 5.5 and GPT‑6.1 Terra"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T03:55:32+06:00",
+      "selected_at": "2026-11-13T13:48:40.319999+06:00",
+      "status": "published",
+      "message_id": 1318
+    },
+    "siriai_tvos27_2_1": {
+      "event_id": "siriai_tvos27_2_1",
+      "canonical_url": "macrumors.com/2026/11/12/siri-ai-tvos-27-2-1",
+      "original_url": "https://www.macrumors.com/2026/11/12/siri-ai-tvos-27-2-1/",
+      "source": "MacRumors",
+      "region": "Tech",
+      "topic": "AI Models and Products",
+      "institution": "Apple",
+      "event_cluster_id": "evt_78f343cf07",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Siri AI Arrives on Older Apple TV 4K with tvOS 27.2.1 Update",
+      "summary": "Apple will enable Siri AI on 2nd‑ and 3rd‑generation Apple TV 4K via the upcoming tvOS 27.2.1 update, extending the feature beyond the newest model.",
+      "highlights": [
+        "tvOS 27.2.1 adds Siri AI support for Apple TV 4K (2nd‑gen and later)",
+        "A special Siri AI build of tvOS 27.2 is already running on the 4th‑gen Apple TV 4K",
+        "The 4th‑gen Apple TV 4K ships with tvOS 27.0 and prompts users to upgrade to tvOS 27.2",
+        "Siri AI requires a nearby iPhone 15 Pro or later for activation"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-13T05:57:48+06:00",
+      "selected_at": "2026-11-13T13:48:45.330024+06:00",
+      "status": "published",
+      "message_id": 1319
     }
   },
   "event_clusters": {
@@ -60303,7 +61326,7 @@
       ],
       "source_count": 1,
       "confidence": 0.6,
-      "last_seen": "2026-11-13T04:37:06.813401+06:00",
+      "last_seen": "2026-11-13T13:39:17.223726+06:00",
       "headline": "Artificial Analysis' Intelligence Index: Gemini 4 Hydrogen nearly ties Claude Sonnet 5.5 and GPT-6.1 Sol, at a third of Sonnet's cost but ~2.5x that of Sol (@artificialanlys)"
     },
     "evt_14f3447f67": {
@@ -60412,7 +61435,7 @@
       ],
       "source_count": 1,
       "confidence": 0.6,
-      "last_seen": "2026-11-13T04:37:06.813436+06:00",
+      "last_seen": "2026-11-13T13:39:17.223788+06:00",
       "headline": "IBM Acquires AuthMind to Monitor AI Agent Credential Use"
     },
     "evt_1e9f6f97e8": {
@@ -60453,14 +61476,14 @@
     },
     "evt_342ef8ea3e": {
       "event_id": "evt_342ef8ea3e",
-      "topic": "Technology Industry",
+      "topic": "Acquisitions and Mergers",
       "region": "Tech",
       "sources": [
         "Techmeme"
       ],
       "source_count": 1,
       "confidence": 0.6,
-      "last_seen": "2026-11-13T04:37:06.813445+06:00",
+      "last_seen": "2026-11-13T13:39:17.223749+06:00",
       "headline": "Cerebras reports Q3 core revenue up 70% YoY to $230.9M, vs. $214.7M est., issues strong guidance, and announces a Microsoft deal; CBRS jumps 15%+ after hours (Jordan Novet/CNBC)"
     },
     "evt_4ec4e853e2": {
@@ -60472,7 +61495,7 @@
       ],
       "source_count": 1,
       "confidence": 0.6,
-      "last_seen": "2026-11-13T04:37:06.813447+06:00",
+      "last_seen": "2026-11-13T13:39:17.223740+06:00",
       "headline": "Google’s new Gemini model is better at understanding complicated questions"
     },
     "evt_29820f8b20": {
@@ -60486,15 +61509,177 @@
       "confidence": 0.6,
       "last_seen": "2026-11-13T04:37:06.813449+06:00",
       "headline": "Google’s latest Search upgrade promises better answers to your most complicated questions"
+    },
+    "evt_76cfea07ac": {
+      "event_id": "evt_76cfea07ac",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "SiliconANGLE"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223708+06:00",
+      "headline": "Surging AI chip revenue and Microsoft deal boost Cerebras Systems stock by 17%"
+    },
+    "evt_85e09d4d29": {
+      "event_id": "evt_85e09d4d29",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "SiliconANGLE"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223721+06:00",
+      "headline": "Google releases Gemini 4 Hydrogen, a lower-cost model said to outscore Argon"
+    },
+    "evt_713573c43d": {
+      "event_id": "evt_713573c43d",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "Techmeme"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223730+06:00",
+      "headline": "OpenAI launches Daybreak Red Team in early access to test web apps for flaws and Daybreak Defense Factory to automate finding, validating, and fixing them (Jessica Lyons/The Register)"
+    },
+    "evt_7fe7f8dce7": {
+      "event_id": "evt_7fe7f8dce7",
+      "topic": "Major Tech Companies",
+      "region": "Tech",
+      "sources": [
+        "SiliconANGLE"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223733+06:00",
+      "headline": "Cisco beats expectations, lifts guidance and forecasts AI infrastructure revenue to double in fiscal 2027"
+    },
+    "evt_f94d92795f": {
+      "event_id": "evt_f94d92795f",
+      "topic": "Major Outages",
+      "region": "Tech",
+      "sources": [
+        "Android Authority"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223736+06:00",
+      "headline": "Outlook, Teams, and other Microsoft 365 services are still down as exec expresses ‘regret’"
+    },
+    "evt_7d0865d2c5": {
+      "event_id": "evt_7d0865d2c5",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "TestingCatalog"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223738+06:00",
+      "headline": "Google launches Gemini 4 Hydrogen for Pro and Ultra users"
+    },
+    "evt_d8e0a78211": {
+      "event_id": "evt_d8e0a78211",
+      "topic": "New Products",
+      "region": "Tech",
+      "sources": [
+        "MacRumors"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223744+06:00",
+      "headline": "HomeView Launch Kicks Off as First Orders Reach Customers"
+    },
+    "evt_754c8b712e": {
+      "event_id": "evt_754c8b712e",
+      "topic": "Cybersecurity",
+      "region": "Tech",
+      "sources": [
+        "Techmeme"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223747+06:00",
+      "headline": "The DOJ says it got court authorization to seize or restrain $1.2B of the $2.7B frozen by Tether and Circle after North Korea's $6.3B Binance hack on October 29 (Myles Miller/Bloomberg)"
+    },
+    "evt_bf72530cec": {
+      "event_id": "evt_bf72530cec",
+      "topic": "Acquisitions and Mergers",
+      "region": "Tech",
+      "sources": [
+        "Techmeme"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223753+06:00",
+      "headline": "Sources: Nvidia faced pressure to boost its 25% residual value support backstop on a planned $500B AI financing vehicle with asset managers before Huang's exit (Bloomberg)"
+    },
+    "evt_78f343cf07": {
+      "event_id": "evt_78f343cf07",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "MacRumors"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223763+06:00",
+      "headline": "Siri AI Coming to Older Apple TV 4K Models in tvOS 27.2.1"
+    },
+    "evt_a76c0fbc37": {
+      "event_id": "evt_a76c0fbc37",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "Techmeme"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223768+06:00",
+      "headline": "Meta launches an outbound calling feature for Muse, such as to businesses, available for paid US subscribers; Gemini and startup Instinct offer a similar option (Sarah Perez/TechCrunch)"
+    },
+    "evt_233d6c8334": {
+      "event_id": "evt_233d6c8334",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "Engadget"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223773+06:00",
+      "headline": "Meta's Muse can now make calls on your behalf (if you have a paid subscription)"
+    },
+    "evt_32558f54a5": {
+      "event_id": "evt_32558f54a5",
+      "topic": "Startups",
+      "region": "Tech",
+      "sources": [
+        "Techmeme"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223778+06:00",
+      "headline": "Mirendil, founded by former Anthropic researchers to build tools for frontier AI R&D, raised a $1B Series A led by Kleiner Perkins and Clearlake Capital (Sarah Klearman/Wall Street Journal)"
+    },
+    "evt_b25e2e200b": {
+      "event_id": "evt_b25e2e200b",
+      "topic": "Cybersecurity",
+      "region": "Tech",
+      "sources": [
+        "SiliconANGLE"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-13T13:39:17.223782+06:00",
+      "headline": "As AI agents take control, Nvidia rethinks the security playbook"
     }
   },
   "posted_event_ids": [
-    "evt_867fddddf9",
-    "evt_ecc3f71ab2",
-    "evt_49bf418c87",
-    "evt_f86be9acd4",
-    "evt_6c826bab59",
-    "evt_2b2f70c105",
     "evt_e839782295",
     "evt_e1a90142ba",
     "evt_a31fe683a7",
@@ -60988,15 +62173,15 @@
     "evt_95cc79cb26",
     "evt_82f4bda1da",
     "evt_291b5db6ff",
-    "evt_14f3447f67"
+    "evt_14f3447f67",
+    "evt_85e09d4d29",
+    "evt_7fe7f8dce7",
+    "evt_f94d92795f",
+    "evt_7d0865d2c5",
+    "evt_4ec4e853e2",
+    "evt_78f343cf07"
   ],
   "recent_titles": [
-    "zero click spyware hijacks phones via targeted ads study finds",
-    "google forces phone number linking on android sparking privacy backlash",
-    "israeli ad firm discover tech used zero click ads to deploy candiru spyware",
-    "fortytwo launches engine api cutting tokens by 24 7 on coding tasks",
-    "nvidia unveils open nemotron 3 5 super vl and edge bolt models",
-    "microsoft dismantles global phishing marketplace behind billion message scam",
     "google launches universal cart for ai powered web shopping in the us",
     "openai s chatgpt for teens fails safety tests researchers warn",
     "ftc subpoenas openai and anthropic over recent ai safety failures",
@@ -61396,11 +62581,17 @@
     "microsoft 365 outage halts outlook teams and copilot services",
     "microsoft outage hits teams outlook copilot and onedrive globally",
     "google launches gemini 4 hydrogen supplanting gemini 3 8 flash across its suite",
-    "spacex announces 74 b ai supercomputing campuses in texas and arizona"
+    "spacex announces 74 b ai supercomputing campuses in texas and arizona",
+    "google launches gemini 4 hydrogen cheaper model that outscores argon",
+    "cisco lifts guidance forecasts ai infrastructure revenue to double by fy2027",
+    "microsoft 365 outage persists outlook and teams remain unavailable",
+    "google unveils gemini 4 hydrogen for pro and ultra users",
+    "google launches gemini 4 hydrogen boosting complex query handling",
+    "siri ai arrives on older apple tv 4k with tvos 27 2 1 update"
   ],
   "category_coverage": {
-    "AI Models and Products": "2026-11-13T04:48:18.724053+06:00",
-    "Major Tech Companies": "2026-11-13T04:47:58.338278+06:00",
+    "AI Models and Products": "2026-11-13T13:48:45.330043+06:00",
+    "Major Tech Companies": "2026-11-13T13:48:25.554658+06:00",
     "Cybersecurity": "2026-11-12T22:43:44.952229+06:00",
     "Search": "2026-08-29T08:21:13.747596+06:00",
     "Cloud Platforms": "2026-10-27T23:33:01.413405+06:00",
@@ -61412,7 +62603,7 @@
     "Startups": "2026-11-12T04:51:20.268546+06:00",
     "Browsers": "2026-09-09T00:27:35.272063+06:00",
     "Operating Systems": "2026-10-31T12:43:33.694995+06:00",
-    "Major Outages": "2026-11-13T04:48:08.406496+06:00",
+    "Major Outages": "2026-11-13T13:48:30.332035+06:00",
     "New Products": "2026-10-24T20:23:13.554149+06:00",
     "Technology Industry": "2026-11-06T04:56:40.877208+06:00",
     "Social Platforms": "2026-11-04T13:23:50.282522+06:00",
