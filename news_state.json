@@ -1,142 +1,142 @@
 {
   "feeds": {
     "https://techcrunch.com/feed/": {
-      "etag": "W/\"3239e21113093e00408e07859a278706\"",
-      "last_modified": "Sun, 15 Nov 2026 02:03:06 GMT",
-      "last_checked": "2026-11-15T13:30:46.370901+06:00",
+      "etag": "W/\"fdfab951bca3fd53051275016005ccdf\"",
+      "last_modified": "Sun, 15 Nov 2026 15:09:23 GMT",
+      "last_checked": "2026-11-15T21:17:34.994897+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.theverge.com/rss/index.xml": {
-      "etag": "W/\"93c5ee7ff345fb7610d43e7eaa910c41\"",
+      "etag": "W/\"16487e3c4ecebcab5d93d51b92d3615f\"",
       "last_modified": null,
-      "last_checked": "2026-11-15T13:30:46.473279+06:00",
+      "last_checked": "2026-11-15T21:17:35.050651+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.wired.com/feed/rss": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-15T13:30:46.617729+06:00",
+      "last_checked": "2026-11-15T21:17:35.158906+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://feeds.arstechnica.com/arstechnica/index": {
-      "etag": "\"9fcab80d760fe948d91dc402e9f1f108\"",
-      "last_modified": "Sun, 15 Nov 2026 00:46:00 GMT",
-      "last_checked": "2026-11-15T13:30:46.700723+06:00",
+      "etag": "\"40fa21eabe1c5c3cc9ad57b8a166fc67\"",
+      "last_modified": "Sun, 15 Nov 2026 12:07:34 GMT",
+      "last_checked": "2026-11-15T21:17:35.267174+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.engadget.com/rss.xml": {
-      "etag": "\"98512aaedaa3667bd99cd194b2055e50\"",
-      "last_modified": "Sun, 15 Nov 2026 01:00:00 GMT",
-      "last_checked": "2026-11-15T13:30:46.805542+06:00",
+      "etag": "\"04cc7c59978253c9a6b74a8b5311a57b\"",
+      "last_modified": "Sun, 15 Nov 2026 15:00:00 GMT",
+      "last_checked": "2026-11-15T21:17:35.387217+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.technologyreview.com/feed/": {
       "etag": "W/\"bf9de80d7620c5639a0b43368220de65\"",
       "last_modified": "Fri, 13 Nov 2026 19:04:16 GMT",
-      "last_checked": "2026-11-15T13:30:46.844982+06:00",
+      "last_checked": "2026-11-15T21:17:35.458924+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://news.ycombinator.com/rss": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-15T13:30:47.072415+06:00",
-      "fail_count": 145,
+      "last_checked": "2026-11-15T21:17:35.726009+06:00",
+      "fail_count": 146,
       "alerted": true
     },
     "https://venturebeat.com/feed/": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-15T13:31:08.364512+06:00",
-      "fail_count": 242,
+      "last_checked": "2026-11-15T21:17:56.925517+06:00",
+      "fail_count": 243,
       "alerted": true
     },
     "https://www.techmeme.com/feed.xml": {
-      "etag": "W/\"59b0-6604b3e4a6370\"",
-      "last_modified": "Sun, 15 Nov 2026 07:02:24 GMT",
-      "last_checked": "2026-11-15T13:31:08.568912+06:00",
+      "etag": "W/\"5a12-6604f741ccf59\"",
+      "last_modified": "Sun, 15 Nov 2026 12:03:46 GMT",
+      "last_checked": "2026-11-15T21:17:57.309255+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.techradar.com/feeds/articletype/news": {
       "etag": null,
       "last_modified": null,
-      "last_checked": "2026-11-15T13:31:08.783958+06:00",
+      "last_checked": "2026-11-15T21:17:57.457192+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.zdnet.com/news/rss.xml": {
-      "etag": "W/\"ca7506f4c111053bc2b3f353826307fd\"",
-      "last_modified": "Mon, 20 Mar 2023 20:19:00 GMT",
-      "last_checked": "2026-11-15T13:31:09.230842+06:00",
+      "etag": "W/\"904e7ba47224da2f9adc7485da8ac26a\"",
+      "last_modified": "Thu, 19 Dec 2024 22:23:00 GMT",
+      "last_checked": "2026-11-15T21:17:57.909571+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://9to5google.com/feed/": {
-      "etag": "W/\"b853544fcde8aa898e1f63a9eb69e030\"",
-      "last_modified": "Sat, 14 Nov 2026 22:51:03 GMT",
-      "last_checked": "2026-11-15T13:31:09.272946+06:00",
+      "etag": "W/\"7dcbb7c70bcf0ba3c8821ea0d3493bbe\"",
+      "last_modified": "Thu, 12 Nov 2026 21:20:19 GMT",
+      "last_checked": "2026-11-15T21:17:57.975619+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://wabetainfo.com/feed/": {
       "etag": "\"e1b825492d91d2fdab3c887885bd0e4e-gzip\"",
       "last_modified": "Sun, 15 Nov 2026 00:00:07 GMT",
-      "last_checked": "2026-11-15T13:31:10.172284+06:00",
+      "last_checked": "2026-11-15T21:17:58.749324+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.testingcatalog.com/feed/": {
-      "etag": "W/\"13ec4-wgyS+D8Fo+rv0T4ETiD7ee/IYL4\"",
+      "etag": "W/\"13ec4-oruQyIUrB6PHoVZUEGhlHINTFYc\"",
       "last_modified": null,
-      "last_checked": "2026-11-15T13:31:10.245384+06:00",
+      "last_checked": "2026-11-15T21:17:58.819548+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.artificialintelligence-news.com/feed/": {
       "etag": "\"cd8cbe1fef0e10c2eef0af3ac2847598\"",
       "last_modified": "Thu, 24 Sep 2026 16:09:03 GMT",
-      "last_checked": "2026-11-15T13:31:11.015248+06:00",
+      "last_checked": "2026-11-15T21:17:59.642898+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://unite.ai/feed/": {
-      "etag": "W/\"e2f6a898a4463e8dccec941bf47abf91cfa2d64b99d25452de0eff8edc3f448f\"",
-      "last_modified": "Sat, 14 Nov 2026 19:25:02 GMT",
-      "last_checked": "2026-11-15T13:31:11.495426+06:00",
+      "etag": "W/\"f6550318e64a95ec9c85b3bae4b285ddb2bab0c1d0a45d8b28a790243b16768b\"",
+      "last_modified": "Sun, 15 Nov 2026 13:05:03 GMT",
+      "last_checked": "2026-11-15T21:18:00.203767+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://the-decoder.com/feed/": {
-      "etag": "\"18cf2d7644e8b46c907abe72e85d174e\"",
-      "last_modified": "Sat, 14 Nov 2026 19:16:38 GMT",
-      "last_checked": "2026-11-15T13:31:12.687470+06:00",
+      "etag": "\"7a0c07691b4b3e08808bfd9b482c698e\"",
+      "last_modified": "Sun, 15 Nov 2026 14:49:30 GMT",
+      "last_checked": "2026-11-15T21:18:01.617970+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://siliconangle.com/feed/": {
       "etag": "\"ea280c468e8938a69628e65137be0759\"",
       "last_modified": "Sat, 14 Nov 2026 20:33:38 GMT",
-      "last_checked": "2026-11-15T13:31:13.313364+06:00",
+      "last_checked": "2026-11-15T21:18:01.993394+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.androidauthority.com/feed/": {
-      "etag": "W/\"6e596ebb555b18db50d4620e85c32baf\"",
-      "last_modified": "Sat, 14 Nov 2026 20:17:38 GMT",
-      "last_checked": "2026-11-15T13:31:13.429161+06:00",
+      "etag": "W/\"0a9e63fce538cc4a5ee65488749444d4\"",
+      "last_modified": "Sun, 15 Nov 2026 12:00:09 GMT",
+      "last_checked": "2026-11-15T21:18:02.069851+06:00",
       "fail_count": 0,
       "alerted": false
     },
     "https://www.macrumors.com/macrumors.xml": {
       "etag": null,
-      "last_modified": "Sun, 15 Nov 2026 07:25:28 GMT",
-      "last_checked": "2026-11-15T13:31:13.679891+06:00",
+      "last_modified": "Sun, 15 Nov 2026 14:25:32 GMT",
+      "last_checked": "2026-11-15T21:18:02.335532+06:00",
       "fail_count": 0,
       "alerted": false
     }
@@ -19197,7 +19197,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:40:46.369957+06:00",
-      "last_seen": "2026-11-15T13:30:46.394010+06:00"
+      "last_seen": "2026-11-15T21:17:35.017468+06:00"
     },
     "techcrunch.com/2026/11/14/transportation-secretary-blames-routine-equipment-upgrade-for-grounding-flights-nationwide": {
       "title": "Transportation secretary blames ‘routine’ equipment upgrade for grounding flights nationwide",
@@ -19230,7 +19230,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:40:46.370117+06:00",
-      "last_seen": "2026-11-15T13:30:46.394247+06:00"
+      "last_seen": "2026-11-15T21:17:35.017694+06:00"
     },
     "techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit": {
       "title": "Asian governments react to Nvidia CEO Jensen Huang’s exit",
@@ -19246,7 +19246,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:40:46.370171+06:00",
-      "last_seen": "2026-11-15T13:30:46.394381+06:00"
+      "last_seen": "2026-11-15T21:17:35.017806+06:00"
     },
     "theverge.com/transportation/1033898/faa-ground-stop-sean-duffy-faa-copper-wire": {
       "title": "Work to replace old copper wire led to the FAA’s ground stop",
@@ -19262,7 +19262,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:40:46.498573+06:00",
-      "last_seen": "2026-11-15T13:30:46.540036+06:00"
+      "last_seen": "2026-11-15T21:17:35.120746+06:00"
     },
     "theverge.com/gadgets/1032500/best-deals-rei-holiday-sale-2026": {
       "title": "Here are our favorite deals from REI’s giant Holiday Sale",
@@ -19631,7 +19631,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:08.734382+06:00",
-      "last_seen": "2026-11-15T13:31:08.650869+06:00"
+      "last_seen": "2026-11-15T21:17:57.382826+06:00"
     },
     "techmeme.com/261114/p16": {
       "title": "Databento, which offers market data APIs and says it has contracts with five of the six largest frontier AI labs, raised a $100M Series C at a $1.1B valuation (FinTech Global)",
@@ -19647,7 +19647,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:08.734709+06:00",
-      "last_seen": "2026-11-15T13:31:08.651460+06:00"
+      "last_seen": "2026-11-15T21:17:57.383275+06:00"
     },
     "techmeme.com/261114/p15": {
       "title": "Jensen Huang's resignation is a setback for US open models, as his funding gave open-source developers time to find their footing and will very likely dry up (Nathan Lambert/Interconnects AI)",
@@ -19743,7 +19743,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154335+06:00",
-      "last_seen": "2026-11-15T13:31:09.195921+06:00"
+      "last_seen": "2026-11-15T21:17:57.876945+06:00"
     },
     "techradar.com/entertainment/how-to-watch/how-to-watch-honey": {
       "title": "How to watch Honey for free — stream from anywhere",
@@ -19759,7 +19759,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154407+06:00",
-      "last_seen": "2026-11-15T13:31:09.196041+06:00"
+      "last_seen": "2026-11-15T21:17:57.877060+06:00"
     },
     "techradar.com/entertainment/how-to-watch/how-to-watch-michael-mcintyres-the-wheel-season-7": {
       "title": "How to watch Michael McIntyre's The Wheel season 7 for free — stream from anywhere",
@@ -19775,7 +19775,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154466+06:00",
-      "last_seen": "2026-11-15T13:31:09.196161+06:00"
+      "last_seen": "2026-11-15T21:17:57.877174+06:00"
     },
     "techradar.com/entertainment/football/watch-austria-vs-ireland-free-live-nations-league-2026-27": {
       "title": "How to watch Austria vs Ireland: FREE live streams, TV channels & kick-off time for Nations League 2026/27 fixture, team news",
@@ -19791,7 +19791,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154523+06:00",
-      "last_seen": "2026-11-15T13:31:09.196296+06:00"
+      "last_seen": "2026-11-15T21:17:57.877314+06:00"
     },
     "techradar.com/entertainment/football/watch-portugal-vs-denmark-nations-league-2026-27-free": {
       "title": "How to watch Portugal vs Denmark: FREE live streams, TV channels & kick-off time for Nations League 2026/27 fixture, team news",
@@ -19807,7 +19807,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154579+06:00",
-      "last_seen": "2026-11-15T13:31:09.196542+06:00"
+      "last_seen": "2026-11-15T21:17:57.877550+06:00"
     },
     "techradar.com/entertainment/rugby/watch-ireland-vs-fiji-nations-championship-2026-free": {
       "title": "How to watch Ireland vs Fiji for FREE: Nations Championship 2026 live streams & TV channels, team news",
@@ -19823,7 +19823,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:09.154634+06:00",
-      "last_seen": "2026-11-15T13:31:09.196421+06:00"
+      "last_seen": "2026-11-15T21:17:57.877434+06:00"
     },
     "testingcatalog.com/google-adds-wallet-to-gemini-for-finance-insights": {
       "title": "Google adds Wallet to Gemini for finance insights",
@@ -19839,7 +19839,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:10.137511+06:00",
-      "last_seen": "2026-11-15T01:41:10.137513+06:00"
+      "last_seen": "2026-11-15T21:17:58.860599+06:00"
     },
     "unite.ai/reinstatement-letter-for-jensen-huang-surpasses-100-000-signatures": {
       "title": "Reinstatement Letter for Jensen Huang Surpasses 100,000 Signatures",
@@ -19855,7 +19855,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:11.309049+06:00",
-      "last_seen": "2026-11-15T01:41:11.309051+06:00"
+      "last_seen": "2026-11-15T21:18:00.234278+06:00"
     },
     "the-decoder.com/anthropic-ceo-amodei-admits-theres-a-huge-uncertainty-in-whats-going-to-happen-next-year-days-before-a-record-ipo": {
       "title": "Anthropic CEO Amodei admits \"there's a huge uncertainty in what's going to happen next year\" days before a record IPO",
@@ -19939,7 +19939,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T01:41:13.516031+06:00",
-      "last_seen": "2026-11-15T13:31:13.761445+06:00"
+      "last_seen": "2026-11-15T21:18:02.417548+06:00"
     },
     "techcrunch.com/2026/11/14/where-was-nvidias-security-team": {
       "title": "Where was Nvidia’s security team?",
@@ -19972,7 +19972,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.393758+06:00",
-      "last_seen": "2026-11-15T13:30:46.393763+06:00"
+      "last_seen": "2026-11-15T21:17:35.017213+06:00"
     },
     "techcrunch.com/2026/11/14/tesla-opens-cybercab-pre-orders-for-personal-use-with-geo-restrictions-and-a-299-monthly-fee": {
       "title": "Tesla opens Cybercab pre-orders ‘for personal use,’ with geo restrictions and a $299 monthly fee",
@@ -19988,7 +19988,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.393889+06:00",
-      "last_seen": "2026-11-15T13:30:46.393893+06:00"
+      "last_seen": "2026-11-15T21:17:35.017349+06:00"
     },
     "theverge.com/science/1033930/spacex-chopstick-starship-catch": {
       "title": "Watch SpaceX successfully execute the first ‘chopstick’ catch of Starship",
@@ -20004,7 +20004,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.539722+06:00",
-      "last_seen": "2026-11-15T13:30:46.539728+06:00"
+      "last_seen": "2026-11-15T21:17:35.120517+06:00"
     },
     "theverge.com/entertainment/1033909/magic-the-gathering-netflix-series": {
       "title": "Magic: The Gathering is getting a Netflix animated series. For real this time.",
@@ -20020,7 +20020,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.539868+06:00",
-      "last_seen": "2026-11-15T13:30:46.539872+06:00"
+      "last_seen": "2026-11-15T21:17:35.120632+06:00"
     },
     "arstechnica.com/space/2026/11/with-starship-catch-spacex-still-shows-it-can-dazzle-the-world": {
       "title": "SpaceX returned its Starship rocket on Saturday—but there's a catch",
@@ -20036,7 +20036,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.734743+06:00",
-      "last_seen": "2026-11-15T13:30:46.734748+06:00"
+      "last_seen": "2026-11-15T21:17:35.299504+06:00"
     },
     "engadget.com/2313644/nvidia-gpu-ps5-closest-match-answer-not-simple": {
       "title": "Which NVIDIA GPU is closest to the PS5? The answer isn't so simple",
@@ -20052,7 +20052,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.820556+06:00",
-      "last_seen": "2026-11-15T13:30:46.820561+06:00"
+      "last_seen": "2026-11-15T21:17:35.402491+06:00"
     },
     "engadget.com/2313652/sony-patent-playstation-controller-adds-credit-card-reader": {
       "title": "This Sony patent would add a credit card reader to your PlayStation controller",
@@ -20068,7 +20068,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.820702+06:00",
-      "last_seen": "2026-11-15T13:30:46.820706+06:00"
+      "last_seen": "2026-11-15T21:17:35.402612+06:00"
     },
     "engadget.com/2313636/limitations-egpu-vs-onboard-graphics-card-laptop-pc": {
       "title": "What are the limitations of eGPUs vs onboard graphics cards for laptops?",
@@ -20084,7 +20084,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.820887+06:00",
-      "last_seen": "2026-11-15T13:30:46.820894+06:00"
+      "last_seen": "2026-11-15T21:17:35.402731+06:00"
     },
     "engadget.com/2310535/affordable-gadgets-under-10-dollars": {
       "title": "11 gadgets under $10 that solve everyday problems",
@@ -20100,7 +20100,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821033+06:00",
-      "last_seen": "2026-11-15T13:30:46.821036+06:00"
+      "last_seen": "2026-11-15T21:17:35.402848+06:00"
     },
     "engadget.com/2313576/hidden-way-check-which-services-running-on-android-phone": {
       "title": "There's a hidden way you can check which services are running on your Android phone",
@@ -20116,7 +20116,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821161+06:00",
-      "last_seen": "2026-11-15T13:30:46.821165+06:00"
+      "last_seen": "2026-11-15T21:17:35.402968+06:00"
     },
     "engadget.com/2313550/roku-tv-turns-on-by-itself-common-reasons-fixes": {
       "title": "Common reasons your Roku TV can turn on by itself and how to fix it",
@@ -20132,7 +20132,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821313+06:00",
-      "last_seen": "2026-11-15T13:30:46.821318+06:00"
+      "last_seen": "2026-11-15T21:17:35.403085+06:00"
     },
     "engadget.com/2313063/cable-mistake-desktop-pc-gaming-performance": {
       "title": "One cable mistake could be killing your desktop PC's gaming performance",
@@ -20148,7 +20148,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821444+06:00",
-      "last_seen": "2026-11-15T13:30:46.821448+06:00"
+      "last_seen": "2026-11-15T21:17:35.403218+06:00"
     },
     "engadget.com/2313042/sd-card-4-gb-file-transfer-limit-fat32-explained": {
       "title": "Why your SD card won't let you transfer files bigger than 4GB, and how to fix it",
@@ -20164,7 +20164,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821567+06:00",
-      "last_seen": "2026-11-15T13:30:46.821571+06:00"
+      "last_seen": "2026-11-15T21:17:35.403343+06:00"
     },
     "engadget.com/2312924/underrated-google-health-app-food-tracker": {
       "title": "This underrated Google Health app feature can make food tracking less annoying",
@@ -20180,7 +20180,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821687+06:00",
-      "last_seen": "2026-11-15T13:30:46.821690+06:00"
+      "last_seen": "2026-11-15T21:17:35.403461+06:00"
     },
     "engadget.com/2312834/how-to-get-better-results-google-gemini": {
       "title": "How to get better results from Google Gemini",
@@ -20196,7 +20196,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821806+06:00",
-      "last_seen": "2026-11-15T13:30:46.821810+06:00"
+      "last_seen": "2026-11-15T21:17:35.403577+06:00"
     },
     "engadget.com/2307825/honor-magic-8-pro-vs-9-pro-upgrade-comparison": {
       "title": "Honor Magic8 Pro vs. Magic9 Pro Max: What's been upgraded?",
@@ -20212,7 +20212,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:30:46.821954+06:00",
-      "last_seen": "2026-11-15T13:30:46.821959+06:00"
+      "last_seen": "2026-11-15T21:17:35.403693+06:00"
     },
     "engadget.com/2312688/when-dedicated-graphics-card-worth-it": {
       "title": "Here's when a dedicated graphics card is worth it",
@@ -20372,7 +20372,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.645404+06:00",
-      "last_seen": "2026-11-15T13:31:08.645421+06:00"
+      "last_seen": "2026-11-15T21:17:57.377537+06:00"
     },
     "techmeme.com/261115/p5": {
       "title": "Nidus, which is developing AI-powered tech for manufacturing robots used by US defense industrial companies, raised $30M across a pre-seed and a seed (Alex Konrad/Upstarts Media)",
@@ -20388,7 +20388,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.645967+06:00",
-      "last_seen": "2026-11-15T13:31:08.645973+06:00"
+      "last_seen": "2026-11-15T21:17:57.377985+06:00"
     },
     "techmeme.com/261115/p4": {
       "title": "TSMC plans to set up a new $500M fund to invest in chip startups, suppliers, and other upstream partners, saying \"we also want to support the future's Nvidia\" (Cheng Ting-Fang/Nikkei Asia)",
@@ -20404,7 +20404,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.646481+06:00",
-      "last_seen": "2026-11-15T13:31:08.646487+06:00"
+      "last_seen": "2026-11-15T21:17:57.378442+06:00"
     },
     "techmeme.com/261115/p3": {
       "title": "Nebuly, whose tech helps enterprises measure the business value of AI agents by analyzing their impact on productivity and revenue, raised a $21M Series A (Tamara Djurickovic/Tech.eu)",
@@ -20420,7 +20420,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.646931+06:00",
-      "last_seen": "2026-11-15T13:31:08.646936+06:00"
+      "last_seen": "2026-11-15T21:17:57.378861+06:00"
     },
     "techmeme.com/261115/p2": {
       "title": "Nvidia insiders say Jensen Huang was prone to wild office tantrums, which a source says some employees were surprised hadn't leaked before his public downfall (Thomas Barrabi/New York Post)",
@@ -20436,7 +20436,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.647387+06:00",
-      "last_seen": "2026-11-15T13:31:08.647392+06:00"
+      "last_seen": "2026-11-15T21:17:57.379307+06:00"
     },
     "techmeme.com/261115/p1": {
       "title": "How Jensen Huang built a multibillion-dollar business to let Chinese companies access Nvidia AI chips in SE Asian data centers, exploiting a gap in US sanctions (Wall Street Journal)",
@@ -20452,7 +20452,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.647822+06:00",
-      "last_seen": "2026-11-15T13:31:08.647827+06:00"
+      "last_seen": "2026-11-15T21:17:57.379714+06:00"
     },
     "techmeme.com/261114/p23": {
       "title": "The Nvidia scandal presents a political challenge for the White House by tying together data centers, China, and corruption, all key voter issues in midterms (Washington Post)",
@@ -20468,7 +20468,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.648285+06:00",
-      "last_seen": "2026-11-15T13:31:08.648290+06:00"
+      "last_seen": "2026-11-15T21:17:57.380146+06:00"
     },
     "techmeme.com/261114/p22": {
       "title": "23andMe's Anne Wojcicki, formerly married to Google co-founder Sergey Brin, says Jensen Huang's affair shows what happens when CEOs think they are \"untouchable\" (Bloomberg)",
@@ -20484,7 +20484,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.648727+06:00",
-      "last_seen": "2026-11-15T13:31:08.648731+06:00"
+      "last_seen": "2026-11-15T21:17:57.380575+06:00"
     },
     "techmeme.com/261114/p21": {
       "title": "Source: Applied Digital has asked tenants like Oracle and Meta for billions in guarantees since at least last year to secure power before finalizing leases (Bloomberg)",
@@ -20500,7 +20500,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.649141+06:00",
-      "last_seen": "2026-11-15T13:31:08.649145+06:00"
+      "last_seen": "2026-11-15T21:17:57.380974+06:00"
     },
     "techmeme.com/261114/p20": {
       "title": "Unlike other larger-than-life tech founders, Jensen Huang lacked super-voting shares in Nvidia, making it easier for him to lose control of the company (Forbes)",
@@ -20516,7 +20516,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.649584+06:00",
-      "last_seen": "2026-11-15T13:31:08.649589+06:00"
+      "last_seen": "2026-11-15T21:17:57.381402+06:00"
     },
     "techmeme.com/261114/p19": {
       "title": "USD-pegged stablecoins are taking a growing share of Latin America's crypto activity, serving as a store of value and an efficient cross-border payment system (Maria Clara Cobo/Bloomberg)",
@@ -20532,7 +20532,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.649998+06:00",
-      "last_seen": "2026-11-15T13:31:08.650003+06:00"
+      "last_seen": "2026-11-15T21:17:57.381816+06:00"
     },
     "techmeme.com/261114/p18": {
       "title": "Letter: Altimeter's Brad Gerstner and Atreides's Gavin Baker urge Nvidia's board to consider \"the potential return of Jensen Huang\"; they own $2.13B in Nvidia (Katie Tarasov/CNBC)",
@@ -20548,7 +20548,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:08.650446+06:00",
-      "last_seen": "2026-11-15T13:31:08.650451+06:00"
+      "last_seen": "2026-11-15T21:17:57.382260+06:00"
     },
     "techradar.com/entertainment/how-to-watch/rugby-league-world-cup-final-on-7plus-its-free": {
       "title": "How to watch Rugby League World Cup Final on 7plus — it's *FREE*",
@@ -20564,7 +20564,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.193974+06:00",
-      "last_seen": "2026-11-15T13:31:09.193980+06:00"
+      "last_seen": "2026-11-15T21:17:57.875122+06:00"
     },
     "techradar.com/entertainment/rugby/australia-vs-new-zealand-free-rugby-league-world-cup-2026-final": {
       "title": "Watch Australia vs New Zealand: FREE live streams and TV channels",
@@ -20580,7 +20580,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194117+06:00",
-      "last_seen": "2026-11-15T13:31:09.194121+06:00"
+      "last_seen": "2026-11-15T21:17:57.875263+06:00"
     },
     "techradar.com/entertainment/cricket/watch-south-africa-vs-bangladesh-2026-1st-test-free": {
       "title": "How to watch South Africa vs Bangladesh 2026 1st Test: Free Streams & Preview",
@@ -20596,7 +20596,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194251+06:00",
-      "last_seen": "2026-11-15T13:31:09.194254+06:00"
+      "last_seen": "2026-11-15T21:17:57.875386+06:00"
     },
     "techradar.com/entertainment/tennis/atp-finals-2026-free-mens-tennis": {
       "title": "How to watch ATP Finals 2026 for FREE: Live Streams & TV Channels for Men's Tennis, Schedule, Preview, Day 1 Order of Play",
@@ -20612,7 +20612,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194403+06:00",
-      "last_seen": "2026-11-15T13:31:09.194407+06:00"
+      "last_seen": "2026-11-15T21:17:57.875508+06:00"
     },
     "techradar.com/entertainment/tv-shows/how-to-watch-the-chosen-season-6": {
       "title": "How to watch The Chosen season 6 online – stream the biblical epic from anywhere for free",
@@ -20628,7 +20628,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194532+06:00",
-      "last_seen": "2026-11-15T13:31:09.194536+06:00"
+      "last_seen": "2026-11-15T21:17:57.875627+06:00"
     },
     "techradar.com/entertainment/how-to-watch-womens-rugby-league-world-cup-2026-final-free": {
       "title": "How to watch Women's Rugby League World Cup 2026 final — it's *FREE*",
@@ -20644,7 +20644,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194656+06:00",
-      "last_seen": "2026-11-15T13:31:09.194659+06:00"
+      "last_seen": "2026-11-15T21:17:57.875745+06:00"
     },
     "techradar.com/gaming/you-can-suddenly-float-to-the-30-000-foot-level-and-understand-how-its-all-supposed-to-work-together-original-mass-effect-composer-looks-back-on-the-rewarding-collaborative-experience-while-working-on-the-rpg": {
       "title": "'You can suddenly float to the 30,000-foot level and understand how it’s all supposed to work together' — Original Mass Effect composer looks back on the 'rewarding' collaborative experience while working on the RPG",
@@ -20660,7 +20660,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194785+06:00",
-      "last_seen": "2026-11-15T13:31:09.194788+06:00"
+      "last_seen": "2026-11-15T21:17:57.875869+06:00"
     },
     "techradar.com/gaming/007-first-light-composers-reveal-their-inspirations-for-the-games-soundtrack-our-mission-we-set-ourselves-was-to-give-the-franchise-a-gentle-nudge-into-the-modern-day-without-completely-reinventing-it": {
       "title": "007 First Light composers reveal their inspirations for the game’s soundtrack — ‘Our mission we set ourselves was to give the franchise a gentle nudge into the modern day, without completely reinventing it’",
@@ -20676,7 +20676,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.194914+06:00",
-      "last_seen": "2026-11-15T13:31:09.194917+06:00"
+      "last_seen": "2026-11-15T21:17:57.875990+06:00"
     },
     "techradar.com/pro/google-turned-to-amd-epyc-not-its-own-axion-chips-to-secure-its-first-confidential-tpu": {
       "title": "Google turned to AMD Epyc, not its own Axion chips, to secure its first confidential TPU",
@@ -20709,7 +20709,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195158+06:00",
-      "last_seen": "2026-11-15T13:31:09.195161+06:00"
+      "last_seen": "2026-11-15T21:17:57.876235+06:00"
     },
     "techradar.com/gaming/nyt-connections-today-answers-hints-15-november-2026": {
       "title": "NYT Connections hints and answers for Sunday, November 15 (game #1253)",
@@ -20725,7 +20725,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195295+06:00",
-      "last_seen": "2026-11-15T13:31:09.195300+06:00"
+      "last_seen": "2026-11-15T21:17:57.876355+06:00"
     },
     "techradar.com/computing/websites-apps/nyt-strands-today-answers-hints-15-november-2026": {
       "title": "NYT Strands hints and answers for Sunday, November 15 (game #987)",
@@ -20741,7 +20741,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195431+06:00",
-      "last_seen": "2026-11-15T13:31:09.195434+06:00"
+      "last_seen": "2026-11-15T21:17:57.876472+06:00"
     },
     "techradar.com/entertainment/sport/watch-ufc-334-gane-vs-hokit": {
       "title": "How to watch UFC 334: Gane vs Hokit live streams, start time, preview, full card",
@@ -20757,7 +20757,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195553+06:00",
-      "last_seen": "2026-11-15T13:31:09.195556+06:00"
+      "last_seen": "2026-11-15T21:17:57.876589+06:00"
     },
     "techradar.com/pro/small-nuclear-reactors-could-soon-power-the-next-generation-of-ai-data-centers": {
       "title": "Small nuclear reactors could soon power the next generation of AI data centers — modular reactors could soon power Dow Texas chemical plant",
@@ -20773,7 +20773,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195674+06:00",
-      "last_seen": "2026-11-15T13:31:09.195677+06:00"
+      "last_seen": "2026-11-15T21:17:57.876707+06:00"
     },
     "techradar.com/pro/yandex-users-may-have-lost-their-data-for-good-following-ukraine-strikes-russian-tech-giant-confirms-2-84-of-customer-data-is-gone-forever": {
       "title": "Yandex users may have lost their data for good following Ukraine strikes — Russian tech giant confirms 2.84% of customer data is gone forever",
@@ -20789,7 +20789,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.195796+06:00",
-      "last_seen": "2026-11-15T13:31:09.195799+06:00"
+      "last_seen": "2026-11-15T21:17:57.876826+06:00"
     },
     "9to5google.com/2026/11/14/google-pixel-family-hub-feature-rolled-out": {
       "title": "Google Pixel rolls out new ‘Family Hub’ feature with useful controls [Gallery]",
@@ -20805,7 +20805,7 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:09.380755+06:00",
-      "last_seen": "2026-11-15T13:31:09.380762+06:00"
+      "last_seen": "2026-11-15T21:17:58.082822+06:00"
     },
     "wabetainfo.com/whatsapp-introduces-a-new-bottom-navigation-bar-on-android": {
       "title": "WhatsApp introduces a new bottom navigation bar on Android",
@@ -20821,7 +20821,633 @@
       "date_estimated": false,
       "status": "pending",
       "first_seen": "2026-11-15T13:31:10.178211+06:00",
-      "last_seen": "2026-11-15T13:31:10.178217+06:00"
+      "last_seen": "2026-11-15T21:17:58.755146+06:00"
+    },
+    "theverge.com/gadgets/1033432/lg-b6e-oled-tv-best-buy-doorbuster-black-friday-2026-deal-sale": {
+      "title": "LG’s budget-friendly B6E OLED TV is up to 50 percent off this weekend",
+      "url": "https://www.theverge.com/gadgets/1033432/lg-b6e-oled-tv-best-buy-doorbuster-black-friday-2026-deal-sale",
+      "canonical": "theverge.com/gadgets/1033432/lg-b6e-oled-tv-best-buy-doorbuster-black-friday-2026-deal-sale",
+      "published_dt": "2026-11-15T20:00:00+06:00",
+      "published_date": "2026-11-15T20:00:00+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "LG’s B6E was already one of the most affordable OLED TVs you could buy, but it’s an even better deal now that it’s included as part of Best Buy’s latest doorbuster event. Now through the end of today, November 15th, the 55-inch model is 50 percent off, dropping it to an all-time low of $699.99 […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.120102+06:00",
+      "last_seen": "2026-11-15T21:17:35.120109+06:00"
+    },
+    "theverge.com/podcast/1033948/sony-aibo-robot-dog-version-history": {
+      "title": "The Sony Aibo was a robot revolution dressed like a dog",
+      "url": "https://www.theverge.com/podcast/1033948/sony-aibo-robot-dog-version-history",
+      "canonical": "theverge.com/podcast/1033948/sony-aibo-robot-dog-version-history",
+      "published_dt": "2026-11-15T19:57:30+06:00",
+      "published_date": "2026-11-15T19:57:30+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "In the 1990s, Sony was absolutely convinced that we were on the precipice of a robot takeover. Pretty soon, the company decided, we'd all be living among countless humanoid robots. Some would be our coworkers; others would be our friends; and at least one would be our pet. And \"pet\" was exactly what Sony was […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.120263+06:00",
+      "last_seen": "2026-11-15T21:17:35.120268+06:00"
+    },
+    "theverge.com/column/1033943/jensen-huang-nvidia-china-spying-scandal-resignation": {
+      "title": "An overview of Jensen Huang’s messy days",
+      "url": "https://www.theverge.com/column/1033943/jensen-huang-nvidia-china-spying-scandal-resignation",
+      "canonical": "theverge.com/column/1033943/jensen-huang-nvidia-china-spying-scandal-resignation",
+      "published_dt": "2026-11-15T19:00:00+06:00",
+      "published_date": "2026-11-15T19:00:00+06:00",
+      "source": "The Verge",
+      "region": "Tech",
+      "excerpt": "This is The Stepback, a weekly newsletter breaking down one essential story from the tech world. For more on Jensen Huang's resignation and the fallout from Nvidia's leadership crisis, follow Terrence O'Brien. The Stepback arrives in our subscribers' inboxes on Sunday at 8AM ET. Opt in for The Stepback here. How it started On October […]",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.120397+06:00",
+      "last_seen": "2026-11-15T21:17:35.120401+06:00"
+    },
+    "wired.com/story/best-paper-planners": {
+      "title": "The 4 Best Planners of 2027: Roterunner, Hobonichi, Cloth & Paper",
+      "url": "https://www.wired.com/story/best-paper-planners/",
+      "canonical": "wired.com/story/best-paper-planners",
+      "published_dt": "2026-11-15T18:01:00+06:00",
+      "published_date": "2026-11-15T18:01:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "If digital calendars are leaving you lacking, these WIRED-tested paper agendas and notebooks could change your life.",
+      "image": "https://media.wired.com/photos/6af7de304c1f7b55abfd9851/master/pass/I%E2%80%99ve-Tested-Dozens-of-Planners.-These-Are-the-Best-Ones.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188130+06:00",
+      "last_seen": "2026-11-15T21:17:35.188135+06:00"
+    },
+    "wired.com/story/ai-djs-completely-kill-my-groove": {
+      "title": "AI DJs Completely Kill My Groove",
+      "url": "https://www.wired.com/story/ai-djs-completely-kill-my-groove/",
+      "canonical": "wired.com/story/ai-djs-completely-kill-my-groove",
+      "published_dt": "2026-11-15T18:00:00+06:00",
+      "published_date": "2026-11-15T18:00:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "YouTube Music and Spotify want synthetic hosts to curate your playlists. Their awkward banter and bogus song trivia are ruining the vibe.",
+      "image": "https://media.wired.com/photos/6af7840bd2837972f5ddf4f3/master/pass/Untitled-1.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188292+06:00",
+      "last_seen": "2026-11-15T21:17:35.188296+06:00"
+    },
+    "wired.com/review/evercade-nexus": {
+      "title": "Evercade Nexus Review: The Best Retro Handheld Yet",
+      "url": "https://www.wired.com/review/evercade-nexus/",
+      "canonical": "wired.com/review/evercade-nexus",
+      "published_dt": "2026-11-15T17:30:00+06:00",
+      "published_date": "2026-11-15T17:30:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "Evercade’s best handheld yet is a major level-up for the retro specialist.",
+      "image": "https://media.wired.com/photos/6af5e7fe5864e5f624e083eb/master/pass/Evercade%20Nexus%20(1).jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188426+06:00",
+      "last_seen": "2026-11-15T21:17:35.188430+06:00"
+    },
+    "wired.com/review/logitech-yeti-2": {
+      "title": "Logitech Yeti 2 Review: An All-In-One Studio Setup",
+      "url": "https://www.wired.com/review/logitech-yeti-2/",
+      "canonical": "wired.com/review/logitech-yeti-2",
+      "published_dt": "2026-11-15T17:30:00+06:00",
+      "published_date": "2026-11-15T17:30:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "The follow-up to the iconic Yeti microphone is here, and its upgrades make it worthy of the legacy.",
+      "image": "https://media.wired.com/photos/6af7df7e7f77ca3a14ead393/master/pass/Review--Logitech-Yeti-2.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188559+06:00",
+      "last_seen": "2026-11-15T21:17:35.188563+06:00"
+    },
+    "wired.com/story/this-ai-tamagotchi-oats-turns-everyday-objects-into-needy-virtual-pets": {
+      "title": "This AI Tamagotchi Turns Everyday Objects Into Needy Virtual Pets",
+      "url": "https://www.wired.com/story/this-ai-tamagotchi-oats-turns-everyday-objects-into-needy-virtual-pets/",
+      "canonical": "wired.com/story/this-ai-tamagotchi-oats-turns-everyday-objects-into-needy-virtual-pets",
+      "published_dt": "2026-11-15T17:00:00+06:00",
+      "published_date": "2026-11-15T17:00:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "A Carnegie Mellon student’s tiny E Ink gadgets, called OATs, give houseplants, skateboards, and dumbbells expressive personalities to nudge you toward better habits.",
+      "image": "https://media.wired.com/photos/6af4802ffbe5af43ea5dee0a/master/pass/Screenshot%202026-11-11%20at%2014.47.44.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188694+06:00",
+      "last_seen": "2026-11-15T21:17:35.188699+06:00"
+    },
+    "wired.com/story/droughts-are-getting-too-extreme-even-for-cactuses": {
+      "title": "It’s Getting Too Dry for Even Cactuses to Survive",
+      "url": "https://www.wired.com/story/droughts-are-getting-too-extreme-even-for-cactuses/",
+      "canonical": "wired.com/story/droughts-are-getting-too-extreme-even-for-cactuses",
+      "published_dt": "2026-11-15T16:30:00+06:00",
+      "published_date": "2026-11-15T16:30:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "As droughts worsen due to climate change, new research shows that hundreds of cactus species could lose the majority of their habitats by 2100.",
+      "image": "https://media.wired.com/photos/6af6e9401b752946d00e4918/master/pass/extreme-heat-climate-change-cacti-cactus-extinction-biodiversity-risk-models.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188821+06:00",
+      "last_seen": "2026-11-15T21:17:35.188825+06:00"
+    },
+    "wired.com/story/mac-mini-deal-11-13-2026": {
+      "title": "M6 Mac Mini Early Black Friday Sale (2026)",
+      "url": "https://www.wired.com/story/mac-mini-deal-11-13-2026/",
+      "canonical": "wired.com/story/mac-mini-deal-11-13-2026",
+      "published_dt": "2026-11-15T16:00:00+06:00",
+      "published_date": "2026-11-15T16:00:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "Not only is it the best mini computer you can buy, but it’s currently on sale, starting at just $779.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.188942+06:00",
+      "last_seen": "2026-11-15T21:17:35.188945+06:00"
+    },
+    "wired.com/story/new-species-of-giant-fungus-discovered-in-china-grows-up-to-20-inches-tall": {
+      "title": "New Species of Giant Fungus Discovered in China Grows up to 20 Inches Tall",
+      "url": "https://www.wired.com/story/new-species-of-giant-fungus-discovered-in-china-grows-up-to-20-inches-tall/",
+      "canonical": "wired.com/story/new-species-of-giant-fungus-discovered-in-china-grows-up-to-20-inches-tall",
+      "published_dt": "2026-11-15T16:00:00+06:00",
+      "published_date": "2026-11-15T16:00:00+06:00",
+      "source": "WIRED",
+      "region": "Tech",
+      "excerpt": "Dubbed Dianjunus rex, the huge fungus emerged shortly after the mass extinction that wiped out the dinosaurs.",
+      "image": "https://media.wired.com/photos/6af5dd41ea249e5173fa2e83/master/pass/Weixin%20Image_2025-07-15_230629_400.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.189072+06:00",
+      "last_seen": "2026-11-15T21:17:35.189076+06:00"
+    },
+    "arstechnica.com/science/2026/11/how-the-worlds-fires-changed-while-humanity-hit-pause": {
+      "title": "How the world’s fires changed while humanity hit pause",
+      "url": "https://arstechnica.com/science/2026/11/how-the-worlds-fires-changed-while-humanity-hit-pause/",
+      "canonical": "arstechnica.com/science/2026/11/how-the-worlds-fires-changed-while-humanity-hit-pause",
+      "published_dt": "2026-11-15T18:07:34+06:00",
+      "published_date": "2026-11-15T18:07:34+06:00",
+      "source": "Ars Technica",
+      "region": "Tech",
+      "excerpt": "COVID-19 lockdowns cut global fire activity by 12.3 percent.",
+      "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2293683755-1024x648.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.299370+06:00",
+      "last_seen": "2026-11-15T21:17:35.299375+06:00"
+    },
+    "engadget.com/2313693/laptop-fans-spin-up-not-doing-anything-why": {
+      "title": "Why your laptop fans spin up even when you're not doing anything",
+      "url": "https://www.engadget.com/2313693/laptop-fans-spin-up-not-doing-anything-why/",
+      "canonical": "engadget.com/2313693/laptop-fans-spin-up-not-doing-anything-why",
+      "published_dt": "2026-11-15T21:00:00+06:00",
+      "published_date": "2026-11-15T21:00:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "Laptop fans fulfill the important function of making sure your device doesn't overheat. But if they keep spinning and making noise, there might be a problem.",
+      "image": "https://www.engadget.com/img/gallery/why-your-laptop-fans-spin-up-even-when-youre-not-doing-anything/l-intro-1794215000.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401318+06:00",
+      "last_seen": "2026-11-15T21:17:35.401323+06:00"
+    },
+    "engadget.com/2313688/how-long-nvidia-gpu-supported": {
+      "title": "How long will your NVIDIA GPU be supported?",
+      "url": "https://www.engadget.com/2313688/how-long-nvidia-gpu-supported/",
+      "canonical": "engadget.com/2313688/how-long-nvidia-gpu-supported",
+      "published_dt": "2026-11-15T20:45:00+06:00",
+      "published_date": "2026-11-15T20:45:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "Graphics cards do not have an expiration date on the box., but we can help you figure out which clicking tocks are most important to your system's performance.",
+      "image": "https://www.engadget.com/img/gallery/how-long-will-your-nvidia-gpu-be-supported/l-intro-1793999445.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401458+06:00",
+      "last_seen": "2026-11-15T21:17:35.401462+06:00"
+    },
+    "engadget.com/2313687/strongest-3d-printer-filament-carbon-fiber-nylon-polycarbonate": {
+      "title": "These are some of the strongest 3D printer filaments for durable parts",
+      "url": "https://www.engadget.com/2313687/strongest-3d-printer-filament-carbon-fiber-nylon-polycarbonate/",
+      "canonical": "engadget.com/2313687/strongest-3d-printer-filament-carbon-fiber-nylon-polycarbonate",
+      "published_dt": "2026-11-15T20:30:00+06:00",
+      "published_date": "2026-11-15T20:30:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "Let's take a closer look at some of the strongest and most practical filaments for the type of 3D printers accessible to the average maker.",
+      "image": "https://www.engadget.com/img/gallery/these-are-the-strongest-3d-printer-filaments-you-can-use/l-intro-1794259197.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401589+06:00",
+      "last_seen": "2026-11-15T21:17:35.401593+06:00"
+    },
+    "engadget.com/2313685/why-google-pixel-stop-using-snapdragon": {
+      "title": "Why did Google Pixels stop using Snapdragon chips?",
+      "url": "https://www.engadget.com/2313685/why-google-pixel-stop-using-snapdragon/",
+      "canonical": "engadget.com/2313685/why-google-pixel-stop-using-snapdragon",
+      "published_dt": "2026-11-15T20:15:00+06:00",
+      "published_date": "2026-11-15T20:15:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "There was a time when Google relied on Snapdragon chips to make its Pixel smartphones, but that's not the case anymore. Here's why it stopped.",
+      "image": "https://www.engadget.com/img/gallery/why-did-google-pixels-stop-using-snapdragon-chips/l-intro-1794251560.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401716+06:00",
+      "last_seen": "2026-11-15T21:17:35.401720+06:00"
+    },
+    "engadget.com/2313556/tips-tricks-ps5-owners-should-know": {
+      "title": "5 tips and tricks every PS5 owner should know",
+      "url": "https://www.engadget.com/2313556/tips-tricks-ps5-owners-should-know/",
+      "canonical": "engadget.com/2313556/tips-tricks-ps5-owners-should-know",
+      "published_dt": "2026-11-15T20:00:00+06:00",
+      "published_date": "2026-11-15T20:00:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "The PS5 has several quality-of-life features that are buried deep but have been expanded over the years. These options save time and reduce annoyances.",
+      "image": "https://www.engadget.com/img/gallery/5-tips-and-tricks-every-ps5-owner-should-know/l-intro-1793898835.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401843+06:00",
+      "last_seen": "2026-11-15T21:17:35.401847+06:00"
+    },
+    "engadget.com/2313682/anker-vs-belkin-which-products-accessories-should-get": {
+      "title": "Anker vs. Belkin: Which company's power banks and accessories should you get?",
+      "url": "https://www.engadget.com/2313682/anker-vs-belkin-which-products-accessories-should-get/",
+      "canonical": "engadget.com/2313682/anker-vs-belkin-which-products-accessories-should-get",
+      "published_dt": "2026-11-15T19:45:00+06:00",
+      "published_date": "2026-11-15T19:45:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "To decide between Anker and Belkin's power banks and accessories, consider what you want most: lots of power or unique products for gamers and creators.",
+      "image": "https://www.engadget.com/img/gallery/anker-vs-belkin-which-companys-power-banks-and-accessories-should-you-get/l-intro-1794248743.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.401966+06:00",
+      "last_seen": "2026-11-15T21:17:35.401970+06:00"
+    },
+    "engadget.com/2313048/apple-maps-hidden-features-users-should-know": {
+      "title": "The hidden features every Apple Maps user should know about",
+      "url": "https://www.engadget.com/2313048/apple-maps-hidden-features-users-should-know/",
+      "canonical": "engadget.com/2313048/apple-maps-hidden-features-users-should-know",
+      "published_dt": "2026-11-15T19:30:00+06:00",
+      "published_date": "2026-11-15T19:30:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "Apple Maps isn't just about the big-ticket features; it has a range of lesser-known features that are just as useful. Here are some of the most notable.",
+      "image": "https://www.engadget.com/img/gallery/the-hidden-features-every-apple-maps-user-should-know-about/l-intro-1794373722.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.402090+06:00",
+      "last_seen": "2026-11-15T21:17:35.402093+06:00"
+    },
+    "engadget.com/2311090/how-to-transfer-spotify-playlist-songs-to-apple-music": {
+      "title": "The right way to transfer your Spotify playlists and songs to Apple Music",
+      "url": "https://www.engadget.com/2311090/how-to-transfer-spotify-playlist-songs-to-apple-music/",
+      "canonical": "engadget.com/2311090/how-to-transfer-spotify-playlist-songs-to-apple-music",
+      "published_dt": "2026-11-15T19:15:00+06:00",
+      "published_date": "2026-11-15T19:15:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "Learn how to transfer Spotify playlists to Apple Music on iPhone, iPad, Android or the web, and what you need before you move your songs over.",
+      "image": "https://www.engadget.com/img/gallery/the-right-way-to-transfer-your-spotify-playlists-and-songs-to-apple-music/l-intro-1794230993.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.402241+06:00",
+      "last_seen": "2026-11-15T21:17:35.402246+06:00"
+    },
+    "engadget.com/2313043/troubleshoot-macbook-black-screen-issues": {
+      "title": "Troubleshooting a black screen on your MacBook is easier than you think",
+      "url": "https://www.engadget.com/2313043/troubleshoot-macbook-black-screen-issues/",
+      "canonical": "engadget.com/2313043/troubleshoot-macbook-black-screen-issues",
+      "published_dt": "2026-11-15T07:30:00+06:00",
+      "published_date": "2026-11-15T07:30:00+06:00",
+      "source": "Engadget",
+      "region": "Tech",
+      "excerpt": "A black screen on your MacBook can feel like the end of the world, but don't panic: there are several easy troubleshooting steps to try first.",
+      "image": "https://www.engadget.com/img/gallery/troubleshooting-a-black-screen-on-your-macbook-is-easier-than-you-think/l-intro-1794370476.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:35.402369+06:00",
+      "last_seen": "2026-11-15T21:17:35.402372+06:00"
+    },
+    "techmeme.com/261115/p7": {
+      "title": "Inside the first AI Music Awards in Los Angeles, featuring AI announcers, lip-syncing, and human stand-ins, as the ceremony was mired in technical issues (Corbin Bolies/Variety)",
+      "url": "https://www.techmeme.com/261115/p7#a261115p7",
+      "canonical": "techmeme.com/261115/p7",
+      "published_dt": "2026-11-15T18:02:16+06:00",
+      "published_date": "2026-11-15T18:02:16+06:00",
+      "source": "Techmeme",
+      "region": "Tech",
+      "excerpt": "Corbin Bolies / Variety : Inside the first AI Music Awards in Los Angeles, featuring AI announcers, lip-syncing, and human stand-ins, as the ceremony was mired in technical issues —  I knew things were a little off when the first thing I heard on my walk to the AI Music Awards was “the winner...” followed by the sweet voice of Kelly Clarkson.",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.376978+06:00",
+      "last_seen": "2026-11-15T21:17:57.376993+06:00"
+    },
+    "techradar.com/gaming/007-first-light-composers-define-a-great-bond-score-by-its-escapist-elements-a-great-game-score-should-make-the-player-feel-like-they-are-part-of-the-story": {
+      "title": "007 First Light composers define a great Bond score by its ‘escapist elements’ — ‘A great game score should make the player feel like they are part of the story’",
+      "url": "https://www.techradar.com/gaming/007-first-light-composers-define-a-great-bond-score-by-its-escapist-elements-a-great-game-score-should-make-the-player-feel-like-they-are-part-of-the-story",
+      "canonical": "techradar.com/gaming/007-first-light-composers-define-a-great-bond-score-by-its-escapist-elements-a-great-game-score-should-make-the-player-feel-like-they-are-part-of-the-story",
+      "published_dt": "2026-11-15T20:00:00+06:00",
+      "published_date": "2026-11-15T20:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "007 First Light composers Joe Henson and Alexis Smith have explained what they think defines a great video game soundtrack, in particular, a James Bond score.",
+      "image": "https://cdn.mos.cms.futurecdn.net/GFvjVCGFp7gsmrDkMPpdaN-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874325+06:00",
+      "last_seen": "2026-11-15T21:17:57.874332+06:00"
+    },
+    "techradar.com/vehicle-tech/self-driving-vehicles/teslas-cybercab-goes-on-sale-for-personal-use-but-elon-musk-admits-the-monthly-cost-of-ownership-is-too-high": {
+      "title": "Tesla’s Cybercab goes on sale for ‘personal use’ but there are caveats",
+      "url": "https://www.techradar.com/vehicle-tech/self-driving-vehicles/teslas-cybercab-goes-on-sale-for-personal-use-but-elon-musk-admits-the-monthly-cost-of-ownership-is-too-high",
+      "canonical": "techradar.com/vehicle-tech/self-driving-vehicles/teslas-cybercab-goes-on-sale-for-personal-use-but-elon-musk-admits-the-monthly-cost-of-ownership-is-too-high",
+      "published_dt": "2026-11-15T19:30:00+06:00",
+      "published_date": "2026-11-15T19:30:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Tesla has opened up Cybercab orders to a select number of customers who might be interested in having their own self-driving car.",
+      "image": "https://cdn.mos.cms.futurecdn.net/9ebrXxka7BtzQa2789c8WT-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874473+06:00",
+      "last_seen": "2026-11-15T21:17:57.874477+06:00"
+    },
+    "techradar.com/entertainment/tv-shows/why-isnt-im-a-celebrity-on-tonight-itv-make-schedule-change-for-star-studded-show": {
+      "title": "Why isn’t I’m a Celebrity on tonight? ITV make schedule change for star-studded show",
+      "url": "https://www.techradar.com/entertainment/tv-shows/why-isnt-im-a-celebrity-on-tonight-itv-make-schedule-change-for-star-studded-show",
+      "canonical": "techradar.com/entertainment/tv-shows/why-isnt-im-a-celebrity-on-tonight-itv-make-schedule-change-for-star-studded-show",
+      "published_dt": "2026-11-15T18:10:26+06:00",
+      "published_date": "2026-11-15T18:10:26+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "All the reasoning as to why I'm a Celebrity won't be in it's usual Sunday slot tonight on ITV and how you can watch the show when it returns.",
+      "image": "https://cdn.mos.cms.futurecdn.net/3ApKJrGFV3ED6bRm2rJQhB-1920-80.png",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874609+06:00",
+      "last_seen": "2026-11-15T21:17:57.874613+06:00"
+    },
+    "techradar.com/entertainment/rugby/scotland-vs-australia-free-nations-championship-2026": {
+      "title": "How to watch Scotland vs Australia: FREE live streams, TV channels & kick-off time for Nations Championship 2026 fixture",
+      "url": "https://www.techradar.com/entertainment/rugby/scotland-vs-australia-free-nations-championship-2026",
+      "canonical": "techradar.com/entertainment/rugby/scotland-vs-australia-free-nations-championship-2026",
+      "published_dt": "2026-11-15T18:10:00+06:00",
+      "published_date": "2026-11-15T18:10:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "How you can watch Scotland vs Australia in the Nations Championship for free online from anywhere in the world with TV channels, kick-off time included.",
+      "image": "https://cdn.mos.cms.futurecdn.net/3so4nMzGYz5TUNxbWFFVum-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874744+06:00",
+      "last_seen": "2026-11-15T21:17:57.874748+06:00"
+    },
+    "techradar.com/pro/it-would-make-me-think-twice-about-applying-workers-are-pushing-back-at-companies-who-insist-on-ai-interviews": {
+      "title": "'It would make me think twice about applying': Workers are pushing back at companies who insist on AI interviews",
+      "url": "https://www.techradar.com/pro/it-would-make-me-think-twice-about-applying-workers-are-pushing-back-at-companies-who-insist-on-ai-interviews",
+      "canonical": "techradar.com/pro/it-would-make-me-think-twice-about-applying-workers-are-pushing-back-at-companies-who-insist-on-ai-interviews",
+      "published_dt": "2026-11-15T18:00:00+06:00",
+      "published_date": "2026-11-15T18:00:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "Half of Brits have had a job interview with an AI avatar – many feel uncomfortable, some say they'd even scrap the job application altogether.",
+      "image": "https://cdn.mos.cms.futurecdn.net/MtYFJW8w34KGWQVpbFEvoX-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874875+06:00",
+      "last_seen": "2026-11-15T21:17:57.874879+06:00"
+    },
+    "techradar.com/entertainment/american-football/patriots-vs-lions-free-nfl-week-10": {
+      "title": "How to watch Patriots vs Lions: Live streams & TV channels for NFL Week 10 game",
+      "url": "https://www.techradar.com/entertainment/american-football/patriots-vs-lions-free-nfl-week-10",
+      "canonical": "techradar.com/entertainment/american-football/patriots-vs-lions-free-nfl-week-10",
+      "published_dt": "2026-11-15T17:30:00+06:00",
+      "published_date": "2026-11-15T17:30:00+06:00",
+      "source": "TechRadar",
+      "region": "Tech",
+      "excerpt": "How you can watch Patriots vs Lions in Week 10 of the NFL 2026 for free online from anywhere in the world with TV channels, kick-off time included.",
+      "image": "https://cdn.mos.cms.futurecdn.net/UqPRjCxgv7pKaHoppyuvJN-1920-80.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:57.874999+06:00",
+      "last_seen": "2026-11-15T21:17:57.875003+06:00"
+    },
+    "9to5google.com/2026/11/15/google-pixel-tag-find-hub-problems": {
+      "title": "Pixel Tag is a brilliant Band-Aid on a Find Hub network Google can’t easily fix",
+      "url": "https://9to5google.com/2026/11/15/google-pixel-tag-find-hub-problems/",
+      "canonical": "9to5google.com/2026/11/15/google-pixel-tag-find-hub-problems",
+      "published_dt": "2026-11-15T20:00:00+06:00",
+      "published_date": "2026-11-15T20:00:00+06:00",
+      "source": "9to5Google",
+      "region": "Tech",
+      "excerpt": "The Google Pixel Tag is here and, at least so far, it’s really good. But fresh hardware and some new features can’t fix the core problem. Google’s Find Hub network has been restricted from the very start, and it’s not something Google can easily fix. 9to5Google Weekender by Ben Schoon is a part of our free newsletter that also includes ‘Inbox,’ a twice-weekly roundup of key stories from around the web by Daniel Bader. Sign up here to get Weekender delivered to your inbox every Sunday along with ‘Inbox’ on Tuesday and Thursday. You can find past issues here . Sign up below to access the web version. more…",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:17:58.082481+06:00",
+      "last_seen": "2026-11-15T21:17:58.082488+06:00"
+    },
+    "unite.ai/why-ai-inference-now-drives-energy-water-and-carbon-costs": {
+      "title": "Why AI Inference Now Drives Energy, Water, and Carbon Costs",
+      "url": "https://www.unite.ai/why-ai-inference-now-drives-energy-water-and-carbon-costs/",
+      "canonical": "unite.ai/why-ai-inference-now-drives-energy-water-and-carbon-costs",
+      "published_dt": "2026-11-15T19:00:00+06:00",
+      "published_date": "2026-11-15T19:00:00+06:00",
+      "source": "Unite.AI",
+      "region": "Tech",
+      "excerpt": "The environmental cost of AI inference comes from the electricity, cooling water, hardware, and regional infrastructure used each time deployed models serve workloads at scale. This guide explains the mechanism, trade-offs, evaluation, and controls that matter in practice.",
+      "image": "https://www.unite.ai/wp-content/uploads/2026/08/64-ai-inference-environmental-cost-1920x1080-1.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:00.233892+06:00",
+      "last_seen": "2026-11-15T21:18:00.233898+06:00"
+    },
+    "unite.ai/megaspeed-retains-counsel-to-probe-reports-on-its-ai-cloud-business": {
+      "title": "Megaspeed Retains Counsel to Probe Reports on Its AI Cloud Business",
+      "url": "https://www.unite.ai/megaspeed-retains-counsel-to-probe-reports-on-its-ai-cloud-business/",
+      "canonical": "unite.ai/megaspeed-retains-counsel-to-probe-reports-on-its-ai-cloud-business",
+      "published_dt": "2026-11-15T15:16:04+06:00",
+      "published_date": "2026-11-15T15:16:04+06:00",
+      "source": "Unite.AI",
+      "region": "Tech",
+      "excerpt": "CNBC reported on November 15, 2026, that Megaspeed had retained external legal counsel to investigate media reports about its AI cloud business, supply chain and global operations. The Singapore-based company also said Alice Huang left effective August 30, 2025, and currently has no role there. Megaspeed said the reports were not supported by verifiable evidence. It will review the reporting and communicate further with stakeholders as appropriate. Its operational and supply-chain controls are…",
+      "image": "https://www.unite.ai/wp-content/uploads/2026/11/megaspeed-retains-counsel-to-probe-reports-on-its-ai-cloud-business.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:00.234082+06:00",
+      "last_seen": "2026-11-15T21:18:00.234086+06:00"
+    },
+    "the-decoder.com/firm-linked-to-jensen-huangs-ex-lover-reportedly-brokered-nearly-12-billion-in-nvidia-chip-orders-for-china": {
+      "title": "Firm linked to Jensen Huang's ex-lover reportedly brokered nearly $12 billion in Nvidia chip orders for China",
+      "url": "https://the-decoder.com/firm-linked-to-jensen-huangs-ex-lover-reportedly-brokered-nearly-12-billion-in-nvidia-chip-orders-for-china/",
+      "canonical": "the-decoder.com/firm-linked-to-jensen-huangs-ex-lover-reportedly-brokered-nearly-12-billion-in-nvidia-chip-orders-for-china",
+      "published_dt": "2026-11-15T20:45:12+06:00",
+      "published_date": "2026-11-15T20:45:12+06:00",
+      "source": "The Decoder",
+      "region": "Tech",
+      "excerpt": "Megaspeed, the firm owned by ousted Nvidia CEO Jensen Huang's former lover Alice Huang, arranged nearly $12 billion in Nvidia chip orders for Chinese companies between 2024 and 2025, according to the WSJ. Short seller Culper Research estimates Nvidia's actual China revenue share exceeds 20 percent, far above the officially reported 7 percent. The article Firm linked to Jensen Huang's ex-lover reportedly brokered nearly $12 billion in Nvidia chip orders for China appeared first on The Decoder .",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-15T21:18:01.629451+06:00",
+      "last_seen": "2026-11-15T21:18:01.629458+06:00",
+      "posted_at": "2026-11-15T21:20:27.124300+06:00"
+    },
+    "the-decoder.com/australias-central-bank-finds-ai-hitting-young-workers-first-especially-in-software-and-customer-service": {
+      "title": "Australia's central bank finds AI hitting young workers first, especially in software and customer service",
+      "url": "https://the-decoder.com/australias-central-bank-finds-ai-hitting-young-workers-first-especially-in-software-and-customer-service/",
+      "canonical": "the-decoder.com/australias-central-bank-finds-ai-hitting-young-workers-first-especially-in-software-and-customer-service",
+      "published_dt": "2026-11-15T16:45:58+06:00",
+      "published_date": "2026-11-15T16:45:58+06:00",
+      "source": "The Decoder",
+      "region": "Tech",
+      "excerpt": "Australia's central bank sees early signs that AI is hitting young entry-level workers in highly exposed jobs like software development and customer service. Since ChatGPT launched, job postings and employment among 15- to 24-year-olds in those fields have dropped more sharply than among older workers. Author Mike Major cautions against jumping to conclusions, however, noting that business cycle shifts and remote work trends could also explain the numbers. The article Australia's central bank finds AI hitting young workers first, especially in software and customer service appeared first on The Decoder .",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:01.629808+06:00",
+      "last_seen": "2026-11-15T21:18:01.629812+06:00"
+    },
+    "the-decoder.com/meituan-releases-a-1-6-trillion-parameter-agent-model-that-never-touched-an-nvidia-gpu": {
+      "title": "Meituan releases a 1.6-trillion-parameter agent model that never touched an Nvidia GPU",
+      "url": "https://the-decoder.com/meituan-releases-a-1-6-trillion-parameter-agent-model-that-never-touched-an-nvidia-gpu/",
+      "canonical": "the-decoder.com/meituan-releases-a-1-6-trillion-parameter-agent-model-that-never-touched-an-nvidia-gpu",
+      "published_dt": "2026-11-15T16:06:06+06:00",
+      "published_date": "2026-11-15T16:06:06+06:00",
+      "source": "The Decoder",
+      "region": "Tech",
+      "excerpt": "Meituan has released the weights for LongCat-2.5, a 1.6-trillion-parameter model built for AI agents and trained entirely on Chinese hardware. On Terminal Bench, it scores 88.4 points, landing just behind Claude Opus 5. The sample deployment runs on 194 Huawei Ascend chips, and Meituan makes no mention of Nvidia GPUs. The article Meituan releases a 1.6-trillion-parameter agent model that never touched an Nvidia GPU appeared first on The Decoder .",
+      "image": "",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "posted",
+      "first_seen": "2026-11-15T21:18:01.630135+06:00",
+      "last_seen": "2026-11-15T21:18:01.630140+06:00",
+      "posted_at": "2026-11-15T21:20:21.820121+06:00"
+    },
+    "androidauthority.com/favorite-samsung-galaxy-watch-9-features-3734323": {
+      "title": "After three months with the Samsung Galaxy Watch 9, these are my favorite features",
+      "url": "https://www.androidauthority.com/favorite-samsung-galaxy-watch-9-features-3734323/",
+      "canonical": "androidauthority.com/favorite-samsung-galaxy-watch-9-features-3734323",
+      "published_dt": "2026-11-15T18:00:09+06:00",
+      "published_date": "2026-11-15T18:00:09+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "I expected more battery life but found other highlights instead.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2026/11/The-Samsung-Galaxy-Watch-9-on-a-table-with-a-digital-clock-in-the-background-scaled.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:02.192034+06:00",
+      "last_seen": "2026-11-15T21:18:02.192040+06:00"
+    },
+    "androidauthority.com/google-find-hub-tracker-left-behind-alerts-setup-3733720": {
+      "title": "How to enable tracker left-behind alerts in Google Find Hub",
+      "url": "https://www.androidauthority.com/google-find-hub-tracker-left-behind-alerts-setup-3733720/",
+      "canonical": "androidauthority.com/google-find-hub-tracker-left-behind-alerts-setup-3733720",
+      "published_dt": "2026-11-15T17:30:27+06:00",
+      "published_date": "2026-11-15T17:30:27+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Never leave your stuff behind again.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2026/04/chipolo-card-google-find-hub-bluetooth-tracker-secrid-wallet-app.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:02.192201+06:00",
+      "last_seen": "2026-11-15T21:18:02.192206+06:00"
+    },
+    "androidauthority.com/best-apps-for-foldables-3733555": {
+      "title": "The best apps that are actually built for foldables",
+      "url": "https://www.androidauthority.com/best-apps-for-foldables-3733555/",
+      "canonical": "androidauthority.com/best-apps-for-foldables-3733555",
+      "published_dt": "2026-11-15T17:00:20+06:00",
+      "published_date": "2026-11-15T17:00:20+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Looking for a few decent foldable apps? Look no further.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2026/07/Pixel-Galaxy-Moto-Foldable-3-scaled.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:02.192339+06:00",
+      "last_seen": "2026-11-15T21:18:02.192343+06:00"
+    },
+    "androidauthority.com/moto-watch-2-fit-alternatives-3733918": {
+      "title": "5 fitness trackers you should buy instead of the Moto Watch 2 Fit",
+      "url": "https://www.androidauthority.com/moto-watch-2-fit-alternatives-3733918/",
+      "canonical": "androidauthority.com/moto-watch-2-fit-alternatives-3733918",
+      "published_dt": "2026-11-15T16:30:35+06:00",
+      "published_date": "2026-11-15T16:30:35+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "Motorola's latest fitness tracker looks promising, but it isn't your only option.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2023/09/Garmin-vivoactive-5-flashlight-scaled.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:02.192465+06:00",
+      "last_seen": "2026-11-15T21:18:02.192468+06:00"
+    },
+    "androidauthority.com/bluetooth-hdt-one-big-problem-3733124": {
+      "title": "Bluetooth HDT could finally fix wireless audio quality, but there’s still one big problem",
+      "url": "https://www.androidauthority.com/bluetooth-hdt-one-big-problem-3733124/",
+      "canonical": "androidauthority.com/bluetooth-hdt-one-big-problem-3733124",
+      "published_dt": "2026-11-15T16:00:20+06:00",
+      "published_date": "2026-11-15T16:00:20+06:00",
+      "source": "Android Authority",
+      "region": "Tech",
+      "excerpt": "HDT will be one of the biggest changes to Bluetooth audio in years.",
+      "image": "https://www.androidauthority.com/wp-content/uploads/2024/10/JLab-JBuds-Lux-ANC-headphones.jpg",
+      "discovery": "rss",
+      "date_estimated": false,
+      "status": "pending",
+      "first_seen": "2026-11-15T21:18:02.192593+06:00",
+      "last_seen": "2026-11-15T21:18:02.192597+06:00"
     }
   },
   "events": {
@@ -20928,31 +21554,6 @@
       "selected_at": "2026-10-23T21:49:54.264183+06:00",
       "status": "published",
       "message_id": 1044
-    },
-    "gmail_live_ai_search": {
-      "event_id": "gmail_live_ai_search",
-      "canonical_url": "engadget.com/2288545/gmail-live-ai-search-feature-arrives-for-google-ai-subscribers",
-      "original_url": "https://www.engadget.com/2288545/gmail-live-ai-search-feature-arrives-for-google-ai-subscribers/",
-      "source": "Engadget",
-      "region": "Tech",
-      "topic": "AI Models and Products",
-      "institution": "Google",
-      "event_cluster_id": "evt_77f9e2b2fc",
-      "event_confidence": 0.6,
-      "event_source_count": 1,
-      "headline": "Google launches Gmail Live AI search for AI Plus, Pro, Ultra users",
-      "summary": "Google’s new Gmail Live lets AI Plus, Pro and Ultra subscribers use conversational voice commands to instantly locate details across their inboxes.",
-      "highlights": [
-        "Gmail Live rolls out this week, replacing basic search with real‑time conversational queries",
-        "Docs Live and Keep Live extend the same Gemini‑powered voice interface to documents and notes",
-        "The features are currently exclusive to Google AI Plus, Pro and Ultra plans, with Workspace business rollout pending"
-      ],
-      "concepts": [],
-      "key_numbers": [],
-      "published_at": "2026-10-16T14:31:48+06:00",
-      "selected_at": "2026-10-16T16:53:28.498220+06:00",
-      "status": "published",
-      "message_id": 927
     },
     "beam_open_source_release": {
       "event_id": "beam_open_source_release",
@@ -31172,6 +31773,58 @@
       "selected_at": "2026-11-15T13:37:43.120469+06:00",
       "status": "published",
       "message_id": 1340
+    },
+    "meituan_1_6t_agent_model_release": {
+      "event_id": "meituan_1_6t_agent_model_release",
+      "canonical_url": "the-decoder.com/meituan-releases-a-1-6-trillion-parameter-agent-model-that-never-touched-an-nvidia-gpu",
+      "original_url": "https://the-decoder.com/meituan-releases-a-1-6-trillion-parameter-agent-model-that-never-touched-an-nvidia-gpu/",
+      "source": "The Decoder",
+      "region": "Tech",
+      "topic": "AI Models and Products",
+      "institution": "Meituan",
+      "event_cluster_id": "evt_ec98f143d6",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Meituan Unveils 1.6‑Trillion‑Parameter LongCat‑2.5 Agent Model Built on Chinese Chips",
+      "summary": "Meituan released LongCat‑2.5, a 1.6‑trillion‑parameter mixture‑of‑experts agent model trained entirely on Chinese hardware, matching top Western models on coding benchmarks.",
+      "highlights": [
+        "LongCat‑2.5 activates only ~48 billion parameters per token and can process up to one million tokens in a single request",
+        "The model runs on a cluster of 194 Huawei Ascend accelerators, with no Nvidia GPU support",
+        "Benchmarks show 88.4 points on Terminal Bench v2.1, close to Claude Opus 5’s 89.1",
+        "Pricing is promotional at roughly €0.27 per million input tokens and €1.07 per million output tokens"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-15T16:06:06+06:00",
+      "selected_at": "2026-11-15T21:20:21.820288+06:00",
+      "status": "published",
+      "message_id": 1341
+    },
+    "nvidia_china_orders": {
+      "event_id": "nvidia_china_orders",
+      "canonical_url": "the-decoder.com/firm-linked-to-jensen-huangs-ex-lover-reportedly-brokered-nearly-12-billion-in-nvidia-chip-orders-for-china",
+      "original_url": "https://the-decoder.com/firm-linked-to-jensen-huangs-ex-lover-reportedly-brokered-nearly-12-billion-in-nvidia-chip-orders-for-china/",
+      "source": "The Decoder",
+      "region": "Tech",
+      "topic": "Major Tech Companies",
+      "institution": "Nvidia",
+      "event_cluster_id": "evt_bcf08f435a",
+      "event_confidence": 0.6,
+      "event_source_count": 1,
+      "headline": "Megaspeed brokered nearly $12 billion in Nvidia chips for China",
+      "summary": "Megaspeed, owned by Alice Huang, arranged almost $12 billion of Nvidia high‑performance AI chips for Chinese firms between March 2024 and June 2025.",
+      "highlights": [
+        "Megaspeed secured preferential access to scarce AI chips as an Nvidia cloud partner",
+        "The orders covered several hundred thousand chips subject to US export controls",
+        "Nvidia reported $12.4 billion in China revenue, about 7 percent of total",
+        "Culper Research estimates over 20 percent of Nvidia’s last‑year revenue came from Chinese customers"
+      ],
+      "concepts": [],
+      "key_numbers": [],
+      "published_at": "2026-11-15T20:45:12+06:00",
+      "selected_at": "2026-11-15T21:20:27.124333+06:00",
+      "status": "published",
+      "message_id": 1342
     }
   },
   "event_clusters": {
@@ -58570,11 +59223,45 @@
       "confidence": 0.6,
       "last_seen": "2026-11-15T13:33:33.319902+06:00",
       "headline": "Where was Nvidia’s security team?"
+    },
+    "evt_ec98f143d6": {
+      "event_id": "evt_ec98f143d6",
+      "topic": "AI Models and Products",
+      "region": "Tech",
+      "sources": [
+        "The Decoder"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-15T21:19:19.310023+06:00",
+      "headline": "Meituan releases a 1.6-trillion-parameter agent model that never touched an Nvidia GPU"
+    },
+    "evt_bcf08f435a": {
+      "event_id": "evt_bcf08f435a",
+      "topic": "Major Tech Companies",
+      "region": "Tech",
+      "sources": [
+        "The Decoder"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-15T21:19:19.310036+06:00",
+      "headline": "Firm linked to Jensen Huang's ex-lover reportedly brokered nearly $12 billion in Nvidia chip orders for China"
+    },
+    "evt_f08c4e8b03": {
+      "event_id": "evt_f08c4e8b03",
+      "topic": "Cybersecurity",
+      "region": "Tech",
+      "sources": [
+        "TechRadar"
+      ],
+      "source_count": 1,
+      "confidence": 0.6,
+      "last_seen": "2026-11-15T21:19:19.310041+06:00",
+      "headline": "Yandex users may have lost their data for good following Ukraine strikes — Russian tech giant confirms 2.84% of customer data is gone forever"
     }
   },
   "posted_event_ids": [
-    "evt_7e0ed3964e",
-    "evt_4bf416acea",
     "evt_b6b3a8b88f",
     "evt_bf8860f701",
     "evt_8b90d30c0d",
@@ -59072,12 +59759,11 @@
     "evt_10dc560c5c",
     "evt_df7264b6b0",
     "evt_db4b9968e1",
-    "evt_e17df7d07e"
+    "evt_e17df7d07e",
+    "evt_ec98f143d6",
+    "evt_bcf08f435a"
   ],
   "recent_titles": [
-    "samsung auto blocker shields galaxy phones but hinders sideloaders",
-    "meta removes training clause from pending commercial terms after backlash",
-    "meta s muse spark open optimized for dual apple m5 ultra mac studios",
     "replit switches default ai model to openai s chatgpt over anthropic",
     "apple unveils homeview hub new tv and homepod mini 2",
     "meta strips controversial clause allowing ai scraping of news sites",
@@ -59477,12 +60163,14 @@
     "anthropic ceo warns of massive compute uncertainty ahead of record ipo",
     "routine upgrade by l3harris triggers nationwide flight ground stop",
     "google chooses amd epyc over axion for first confidential tpu",
-    "nvidia security team s blind spot amid ceo scandal and megaspeed probe"
+    "nvidia security team s blind spot amid ceo scandal and megaspeed probe",
+    "meituan unveils 1 6 trillion parameter longcat 2 5 agent model built on chinese chips",
+    "megaspeed brokered nearly 12 billion in nvidia chips for china"
   ],
   "category_coverage": {
-    "AI Models and Products": "2026-11-15T13:37:38.344970+06:00",
-    "Major Tech Companies": "2026-11-14T13:32:04.259715+06:00",
-    "Cybersecurity": "2026-11-15T13:37:43.120486+06:00",
+    "AI Models and Products": "2026-11-15T21:20:21.820311+06:00",
+    "Major Tech Companies": "2026-11-15T21:20:27.124351+06:00",
+    "Cybersecurity": "2026-11-15T13:37:43.120469+06:00",
     "Search": "2026-08-29T08:21:13.747596+06:00",
     "Cloud Platforms": "2026-10-27T23:33:01.413405+06:00",
     "Acquisitions and Mergers": "2026-11-12T04:51:15.372286+06:00",
